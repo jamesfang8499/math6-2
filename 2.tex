@@ -91,7 +91,202 @@
 这个差商称为在$t_0$和$t_0+\Delta t$之间的这段时间间隔上的质点的平均速度，对照着$s=s(t)=t^2+4t$的图象来看，这个平均速度也就是过曲线上的$P(t_0,s(t_0))$
 点及它邻近一点$Q(t_0+\Delta t,s(t_0+\Delta t))$的割线的斜率（图2.5）。当$\Delta t$ 很小时，可以认为，从时刻$t_0$到$t_0+\Delta t$这段时间内，速度来不及有很大变化，可以近似地看成匀速运动，因而这段时间内的平均速度就可以看成时刻$t_0$的瞬时速度的近似值。
 
-显然，从时刻$t_0$到时刻$t_0+\Delta t$, 质点走过的路程为
+\begin{figure}[htp]
+    \centering
+    \begin{tikzpicture}[>=latex, scale=.5]
+\draw[->](-5.5,0)--(3,0)node[right]{$t$};
+\draw[->](0,-5)--(0,7)node[right]{$s$};
 
+\draw[domain=-5.25:0, samples=300, dashed]plot(\x, {\x*\x+4*\x});
+\draw[domain=0:1.25, samples=100, thick]plot(\x, {\x*\x+4*\x});
+\foreach \x in {-4,-3,-2,-1,1,2}
+{
+    \draw(\x,0)--(\x,.2);
+}
+\node at (-2,0)[below]{$-2$};
+\node at (1,0)[below]{$1$};
+\node at (0,0)[below left]{$O$};
+    \end{tikzpicture}
+
+    \caption{}
+\end{figure}
+
+
+
+显然，从时刻$t_0$到时刻$t_0+\Delta t$, 质点走过的路程为
+\[\begin{split}
+    \Delta s&=s(t_0+\Delta t)-s(t_0)\\
+    &=(t_0+\Delta t)^2+4(t_0+\Delta t)+(t^2_0+4t_0)\\
+    &=(2t_0+4)\Delta t+(\Delta t)^2
+\end{split}\]
+所以这段时间内的平均速度为
+\[\begin{split}
+    \frac{\Delta s}{\Delta t}&=\frac{s(t_0+\Delta t)-s(t_0)}{\Delta t}\\
+    &=\frac{(2t_0+4)\Delta t+(\Delta t)^2}{\Delta t}\\
+    &=(2t_0+4)+\Delta t
+\end{split}\]
+$\Delta t$越小，这个平均速度就越接近时刻$t_0$的瞬时速度$v_0$, 我们自然令$\Delta t\to 0$, 求差商的极限值，得到
+\[\begin{split}
+    \lim_{\Delta t\to 0}\frac{s(t_0+\Delta t)-s(t_0)}{\Delta t}&= \lim_{\Delta t\to 0}[(2t_0+4)+\Delta t]\\
+    &=2t_0+4
+\end{split}\]
+这样平均速度$\frac{s(t_0+\Delta t)-s(t_0)}{\Delta t}$，当$\Delta t\to 0$时的极限值
+就表达了质点在时刻$t_0$的瞬时速度，把它记作
+\[s'(t_0)=   \lim_{\Delta t\to 0}\frac{s(t_0+\Delta t)-s(t_0)}{\Delta t}\]
 \end{analyze}
+
+\begin{solution}
+\begin{enumerate}
+\item 质点的初速度
+\[s'(0)=2\x0+4=4(\ms)\]
+\item 质点在两秒末的速度
+\[s'(2)=2\x2+4＝8(\ms)\]
+\item \[\text{质点在前两秒内的平均速度}=\frac{\text{在前两秒内所走距离}}{\text{时间}}=\frac{2^2+4\x2}{2}
+=6(\ms)\]
+\end{enumerate}
+\end{solution}
+
+从这个问题可以看出质点在$t_0$时刻的瞬时速度$s'(t_0)$的几何意义就是曲线$s=s(t)$在$P(t_0,s(t_0))$点的切线的斜率，所以函数在某点的变率有确定值与函数的图象在该点有唯一的一条切线是两个密切相关的概念。
+
+\subsection{微商（导数）的定义}
+从上面所举的两个例子来看，问题来自不同的领域：
+\begin{enumerate}
+    \item 求过曲线上一点的切线，
+    \item 求函数在某点的变率.
+\end{enumerate}
+但解决的方法却完全一样，就是计算函数的差商的极限，这种极限反映了自然界中很多不同现象在量方面的共性，因此有必要从这些具体问题中把它抽象出来加以研究，再反过来去解决这类具体问题。
+
+\begin{blk}{定义}
+    设$y=f(x)$是定义在闭区间$[a,b]$上的一个函数，$x_0\in (a,b)$, 如果极限
+\[\lim_{\Delta x\to 0}\frac{f (x_0+\Delta x) -f (x_0)}{\Delta x}\]
+存在，我们就说$f(x)$在点$x_0$处\textbf{可微}，并称这极限为函数$f(x)$在$x_0$点的\textbf{微商}（或导数），记为$f'(x_0)$或
+$\frac{\dd y}{\dd x}\Big|_{x=x_0}$.
+\end{blk}
+
+显然，$f'(x_0)$的值与点$x_0$有关，当点$x_0$在开区间$(a,b)$内变化时，$f'(x_0)$也将跟着变化，因此，如果函数$f(x)$在开区间$(a,b)$内每点都可微（即存在有限导数），那么$f'(x)$便是一个新的函数，称为$f(x)$的\textbf{导函数}。
+
+求已知函数的导函数$f'(x)$的运算，称为微商 运算，计算过程如下：
+\begin{enumerate}
+\item 设$\Delta x$为自变量某个值$x$的改变量：
+\item 计算$f(x)$在点$x$的相应改变量
+\[\Delta y=f (x+\Delta x) -f (x) \]
+\item 计算$f(x)$在点$x$的差商
+\[\frac{\Delta y}{\Delta x}=\frac{f (x+\Delta x) -f (x)}{\Delta x}\]
+\item 计算
+\[\lim_{\Delta x\to 0}\frac{f (x+\Delta x) -f (x)}{\Delta x}=f'(x)=\frac{\dd y}{\dd x}\]
+\end{enumerate}
+
+应当注意，这里$\frac{\dd y}{\dd x}$是一个独立的记号，它表示函数$f(x)$
+在点$x$的导数，不能把它当成一个分数来看待，必须把它看成一个整体。
+
+从微商的定义可以看出：
+\begin{enumerate}
+\item 曲线在一点的切线的斜率，就是函数在这一点的变率（微商或导数）。    
+\item 微商所涉及的是函数的“局部”性质，也就是说，函数$y=f(x)$在一点$x_0$处是否可微只与函数$y=f(x)$在$x=x_0$处及其近旁的性质有关，而与其它地方无关。    
+\item 如果$f(x)$在点$x$可微，按照极限存在的条件，必须且只须
+\[\lim_{\Delta x\to 0^+}\frac{f (x+\Delta x) -f (x)}{\Delta x},\qquad \lim_{\Delta x\to 0^-}\frac{f (x+\Delta x) -f (x)}{\Delta x}\]
+同时存在而且相等。
+
+上面两式分别称为$f(x)$在点$x$的\textbf{右导数}和\textbf{左导数}，记为$f'_+(x)$和$f'_-(x)$.
+\end{enumerate}
+
+\begin{example}
+今有一个正在膨胀的肥皂泡，
+\begin{enumerate}
+\item 求肥皂泡的体积对于半径的增大率，
+\item 如果肥皂泡的半径每秒增大0.1cm，问当半径为2cm时，体积的增大率是多少？
+\end{enumerate}
+\end{example}
+
+\begin{solution}
+    肥皂泡的体积$V$与半径$r$的函数关系是。
+\[ V(r) =\frac{4}{3}\pi r^3\]
+体积$V(r)$对于半径$r$的增大率，依导函数定义，就是$V(r)$对于$r$的导函数，故
+\[\begin{split}
+    V'(r)&=\lim_{\Delta r\to 0}\frac{V(r+\Delta r)-V(r)}{\Delta r}\\
+    &=\lim_{\Delta r\to 0}\frac{\frac{4\pi }{3}[(r+\Delta r)^3-r^3]}{\Delta r}\\
+    &=\frac{4\pi }{3}\lim_{\Delta r\to 0}[3r^2+3r(\Delta r)+(\Delta r)^2]\\
+    &=4\pi r^2
+\end{split}\]
+
+因此，肥皂泡的体积$V$对于半径$r$的增大率是$4\pi r^2$. 当$r=2$时，\[V'(2)=4\pi \cdot 2^2=16\pi \]
+上式表示在$r=2$时，肥皂泡体积对于半径的增大率是$16\pi$, 它
+的含义也可以这样理解，体积增大的快慢在$r=2$时，是$16\pi$倍于半径增大的快慢。
+
+由于半径的增大率是每秒0.1cm，故体积在半径等于2时的增大率是
+\[16\pi \x0.1=1.6\pi ({\rm cm^3/s})\]
+\end{solution}
+
+\begin{ex}
+\begin{enumerate}
+    \item 设$y=\frac{1}{x},\quad (x\ne 0)$，求
+\begin{enumerate}
+    \item 当$x$取改变量$\Delta x$后，函数改变量$\Delta y$的表达式；
+    \item 当$x=3$, $\Delta x=-1$时，$\Delta y$的值；
+    \item 当$x=3$时，$\frac{\Delta y}{\Delta x}$的表达式和$\frac{\dd y}{\dd x}\Big|_{x=3}$的值．
+\end{enumerate}
+
+    \item 设$\phi(x)=\frac{2}{x^2},\quad (x\ne0)$, 求
+\begin{enumerate}
+\item 当$x=1$, $\Delta x=-0.5$时，$\Delta \phi(x)$的值；
+\item 对于任何$x\; (x\ne 0)$, 在$\Delta x$的间隔内，$\phi(x)$的平均变率$\frac{\Delta \phi}{\Delta x}$的表达式；
+\item $\phi(x)$在任何点$x\; (x\ne 0)$处的瞬时变率$\phi'(x)$.
+\end{enumerate}
+
+    \item 平均变化率$\frac{\Delta y}{\Delta x}=\frac{f (x+\Delta x) -f (x)}{\Delta x}$依赖于哪两个变量？在平均变化率取极限求瞬时变化率的过程中，$x$是变量还是常量？$\Delta x$是变量还是常量？
+    \item 点$P(2, 8)$在抛物线$y=x^2+2x$上，点$Q$为抛物线上任何一点。
+\begin{enumerate}
+    \item 求割线$PQ$的斜率的表达式；
+  \item 当$Q$点横坐标为$2.1, 1.9, 2.002, 1.998, 2+h$时，求割线斜率的值；
+\item 求在$P(2, 8)$点处，抛物线$y=x^2+2x$的切线方程和法线方程。
+\end{enumerate}    
+
+\item 求圆面积对于它的半径的变率，对于它的直径的变率．
+\item 圆的半径的变率为2cm/s, 求圆面积在半径等于4cm
+时的变率。
+\end{enumerate}
+\end{ex}
+
+\subsection{函数的可微性与连续性的关系}
+
+\begin{blk}
+    {定理} 如果函数$f(x)$在点$x_0$可微，那么$f(x)$在点$x_0$处连续。
+\end{blk}
+
+\begin{proof}
+设$f(x)$在点$x_0$处是可微的，也就是$f(x)$在$x_0$处有导数，则
+\[f'(x_0)=\lim_{x\to x_0}\frac{f(x)-f(x_0)}{x-x_0}\]
+所以
+\[\begin{split}
+    \lim_{x\to x_0}[f(x)-f(x_0)]&=\lim_{x\to x_0}\frac{f(x)-f(x_0)}{x-x_0}(x-x_0)\\
+    &=\lim_{x\to x_0}\frac{f(x)-f(x_0)}{x-x_0}\cdot \lim_{x\to x_0}(x-x_0)\\
+&=f'(x_0)\cdot 0=0
+\end{split}\]
+\end{proof}
+
+上面的定理说明函数在其有导数的点一定连续，在其不
+连续的点一定没有导数。但是它的逆命题不一定成立，即连续的函数不一定有导数。前面我们曾指出一个函数可微的充分必要条件是它的左导数和右导数都存在而且相等，下面给出在某些点不可微的函数的例子。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

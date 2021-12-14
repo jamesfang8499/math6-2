@@ -307,20 +307,6 @@ x+1,&x>1
 求$\Lim_{x\to 2^+}\frac{[x]}{x},\quad \Lim_{x\to 2^-}\frac{[x]}{x}$
 \end{example}
 
-
-
-
-
-    
-
-
-
-
-
-
-
-
-
 \begin{solution}
     显然，当$x=2$时，$\frac{[x]}{x}=\frac{[2]}{2}=\frac{2}{2}=1$, 又
 \[\frac{[x]}{x}=\begin{cases}
@@ -337,17 +323,161 @@ x+1,&x>1
 
 下面的命题说明函数的极限与函数的单边极限的关系：
 
+\begin{blk}{定理}
+极限$\Lim_{x\to a} f(x)$
+存在的必要和充分条件是左极限$\Lim_{x\to a^-} f(x)$和右极限$\Lim_{x\to a^+} f(x)$都存在，并且二者相等。
+\end{blk}
 
+\begin{proof}
+    必要性
+    
+    如果$\Lim_{x\to a} f(x)=\ell$, 就是说任给$\varepsilon>0$, 总存在$\delta>0$,
+使得当$0<|x-a|<\delta$, 即当$x\in (a-\delta,a)\cup(a,a+\delta)$时，有$|f(x)-\ell|<\varepsilon$。换言之，当$x\in (a-\delta,a)$和$x\in (a,a+\delta)$时，都有$|f (x) -\ell|<\varepsilon$，因此
+\[\Lim_{x\to a^-} f(x)=\ell,\qquad \Lim_{x\to a^+} f(x)=\ell\]
+
+充分性
+
+如果$\Lim_{x\to a^-} f(x)=\ell$且$\Lim_{x\to a^+} f(x)=\ell$, 那么总存在$\delta_1>0$, 使得当$x\in(a-\delta_1,a)$时，有
+$|f (x) -\ell|<\varepsilon$。
+
+又存在$\delta_2>0$, 使得当$x\in (a,a+\delta_2)$时，有$|f (x) -\ell|<\varepsilon$。
+
+取$\delta=\min(\delta_1,\delta_2)$，于是当$x\in(a-\delta,a+\delta)$时，有$|f (x) -\ell|<\varepsilon$。
+这就是说：
+\[\Lim_{x\to a} f(x)=\ell\]
+\end{proof}
 
 \begin{example}
-
+说明$\Lim_{x\to 3}\frac{|x-3|}{x-3}$是否存在？
 \end{example}
 
 \begin{solution}
+\[\begin{split}|x-3|&=\begin{cases}
+    x-3, & x>3\\
+    3-x, &x<3
+\end{cases}\\
+    \Lim_{x\to 3^-}\frac{|x-3|}{x-3}&=\Lim_{x\to 3^-}\frac{3-x}{x-3}=\Lim_{x\to 3^-}(-1)=-1\\
+    \Lim_{x\to 3^+}\frac{|x-3|}{x-3}&=\Lim_{x\to 3^+}\frac{x-3}{x-3}=\Lim_{x\to 3^+}(1)=1
+\end{split}\]
+
+$\because\quad \Lim_{x\to 3^-}\frac{|x-3|}{x-3}\ne \Lim_{x\to 3^+}\frac{|x-3|}{x-3}$
     
+$\therefore\quad \Lim_{x\to 3}\frac{|x-3|}{x-3}$
+不存在。
 \end{solution}
 
-    \begin{solution}
-        
-    \end{solution}
+\subsection{函数值趋于无穷大}
+
+如果函数$f$在点$a$的邻域上有定义（可能去掉点$a$本身）对于无论多么大的正数$G$, 总存在一个够小的正数$\delta$, 使得当$0<|x-a|<\delta$时，就有$|f(x)|>G$, 那么就说当$x$趋于$a$时，函数$f(x)$趋于\textbf{无穷大}，记作
+\[\lim_{x\to a} f (x) =\infty\]
+
+\begin{example}
+    求证$\Lim_{x\to 0}\frac{1}{x}=\infty$
+\end{example}
+   
+\begin{proof}
+设$G$是任意给定的正数，我们要求出一个$\delta>0$, 使得当$|x|<\delta$时，$|f(x)|=\left|\frac{1}{x}\right|>G$。
+
+事实上，要使$\frac{1}{|x|}>G$, 
+只须$0<|x|<\frac{1}{G} $。取$\delta=\frac{1}{G}$, 于是当$|x|<\delta$时，就有$\frac{1}{|x|}>G$
+因此，
+$$\Lim_{x\to 0}\frac{1}{x}=\infty$$
+\end{proof}
+
+\begin{example}
+    证明当$x\to 0$时，函数$f(x)=\frac{1}{x}\sin\frac{1}{x}\quad (x\ne 0)$不趋于无穷大．
+\end{example}
+
+\begin{proof}
+如果自变量$x$取数列$\{x_n\}=\left\{\frac{2}{(2n+1)\pi}\Big|n=1, 2, 3,\ldots\right\}$的值趋于0时，$\sin\frac{1}{x}$在原点的任意邻域内无限次交替地取$-1, 1$这两个值，对于这些值，$|f(x)|=\frac{1}{x}=\frac{\pi}{2}(2n+1)$趋于无穷大．
+
+但是当$x$取数列$\{x\}=\left\{\frac{1}{n\pi}\Big| n=1, 2, 3,\ldots\right\}$的
+值趋于0时，由于
+$\sin\frac{1}{x}=\sin (n\pi) =0$, 
+故对于这些值，
+$\Lim_{x'_n\to 0} f (x) =0$.
+
+可见在原点的邻近不存在这样的$\delta>0$, 使得当$|x|<\delta$时，$|f(x)|>G$, 因此，当$x\to 0$时，$f(x)=\frac{1}{x}\sin\frac{1}{x}\quad (x\ne 0)$不趋于无穷大．
+
+$y=f(x)$的图象位于两条双曲线$xy=\pm 1$之间，且在原点的邻近作无限多次振动，越靠近原点，曲线的振幅越大（图1.8）.
+
+\begin{figure}[htp]
+    \centering
+\begin{tikzpicture}[>=latex, scale=.8]
+\draw[->](-5,0)--(5,0)node[right]{$x$};
+\draw[->](0,-4)--(0,4)node[right]{$y$};
+\draw[domain=-4.5:-.3, samples=100]plot(\x,{-1/\x}); 
+\draw[domain=-4.5:-.3, samples=100]plot(\x,{1/\x}); 
+\draw[domain=.3:4.5, samples=100]plot(\x,{-1/\x}); 
+\draw[domain=.3:4.5, samples=100]plot(\x,{1/\x}); 
+\draw [domain=.5:4.5, samples=200,  thick]plot(\x, {sin(180/\x*pi)/\x});
+\draw [domain=.5:4.5, samples=200,  thick]plot(-\x, {sin(180/\x*pi)/\x});
+\end{tikzpicture}
+    \caption{}
+\end{figure}
+
+\end{proof}
+
+如果对于任何$G>0$, 存在$\delta>0$, 当$0<|x-a|<\delta$时，有$f(x)>G$, 就说当$x\to a$时，函数$f(x)$趋于正无无穷大，记作
+\[\lim_{x\to a}f(x)=+\infty\]
+
+如果对于任何$G>0$, 存在$\delta>0$, 当$0<|x-a|<\delta$时，有$f(x)<-G$, 就说当$x\to a$时，函数$f(x)$趋于负无穷大，记作
+\[\lim_{x\to a}f(x)=-\infty\]
+
+例如，我们有：
+\[\lim_{x\to 0}\frac{1}{x^2}=+\infty,\qquad \lim_{x\to 0}\frac{(-1)}{x^2}=-\infty\]
+
+类似地，我们可以定义：
+\[\lim_{x\to a^-}f(x)=+\infty,\quad \lim_{x\to a^+}f(x)=+\infty,\quad \lim_{x\to a^-}f(x)=-\infty,\quad \lim_{x\to a^+}f(x)=-\infty\]
+的含义，这里不再写出。建议读者将这些定义严格地写出来。
+
+例如，我们有：
+\[\lim_{\theta\to \tfrac{\pi^+}{2}}\tan\theta =+\infty,\qquad \lim_{\theta\to \tfrac{\pi^-}{2}}\tan\theta =-\infty\]
+\[\lim_{x\to 0^+}\log_a x =-\infty\quad (a>1),\qquad \lim_{x\to 0^+}\log_a x =+\infty\quad (0<a<1)\]
+
+\begin{ex}
+\begin{enumerate}
+    \item 用函数极限定义证明：
+    \begin{multicols}{2}
+        \begin{enumerate}
+            \item $\Lim_{x\to \infty}\frac{1}{2x+1}=0$
+            \item $\Lim_{x\to 2}x^2=4$
+            \item $\Lim_{x\to -1}\frac{x-3}{x^2-9}=\frac{1}{2}$
+            \item $\Lim_{x\to 1}\frac{1}{x^2}=1$
+            \item $\Lim_{x\to 1}\frac{x^3-x}{x-1}=2$
+        \end{enumerate}
+    \end{multicols}
+    \item 说明：$\Lim_{x\to 3}\frac{x}{x^2-9}=\infty$
+    \item 下面极限是否存在？
+\begin{multicols}{2}
+    \begin{enumerate}
+        \item $\Lim_{x\to 1}\frac{2x|x-1|}{x-1}$
+        \item $\Lim_{x\to 3}\frac{[x]^2-9}{x^2-9}$
+    \end{enumerate}
+\end{multicols}
+\end{enumerate}
+\end{ex}
+
+\subsection{函数极限算法定理}
+函数的极限算法定理与数列的极限算法定理类似，因为所谓$\Lim_{x\to a}u(x)=A$, $\Lim_{x\to a}v(x)=B$的意思就是对于任何一个各项都不同于$a$并且以$a$为极限的数列$x_n\to a$, 便有函数值数列$\{u(x_n)\}$, $\{v(x_n)\}$, 并且$\Lim_{n\to \infty}u(x_n)=A$, 
+$\Lim_{n\to \infty} v(x_n)=B$, 因此，根据第四册下第三章的定理就可以直接得到相应的结果。现在给出函数的极限运算定理如下：
+
+\begin{blk}{定理}
+设$\Lim_{x\to a}u(x)=A$, $\Lim_{x\to a}v(x)=B$，那么
+\begin{enumerate}
+    \item $\Lim_{x\to a}[u(x)+v(x)]=\Lim_{x\to a}u(x)+\Lim_{x\to a}v(x)$
+    \item $\Lim_{x\to a}[u(x)\cdot v(x)]=\Lim_{x\to a} u(x)\cdot \Lim_{x\to a}v(x)$
+    \item $\Lim_{x\to a}[c\cdot u(x)]=c\cdot \Lim_{x\to a}u(x)$
+    \item $\Lim_{x\to a}\frac{u(x)}{v(x)}=\frac{\Lim_{x\to a}u(x)}{\Lim_{x\to a}v(x)}$ 
     
+    只要$v(x)$恒不为0，而且$\Lim_{x\to a}v(x)\ne 0$
+    \item $\Lim_{x\to a}\sqrt[n]{u(x)}=\sqrt[n]{\Lim_{x\to a}u(x)}$
+    \item 如$\Lim_{x\to a}u(x)=A=\Lim_{x\to a} v(x)$，而$|x-a|<\delta$时，$u(x)<f(x)<v(x)$，则：
+    \[\Lim_{x\to a} f(x)=A\]
+    即：如果$u(x)$与$v(x)$趋向同一极限$A$，且$f(x)$在$u(x)$与$v(x)$之间，那么，$f(x)$便也趋向那个极限$A$。
+\end{enumerate}
+\end{blk}
+
+
+
+
