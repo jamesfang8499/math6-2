@@ -478,6 +478,105 @@ $\Lim_{n\to \infty} v(x_n)=B$, 因此，根据第四册下第三章的定理就�
 \end{enumerate}
 \end{blk}
 
+现在只有5需要补证．
+
+设$\Lim_{x\to a}u(x)=A>0$, 则根据函数极限定义：对于$\varepsilon=\frac{A}{2}>0$, 存在$\delta>0$，使得$0<|x-a|<\delta$时，有
+\begin{equation}
+    u(x)>\frac{A}{2}>0
+\end{equation}
+
+于是，
+\[\sqrt[n]{u(x)}-\sqrt[n]{A}=\frac{u(x)-A}{\sum^n_{k=1}[u(x)]^{\tfrac{n-k}{n}}A^{\tfrac{k-1}{n}}}\]
+由(1.3)式
+\[[u(x)]^{\tfrac{n-k}{n}}>\left(\frac{A}{2}\right)^{\tfrac{n-k}{n}}\]
+故
+\[\begin{split}
+    \sum^n_{k=1}[u(x)]^{\tfrac{n-k}{n}}A^{\tfrac{k-1}{n}}&>\sum^n_{k=1}\left(\frac{A}{2}\right)^{\tfrac{n-k}{n}}A^{\tfrac{k-1}{n}}\\
+    &=A^{\tfrac{n-1}{n}}\sum^n_{k=1}\left(\frac{1}{2}\right)^{\tfrac{n-k}{n}}\\
+    &=A^{\tfrac{n-1}{n}}\left\{\left(\frac{1}{2}\right)^{\tfrac{n-1}{n}}+\left(\frac{1}{2}\right)^{\tfrac{n-2}{n}}+\cdots+\left(\frac{1}{2}\right)^{\tfrac{1}{n}}+1\right\}\\
+    &=A^{\tfrac{n-1}{n}}\left\{\frac{1-\left(\frac{1}{2}\right)^{\tfrac{n-1}{n}}\cdot \left(\frac{1}{2}\right)^{\tfrac{1}{n}}}{1-\left(\frac{1}{2}\right)^{\tfrac{1}{n}}}\right\}\\
+    &=A^{\tfrac{n-1}{n}}\cdot\frac{\frac{1}{2}}{1-\left(\frac{1}{2}\right)^{\tfrac{1}{n}}}=\frac{A^{\tfrac{n-1}{n}}}{2-2^{\tfrac{n-1}{n}}}\\
+\end{split}\]
+$\therefore\quad \left|\sqrt[n]{u(x)}-\sqrt[n]{A}\right|<|u(x)-A|\cdot \frac{2-2^{\tfrac{n-1}{n}}}{A^{\tfrac{n-1}{n}}}$
+
+由题设$\Lim_{x\to a}u(x)=A$，而$\frac{2-2^{\tfrac{n-1}{n}}}{A^{\tfrac{n-1}{n}}}$是一个与$x$无关的常数，所以
+\[\lim_{x\to a} \sqrt[n]{u(x)}=\sqrt[n]{A}=\sqrt[n]{\lim_{x\to a}u(x)}\]
+
+下面我们来证明两个重要极限公式，为此先介绍一个引理。
+
+\begin{blk}{引理}
+     对于任意实数$\theta$, 都有$|\sin\theta|\le |\theta|$
+\end{blk}
+
+\begin{proof}
+  由于对于任意实数。有$|\sin\theta|\le 1$, 那么仅考虑$\theta\in (0,\pi/2)$即可。
+  
+  在单位圆$O$上（图1.9），
+ 截取弧$\wideparen{P_0M}$使弧长$|\wideparen{P_0M}|$等于$\theta$, 其中$P_0$和$M$分别有坐标$(1, 0)$和$(x,y)$, 于是
+ \[\sin\theta =y<\sqrt{y^2+ (1-x)^2} =|P_0M|<|\wideparen{P_0M}|=\theta\]
+ 
+ 显然，当$\theta=0$时，有$\sin\theta=\theta$. 因此
+\[  |\sin\theta | \le |\theta|,\qquad  \theta\in  (0,\pi/2)\]
+
+  如果$-\pi/2<\theta<0$, 则仍有$|MN|<\wideparen{P_0M}$，于是
+\[|\sin\theta|<|\theta|,\qquad \theta\in (-\pi/2, 0) \]
+
+  如果$|\theta|\ge \pi/2$, 则因为$\pi/2>1$与$|\sin\theta|\le 1$, 而同样地也得到$|\sin\theta|<|\theta|$. 
+  
+  因此，对于一切$\theta\ne 0$的值，有$|\sin\theta|<|\theta|$; 当$\theta=0$时，有$|\sin\theta|=|\theta|$。
+\end{proof}
+
+
+
+\begin{figure}[htp]\centering
+    \begin{minipage}[t]{0.48\textwidth}
+    \centering
+\begin{tikzpicture}[>=latex]
+\draw[->](-2.5,0)--(2.5,0)node[right]{$x$};
+\draw[->](0,-2)--(0,2.5)node[right]{$y$};
+\draw(0,0) circle(1.5);
+\draw[very thick](0,0)--(45:1.5)node[above right]{$M(x,y)$}--(1.5,0)node[below right]{$P_0(1,0)$};
+\draw[dashed](1.5/1.414,0)node[below]{$N$}--(1.5/1.414,1.5/1.414);
+\node at (0,0)[below left]{$O$};
+\end{tikzpicture}    
+    \caption{}
+    \end{minipage}
+    \begin{minipage}[t]{0.48\textwidth}
+    \centering
+    \begin{tikzpicture}[>=latex, scale=1.3]
+
+\draw[->](-1.5,0)--(2.5,0)node[right]{$x$};
+\draw[->](0,-1.5)--(0,2)node[right]{$y$};
+\draw(0,0) circle(1);
+\draw[very thick](0,0)--(60:2)node[above right]{$C$}--(1,0)node[below right]{$A(1,0)$};
+\draw[thick](.5,0)node[below]{$B$}--(60:1)node[above]{$D$};
+\node at (0,0)[below left]{$O$};   
+\draw(0.2,0) arc (0:60:.2)node[right]{$\theta$};   
+    \end{tikzpicture}
+    \caption{}
+    \end{minipage}
+    \end{figure}
+
+\begin{blk}{定理}
+\[\lim_{\theta\to 0}\frac{\sin\theta }{\theta}=1,\qquad \lim_{\theta\to 0}\frac{\cos\theta-1}{\theta}=0\]
+\end{blk}
+
+\begin{proof}
+    让我们先证明$\Lim_{\theta\to 0}\frac{\sin\theta }{\theta}=1$。由图1.10容易看出：
+
+假定$\theta$的单位是弧度，于是：
+\[\begin{split}
+    \triangle OBD\text{的面积}&=\frac{1}{2}OB\cdot BD=\frac{1}{2}\cos\theta\cdot \sin\theta\\
+    \triangle OAC\text{的面积}&=\frac{1}{2}OA\cdot AC=\frac{1}{2}\cdot 1\cdot \tan\theta\\
+    \text{扇形$OAD$的面积}&=\frac{1}{2}OA\cdot \wideparen{AD}=\frac{1}{2}\cdot 1^2\cdot \theta
+\end{split}\]
+
+
+
+\end{proof}
+
+
+
 
 
 
