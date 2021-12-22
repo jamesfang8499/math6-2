@@ -181,7 +181,7 @@ $x=a$这一点的值没有什么必然关系，这也就是说，无论$f(x)$在
 \end{split}\]
 
 要由$|x-1|\cdot |x+2|<\varepsilon$找$\delta$，显然，这里因子$|x+2|$引起了麻烦。为方便起见，先假定$0<|x-1|<1$，即取$\delta_1=1$，这样
-\[0<|x-1|<1\quad\Rightarrow\quad |x+2|=|(x-1)+3|\le |x-1|+3<4\]因此，要使
+\[0<|x-1|<1\quad\to \quad |x+2|=|(x-1)+3|\le |x-1|+3<4\]因此，要使
 \[\begin{cases}
     0<|x-1|<1\\
     |x-1|\cdot |x+2|<\varepsilon
@@ -190,7 +190,7 @@ $x=a$这一点的值没有什么必然关系，这也就是说，无论$f(x)$在
 \[\begin{cases}
     0<|x-1|<1\\
     4|x-1|<\varepsilon
-\end{cases}\Rightarrow\quad \begin{cases}
+\end{cases}\to \quad \begin{cases}
     0<|x-1|<1\\
     |x-1|<\frac{\varepsilon}{4}
 \end{cases}\]
@@ -571,9 +571,385 @@ $\therefore\quad \left|\sqrt[n]{u(x)}-\sqrt[n]{A}\right|<|u(x)-A|\cdot \frac{2-2
     \text{扇形$OAD$的面积}&=\frac{1}{2}OA\cdot \wideparen{AD}=\frac{1}{2}\cdot 1^2\cdot \theta
 \end{split}\]
 
+假如角是用180等分平角的“度”作为单位，则扇形面积就是$\frac{1}{2}\cdot 1\cdot \frac{\pi}{100}\theta$。
 
+因为上述扇形是夹在$\triangle OBD$和$\triangle OAC$之间，所以
+\begin{equation}
+    \frac{1}{2}\cos\theta\sin\theta<\frac{1}{2}\theta<\frac{1}{2}\tan\theta=\frac{1}{2}\frac{\sin\theta}{\cos\theta}
+\end{equation}
+即有，若$0<\theta<\frac{\pi}{2}$，则
+\begin{equation}
+    \cos\theta<\frac{\sin\theta}{\theta}<\frac{1}{\cos\theta}
+\end{equation}
+注意到：$\sin(-\theta)=-\sin\theta$和$\cos(-\theta)=\cos\theta$, 不等式(1.5)也蕴含，若$-\frac{\pi}{2}<\theta<0$, 则
+\begin{equation}
+    \cos(-\theta)<\frac{\sin(-\theta)}{-\theta}<\frac{1}{\cos(-\theta)}
+\end{equation}
+将不等式(1.5)和(1.6)合并为，若$0<|\theta|<\frac{\pi}{2}$，则
+\begin{equation}
+    \cos\theta<\frac{\sin\theta}{\theta}<\frac{1}{\cos\theta}
+\end{equation}
+又因为
+\[0\le |1-\cos\theta|=\left|2\sin^2\frac{\theta}{2}\right|\le 2\left|\sin\frac{\theta}{2}\right|<|\theta|\]
+从而
+\[0\le \lim_{\theta\to 0}|1-\cos\theta|\le \lim_{\theta\to 0}|\theta|=0\]
+所以
+\[\lim_{\theta\to 0}|1-\cos\theta|=0\]
+即：$\Lim_{\theta\to 0}\cos\theta=1$
+由(1.7)知被夹逼在两者之间的$\frac{\sin\theta}{\theta}$极限值也就一定是1了！
 
+以$\Lim_{\theta\to 0}\frac{\sin\theta}{\theta}=1$为基础，则：
+\[\begin{split}
+\lim_{\theta\to 0}\frac{\cos\theta-1}{\theta}&=\lim_{\theta\to 0}\left\{\frac{-2\left(\sin\frac{\theta}{2}\right)^2}{\theta}\right\}\\
+&= \lim_{\theta\to 0}\left(-\sin\frac{\theta}{2}\right)\frac{\sin\frac{\theta}{2}}{\frac{\theta}{2}}    \\
+&=\lim_{\theta\to 0}\left(-\sin\frac{\theta}{2}\right)\cdot \lim_{\theta\to 0}\frac{\sin\frac{\theta}{2}}{\frac{\theta}{2}}   \\
+&=0\cdot 1=0
+\end{split}   
+\]
 \end{proof}
+
+\begin{example}
+求：$\Lim_{x\to 2}\frac{x^2+3x-10}{3x^2-5x-2},\qquad \Lim_{x\to 0}\frac{\sqrt[3]{1+x^2}-1}{x^2}$
+\end{example}
+
+\begin{solution}
+    如果应用前面的定理去分别求两式中的分子、分母的极限时，其分子、分母的极限值均为零，即我们得到$\frac{0}{0}$的不定形式。我们通常要对原代数式变形，找出分子、分母中具有$x-a$的因子，消去$x-a$的公共因子，一般问题就可解决。
+\[\begin{split}
+    \Lim_{x\to 2}\frac{x^2+3x-10}{3x^2-5x-2}&=\Lim_{x\to 2}\frac{(x+5)(x-2)}{(3x+1)(x-2)}\\
+    &=\Lim_{x\to 2}\frac{x+5}{3x+1}\\
+    &=\frac{2+5}{3\x 2+1}=1
+\end{split}\]
+
+\[\begin{split}
+    \Lim_{x\to 0}\frac{\sqrt[3]{1+x^2}-1}{x^2}&=\Lim_{x\to 0}\frac{{(1+x^2)}-1}{x^2\left(\sqrt[3]{(1+x^2)^2}+\sqrt[3]{1+x^2}+1\right)}\\
+    &=\Lim_{x\to 0}\frac{1}{\sqrt[3]{(1+x^2)^2}+\sqrt[3]{1+x^2}+1}=\frac{1}{3}
+\end{split}\]
+\end{solution}
+
+\begin{example}
+    求：$\Lim_{x\to 0}\frac{\cos x-1}{x^2},\qquad \Lim_{x\to \pi}\frac{\sin mx}{\sin nx}(m,n\in \mathbb{N})$
+\end{example}
+
+\begin{solution}
+\[\begin{split}
+    \Lim_{x\to 0}\frac{\cos x-1}{x^2}&=\Lim_{x\to 0}\frac{-2\left(\sin\frac{x}{2}\right)^2}{x^2}\\
+    &=\frac{-2}{2^2}\Lim_{x\to 0}\frac{\sin\frac{x}{2}}{\frac{x}{2}}\cdot \Lim_{x\to 0}\frac{\sin\frac{x}{2}}{\frac{x}{2}}\\
+    &=\left(-\frac{1}{2}\right)\cdot 1\cdot 1=-\frac{1}{2}
+\end{split}\]
+
+由三角函数诱导公式易知
+\[\sin m(\pi-x)=\sin(m\pi-mx)=(-1)^{m-1}\sin mx\]
+同样得到
+\[\sin n(\pi-x)=(-1)^{n-1}\sin nx\]
+因此：
+\[(-1)^{m-n}\frac{\sin mx}{\sin nx}=\frac{\sin m(\pi-x)}{\sin n(\pi-x)}\]
+两边乘以$(-1)^{m-n}$，得
+\[\frac{\sin mx}{\sin nx}=(-1)^{m-n}\frac{\sin m(\pi-x)}{\sin n(\pi-x)}\]
+设$y=\pi-x$, 则当$x\to \pi$, 有$y\to 0$, $my\to 0$, $ny\to 0$. 因此：
+\[\begin{split}
+    \Lim_{x\to \pi}\frac{\sin mx}{\sin nx}&=\lim_{y\to 0}(-1)^{m-n}\frac{\sin my}{\sin ny}\\
+&=(-1)^{m-n}\lim_{y\to 0}\left(\frac{m}{n}\cdot \frac{\sin my}{my}\cdot \frac{ny}{\sin ny}\right)\\
+&=(-1)^{m-n}\cdot \frac{m}{n}\cdot 1\cdot 1=(-1)^{m-n}\frac{m}{n}
+\end{split}\]
+\end{solution}
+
+\begin{example}
+由条件$\Lim_{x\to -\infty}\left(\sqrt[]{x^2-x+1}-ax-b\right)=0$，求出$a,b$的值。
+\end{example}
+
+\begin{solution}
+$\because\quad \Lim_{x\to -\infty}\left(\sqrt{x^2-x+1}-ax-b\right)=0,\quad \Lim_{x\to -\infty}\frac{1}{x}=0$
+
+$\therefore\quad \Lim_{x\to -\infty}\left(\sqrt{x^2-x+1}-ax-b\right)\cdot \frac{1}{x}=0$
+
+即：
+\[\Lim_{x\to -\infty}\left(\frac{\sqrt{x^2-x+1}}{x}-a-\frac{b}{x}\right)=0\]
+又因为：当$x<0$时，
+\[\sqrt{x^2-x+1}=\sqrt{x^2\left(1-\frac{1}{x}+\frac{1}{x^2}\right)}=-x\sqrt{1-\frac{1}{x}+\frac{1}{x^2}}\]
+所以上式可写成
+\[\lim_{x\to -\infty}\left(-\sqrt{1-\frac{1}{x}+\frac{1}{x^2}}-a-\frac{b}{x}\right)=0\]
+即：$-1-a-0=0\quad \to \quad a=-1$
+
+代入原条件，得
+\[\lim_{x\to -\infty}\left(\sqrt{x^2-x+1}+x-b\right)=0\]
+即：
+\[\begin{split}
+    b&=\lim_{x\to-\infty}\left(\sqrt{x^2-x+1}+x\right)\\
+    &=\lim_{x\to-\infty} \frac{x^2-x+1-x^2}{\sqrt{x^2-x+1}-x}  \\
+    &=\lim_{x\to-\infty}\frac{-x\left(1-\frac{1}{x}\right)}{-x\left(\sqrt{1-\frac{1}{x}+\frac{1}{x^2}}+1\right)}    \\
+    &=\lim_{x\to-\infty}\frac{1-\frac{1}{x}}{\sqrt{1-\frac{1}{x}+\frac{1}{x^2}}+1} =\frac{1}{2}   \\
+\end{split}\]
+
+$\therefore\quad a=-1,\quad b=\frac{1}{2}$为所求。
+\end{solution}
+
+\begin{ex}
+\begin{enumerate}
+    \item 说明当$x\to \infty$时，函数$\frac{x^5-4}{x^3+x}$的变化趋势。
+    \item 求极限
+    \begin{enumerate}
+\begin{multicols}{2}
+    \item  $\Lim _{x \to 0} \frac{(x+2)^{2}}{x^{2}+4}$
+    \item  $\Lim _{x \to 2} \frac{x^{2}-4}{x-2}$
+    \item  $\Lim _{x \to 2} \frac{5 x^{2}+x-8}{x^{2}-4}$
+    \item  $\Lim _{x \to 0} \frac{\left(4 x^{3}-3\right)(1-2 x)}{7 x^{3}-6 x+4}$
+    \item  $\Lim _{x \to \infty} \frac{3 x^{5}}{x^{5}-x^{2}+1}$
+    \item  $\Lim _{x \to \infty} \frac{\left(x^{2}-5\right)\left(x^{2}+7\right)}{x^{4}+35}$
+    \item  $\Lim _{x \to 3} \frac{x^{2}-8 x+15}{x^{2}-7 x+12}$
+    \item  $\Lim _{x \to -3} \frac{x^{2}-9}{x^{2}+9 x+18}$
+    \item $\Lim _{x \to -1} \frac{x\left(x^{2}+4 x+3\right)}{x^{3}+3 x^{2}+5 x+3}$
+    \item  $\Lim _{x \to 1} \frac{x^{3}+x^{2}-2}{x^{4}+2 x^{2}-2 x-1}$
+    \item $\Lim _{x \to \infty} \frac{x+\sin x}{2 x+5}$
+    \item  $\Lim _{x \to 0} \frac{(1+x)^{5}-(1+5 x)}{x^{2}+x^{5}}$
+\end{multicols}
+    \item  $\Lim _{x \to 0} \frac{(1+m x)^{n}-(1+n x)^{m}}{x^{2}}\qquad (m, n \in \mathbb{N})$
+    \item  $\Lim _{x \to 1} \frac{x^{2}+x^{4}+\cdots+x^{2 n}-n}{x-1}$
+\end{enumerate}
+
+    \item 求极限  
+\begin{enumerate}
+\begin{multicols}{2}
+\item $\Lim_{x\to 0^+}\sqrt{3x} $
+\item $\Lim_{x\to 1^-}\sqrt{1-x} $
+\item $\Lim_{x\to 3^-} 3[x]$
+\item $\Lim_{x\to 1^+} [x+3]$
+\item $\Lim_{x\to -3^+}\left(1+\sqrt{x+3}\right) $
+\item $\Lim_{x\to 4^-} \left(\sqrt{4-x}+[x-1]\right)$
+    \item $\Lim_{x\to 1^+}\frac{2x|x-1|}{x-1} $
+    \item $\Lim_{x\to 4^-} ([x]-x)$
+\end{multicols}
+    \item $\Lim_{x\to 0^+}\frac{b}{x}\left[\frac{x}{a}\right] \qquad (a>0,\; b>0)$
+    \item $\Lim_{x\to 0^+} \frac{x}{a}\left[\frac{b}{x}\right]\qquad (a>0,\; b>0)$
+\end{enumerate}    
+
+    \item 求极限  
+\begin{enumerate}
+\begin{multicols}{2}
+\item $\Lim _{x \to  1} \frac{1-x}{\sqrt{1-x^{2}}}$;
+\item  $\Lim _{x \to  1} \frac{1-\sqrt{x}}{1-x}$;
+\item  $\Lim _{x \to  1} \frac{(2 x-3)(\sqrt{x}-1)}{2 x^{2}+x-3}$
+\item  $\Lim _{x \to  2} \frac{x-2}{\sqrt{x^{2}-2}-\sqrt{2}}$
+\item  $\Lim _{t \to +\infty}(\sqrt{1+t}-\sqrt{t})$;
+\item  $\Lim _{x \to +\infty} \sqrt{x}(\sqrt{x+a}-\sqrt{x})$
+\item  $\Lim _{x \to  5} \frac{\sqrt{x-1}-2}{x-5}$;
+\item $\Lim _{x \to  0} \frac{\sqrt[3]{1+x}-\sqrt[3]{1-x}}{x}$
+\item  $\Lim _{x \to  1} \frac{4 x+\sqrt{x-1}}{2 x-\sqrt{x+1}}$
+\item  $\Lim _{x \to  1} \frac{x-1}{\sqrt{x^{2}-1}+\sqrt{x-1}}$
+\item $\Lim _{x \to  a} \frac{\sqrt{x-a}+\sqrt{x}-\sqrt{a}}{\sqrt{x^{2}-a^{2}}}$
+\item  $\Lim _{x \to -\infty} \frac{x-2}{\sqrt{x^{2}-4 x+3}}$
+\item $\Lim _{x \to -\infty}\left[\frac{2(x-1)^{2}}{\sqrt{4 x^{2}+2 x+1}}+x\right]$
+\end{multicols}
+\item $\Lim _{x \to +\infty}\left(\sqrt{x+\sqrt{x+\sqrt{x}}}-\sqrt{x}\right)$
+\item $\Lim _{x \to +\infty} x\left(\sqrt{x^{2}+2 x}-2 \sqrt{x^{2}+x}+x\right)$
+\end{enumerate}   
+
+\item \begin{enumerate}
+    \item $f(x)=\begin{cases}
+        0,& x>1\\
+        1,& x=1\\
+        x^2+2, &x<1
+    \end{cases}$
+
+    求$f(x)$在$x=1$的左右极限。
+
+    \item $f(x)=\begin{cases}
+        x\sin\frac{1}{x},& x>0\\
+        1+x^2,& x<0
+    \end{cases}$
+
+    求$f(x)$在$x=0$的左右极限。
+
+    \item $\Lim_{x\to 3}\frac{[x]^2-9}{x^2-9}$是否存在？
+    \item $\Lim_{x\to 0}\frac{x}{|x|}$是否存在？
+\end{enumerate}
+
+\item 若$0<x<\frac{\pi}{2}$，求证：
+\begin{multicols}{2}
+    \begin{enumerate}
+        \item $\tan x>x$
+        \item $x-\frac{x^2}{4}<\sin x<x$
+    \end{enumerate}
+\end{multicols}
+
+\item 求极限  
+\begin{enumerate}
+\begin{multicols}{2}
+    \item $\Lim_{x\to 0} \frac{\sin ax}{x}$
+    \item $\Lim_{x\to 0} \frac{\sin 7x}{4x}$
+    \item $\Lim_{\theta\to 0} \frac{\sec2\theta\sin\theta}{\theta}$
+    \item $\Lim_{\theta \to 0} \frac{\tan\theta}{\theta}$
+    \item $\Lim_{t\to 0} \frac{15t}{\tan 6t}$
+    \item $\Lim_{x\to 0} \frac{\tan 2x}{\sin 7x}$
+    \item $\Lim_{\theta \to 0} \frac{\tan\theta-\sin\theta}{\theta^2}$
+    \item $\Lim_{x\to 0} \frac{\csc x-\cot x}{x}$
+    \item $\Lim_{x\to 0} \frac{\sin^2\frac{x}{2}}{x^2}$
+    \item $\Lim_{x\to \pi} \frac{\sin x}{\pi-x}$
+    \item $\Lim_{x\to 1} \frac{1+\cos\pi x}{\tan^2 \pi x}$
+    \item $\Lim_{x\to \tfrac{\pi}{4}}\tan 2x\tan\left(\frac{\pi}{4}-x\right) $ 
+    \item $\Lim_{x\to 1} (1-x)\tan\frac{\pi x}{2}$
+    \item $\Lim_{x\to 0} \frac{\sin mx}{\sin nx}$
+    \item $\Lim_{x\to 0} \frac{x+\sin x}{x+2\sin x}$
+    \item $\Lim_{x\to 0} \frac{\sqrt{\cos x}-1}{x^2}$
+\end{multicols}
+\end{enumerate}   
+
+\end{enumerate}
+\end{ex}
+
+\subsection{数$e$}
+我们在这里要利用数列的极限来定义一个新的数，这一个数不论对于分析本身或者对于它的应用来说都是非常重要的。
+
+考虑数列$a_n=\left(1+\frac{1}{n}\right)^n,\; n=1, 2, 3,\ldots$的极限．
+
+首先我们计算一下数列$\{a_N\}$的数值：
+\begin{center}
+\begin{tabular}{llll}
+   $a_1=2.0$ & $a_2=2.250$ & $a_3=2.370$& $a_4=2.441$\\
+$a_5=2.488$ &$a_6=2.522$& $a_7=2.546$& $a_8=2.565$\\
+$\cdots$ &$a_{256}=2.712$&$\cdots$&$a_{1024}=2.717$\\ 
+\end{tabular}
+\end{center}
+
+观察这一串数，我们会猜测这个数列是递增的，可能收敛于一个极限值，现在我们来证明这个猜想成立。
+
+依牛顿二项式定理，即有
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{example}
+    
+\end{example}
+
+
+\begin{solution}
+    
+\end{solution}
+
+
+\begin{example}
+    
+\end{example}
+
+\begin{solution}
+    
+\end{solution}
+
+\begin{example}
+    
+\end{example}
+
+\begin{solution}
+    
+\end{solution}
+
+\begin{solution}
+    
+\end{solution}
+
+
+
+
+
+
+\begin{solution}
+    
+\end{solution}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
