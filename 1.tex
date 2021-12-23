@@ -813,19 +813,124 @@ $\cdots$ &$a_{256}=2.712$&$\cdots$&$a_{1024}=2.717$\\
 观察这一串数，我们会猜测这个数列是递增的，可能收敛于一个极限值，现在我们来证明这个猜想成立。
 
 依牛顿二项式定理，即有
+\[\begin{split}
+    \left(1+\frac{1}{n}\right)^n&=1+n\cdot\frac{1}{n}+\frac{n(n-1)}{1\cdot 2}\cdot \frac{1}{n^2}+\frac{n(n-1)(n-2)}{1\cdot 2\cdot 3}\cdot \frac{1}{n^3}\\
+    &\quad +\cdots+\frac{n(n-1)(n-2)\cdots[n-(n-1)]}{1\cdot 2\cdot 3\cdots n}\cdot \frac{1}{n^n}
+\end{split}\]
+这个等式的右边的第二项等于1，其它各项可以变换如下：
+\[\begin{split}
+\frac{n(n-1)}{1\cdot 2}\cdot \frac{1}{n^2}&=\frac{n(n-1)}{n^2}\cdot\frac{1}{2!}\\&=\left(1-\frac{1}{n}\right) \cdot\frac{1}{2!}\\
+\frac{n(n-1)(n-2)}{1\cdot 2\cdot 3}\cdot \frac{1}{n^3}&=\frac{n(n-1)(n-2)}{n^3}\cdot\frac{1}{3!}\\&=\left(1-\frac{1}{n}\right)\cdot \left(1-\frac{2}{n}\right)\cdot\frac{1}{3!}\\
+\cdots & \cdots\cdots\\
+\frac{n(n-1)(n-2)\cdots[n-(n-1)]}{1\cdot 2\cdot 3\cdots n}\cdot \frac{1}{n^n}&=\frac{n(n-1)(n-2)\cdots[n-(n-1)]}{n^n}\cdot \frac{1}{n!}\\
+&=\left(1-\frac{1}{n}\right) \left(1-\frac{2}{n}\right)\cdots\left(1-\frac{n-1}{n}\right)\cdot\frac{1}{n!}
+\end{split}\]
+其中$n!=1\cdot 2\cdot 3\cdots n$。因此：
+\begin{equation}
+\begin{split}
+\left(1+\frac{1}{n}\right)^n&=1+1+\left(1-\frac{1}{n}\right)\frac{1}{2!}+ \left(1-\frac{1}{n}\right)\left(1-\frac{2}{n}\right)\cdot\frac{1}{3!}\\
+&+\cdots+ \left(1-\frac{1}{n}\right) \left(1-\frac{2}{n}\right)\cdots\left(1-\frac{n-1}{n}\right)\cdot\frac{1}{n!}  
+\end{split}
+\end{equation}
 
+用$n+1$代替$n$代入此公式，求出：
+\begin{equation}
+\begin{split}
+    \left(1+\frac{1}{n+1}\right)^{n+1}&=1+1+\left(1-\frac{1}{n+1}\right)\frac{1}{2!}+ \left(1-\frac{1}{n+1}\right)\left(1-\frac{2}{n+1}\right)\cdot\frac{1}{3!}\\
+    &+\cdots+ \left(1-\frac{1}{n+1}\right) \left(1-\frac{2}{n+1}\right)\cdots\left(1-\frac{n}{n+1}\right)\cdot\frac{1}{(n+1)!}  
+\end{split}
+\end{equation}
+(1.9)的展开式项数比(1.8)的展开式的项数多一项，此外(1.9)的展开式各项由第三项起大于(1.8)的展开式对应项，这是因为
+\[1-\frac{1}{n+1}>1-\frac{1}{n},1-\frac{2}{n+1}>1-\frac{2}{n},\ldots, 1-\frac{n-1}{n+1}>1-\frac{n-1}{n}\]
+所以
+\[\left(1+\frac{1}{n+1}\right)^{n+1}>\left(1+\frac{1}{n}\right)^n\]
+这就是说数列$a_n=\left(1+\frac{1}{n}\right)^n,\; n=1,2,3,\ldots$是递增的。
 
+但是由等式(1.8)可知
+\[\left(1+\frac{1}{n}\right)^n<1+1+\frac{1}{2!}+\frac{1}{3!}+\cdots+\frac{1}{n!}\]
+又因为
+\[\frac{1}{1\cdot 2\cdot 3}<\frac{1}{2^2},\frac{1}{1\cdot 2\cdot 3\cdot 4}<\frac{1}{2^3},\ldots,\frac{1}{1\cdot 2\cdot 3\cdots n}<\frac{1}{2^{n-1}}\]
+所以：
+\[\left(1+\frac{1}{n}\right)^n<2+\frac{1}{2}+\frac{1}{2^2}+\cdots+\frac{1}{2^{n-1}}\]
+但是由第二项起的级数总和小于$\frac{\tfrac{1}{2}}{1-\tfrac{1}{2}}=1$，所以：
+\[\left(1+\frac{1}{n}\right)^n<2+\frac{\frac{1}{2}}{1-\frac{1}{2}}=3\]
+这就是说数列$\left\{\left(1+\frac{1}{n}\right)^n\right\}$是递增有上界的，所以它有极限，设它的极限用$e$表示，因而我们有数
+\[e=\Lim_{n\to \infty} \left(1+\frac{1}{n}\right)^n\]
+这个数$e$是无理数，取它的十进小数到十五位，其值是
+\[e=2.718281328459045\cdots\]
 
+现在要把变数$n$推广到实数$x$, 这是一个以后常要用到的重要极限。
 
+\begin{blk}{定理}
+\[\Lim_{x\to \infty} \left(1+\frac{1}{x}\right)^x=e\qquad (x\in\mathbb{R})\] 
+\end{blk}
 
+\begin{proof}
+先证$\Lim_{x\to +\infty} \left(1+\frac{1}{x}\right)^x=e$
 
+令$[x]=n$，于是$n\le x<n+1$，所以，当$x\to +\infty$时，$n\to +\infty$，而且
+\[1+\frac{1}{n+1}<1+\frac{1}{x}\le 1+\frac{1}{n}\]
+根据指数函数的单调性和幂函数在$x>0$半直线上的单调性，有：
+\[\left(1+\frac{1}{n+1}\right)^n\le \left(1+\frac{1}{n+1}\right)^x<\left(1+\frac{1}{x}\right)^x\le \left(1+\frac{1}{n}\right)^x<\left(1+\frac{1}{n+1}\right)^{n+1}\]
+因为：
+\[\begin{split}
+    \Lim_{n\to +\infty} \left(1+\frac{1}{n}\right)^{n+1}&=\Lim_{n\to +\infty} \left(1+\frac{1}{n}\right)^{n}\left(1+\frac{1}{n}\right)\\
+&=\Lim_{n\to +\infty} \left(1+\frac{1}{n}\right)^{n}\cdot \Lim_{n\to +\infty} \left(1+\frac{1}{n}\right)=e
+\end{split}\]
+\[\begin{split}
+    \Lim_{n\to +\infty} \left(1+\frac{1}{n+1}\right)^{n}&=\Lim_{n\to +\infty} \frac{\left(1+\frac{1}{n+1}\right)^{n+1}}{1+\frac{1}{n+1}}\\
+    &=\frac{\Lim_{n\to +\infty}\left(1+\frac{1}{n+1}\right)^{n+1} }{\Lim_{n\to +\infty}\left(1+\frac{1}{n+1}\right) }=e
+\end{split}\]
+所以
+\[e\le\Lim_{x\to +\infty}\left(1+\frac{1}{x}\right)^{x} \le e\]
+即：$\Lim_{x\to +\infty}\left(1+\frac{1}{x}\right)^{x}=e$
 
+当$x\to -\infty$时，令$x=-y$，那么$y\to +\infty$，这时
+\[\begin{split}
+    \left(1+\frac{1}{x}\right)^x&=\left(1-\frac{1}{y}\right)^{-y}=\left(\frac{y-1}{y}\right)^{-y}=\left(\frac{y}{y-1}\right)^y\\
+    &=\left(1+\frac{1}{y-1}\right)^y=\left(1+\frac{1}{y-1}\right)^{y-1}\left(1+\frac{1}{y-1}\right)
+\end{split}\]
+所以
+\[\begin{split}
+    \Lim_{x\to -\infty}\left(1+\frac{1}{x}\right)^{x}&=\Lim_{y\to +\infty}\left(1+\frac{1}{y-1}\right)^{y-1}\left(1+\frac{1}{y-1}\right)\\
+    &=\Lim_{y\to +\infty}\left(1+\frac{1}{y-1}\right)^{y-1}\cdot \Lim_{y\to +\infty}\left(1+\frac{1}{y-1}\right)=e
+\end{split}\]
+综合上面两个结果，即得
+$$\Lim_{x\to \infty}\left(1+\frac{1}{x}\right)^{x}=e$$
+\end{proof}
 
+\begin{blk}{推论}
+\[\Lim_{y\to 0}\left(1+y\right)^{\tfrac{1}{y}}=e\]
+\end{blk}
 
+事实上，令$x=\frac{1}{y}$，当$y\to 0$时，$x\to\infty$，于是：
+\[\Lim_{y\to 0}\left(1+y\right)^{\tfrac{1}{y}}=\Lim_{x\to \infty}\left(1+\frac{1}{x}\right)^{x}=e\]
 
+\begin{ex}
+\begin{enumerate}
+    \item 求下面变量的极限：
+\begin{multicols}{2}
+\begin{enumerate}
+    \item $\Lim_{x\to\infty}\left(1+\frac{8}{x}\right)^x$
+    \item $\Lim_{y\to 0}(1+y)^{\tfrac{1}{3}y}$
+    \item $\Lim_{t\to\infty}\left(1-\frac{1}{t}\right)^t$
+    \item $\Lim_{t\to\infty}\left(\frac{t}{1+t}\right)^t$
+    \item $\Lim_{n\to+\infty}\left(1+\frac{x}{n}\right)^n$
+    \item $\Lim_{n\to +\infty}\left(1+\frac{1}{n^2}\right)^n$
+    \item $\Lim_{x\to+\infty}\left(\frac{2x+3}{2x+1}\right)^{x+1}$
+\end{enumerate}
+\end{multicols}
 
-
-
+\item 证明：
+\begin{multicols}{2}
+\begin{enumerate}
+    \item $\Lim_{x\to\infty}\frac{a^x}{x}=\infty$
+    \item $\Lim_{x\to\infty}\frac{a^x}{x^a}=\infty$
+\end{enumerate}
+\end{multicols}
+其中$a$为任意正常数。
+\end{enumerate}
+\end{ex}
 
 
 \begin{example}
