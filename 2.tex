@@ -826,6 +826,656 @@ $y=-2x+1$
 \end{enumerate} 
 \end{ex}
 
+\subsection{复合函数的求导法则}
+\begin{blk}
+    {定理} 假设函数$y=g(x)$在点$x$可导，而函数$z=f(y)$在点$g(x)$可导，那么复合函数$z=\varphi(x)=f(g(x))$在点$x$可导，并且
+\[[f(g(x))]'=f'(g(x))\cdot g'(x)\]
+简写成$[f(g(x))]'=f'_g\cdot g'_x$，或者写成
+\[\frac{\dd z}{\dd x}=\frac{\dd z}{\dd y}\cdot \frac{\dd y}{\dd x}\]
+\end{blk}
+
+\begin{proof}
+    设$D_g$, $D_f$分别是函数$g(x),f(y)$的定义域，令$x\in D_g$, $g(x)\in D_f$, 任取非零数$\Delta x$, 且使$g(x+\Delta x)\in D_f$，于是$\Delta g=g(x+\Delta x)-g(x)$, 又根据$g(x)$在点$x$连续，故当$x\to 0$时，$\Delta y\to 0$. 因为$g(x)$在点$x$可导，可以设
+\begin{equation}
+    \alpha=\frac{\Delta y}{\Delta x}-g'(x)
+\end{equation}
+而且由上式知道
+\[\lim_{\Delta x\to 0}\alpha=\lim_{\Delta x\to 0}\left(\frac{\Delta y}{\Delta x}-g'(x)\right)=g'(x)-g'(x)=0\]
+把(2.5)改写成
+\begin{equation}
+    \Delta y=g'(x)\Delta x+\alpha\Delta x
+\end{equation}
+其中$\alpha$随$\Delta x$一同趋向于零，且$\alpha \Delta x$是比$\Delta x$更小的量。
+
+\begin{enumerate}
+    \item 若$g'(x)\ne 0$，只要$\Delta x$够小，由(2.6)知$\Delta y\ne 0$，那么
+\[\begin{split}
+    \frac{\varphi(x+\Delta x)-\varphi(x)}{\Delta x}&=\frac{f(g(x+\Delta x))-f(g(x))}{g(x+\Delta x)-g(x)}\cdot \frac{g(x+\Delta x)-g(x)}{\Delta x}\\
+    &=\frac{f(g(x)+\Delta y)-f(g(x))}{\Delta y}\cdot \frac{\Delta y}{\Delta x}
+\end{split}\]
+令$\Delta x\to 0$，由上式得
+\[\varphi'(x)=f'(g(x))\cdot g'(x)\]
+即
+\[[f(g(x))]'=f'(g(x))\cdot g'(x)\]
+
+\item 如果$g'(x)=0$，则当$\Delta x\to 0$时，有两种情形：
+\begin{enumerate}
+    \item 若$\Delta y=g(x+\Delta x)-g(x)=0$，则
+\[\begin{split}
+    \frac{\varphi(x+\Delta x)-\varphi(x)}{\Delta x}&=\frac{f(g(x+\Delta x))-f(g(x))}{\Delta x}\\
+    &=\frac{f(g(x))-f(g(x))}{\Delta x}=0
+\end{split}\]
+\item 若$\Delta y\ne 0$，则
+\[\frac{\varphi(x+\Delta x)-\varphi(x)}{\Delta x}=\frac{f(g(x+\Delta y))-f(g(x))}{\Delta y}\cdot \frac{\Delta y}{\Delta x}\]
+令$\Delta x\to 0$，得到
+\[\varphi'(x)f'(g(x))\cdot 0=0\]
+\end{enumerate}
+合并上述两种情形，都有
+\[\varphi'(x)=[f(g(x))]'=0\]
+于是定理得证。
+\end{enumerate}
+\end{proof}
+
+这个定理是说：复合函数对自变量的导数，等于已知函数对中间变量的导数，乘以中间变量对自变量的导数。
+
+
+\begin{example}
+    设$\varphi (x)=2^{\sin x}$, 求$\varphi'(x)$。
+\end{example}
+
+    
+\begin{solution}
+    把$\varphi (x)$看成$u=\sin x$和$f(u)=2^u$的复合函数，于是$\varphi  (x) =2^{\sin x}=f (\sin x)$.
+
+依上述定理，得
+\[\begin{split}
+  \varphi' (x) &= [f (u) ]'\cdot u'_x= (2^u)'\cdot (\sin x)'\\
+&=2^u\ln2 \cdot \cos x\\
+&=2^{\sin x}\cdot \cos x \cdot \ln2  
+\end{split}\]
+\end{solution}
+
+\begin{example}
+    设$y=\sin(x^2+x+1)\cdot \cos(x^3+2x^2)$, 求$y'_x$.
+\end{example}
+
+\begin{solution}
+    设$u=x^2+x+1$, $v=x^3+2x^2$, 则
+\[\begin{split}
+  y'&= (\sin u)'\cdot u'_x\cdot \cos v+\sin u\cdot (\cos v)'\cdot v'_x\\
+&=\cos u\cdot u_x'\cdot \cos v-\sin u\cdot \sin v\cdot  v'_x\\
+&= (2x+1) \cos (x^2+x+1) \cos (x^3+2x^2)\\
+&\qquad - (3x^2+4x) \sin (x^2+x+1) \sin (x^3+2x^2)  
+\end{split}\]
+\end{solution}
+    
+\begin{example}
+设$f(x)=\frac{x}{\sqrt{9+x^2}}$，求$f'(x)$.
+\end{example}
+
+
+\begin{solution}
+\[\begin{split}
+    f'(x)&=\frac{\sqrt{9+x^2}(x)'-x\left(\sqrt{9+x^2}\right)'}{9+x^2}\\
+    &=\frac{\sqrt{9+x^2}-x\cdot \frac{1}{2}(9+x^2)^{-\tfrac{1}{2}}(9+x^2)'}{9+x^2}\\
+    &=\frac{\sqrt{9+x^2}-\frac{x^2}{\sqrt{9+x^2}}}{9+x^2}=\frac{9}{\left(9+x^2\right)^{3/2}}
+\end{split}\]
+\end{solution}
+    
+\begin{blk}
+{推论1} 如果函数有两个以上的中间变量，上面的求导法则可以推广使用。
+\end{blk}
+
+例如，设$y=f(u)$, $u=g(v)$, $v=h(x)$, 那么对于复合函数。$y=\varphi (x)=f\{g[h(x)]\}$的导数可以这样来求：
+\[\frac{\dd y}{\dd x}=\frac{\dd y}{\dd u}\cdot \frac{\dd u}{\dd v}\cdot \frac{\dd v}{\dd x}\]
+即：$y'_x=y'_u\cdot u'_v\cdot v'_x$
+
+事实上，依前定理有
+\[\frac{\dd y}{\dd x}=\frac{\dd y}{\dd u}\cdot \frac{\dd u}{\dd x}\]
+这里$u=g[h(x)]$。再用同一定理
+\[\frac{\dd u}{\dd x}=\frac{\dd u}{\dd v}\cdot \frac{\dd v}{\dd x}\]
+所以
+\[\frac{\dd y}{\dd x}=\frac{\dd y}{\dd u}\cdot \frac{\dd u}{\dd v}\cdot \frac{\dd v}{\dd x}\]
+
+
+\begin{example}
+    设$y=\ln\sqrt{5-2x+3x^4},\quad (5-2x+3x^4>0)$，求$y'_x$.
+\end{example}
+
+    
+\begin{solution}
+    设$y=\ln u$，$u=\sqrt{v}$，$v=5-2x+3x^4$，于是：
+\[\begin{split}
+    \frac{\dd y}{\dd x}&=\frac{\dd y}{\dd u}\cdot \frac{\dd u}{\dd v}\cdot \frac{\dd v}{\dd x}\\
+    &=\frac{1}{u}\cdot \left(\frac{1}{2}v^{-\tfrac{1}{2}}\right)\cdot (-2+12x^3)\\
+    &=\frac{1}{\sqrt{5-2x+3x^4}}\cdot \frac{1}{2}\frac{1}{\sqrt{5-2x+3x^4}}\cdot (-2+12x^3)\\
+    &=\frac{6x^3-1}{5-2x+3x^4}
+\end{split}\]
+\end{solution}
+
+求复合函数的导数，关键在于分析清楚函数的复合关系，适当选定中间变量，根据复合函数求导法则由外向里逐层求导，直到最后一个中间变量对自变量求导为止，每次求导时，必须明确是哪个变量对哪个变量求导，所有这些导数的乘积就是复合函数的导数。
+
+\begin{blk}{推论}
+    \[(\ln|g(x)|)'=\frac{g'(x)}{g(x)}\quad (g(x)\ne 0)\]
+\end{blk}
+
+\begin{proof}
+  \[\ln|g(x)|\text{有意义}\quad \Longleftrightarrow\quad g(x)\ne 0\]  
+又
+\[|g(x)|'\text{存在}\quad \Longleftrightarrow\quad g(x)\ne 0\]
+所以由
+\[|g(x)|'=\begin{cases}
+    g'(x) ,  & g(x)>0\\
+    [-g(x)]'=-g'(x), & g(x)<0
+\end{cases}\]
+和复合函数求导法则，便得
+\[[\ln|g(x)|]'=\frac{1}{|g(x)|}\cdot |g(x)|=\frac{g'(x)}{g(x)}\quad (g(x)\ne 0)\]
+\end{proof}
+
+\begin{example}
+    求$(\ln|x^2-5x+4|)'$
+\end{example}
+
+\begin{solution}
+\[(\ln|x^2-5x+4|)'=\frac{(x^2-5x+4)'}{x^2-5x+4}=\frac{2x-5}{x^2-5x+4}\]
+其中：$x^2-5x+4\ne 0$，即$x\ne 1$和$x\ne 4$.
+\end{solution}
+
+
+
+\begin{example}
+求$\left[\frac{(x^2+1)^{\tfrac{1}{2}}(x-1)^2}{(x+1)^{\tfrac{3}{2}}}\right]'$
+\end{example}
+
+    
+\begin{solution}
+设$y=\frac{(x^2+1)^{\tfrac{1}{2}}(x-1)^2}{(x+1)^{\tfrac{3}{2}}}$，则
+\[\begin{split}
+    \ln|y|&=\frac{1}{2}\ln(x^2+1)+2\ln|x-1|-\frac{3}{2}\ln|x+1|\\
+    \frac{1}{y}\cdot y'&=\frac{1}{2}\frac{2x}{x^2+1}+\frac{2}{x-1}-\frac{2}{2(x+1)}\\
+    &=\frac{3x^3+7x^2-x+7}{2(x^2+1)(x-1)(x+1)}
+\end{split}\]    
+\[\begin{split}
+    y'&=\frac{3x^3+7x^2-x+7}{2(x^2+1)(x-1)(x+1)}\cdot \frac{(x^2+1)^{\tfrac{1}{2}}(x-1)^2}{(x+1)^{\tfrac{3}{2}}}\\
+    &=\frac{(3x^3+7x^2-x+7)(x-1)}{2(x^2+1)^{\tfrac{1}{2}}(x+1)^{\tfrac{5}{2}}}
+\end{split}\]
+    
+\end{solution}
+
+\begin{example}
+设$f(x)=u(x)^{v(x)}\quad (u(x)>0)$，求$f'(x)$.
+\end{example}
+
+\begin{solution}
+先求此函数的对数，有
+\[\ln f(x)=v(x)\ln u(x)\]
+两边对$x$求导，即得
+\[-\frac{1}{f(x)}\cdot f'(x)=v'(x)\ln u(x)+v(x)\cdot\frac{1}{u(x)}\cdot u'(x)\]
+    所以
+\[f'(x)=u(x)^{v(x)}\left[v'(x)\ln u(x)+\frac{v(x)u'(x)}{u(x)}\right]\]
+\end{solution}
+
+\begin{example}
+一人在放风筝，且知风筝在80米的高度飘行，放线速度为2米/秒，求当线长为100米时，风筝和此人之间的水平距离的变率。
+\end{example}
+
+
+\begin{solution}
+    设在某时刻$t$, 线长为$\ell(t)$米，水平距离为$x(t)$米，根据勾股定理得到绳长和水平距离的关系式
+\[\ell^2 (t) =x^2 (t) +6400\]
+两边对时间$t$求导数，得到
+\[\frac{\dd \ell^2}{\dd \ell}\cdot \frac{\dd \ell}{\dd t}=\frac{\dd(x^2+6400)}{\dd x}\cdot \frac{\dd x}{\dd t}\]
+即
+\[\ell\cdot \frac{\dd \ell}{\dd t}=x\cdot \frac{\dd x}{\dd t}\]
+但是已知$\frac{\dd\ell}{\dd t}=2({\rm m/s})$，又当$\ell=100$时，
+\[x=\sqrt{100^2-6400}=\sqrt{3600}=60\]
+于是
+\[60\frac{\dd x}{\dd t}=100\times 2\]
+
+$\therefore\quad \frac{\dd x}{\dd t}=\frac{10}{3}=3\frac{1}{3}({\rm m/s})$
+
+答：当$\ell=100$米时，风筝和人之间的水平距离的变率为$3\frac{1}{3}$（米／秒）。
+\end{solution}
+
+\begin{ex}
+\begin{enumerate}
+    \item 求下面函数对于 $x$ 的导数:
+\begin{multicols}{2}
+\begin{enumerate}
+    \item $(x+1)^{2} $ 
+\item $(1-3 x)^{3} $
+\item  $\sqrt{x+1}$
+\item  $\frac{1}{\sqrt{x+1}}$
+\item  $\sqrt{x^{2}+1}$
+\item  $\frac{1}{\sqrt{x^{2}+1}}$
+\item  $\sqrt{2 x^{2}+x-1}$
+\item  $\frac{1}{\sqrt{\tan x}}$
+\item  $\frac{1}{\sin ^{3} x} $
+\item  $\cos (a x+b)$
+\item  $\cos ^{3}(a x+b) $
+\item  $\cot \sqrt{x} $
+\item  $\sec \left(\frac{1}{x}\right)$
+\item  $x \sqrt{\sin x}$
+\item  $x^{2} \sqrt{\sec 2x}$
+\item  $\ln \left(1+x^{2}\right)$
+\item $\log _{a}(\sin x)$
+\item $\log _{a}(\sec x)$
+\item  $\sqrt{\ln x}$
+\item $e^{a x^{2}}$
+\item $e^{1+x-x^{2}}$
+\item  $a^{\sqrt{2x+1}}$
+\end{enumerate}
+\end{multicols}
+
+ \item    对下面各函数先取对数再求导数:
+ \begin{multicols}{2}
+    \begin{enumerate}
+        \item   $\frac{x-1}{(x+1)^{2}}$
+        \item   $\frac{\sqrt{x-1}(x+1)}{x^{2}+1}$
+        \item   $\frac{(x-3)(x-4)}{(x-5)}$
+        \item   $\sqrt{\frac{x-1}{x+1}}$ 
+        \item  $(x+2)^{2}(x+3)^{3}(x+4)^{4}$
+\end{enumerate}
+\end{multicols}
+\item  求下列函数对于 $x$ 的微商:
+\begin{enumerate}
+\begin{multicols}{2}
+  \item $e^{2 x}(2 \cos 3 x+3 \sin 3 x)$
+\item $\ln \left(x+\sqrt{x^{2} \pm a^{2}}\right)$
+\item $\frac{2 x+1}{\sqrt{3-4 x-4 x^{2}}}$  
+\item $\cos[\ln(x^2+9)]$
+\item $\ln(1-\tan^2 x)$
+\item $x^x+(\ln x)^x$
+\end{multicols}
+\item $(1-x)^{\tfrac{1}{2}}(1+3x)^{\tfrac{3}{20}}(1-2x)^{-\tfrac{2}{5}}$
+\end{enumerate}
+
+\item 若$y=e^{ax}\cos(bx+c)$，求证：
+\[\frac{1}{\sqrt{a^2+b^2}}\frac{\dd y}{\dd x}=e^{ax}\cos(bx+c+r)\]
+其中：$\tan r=b/a$.
+
+\item 设$f(x)=\begin{cases}
+    x^2\sin\frac{1}{x},& x\ne 0\\
+    0,& x=0
+\end{cases}$，求$f(x)$的导函数。
+
+（提示：对于$x\ne 0$，可用本节的方法得出，而$f'(0)$需直接由定义得出）。
+
+\item 有一个长度为5米的梯子贴靠在铅直的墙上，假设其下端
+沿地板以3米/秒的速率离开墙脚而滑动，则
+\begin{enumerate}
+    \item 当其下端离开墙脚1.4米时，梯子上端下滑之速率为多少？
+    \item 何时梯子的上下端能以相同的速率移动？
+    \item 何时其上端下滑之速度为4米/秒？
+\end{enumerate}
+
+\item 求曲线$y=\cos^2\sqrt{x}$在点$x=0$处的切线方程．
+\item 在$\triangle ABC$中，$a=7$cm, $b=5$cm, $c=8$cm, $P$为$AB$边上
+一动点，从$A$往$B$以每秒2厘米的速度运动．当$P$点在
+$AB$边中点时，$CP$长度的变率是多少？
+\item 求曲线$y=2\left(e^x+\frac{1}{5}e^{-3x}\right)$在横坐标$x_0=0$的点的切线方程．
+\item 试由公式$1+x+x^2+\cdots+x^n=\frac{x^{n+1}-1}{x-1}$分别导出$1+2x+3x^2+\cdots+nx^{n-1}$与$x+2^2x^2+3^2x^3+\cdots +n^2x^n$的公式．
+\end{enumerate}  
+\end{ex}
+
+
+\subsection{反函数求导法则}
+
+\begin{blk}
+    {定理} 若函数$y=f(x)$在$x_0$的某一邻域内连续，且严格单调，又函数$f(x)$在点$x_0=f^{-1}(y_0)$的导数$f'(x_0)$存在并且异于零，则反函数$x=f^{-1}(y)$在对应点$y_0=f(x_0)$
+的导数存在，并且等于$\frac{1}{f'(x_0)}=\frac{1}{f'(f^{-1}(y_0))}$
+，即
+\[[f^{-1}(y_0)]'=\frac{1}{f'(x_0)}=\frac{1}{f'[f^{-1}(y_0)]}\]
+\end{blk}
+
+\begin{proof}
+给数值$y=y_0$以任意增量$\Delta y$, 则反函数$x=f^{-1}(y)$也得到对应增量$\Delta x$, 当$\Delta y\ne 0$时，由于$y=f(x)$的严格单调性，从而$x=f^{-1}(y)$也是严格单调的，也有$\Delta x\ne 0$, 于是有
+\[\begin{split}
+    \frac{f^{-1}(y_0+\Delta y)-f^{-1}(y_0)}{\Delta y}&=\frac{\Delta x}{f(x_0+\Delta x)-f(x_0)}\\
+    &=\frac{1}{\frac{f(x_0+\Delta x)-f(x_0)}{\Delta x}}
+\end{split}\]
+现在令$\Delta y\to 0$，则由于反函数$x=f^{-1}(y)$也是连续的，故增量$\Delta x\to 0$，于是
+\[\lim_{\Delta y\to 0}\frac{f^{-1}(y_0+\Delta y)-f^{-1}(y_0)}{\Delta y}=\frac{1}{\Lim_{\Delta y\to 0}\frac{f(x_0+\Delta x)-f(x_0)}{\Delta x}}\]
+上面等式右边的分母就趋于极限$f'(x_0)\ne 0$，而左边按定义就是$[f^{-1}(y_0)]'$，因此
+\[[f^{-1}(y_0)]'=\frac{1}{f'(x_0)}\]
+再将$x_0=f^{-1}(y_0)$代入上式，得到
+\[[f^{-1}(y_0)]'=\frac{1}{f'[f^{-1}(y_0)]}\]
+\end{proof}
+
+\begin{blk}{推论}
+\[\begin{split}
+    (\arcsin x)'&=\frac{1}{\sqrt{1-x^2}},\qquad -1<x<1\\
+    (\arccos x)'&=\frac{-1}{\sqrt{1-x^2}},\qquad -1<x<1\\
+    (\arctan x)'&=\frac{1}{{1+x^2}},\qquad -\infty<x<\infty\\
+    (\arccot x)'&=\frac{-1}{{1+x^2}},\qquad -\infty<x<\infty\\
+\end{split}\]
+\end{blk}
+
+\begin{proof}
+如果我们限制正弦函数$x=\sin y$的定义域为$\left(-\frac{\pi}{2},\frac{\pi}{2}\right)$，那么$x=\sin y$的反函数存在，即
+\[    y=\arcsin x,\qquad x\in (-1, 1)\]
+于是
+\[    (\arcsin x)'=\frac{1}{(\sin y)'}=\frac{1}{\cos y}=\frac{1}{\cos(\arcsin x)}\]
+由于$\arcsin x\in \left(-\frac{\pi}{2},\frac{\pi}{2}\right)$，
+所以$\cos y>0$, 从而
+\[    \cos (\arcsin x) =\sqrt{1-\sin^2 (\arcsin x)} =\sqrt{1-x^2}\]
+    最后得到
+\[  (\arcsin x)'=\frac{1}{\sqrt{1-x^2}},\qquad x\in (-1, 1) \]
+
+我们除去了数值$x=\pm 1$, 因为在它的对应值$y=\pm\frac{\pi}{2}$
+处导数$(\sin y)'=\cos y=0$.
+
+在第四册， 我们已经证明$\arcsin x+\arccos x=\frac{\pi}{2}$，所以
+\[(\arccos x)'=\left(\frac{\pi}{2}-\arcsin x\right)'=-\frac{1}{\sqrt{1-x^2}},\qquad -1<x<1\]
+其余同理可证。
+\end{proof}
+
+\begin{example}
+求$(\arcsec x)'$.
+\end{example}
+
+
+\begin{solution}
+函数$x=\sec y$在区间$\left(0,\frac{\pi}{2}\right)$上，由1递增到$+\infty$，而在区间$\left(\frac{\pi}{2},\pi\right)$上，由$-\infty$递增到$-1$。因此，$x=\sec y$，$y\in\left(0,\frac{\pi}{2}\right)\cup \left(\frac{\pi}{2},\pi\right)$有反函数存在，即：
+\[y=\arcsec x,\qquad x\in (-\infty,-1)\cup(1,+\infty)\]
+
+依反函数求导法则，有
+\[\begin{split}
+    (\arcsec x)'&=\frac{1}{(\sec y)'}=\frac{1}{\sec y\cdot \tan y}\\
+    &=\frac{1}{\sec(\arcsec x)\cdot \tan(\arcsec x)}\\
+    &=\begin{cases}
+        \frac{1}{x\sqrt{\sec^2(\arcsec x)-1}}, & 0<\arcsec x<\frac{\pi}{2}\\
+        \frac{1}{x\left(-\sqrt{\sec^2(\arcsec x)-1}\right)}, & \frac{\pi}{2}<\arcsec x<\pi \\
+    \end{cases}\\
+    &=\begin{cases}
+        \frac{1}{x\sqrt{x^2-1}}, & x>1\\
+       - \frac{1}{x\sqrt{x^2-1}}, & x<-1
+    \end{cases}
+\end{split}\]
+\end{solution}
+
+\begin{example}
+若已知$(\log_a x)'=\frac{\log_a e}{x},\quad x\in(0,+\infty)$，试利用反函数求导法则求$(a^x)'$    
+\end{example}
+
+\begin{solution}
+    因为$y=a^x,\quad (a>0,\; a\ne 1,\; -\infty<x<+\infty)$是$x=\log_a y\; (y>0)$的反函数，所以
+\[\begin{split}
+    (a^x)'&=\frac{1}{(\log_a y)'}=\frac{1}{\frac{\log_a e}{y}}=\frac{y}{\log_a e}\\
+    &=\ln a\cdot (a^x)=a^x\ln a
+\end{split}\]
+\end{solution}
+
+\begin{example}
+求函数$f(x)=2x\arctan 2x-\ln\sqrt{1+4x^2}$的导数。
+\end{example}
+
+\begin{solution}
+\[\begin{split}
+    f'(x)&=\left[(2x)'\arctan 2x+2x\cdot \frac{1}{1+(2x)^2}\cdot (2x)'\right]\\
+    &\qquad -\frac{1}{\sqrt{1+4x^2}}\cdot \frac{1}{2\sqrt{1+4x^2}}\cdot (1+4x^2)'\\
+    &=2\arctan 2x+\frac{4x}{1+4x^2}-\frac{4x}{1+4x^2}\\
+    &=2\arctan 2x
+\end{split}\]
+\end{solution}
+
+
+\begin{example}
+求曲线$y=\arcsin x$和$y=\arccos x$的交角。
+\end{example}
+
+\begin{solution}
+设这两条曲线交于$T(x_0,y_0)$点，则
+\[y_0=\arcsin x_0=\arccos x_0,\qquad 0<y_0<\frac{\pi}{2}\]
+  由此得
+\begin{equation}
+    \sin(\arcsin x_0)=\sin(\arccos x_0)
+\end{equation}  
+即
+\[x_0=\sqrt{1-x^2_0}\]
+解得
+\[x_0=\pm\frac{1}{\sqrt{2}}\]
+因为$0<y_0<\frac{\pi}{2}$，所以$x_0>0$. 如此应取$x_0=\frac{1}{\sqrt{2}}$. 由于
+\[(\arcsin x)'=\frac{1}{\sqrt{1-x^2}},\qquad (\arccos x)'=\frac{-1}{\sqrt{1-x^2}}\]
+所以在点$x=\frac{1}{\sqrt{2}}$处，$y=\arcsin x$的切线的斜率为
+\[\tan\alpha\Big|_{x=\tfrac{1}{\sqrt{2}}}=\frac{1}{\sqrt{1-\frac{1}{2}}}=\sqrt{2}\]
+又$y=\arccos x$的切线的斜率是
+\[\tan\beta\Big|_{x=\tfrac{1}{\sqrt{2}}}=\frac{-1}{\sqrt{1-\frac{1}{2}}}=-\sqrt{2}\]
+
+设$\theta$是这两条曲线在交点$\left(\frac{1}{\sqrt{2}},\frac{\pi}{4}\right)$的夹角，也就是过$T$点的两条切线的交角，于是
+\[\tan\theta=\frac{\tan\beta-\tan\alpha}{1+\tan\beta\tan\alpha}=\frac{-\sqrt{2}-\sqrt{2}}{1+\left(-\sqrt{2}\right)\sqrt{2}}=\frac{-2\sqrt{2}}{-1}=2\sqrt{2}\]
+因此，这两条曲线的交角$\theta=\arctan 2\sqrt{2}$. 
+\end{solution}
+
+\begin{example}
+一飞机在离地面2公里的高度，以每小时200公里的速度飞临某目标的上空，以便进行航空摄影，试求飞机飞至该目标正上方时摄影机转动的角速度（图2.9）。
+\end{example}
+
+\begin{solution}
+我们把该目标取为坐标原点，设飞机和目标的水平距离为$x$, 显然它是时间$t$的函数$x=x(t)$. 现在要求出飞机在目标正上方时，$\frac{\dd \theta}{\dd t}$之值，
+为此，先找出$\theta$和$x$的关系，从图2.9中可以看出
+\[\tan\theta=\frac{2}{x},\quad  0<\theta\le \frac{2}{\pi}\]
+
+$\therefore\quad \theta=\arctan \frac{2}{x}$
+于是
+\[\frac{\dd \theta}{\dd t}=\frac{-2}{x^2+4}\frac{\dd x}{\dd t}\]
+但根据题意知道$\frac{\dd x}{\dd t}=-200$, 这里负号表示$x$在减小，故得
+\[\frac{\dd \theta}{\dd t}=\frac{400}{x^2+4}\]
+当飞机在目标正上方时，即$x=0$时，
+$\frac{\dd \theta}{\dd t}=100\text{弧度/时}$，将弧度化为角度即为$\frac{\dd \theta}{\dd t}=\frac{5}{\pi}\text{度/秒}$
+\end{solution}
+
+\begin{figure}[htp]
+    \centering
+    \begin{minipage}[t]{0.48\textwidth}
+    \centering
+\begin{tikzpicture}[>=latex, scale=.9]
+\draw[->](-1,0)--(5,0)node[right]{$x$};
+\draw[->](0,-1)--(0,4.5)node[right]{$y$};
+\node at (0,0)[below left]{$O$};
+\draw[dashed](0,3.5)--(4,3.5);
+\draw[very thick](4,3.5)--(0,0);
+\draw[<->](4,3.5)--node[fill=white]{2}(4,0);
+\draw[<->](1,0) arc (0:41.2:1)node[below right]{$\theta$};
+\draw[<->](3,3.5) arc (180:180+41.2:1)node[above left]{$\theta$};
+\draw[ultra thick, <-](4,3.5)--(4.6,3.5);
+\end{tikzpicture}
+    \caption{}
+    \end{minipage}
+    \begin{minipage}[t]{0.48\textwidth}
+    \centering
+    \begin{tikzpicture}[>=stealth, scale=1.5]
+        \draw[very thick](-1,2.5)--(-.25,2.5)--(-.25,2)--(-1.5,0)--(1.5,0)--(.25,2)--(.25,2.5)--(1,2.5);
+\draw[|<->|](1.75,0)--node[fill=white]{12cm}(1.75,2.5);
+\draw[dashed](1,2.5)--(1.75,2.5);
+\draw[|<->|](0,-.15)--node[below]{$R=5$cm}(1.5,-.15);
+\draw(-1.75/2,1)--(1.75/2,1);
+\draw[<->](0,0)--node[fill=white]{$y$}(0,1);
+\draw[|<->|](0,.8)--node[fill=white]{$r$}(1.75/2,.8);
+    \end{tikzpicture}
+    \caption{}
+    \end{minipage}
+    \end{figure}
+
+\begin{example}
+有一底半径为5cm, 高为12cm的正圆锥形容器（图2.10）, 以每秒2$\rm cm^3$的速度往容器中倒水，试求容器水位等于锥高一半时，水面上升速度。
+\end{example}
+
+
+\begin{solution}
+    设在某时刻$t$, 容器水高为$y$, 则此时水的体积$V$为
+ \[\begin{split}
+     V&=\frac{\pi R^2h}{3}-\frac{\pi r^2}{3}(h-y)\\
+     &=\frac{\pi}{3}\cdot 5^2\cdot 12-\frac{\pi r^2}{3}(12y)\\
+     &=100\pi-\frac{\pi r^2}{3}(12-y)
+ \end{split}\]
+而
+\[\frac{r}{R}=\frac{h-y}{h}\]
+即
+\[r=\frac{R}{h}(h-y)=\frac{5}{12}(12-y)\]
+代入上式，得
+\[\begin{split}
+    V&=100\pi-\frac{\pi}{3}\cdot \frac{5^2}{12^2}(12-y)^3\\
+    &=100\pi-\frac{25\pi}{432}(12-y)^3
+\end{split}\]
+又由题设知：$V=2t$，所以
+\[2t=100\pi-\frac{25\pi}{432}(12-y)^3\]
+即
+\begin{equation}
+    t=50\pi-\frac{25\pi}{864}(12-y)^3
+\end{equation}
+这就确定了水的高度与时间$t$的关系，水面上升速度就是
+$y$关于时间$t$的变化率，也就是$\frac{\dd y}{\dd t}$。根据反函数求导法则，有
+\[\frac{\dd y}{\dd t}=\frac{1}{\frac{\dd t}{\dd y}}\]
+由(2.8)得
+\[\frac{\dd t}{\dd y}=\frac{25\pi}{864}\cdot 3(12-y)^2(12-y)'=\frac{25\pi}{288}(12-y)^2\]
+
+$\therefore\quad \frac{\dd y}{\dd t}=\frac{288}{25\pi(12-y)^2}$
+
+当$y=\frac{1}{2}h=6$时，
+\[\left.\frac{\dd y}{\dd t}\right|_{y=6}=\frac{288}{25\x 36\pi}\approx 0.102({\rm cm/s})\]
+
+答：水面上升速度为每秒0.102厘米．
+\end{solution}
+
+\begin{ex}
+\begin{enumerate}
+    \item 求下列函数的微商：
+\begin{multicols}{2}
+\begin{enumerate}
+  \item $\arcsin \frac{x}{4}$
+\item  $\arccos x^{2}$
+\item  $\arctan \frac{1}{x}$
+\item  $\arcsin \sqrt{x}$
+\item  $(\arcsin x)^{2}$
+\item  $\arctan (\tan  x)$
+\item $\arctan \frac{2 x}{1-x^{2}}$
+\item  $\arctan (2 \tan  x)$
+\item $x^{2} \arccot \frac{x}{a}$
+\item $\ln \sqrt{1+4 x^{2}} \cdot \arccot \frac{1-x}{1+x}$
+\item  $\frac{1-\arccos 2 x}{\arctan x}$
+\item  ${\rm arccsc}\, x$
+\end{enumerate}
+\end{multicols}
+
+\item 证明
+   \[
+    \frac{\dd}{\dd x}\left\{\arctan \left(\frac{\sin x}{\cos 2 x}\right)\right\}=\frac{3 \cos x-\cos 3 x}{2(1-\sin x \sin 3 x)}
+   \]
+    \item 求下列函数的导数：
+\begin{enumerate}
+\item $\arcsin \cdot \frac{6 x^{2}}{\sqrt{4+81 x^{8}}}$
+\item $\arctan \frac{1}{1-3 x^{2}}-\arctan \frac{1}{1+3 x^{2}}$
+\item $\arccot \frac{4 \sqrt{x}}{1-4 x}$
+\end{enumerate}
+
+\item 一圆锥形容器，深10尺，上顶圆半径为4尺；求
+\begin{enumerate}
+    \item 灌入水时，水的体积$V$对水面高度$h$的变化率；
+    \item 体积$V$对容器截面圆半径$R$的变化率．
+\end{enumerate}
+
+\item 一圆锥形容器底面朝上放着，它的顶角为$2\arctan\frac{3}{4}$, 
+今向里面倒进某种液体，试求
+\begin{enumerate}
+\item 当液面半径$r$为3, 半径增加的速度$\frac{\dd r}{\dd t}$为$\frac{1}{4}$时，
+体积增加的速度$\frac{\dd V}{\dd t}$；
+\item 当液面半径为6, 体积增加的速度为24时，半径增加的速度。
+\end{enumerate}
+
+\item 水从高为18厘米，底半径为6厘米的圆锥形漏斗中流入半
+径为5厘米的圆柱形筒内．已知此漏斗中水深为12厘米时，漏斗中水面的下降速度为1厘米/分，求此时圆筒中水面的上升速度．
+\item 底数$a$为什么值时，直线$y=x$才能与对数曲线$y=\log_a x$相切？在何处相切？
+\item 求曲线$y=e^{-x}$上的一点，使过该点的切线与直线$y=-ex$平行，并写出该点的法线方程。
+\item 求曲线$y=\frac{1}{2}(1+2x^2\pm \sqrt{1+4x^2})$上横坐标$x=u$的点
+处的切线方程。这切线还与曲线交于何处？$y$的反函数为何？
+\end{enumerate}    
+\end{ex}
+
+\subsection{隐函数的导数}
+
+到现在为止，我们所讨论的函数都是可以由自变量明显地表示出来的函数，例如，方程
+$y=x^3+1$
+就定义了一个明显的函数$f$, 这里$f(x)=x^3+1$. 这种函数叫做显函数。但是并不是所有的函数都可以用这种明显的表达式来定义的，例如由下面的$x,y$的方程
+\[x^3-x=y^3-y^2+24\]
+就不容易解出用$x$表示$y$的解，或用$y$表示$x$的解。但是，却有可能存在一个函数$f$, 使得方程
+\[x^3-x=f^3(x)-f^2(x)+24\]
+对于函数$f$的定义域中的一切$x$值都成立，这样一个函数，如果存在的话，就叫做被这个方程定义的隐函数。最简的情形是二元一次方程：
+\[Ax+By+C=0\]
+当$B\ne 0$时，就定义一个隐函数$f:\; \mathbb{R}\mapsto \mathbb{R}$, 这里$f(x)=-\frac{A}{B}x-\frac{C}{B}$. 
+
+应该注意：
+\begin{enumerate}
+\item 方程$F(x,y)=0$的解有可能不存在，例如方程$x^2+y^2+1=0$没有实数解，因此，由它不能定义一个隐函数。
+\item 由方程$F(x,y)=0$可能定义几个函数．例如，由方程
+$x^2+y^2=16$
+就定义了两个函数：
+\[f_1 (x) =\sqrt{16-x^2},\qquad x\in [-4, 4] \]
+和
+\[f_2 (x) =-\sqrt{16-x^2},\qquad x\in  [-4, 4] \]
+\end{enumerate}
+
+\begin{blk}
+    {定义} 方程
+    \begin{equation}
+ F (x,y) =0       
+    \end{equation}
+给出了变元$x,y$之间的一个关系。如果存在一个函数$y=
+f(x)$, 或$x=g(y)$使得对于函数的定义域中的一切值，等式$F(x,f(x))=0$或$F(g(x),y)=0$恒成立，我们就说方程(2.8)定义了一个\textbf{隐函数}：
+\[y=f(x)\qquad \text{或}\qquad x=g(y)\]
+\end{blk}
+
+要对方程(2.8)给出的隐函数求导数，通常的办法是直接对这个方程求导数，而不是先解出显函数，再来求导数。
+
+
+\begin{example}
+设$xy+x^2-1=0$，求$y'_x$.
+\end{example}
+
+\begin{solution}
+先把$y$看成$x$的函数，即$y=f(x)$, 然后，在等式
+$xf (x) +x^2-1=0$
+的两边对$x$求导数，得到
+\[\begin{split}
+    (x\cdot f(x))'+(x^2)'&=0\\
+xf'(x)+f(x)+2x&=0
+\end{split}\]
+
+$\therefore\quad f (x) =-\frac{2x+f (x)}{x}=-\frac{2x+\frac{1-x^2}{x}}{x}=-\frac{1+x^2}{x^2}$    
+\end{solution}
+
+\begin{example}
+    方程$x^2+y^2=16$定义了两个可微函数：
+$y=\sqrt{16-x^2}$和$y=-\sqrt{16-x^2},\; x\in [-4, 4]$. 求每一个函数的导数。
+\end{example}
+
+
+\begin{solution}
+    我们用$f(x)$代表上面两个函数中的任何一个，则
+\[x^2+f^2 (x) =16,\qquad  x\in  [-4, 4] \]
+对上面等式的两边微分，得到
+\[\begin{split}
+    2x+2f (x) \cdot f' (x) &=0\\
+    f'(x)&=-\frac{x}{f(x)}
+\end{split} \]
+即
+\[\begin{split}
+    \left(\sqrt{16-x^2}\right)'&=-\frac{x}{\sqrt{16-x^2}}\\
+    \left(-\sqrt{16-x^2}\right)'&=\frac{x}{\sqrt{16-x^2}},\qquad x\in[-4,4]
+\end{split}\]
+\end{solution}
+
+\begin{rmk}
+应用这个方法求隐函数的导数时，我们作了两点假设：
+\begin{enumerate}
+    \item 存在一个由方程$F(x,y)=0$定义的函数；
+    \item 这样定义的函数是可微的．
+\end{enumerate} 
+至于在什么条件下，这种假设是合理的问题，已经超出了本书的范围，故不在此讨论。
+\end{rmk}
+
+
+
 
 
 
@@ -836,35 +1486,20 @@ $y=-2x+1$
     
 \end{example}
 
-    
+
 \begin{solution}
     
 \end{solution}
+
 
 \begin{example}
     
 \end{example}
 
 
-
-
 \begin{solution}
     
 \end{solution}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -874,6 +1509,17 @@ $y=-2x+1$
 \end{example}
 
 
+\begin{solution}
+    
+\end{solution}
+
+
+
+
+
+\begin{example}
+    
+\end{example}
 
 
 \begin{solution}
@@ -885,56 +1531,35 @@ $y=-2x+1$
 
 
 
+\begin{example}
+    
+\end{example}
+
+
+\begin{solution}
+    
+\end{solution}
 
 
 
+\begin{example}
+    
+\end{example}
 
 
+\begin{solution}
+    
+\end{solution}
 
 
+\begin{example}
+    
+\end{example}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+\begin{solution}
+    
+\end{solution}
 
 
 
@@ -947,16 +1572,40 @@ $y=-2x+1$
     
 \end{example}
 
-    
+
 \begin{solution}
     
 \end{solution}
+
+
+
 
 \begin{example}
     
 \end{example}
 
 
+\begin{solution}
+    
+\end{solution}
+
+
+
+
+\begin{example}
+    
+\end{example}
+
+
+\begin{solution}
+    
+\end{solution}
+
+
+
+\begin{example}
+    
+\end{example}
 
 
 \begin{solution}
@@ -969,66 +1618,28 @@ $y=-2x+1$
 
 
 
+\begin{example}
+    
+\end{example}
+
+
+\begin{solution}
+    
+\end{solution}
 
 
 
 
 
 
+\begin{example}
+    
+\end{example}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+\begin{solution}
+    
+\end{solution}
 
 
 

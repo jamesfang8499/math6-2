@@ -1,4 +1,3 @@
-
 \chapter{微积分学基本定理}
 在前两章中，我们分别引入了函数的变率（导数），函数的和（定积分）的基本概念，本章将研究函数的导函数与函数的求和函数这两者之间的互逆关系，并说明我们可以用求导函数的逆运算方法来计算定积分。
 
@@ -19,7 +18,11 @@
 
 和函数$S_f(x)$在$x=x_0$处的值$S_f(x_0)$的几何意义就是曲线$y=f(t)$, 直线$t=a$, $t=x_0$, $y=0$所围成的区域的有号面积，它是随区域的变动界线$t=x_0$的变动而变动的（图4.1）。
 
-
+\begin{figure}[htp]
+    \centering
+    
+    \caption{}
+\end{figure}
 
 例如，当变动界限（积分上限）在图中的$PM$位置时，则
 \[S_f(x_0)=\int^{x_0}_a f(t)\dif t=ACB\text{的面积}-CPM\text{的面积}\]
@@ -65,8 +68,1761 @@
 \[\frac{\dif }{\dif x}S_f(x)=\frac{\dif }{\dif x}\int^x_a f (t) \dif t=f(x),\qquad a\le x\le b\]
 \end{blk}
 
+\begin{figure}[htp]
+    \centering
+    
+    \caption{}
+\end{figure}
+
+\begin{proof}
+  如图4.2，设$h>2$，则
+\[\begin{split}
+    \frac{S_f(x+h)-S_f(x)}{h}&=\frac{\Int^{x+h}_a f(t)\dd t-\Int^{x}_a f(t)\dd t}{h}\\
+    &=\frac{\Int^{x+h}_x f(t)\dd t}{h}\qquad \text{（定积分性质1）}\\
+    &=\frac{hf(\xi)}{h}\quad (x<\xi<x+h)\\
+    &=f(\xi)\qquad \text{（定积分中值定理）}
+\end{split}\]
+于是
+\begin{equation}
+    \lim_{h\to 0^+}\frac{S_f(x+h)-S_f(x)}{h}=\lim_{\xi\to x}f(\xi)=f(x)
+\end{equation}
+
+设$\bar h<0$，则
+\[\begin{split}
+    \frac{S_f(x)-S_f(x+\bar h)}{\bar h}&=\frac{\Int^{x}_a f(t)\dd t-\Int^{x+\bar h}_a f(t)\dd t}{\bar h}\\
+    &=\frac{\Int^{x}_{x+\bar h} f(t)\dd t}{\bar h}\qquad \text{（定积分性质1）}\\
+    &=\frac{-\bar h f(\bar\xi)}{\bar h}=-f(\bar\xi)\quad (x+\bar h<\bar \xi<x)\\
+\end{split}\]
+即：
+\[\frac{S_f(x+\bar h)-S_f(x)}{\bar h}=f(\bar\xi),\qquad (x+\bar h<\bar \xi<x)\]
+于是
+\begin{equation}
+    \lim_{h\to 0^-}\frac{S_f(x+\bar h)-S_f(x)}{\bar h}=\lim_{\bar\xi\to x}f(\bar\xi)=f(x)
+\end{equation}
+由(4.1)和(4.2)，得
+\[\frac{\dd }{\dd x}S_f(x)=\frac{\dd }{\dd x}\int^x_a f(t)\dd t=f(x)\]
+\end{proof}
+
+\begin{blk}
+    {引理} 如果两个函数$F(x)$和$G(x)$满足条件
+\[F' (x) =G' (x) ,\qquad a\le x\le b\]
+那么
+\[G(x)=F(x)+C,\qquad (C\text{是常数})\]
+\end{blk}
+
+\begin{proof}
+    由$G'(x)-F'(x)=0$, 得
+\[[G (x) -F (x) ]'=0\]
+根据中值定理（参看第三章）知，对于每一个$x\in (a,b)$, 恒有
+\[G(x)-F(x)=C,\qquad (C\text{是常数})\]
+所以
+\[G (x) =F (x) +C\]
+\end{proof}
+
+\begin{blk}
+ {定义} 设$f(x)$是在区间$[a,b]$上给定的函数，如果可微函数$G(x)$满足条件
+\[G'(x)=f(x)\qquad (\text{或}\quad \dd G(x)=f(x)\dd x)\]
+那么就称$G(x)$为$f(x)$在$[a,b]$上的一个\textbf{原函数}。
+\end{blk}
+
+例如，设$G'(x)=\cos x$, 那么$G(x)=\sin x$就称为$\cos x$的一个原函数。
+
+\begin{blk}
+    {定理2} 设$f(x)$是给定的分段单调连续函数，如果一个可微函数$G(x)$满足条件
+\begin{equation}
+    G'(x)=f(x)\qquad \text{（或$\dd G(x)=f(x)\dd x$）},\quad a\le x\le b
+\end{equation}    
+那么
+\[S_f (x)=\int^x_a  f (t) \dd t=G (x) -G (a) \]
+\end{blk}
+
+\begin{proof}
+    由定理1知，$f(x)$的一个原函数存在，就是它的和函数，即
+\[\frac{\dd }{\dd x}\int^x_a f(t)\dd t=f(x)\]
+题设$G(x)$是$f(x)$的另一个原函数，故由引理得
+\begin{equation}
+    \int^x_a    f (t) dt=G (x) +C 
+\end{equation}
+这里的常数要由条件$\Int^a_a f(t)\dd t=0$来确定．
+
+在(4.4)中，令$x=a$，得
+\[0=G(a)+C\]
+所以：$C=-G(a)$，代入(4.4)，得
+\[\int^x_a f(t)\dd t=G(x)-G(a)\]
+\end{proof}
+
+在上面等式中，令$x=b$, 便得到下面著名的莱布尼兹-牛顿公式：
+\[\int^b_a f (t) \dd t= G (b) -G (a) \]
+这个公式告诉我们，求分段单调连续函数$f(x)$在$[a,b]$上的定积分可以化简为去求$f(x)$的一个原函数$G(x)$, 而函数值的差$G(b)-G(a)$就是定积分的值。
+
+\begin{example}
+    设$f(x)=k$（常数函数），则$G(x)=kx$是一个满足$G'(x)=k=f(x)$的原函数，所以
+\[\int^b_a k\dd x=kb-ka=k(b-a)\]
+以后我们引用一个符号：
+\[G(x)\Bigg|^b_a=G(b)-G(a)\]
+\end{example}
+
+\begin{example}
+    设$f(x)=kx^n,\; (n\in\mathbb{N})$，则
+\[G(x)=k\frac{x^{n+1}}{n+1}\]
+是满足$G'(x)=kx^n$的一个原函数，所以
+\[\int^b_akx^n\dd x=k\frac{x^{n+1}}{n+1}\Bigg|^b_a=\frac{k}{n+1}(b^{n+1}-a^{n+1})\]
+\end{example}
+
+\begin{example}
+设$f(x)=x^{-n}=\frac{1}{x^n}\; (x\ne 0,\; n\in\mathbb{N})$，则
+\[G(x)=\frac{x^{-n+1}}{-n+1}\]
+是满足$G'(x)=x^{-n}$的一个原函数。要特别注意定理2中$f(x)$是连续的条件，在任何包含0的区间上，函数$f(x)=\frac{1}{x^n}$无界，即有第二类间断点，如果$a,b$异号，则定积分$\Int^b_a x^{-n}\dd x$无意义，但若$a,b$同时为正或同时为负，则
+\[\int^b_ax^{-n}\dd x=\frac{x^{-n+1}}{-n+1}\Bigg|^b_a=\frac{b^{-n+1}}{-n+1}-\frac{a^{-n+1}}{-n+1}\]
+当然，又有$n\ne -1$时，上式才能成立。
+
+如果$n=-1$，依复合函数求导法则，得
+\[(\ln|x|)'=\frac{1}{|x|}\cdot |x|'\]
+若$x>0$，则
+\[(\ln|x|)'=\frac{1}{x}\cdot 1=\frac{1}{x}\]
+若$x<0$，则
+\[(\ln|x|)'=\frac{1}{-x}\cdot (-1)=\frac{1}{x}\]
+总之
+\[(\ln|x|)'=\frac{1}{x},\quad (x\ne 0)\]
+因此
+\[\begin{split}
+\int^b_a \frac{1}{x}\dd x=\ln |x|\Bigg|^b_a &=\ln|b|-\ln |a|\\
+&=\ln\left|\frac{b}{a}\right|=\ln\frac{b}{a}\quad (x\ne 0,\; ab>0)
+\end{split}\]
+\end{example}
+
+\begin{example}
+    求$\Int^3_1 |x-2|\dd x$
+\end{example}
+
+\begin{solution}
+\[\begin{split}
+    \Int^3_1 |x-2|\dd x&=\Int^2_1 -(x-2)\dd x+\Int^3_2 (x-2)\dd x\\
+&=\left(-\frac{x^2}{2}+2x\right)\Bigg|^2_1+\left(\frac{x^2}{2}-2x\right)\Bigg|^3_2\\
+&=\frac{1}{2}+\frac{1}{2}=1
+\end{split}\]
+\end{solution}
+
+\begin{example}
+求$\Lim_{n\to\infty}\frac{\sum^n_{i=1}i^p}{n^{p+1}}\quad (p\in \mathbb{N})$
+\end{example}
+
+
+\begin{solution}
+\[\begin{split}
+    \Lim_{n\to\infty}\frac{\sum^n_{i=1}i^p}{n^{p+1}}&=\Lim_{n\to\infty}\sum^n_{i=1}\left(\frac{i}{n}\right)^p\cdot \frac{1}{n}\\
+    &=\int^1_0 x^p\dd x=\left.\frac{x^{p+1}}{p+1}\right|^1_0=\frac{1}{p+1}
+\end{split}\]
+\end{solution}
+
+\begin{ex}
+\begin{enumerate}
+\item 用求原函数的方法, 计算下列定积分:
+\begin{multicols}{2}
+\begin{enumerate}
+ \item $\Int_{2}^{3}\left(x^{3}+6 x^{2}+4 x+1\right) \dd x$
+\item $\Int_{1}^{5} \frac{v^{2}+2}{v^{4}} \dd v$
+\item $\Int_{-3}^{-2}\left(x+\frac{2}{x}\right)^{2} \dd x$
+\item $\Int_{1}^{10}\left(x+\frac{1}{x}\right) \dd x$
+\item $\Int_{a}^{b}|x-1| \dd x$
+\end{enumerate}
+\end{multicols}
+\item 求曲线 $y=2 x-x^{2}$ 与 $x$ 轴之间的面积.
+\item 设 $y=x(x-1)(x-2)$，
+求 $\Int_{0}^{1} y \dd x,\; \Int_{1}^{2} y\dd x,\; \Int_{0}^{2} y \dd x$,
+并说明所得结果的几何意义。
+
+\item 求直线$y=2x$和曲线$y=x^2$之间的面积。
+\item 求由曲线$y=\frac{1}{x^2}$和直线$x=1$, $x=4$所围成的曲边梯形的
+面积。
+\item 求抛物线方程使它具有以下的性质：
+\begin{enumerate}
+\item 抛物线通过$(0, 0)$, $(1, 2)$两点，
+\item 它的对称轴平行$y$轴，且向上凸，
+\item 它与$x$轴所围的面积最小。
+\end{enumerate}
+
+\item 求正数$a$, 使$\Int^1_0 |x^2-a^2|\dd x$最小。
+\item 求下列函数的导数：
+\begin{multicols}{2}
+    \begin{enumerate}
+     \item $F(x)=\Int_{a}^{x}\sin^2 t \dd t$
+    \item $F(x)=\Int_{a}^{x^2} \sin^2 t \dd t$
+    \end{enumerate}
+    \end{multicols}
+\end{enumerate}
+
+\end{ex}
+
+\section{不定积分}
+由上节的微积分基本定理得知，在$[a,b]$上的两个可
+微函数$G_1(x)$和$G_2(x)$均以$f(x)$为其导数，则$G_1(x)$与$G_2(x)$在$[a,b]$上只差一个常数$C$. 由此可见，如果$G'(x)=f(x)$, 且$C$为任意常数，那么$[G(x)+C]'=G'(x)=f(x)$. 这就是说：如果 函数$f(x)$有一个原函数$G(x)$, 那么就有无穷多个原函数，并且所有原函数刚好组成函数族
+\[\{G(x)+C\;|\; C\text{是任意常数}\}\]
+
+\begin{blk}
+   {定义} 函数$f(x)$在区间$[a,b]$上的原函数全体叫做$f(x)$的不定积分，记作
+   \[\int f(x)\dd x\]
+   设$G(x)$是$f(x)$的一个原函数，那么由不定积分的定义得到
+\[\int f (x) \dd x=G (x) +C\]
+   其中$C$是任意常数。
+\end{blk}   
+
+关于不定积分，易见有如下性质：
+
+\begin{blk}{性质1}
+   积分与微分互为逆运算，即：
+\[\begin{cases}
+    \dd\Int f(x)\dd x=f(x)\dd x\\
+    \Int \dd f(x)=f(x)+C
+\end{cases}\]
+\end{blk}
+
+事实上，因为$\frac{\dd }{\dd x}\Int^x_a f(t)\dd t=f(x)$，所以
+\[\int f(x)\dd x=\int^x_a f(t)\dd t+C\qquad \text{（基本定理1和不定积分定义）}\]
+于是
+\[\left(\int f(x)\dd x\right)'=\left(\int^x_a f(x)\dd x\right)'=f(x)\]
+从而
+\[\dd\int f(x)\dd x=f(x)\dd x\]
+又
+\[\begin{split}
+    \int \dd f(x)&=\int f'(x)\dd x=\int^x_a f'(t)\dd t+C_1\\
+    &=f(x)-f(a)+C_1\quad \text{（基本定理）}\\
+    &=f(x)+C
+\end{split}\]
+这里$C=-f(a)+C_1$. 
+
+从性质1看出，若不要不定积分等式中的任意常数项，则当符号$\Int$与$\dd$紧接着时，无论哪个在前，哪个在后，都可以消掉。
+
+因为微分，积分是两种互逆的运算，所以它们的运算法则是互相对应的，现将它们相对应的法则叙述如下：
+
+\begin{blk}{性质2}
+ \[\begin{cases}
+     {\rm d} [f(x)+g(x)]=\dd f(x)+\dd g(x)\\
+     \Int [f(x)+g(x)] \dd x=\Int f(x)\dd x+\Int g(x)\dd x+C
+ \end{cases}\]
+ \end{blk}
+
+ 上面不定积分公式的正确性不难证明，只要求出两边的微商，由于所得到的微商恒等，就可以知道它们只差一个常数项，因为，由性质1
+\[\begin{split}
+    \left(\int[f(x)+g(x)]\dd x\right)'&=f(x)+g(x)\\
+    \left(\int f(x)\dd x+\int g(x)\dd x\right)'&=\left(\int f(x)\dd x\right)'+\left(\int g(x)\dd x\right)'=f(x)+g(x)
+\end{split}\]
+所以$f(x)+g(x)$的两个原函数相差一个常数项，即：
+\[\int[f(x)+g(x)]\dd x=\int f(x)\dd x+\int g(x)\dd x+C\]
+同理可得：
+
+\begin{blk}{性质3}
+\[\begin{cases}
+    {\rm d} [a f(x)]=a\dd f(x)\\
+    \Int af(x)\dd x=a\Int f(x)\dd x
+\end{cases}\qquad (a\ne 0)\]
+\end{blk}
+
+\subsection{基本积分表}
+
+由基本微商公式表，倒转顺序，就可以得到下面这个表：
+\begin{itemize}
+    \item $\frac{\dd}{\dd x}C=0,\qquad \Int 0\dd x=C$
+    \item $\frac{\dd }{\dd x}x^{\mu}=\mu x^{\mu-1},\qquad \Int x^{\mu}\dd x=\frac{x^{\mu+1}}{\mu+1}+C\quad \text{（$\mu$是不等于$-1$的实数）}$
+    \item $\frac{\dd }{\dd x}\ln|x|=\frac{1}{x},\qquad \Int\frac{\dd x}{x}=\ln|x|+C\quad (x\ne 0)$
+    \item $\frac{\dd }{\dd x}e^x=e^x,\qquad \Int e^x\dd x=e^x+C$
+\end{itemize}
+还因为$a^x=e^{x\ln a}$，由复合函数求导法则，得：
+\[(a^x)'=e^{x\ln a}(x\ln a)'=\ln a\cdot e^{x\ln a}=\ln a\cdot a^x\]
+所以：
+\begin{itemize}
+    \item $\frac{\dd}{\dd x}a^x=\ln a\cdot a^x,\qquad \Int a^x\dd x=\frac{a^x}{\ln a}+C$
+    \item $\frac{\dd}{\dd x} \sin x=\cos x, \qquad \Int \cos x \dd x=\sin x+C$.
+    \item $\frac{\dd}{\dd x} \cos x=-\sin x, \qquad \Int \sin x \dd x=-\cos x+C$.
+    \item  $\frac{\dd}{\dd x}\tan  x=\sec ^{2} x, \qquad \Int \sec^{2} x \dd x=\tan x+C$
+    \item $\frac{\dd}{\dd x}\cot x=-\csc ^{2} x, \qquad \Int \csc^{2} x \dd x=-\cot x+C$
+    \item $\frac{\dd}{\dd x} \arcsin x=\frac{1}{\sqrt{1-x^{2}}} ,\qquad \Int \frac{\dd x}{\sqrt{1-x^{2}}}=\arcsin x+C$ 
+    
+    $\frac{\dd}{\dd x} \arccos x=\frac{-1}{\sqrt{1-x^{2}}},\qquad \Int\frac{-1}{\sqrt{1-x^{2}}}\dd x=-\arccos x+C'$
+    \item  $\frac{\dd}{\dd x}\arctan x=\frac{1}{x^{2}+1}, \qquad \Int \frac{\dd x}{x^{2}+1}=\arctan x+C$ 
+    
+    $\frac{\dd}{\dd x} \arccot x=\frac{-1}{x^{2}+1}, \qquad \Int \frac{-1}{x^{2}+1}\dd x=-\arccot  x+C'$
+\end{itemize}
+
+现在来看不定积分的几何意义。
+
+由不定积分的定义知道，求函数$f(x)=3x^2$的原函数全体，就是求不定积分$\Int 3x^2\dd x$, 也就是求满足微分方程
+\begin{equation}
+    \frac{\dd y}{\dd x}=3x^2
+\end{equation}
+的所有的原函数。
+
+显然，$y=x^3$就是微分方程(4.5)的一个原函数，它的图象上各点切线的斜率由(4.5)确定。我们称曲线$y=x^3$为
+微分方程(4.5)的积分曲线，把它沿$y$轴上下平移任意一段距离，便得到曲线族
+\begin{equation}
+    y=x^3+C
+\end{equation}
+并且(4.6)中任意一条曲线与曲线$y=x^3$在横坐标相同的点的切线平行，其斜率都等于$3x^2$, 因此，曲线族(4.6)是满足微分方程(4.5)的所有积分曲线，也就是不定积分$\Int 3x^2\dd x=x^3+C$的几何表示（图4.3）。
+
+为要确定(4.5)的某条积分曲线的位置，应当给出这条积分曲线必须经过的一点，例如它经过点$P(1, 3)$. 我们说这条件也是微分方程(4.5)的一个相应的原函数要满足的初值条件
+$y\big|_{x=1}=3$
+把它们代入(4.6), 得到
+\[3=1^3+C\quad \Rightarrow\quad C=2\]
+因此，满足微分方程$\frac{\dd y}{\dd x}=3x^2$和初值条$y\big|_{x=1}=3$的原函
+数或相应的积分曲线是
+\[y=x^3+2\]
+
+通常把满足微分方程
+\begin{equation}
+\frac{\dd y}{\dd x}=f(x)
+\end{equation}
+的所有解叫做给定函数$f(x)$的不定积分，即
+\[y=\int f(x)\dd x\]
+把函数$f(x)$的一个原函数$y=G(x)$的图象叫做微分方程(4.7)的一条\textbf{积分曲线}，这样，不定积分
+\[y=\int f(x)\dd x=G(x)+C \quad \text{（$C$为任意常数）}\]
+的几何意义就表示与$y=G(x)$在各点有相同斜率$\frac{\dd y}{\dd x}=f(x)$的积分曲线族（图4.3）.
+\begin{figure}[htp]
+    \centering
+\begin{tikzpicture}[>=latex, xscale=3, yscale=.8]
+\draw[->](-1,0)--(1.25,0)node[right]{$x$};
+\draw[->](0,-4)--(0,4)node[right]{$y$};
+\node at (0,0)[below left]{$O$};
+\foreach \y in {1,2,3}
+{
+    \draw[domain=-.8:.8, samples=100, very thick]plot(\x, {\x*\x*\x+\y})node[right]{$y=x^3+$\y};
+    \draw[domain=-.8:.8, samples=100, very thick]plot(\x, {\x*\x*\x-\y})node[right]{$y=x^3-$\y};
+}
+\draw[domain=-.8:.8, samples=100, very thick]plot(\x, {\x*\x*\x})node[right]{$y=x^3$};
+\end{tikzpicture}
+    \caption{}
+\end{figure}
+
+由微积分基本定理2知道，如果$y=G(x)$满足下面两个条件：
+\[G'(x)=f(x)\quad \text{且}\quad G(a)=0\]
+那么，$y=G(x)$就是$f(x)$的求和函数$G(x)=\Int^x_a f(x)\dd x$.
+
+\begin{example}
+求$\Int \sin (kx)\dd x,\quad \Int \cos(kx)\dd x,\quad \Int e^{kx}\dd x,\quad \Int \frac{\dd x}{x^2+a^2}$
+\end{example}
+
+\begin{solution}
+    因为
+\[\begin{split}
+    (\cos kx)'&=-k\sin kx\\
+    (\sin kx)'&=k\cos kx\\
+    (e^{kx})'&=ke^{kx}\\
+    \left(\arctan\frac{x}{a}\right)'&=\frac{1}{\left(\frac{x}{a}\right)^2+1}\cdot\left(\frac{x}{a}\right)'=\frac{a}{x^2+a^2}
+\end{split}\]
+所以
+\[\begin{split}
+    \int \sin (kx)\dd x&=-\frac{1}{k}\cos kx+C\\
+    \Int \cos(kx)\dd x&=\frac{1}{k}\sin kx+C\\
+    \Int e^{kx}\dd x&= \frac{1}{k}e^{kx}+C\\
+    \Int \frac{\dd x}{x^2+a^2}&=\frac{1}{a}\arctan\frac{x}{a}+C \\
+\end{split}  \]
+\end{solution}
+
+\begin{example}
+    证明：若$\Int f(t)\dd t=F(t)+C$，则
+\[\int f(kx)\dd x=\frac{1}{k}F(kx)+C\]
+\end{example}
+
+\begin{proof}
+只须证明$f(kx)$的一个原函数是$\frac{1}{k}F(kx)$即可。
+我们求$\frac{1}{k}F(kx)$对$x$的导数，于是
+\[\frac{\dd}{\dd x}\left[\frac{1}{k}F(kx)\right]=\frac{1}{k}F'(kx)\cdot (kx)'=F'(kx)\]
+由题设知$F' (t) =f (t)$, 所以
+\[\frac{\dd}{\dd x}\left[\frac{1}{k}F(kx)\right]=F'(kx)=f(kx)\]
+因此
+\[\int f (kx) \dd x=\frac{1}{k}F (kx) +C\]
+\end{proof}
+
+\begin{example}
+求$\Int \sin kx\sin\ell x\dd x$
+\end{example}
+
+\begin{solution}
+\[\begin{split}
+    \Int \sin kx\sin\ell x\dd x&=\int \frac{1}{2}[\cos(k-\ell)x-\cos(k+\ell)x]\dd x\\
+    &=\frac{1}{2}\int \cos (k-\ell)x\dd x-\frac{1}{2}\int \cos (k+\ell)x\dd x\\
+&=\frac{\sin(k-\ell)x}{2(k-\ell)}-\frac{\sin(k+\ell)x}{2(k+\ell)}+C
+\end{split}\]
+    这里$k\ne \pm \ell$。（如果$k=\pm\ell$，则另当考虑）
+\end{solution}
+
+
+\begin{example}
+求$\Int \left(\frac{2a}{\sqrt{x}}-\frac{b}{x^2}+2xc^{\tfrac{2}{3}}\right)\dd x$
+\end{example}
+
+
+\begin{solution}
+    \[\begin{split}
+        \Int \left(\frac{2a}{\sqrt{x}}-\frac{b}{x^2}+2xc^{\tfrac{2}{3}}\right)\dd x&=2a\int x^{-\tfrac{1}{2}}\dd x-b\int x^{-2}\dd x+3c\int x^{\tfrac{2}{3}}\dd x\\
+        &=4a\sqrt{x}+\frac{b}{x}+\frac{9}{5}cx^{\tfrac{5}{3}}+C
+    \end{split}\]
+\end{solution}
+
+\begin{example}
+    求$\Int \frac{3x^2}{1+x^2}\dd x$
+\end{example}
+
+\begin{solution}
+\[\begin{split}
+    \Int \frac{3x^2}{1+x^2}\dd x&=3\int \left(1-\frac{1}{x^2+1}\right)\dd x\\
+    &=3\int \dd x-3\int \frac{\dd x}{x^2+1}\\
+    &=3x-3\arctan x+C
+\end{split}\]
+\end{solution}
+
+以上各例都是利用不定积分的性质2、3, 同时配合使用三角恒等式或设法将被积函数拆成几项，从而把一个比较复杂的积分化成若干个可以查基本积分表的积分。
+
+\begin{ex}
+\begin{enumerate}
+    \item 计算下列不定积分:
+\begin{multicols}{2}
+\begin{enumerate}
+\item  $\Int\left(x^{3}+3 x+5\right) \dd x$
+\item  $\Int(x+2)^{4} \dd x$
+\item  $\Int\left(x^{-2}+x^{-1}+x^{\tfrac{1}{3}}+x^{\tfrac{1}{2}}\right) \dd x$
+\item  $\Int\left(a^{\tfrac{2}{3}}-x^{\tfrac{2}{3}}\right)^{3} \dd x$
+\item  $\Int\left(\frac{1}{x}+e^{x}\right) \dd x$
+\item  $\Int \frac{2 \cdot 3^{x}-5 \cdot 2^{x}}{3^{x}} \dd x$
+\item  $\Int \left(\frac{3}{1+x^{2}}-\frac{2}{\sqrt{1-x^{2}}}\right) \dd x$
+\item  $\Int \frac{2+x^{2}}{1+x^{2}} \dd x$
+\item  $\Int \frac{\dd x}{x^{2}\left(1+x^{2}\right)}$
+\item  $\Int \frac{\dd x}{x^{2}\left(a^{2}+x^{2}\right)}$
+\item  $\Int 3^{x} e^{x} \dd x$
+\end{enumerate}
+\end{multicols}
+
+\item  利用三角恒等式, 计算下列不定积分:
+    \begin{multicols}{2}
+        \begin{enumerate}
+    \item  $\Int \tan^{2} x \dd x$
+    \item  $\Int \frac{\cos 2 x}{\cos x-\sin x} \dd x$
+    \item  $\Int \frac{2+\sin ^{2} x}{\cos ^{2} x} \dd x$
+    \item  $\Int \sin ^{2} x \dd x$
+    \item  $\Int \cos ^{2} x \dd x$
+    \item  $\Int \cos k x \cos \ell x \dd x$
+    \item  $\Int \sin 2 x \cos 5 x \dd x$
+    \item  $\Int \frac{\dd t}{\sin ^{2} t \cos ^{2} t}$
+    \item  $\Int \sin ^{3} x \dd x$
+    \item  $\Int \cos ^{3} x \dd x$
+\end{enumerate}
+\end{multicols}    
+
+\item 若$\Int f(t)\dd t=F(t)+C$, 求证
+\[\int f (ax+b) \dd x=\frac{1}{a}F (ax+b) +C\]
+\item  若$\frac{\dd y}{\dd x}=4x-6$, 且当$x=0$时，$y=9$, 求$y$的极小值。
+\item  若$\frac{\dd y}{\dd x}=ax+b$, 求原函数$y=f(x)$使其满足下列条件：
+\begin{enumerate}
+    \item 当$x=0$时，$y=5$;
+    \item 积分曲线向下凸且曲线$y=f(x)$在$x$轴上截得的弦长等于4;
+    \item 曲线$y=f(x)$上纵坐标的最小值等于$-4$.
+\end{enumerate}
+\item 试求一个次数最低的多项式，使之当$x=1$时，有最大值6，而当$x=3$时，有最小值2.
+\item  求下列各式的极限：
+\begin{enumerate}
+    \item $\Lim_{n\to\infty}\frac{\sqrt[n]{e}+\sqrt[n]{e^2}+\cdots+\sqrt[n]{e^n}}{n}$
+    \item $\Lim_{n\to\infty}\frac{\sqrt[n]{e}+\sqrt[n]{e^4}+\cdots+\sqrt[n]{e^{2n}}}{n}$
+\end{enumerate}
+\end{enumerate}
+
+\end{ex}
+
+
+\section{不定积分的计算方法}
+从上一节看到，虽然利用积分运算法则及基本积分表可以求出不少函数的原函数，但是实际遇到的积分仅凭这一些
+方法还不能完全解决，本节将介绍几种典型的方法，利用这些方法，我们就可以计算更多的不定积分，此外，我们还制作了较为详细的积分表，可供使用时查阅。
+
+\subsection{第一换元法}
+
+有一些不定积分，将积分变量进行某种变映后就能由基本积分公式求出，例如求$\Int e^{2x}\dd x$, 在基本积分公式中只有$\Int e^x\dd x$, 没有直接求出它的公式，我们看到所求积分的被积函数$e^{2x}$是$y=e^u$和$u=2x$的复合函数，如果在积分表达式$e^{2x}\dd x$中，把被积函数看成中间变量$u$的函数，即设$u=2x$则$e^{2x}=e^u$, 从而$\dd u=2\dd x$, 由此可见只要再给微分$\dd x$凑上一个常数因子2, 就得到中间变量$u$的微分$\dd u$, 于是
+\[\int e^{2x}\dd x=\int e^{2x}\cdot \frac{1}{2}\dd (2x) =\frac{1}{2}\int e^u\dd u=\frac{1}{2}e^u+C\]
+然后再代回原来的积分变量，得
+\[\int e^{2x}\dd x=\frac{1}{2}e^{2x}+C\]
+
+\begin{example}
+    求$\Int \frac{\dd x}{\sqrt{a^2-x^2}}\quad (a>0)$
+\end{example}
+
+\begin{solution}
+    因为被积函数$\frac{1}{\sqrt{a^2-x^2}}=\frac{1}{a\sqrt{1-\left(\frac{x}{a}\right)^2}}$
+是$y=\frac{1}{a\sqrt{1-u^2}}$和$u=\frac{x}{a}$的复合函数，且$\dd u=\frac{1}{a}\dd x$，于是
+\[\begin{split}
+    \int \frac{\dd x}{\sqrt{a^2-x^2}}=\int \frac{\dd x}{a\sqrt{1-\left(\frac{x}{a}\right)^2}}&=\int \frac{\frac{1}{a}\dd x}{\sqrt{1-\left(\frac{x}{a}\right)^2}}\\
+    \text{令}u=\frac{x}{a}\to &= \int \frac{\dd u}{\sqrt{1-u^2}}\\
+    \text{查表}\to &=\arcsin u+C\\
+    u=\frac{x}{a} \to &=\arcsin \frac{x}{a}+C
+\end{split}\]
+\end{solution}
+
+\begin{example}
+    求$\Int \tan x\dd x$
+\end{example}
+
+
+\begin{solution}
+\[\begin{split}
+    \Int \tan x\dd x=\Int  \frac{\sin x}{\cos x}\dd x&=-\int \frac{\dd \cos x}{\cos x}\\
+    u=\cos x\to &=-\int \frac{\dd u}{u}\\
+    &=-\ln|u|+C=-\ln |\cos x|+C=\ln |\sec x|+C
+\end{split}\]
+\end{solution}
+
+从上述两例看到，在求不定积分时，首先要与已知的基本积分公式相对比，并利用简单的变量代换，把要求的积分凑成公式所具有的形式，求出以后，再把原来的变量代回。以上变量代换中关键的一步是把原来的被积函数$f(x)$的某部分$\varphi(x)$换成中间变量$u$, 那么原来的被积表达式$f(x)\dd x$就拆成了$g[\varphi(x)]=g(u)$和$\varphi'(x)\dd x=\dd u$这两部分的乘积，即
+\[f (x) \dd x=g [\varphi (x) ] \varphi' (x) \dd x=g (u) \dd u\]
+于是：若$\Int g(x)\dd x=F(x)+C$，那么
+\[\int g[\varphi(x)]\varphi'(x)\dd x=\int g(u)\dd u=F(u)+C=F[\varphi(x)]+C\]
+上述换元法叫做第一换元法。
+
+\begin{example}
+求$\Int \sin^{3}x\dd x$
+\end{example}
+
+\begin{solution}
+设$u=\cos x$，$\dd u=-\sin x\dd x$，于是
+\[\begin{split}
+    \Int \sin^{3}x\dd x&=\int (1-\cos^2 x)\cdot \sin x\dd x\\
+  u=\cos x\to  &=-\int (1-u^2)\dd u\\
+  &=-u+\frac{u^3}{3}+C=\frac{\cos^3 x}{3}-\cos x+C
+\end{split}\]
+\end{solution}
+
+对换元积分法较熟练以后，所设换元变量$u$可以不写出。
+
+\begin{example}
+求$\Int \frac{\dd x}{\sqrt{ax+b}}$
+\end{example}
+
+\begin{solution}
+    \[\Int \frac{\dd x}{\sqrt{ax+b}}=\frac{1}{a}\int \frac{\dd(ax+b)}{\sqrt{ax+b}}=\frac{2}{a}\sqrt{ax+b}+C\]
+\end{solution}
+
+\begin{example}
+    求$\Int \frac{\dd x}{a^2-x^2}$
+\end{example}
+
+\begin{solution}
+\[\begin{split}
+    \Int \frac{\dd x}{a^2-x^2}&=\frac{1}{2a}\int\left(\frac{1}{a-x}+\frac{1}{a+x}\right)\dd x\\
+    &=\frac{1}{2a}\left[-\int\frac{\dd(a-x)}{a-x}+\int\frac{\dd(a+x)}{a+x}\right]\\
+    &=\frac{1}{2a}\left[-\ln|a-x|+\ln|a+x|\right]=\frac{1}{2a}\ln\left|\frac{a+x}{a-x}\right|
+\end{split}\]
+\end{solution}
+
+\begin{example}
+    求$\Int \sec x\dd x$
+\end{example}
+
+\begin{solution}
+    \[\Int \sec x\dd x=\int \frac{\cos x}{\cos^2 x}\dd x=\int \frac{\dd(\sin x)}{1-\sin^2 x}\]
+利用上题结果，得：
+\[\begin{split}
+    \int \sec x\dd x&=\frac{1}{2}\ln\left|\frac{1+\sin x}{1-\sin x}\right|+C\\
+    &=\frac{1}{2}\ln\frac{1+\sin x}{1-\sin x}+C\\
+    &=\frac{1}{2}\ln\frac{(1+\sin x)^2}{\cos^2 x}+C\\
+    &=\ln|\sec x+\tan x|+C
+\end{split}\]
+
+\end{solution}
+
+\begin{example}
+    求$\Int \frac{1}{\sin^2x +3\cos^2x}\dd x$
+\end{example}
+
+\begin{solution}
+    \[\begin{split}
+        \Int \frac{1}{\sin^2x +3\cos^2x}\dd x&=\Int \frac{1}{(\tan^2x +3)\cos^2x}\dd x\\
+        &=\int \frac{\dd (\tan x)}{\tan^2 x+\left(\sqrt{3}\right)^2}=\frac{1}{\sqrt{3}}\int \frac{\dd\left(\frac{\tan x}{\sqrt{3}}\right)}{\left(\frac{\tan x}{\sqrt{3}}\right)^2+1}\\
+        &=\frac{1}{\sqrt{3}}\arctan\left(\frac{\tan x}{\sqrt{3}}\right)+C      
+    \end{split}\]
+\end{solution}
+
+\begin{ex}
+求下列不定积分：
+\begin{enumerate}
+\item  $\Int(3 x+5)^{100} \dd x$
+\item  $\Int\pi e^{-\tfrac{\pi}{4} x} \dd x$
+\item  $\Int \frac{\ln x}{x} \dd x$
+\item  $\Int\frac{1}{x^{2}} \cdot e^{\tfrac{1}{x}} \dd x$
+\item  $\Int\frac{\cos \sqrt{x}}{\sqrt{x}} \dd x$
+\item  $\Int \frac{1}{(\arcsin x)^{2} \sqrt{1-x^{2}}} \dd x$
+\item  $\Int\frac{\dd x}{x^{2}+a^{2}}$
+\item  $\Int \frac{\dd x}{x^{2}-a^{2}}$
+\item  $\Int \frac{1}{\sqrt{x}} e^{\sqrt{x}} \dd x$
+\item  $\Int \frac{2 a x+b}{2 \sqrt{a x^{2}+b x+c}} \dd x$
+\item  $\Int\frac{1}{1+e^{x}} \dd x$
+\item  $\Int \frac{e^{x}}{e^{2 x}+1} \dd x$    
+\item $\Int \frac{\cos x}{e^{\sin x}} \dd x$
+\item $\Int \frac{\dd x}{\cos ^{2} x \sqrt{\tan x}}$
+\item $\Int  \frac{\cos a x}{b-\sin a x} \dd x\quad (a \neq 0) $
+\item $\Int x \sqrt{a x^{2}+c}\; \dd x$
+\item $\Int \frac{\sin ^{2} x \cos x \dd x}{1+\sin x}$
+\item $\Int \frac{\sqrt{\arctan x}}{1+x^{2}} \dd x$
+\item $\Int \frac{1}{1+\sin x} \dd x$
+\item $\Int \frac{\sqrt{1+\cos x}}{\sin x} \dd x$
+\item $\Int \frac{\dd x}{x^{2}+x-6}$
+\item $\Int \frac{x \dd x}{3 x^{2}+x+2}$
+\item $\Int  \frac{\dd x}{3 x^{2}+x+2}$
+\item $\Int  \cot x \dd x$
+\item $\Int  \frac{\dd x}{\sin x}$
+\item $\Int \frac{\arcsin x}{\sqrt{1-x^{2}}} \dd x$
+\end{enumerate}
+\end{ex}
+
+\subsection{第二换元积分法}
+
+有些积分不能很容易地凑出微分，而是一开始就要作代换，把要求的积分化简，然后再求积分。
+
+\begin{example}
+    求$\Int \frac{1}{1+\sqrt{x}}\dd x$.
+\end{example}
+
+\begin{solution}
+    这个积分的表达式不容易拆成中间变量$u=\varphi(x)$
+的函数$g(\varphi(x))=g(u)$和中间变量的微分$\varphi'(x)\dd x=\dd u$的乘积，因此前面的第一换元法对此题用起来不便。这时我们设法作一个代换，以便把被积函数中的根号去掉，化成新变量的有理式。
+
+令$x=u^2$, 即作代换$\sqrt{x}=u$, 于是
+\[\begin{split}
+    \frac{1}{1+\sqrt{x}}&=\frac{1}{1+u}\\
+    \dd x&=2u\dd u
+\end{split}\]
+从而
+\[\begin{split}
+    \Int \frac{1}{1+\sqrt{x}}\dd x&=\int \frac{1}{1+u}2u\dd u\\
+    &=2\int \frac{(1+u)-1}{1+u}\dd u\\
+    &=2\left[\int \dd u-\int \frac{1}{1+u}\dd u\right]\\
+    &=2\left[u-\ln |1+u|\right]+C\\
+    &=2\left[\sqrt{x}-\ln\left(1+\sqrt{x}\right)\right]+C
+\end{split}\]
+\end{solution}
+
+这里由于把积分变量$x$换成了$u$的函数$x=u^2$, 因此在最后结果中，用变量$u$表出的函数，还要还原成$x$的函数，这就要求从所作的代换$x=u^2$中解出反函数$u=\sqrt{x}$来．
+
+我们把第二换元积分法用定理形式叙述如下：
+
+\begin{blk}{定理}
+设$x=\varphi(u)$是可微函数，且$\varphi'(u)\ne 0$，若
+\begin{equation}
+    \int f[\varphi(u)]\varphi'(u)\dd u=F(u)+C
+\end{equation}
+那么
+\begin{equation}
+    \int f(x)\dd x=F\left[\varphi^{-1}(x)\right]+C
+\end{equation}
+\end{blk}
+
+\begin{proof}
+只须证明$\frac{\dd}{\dd x}F[\varphi^{-1}(x)]=f(x)$即可。
+
+因为$\varphi'(u)\ne 0$，故$x=\varphi(u)$的反函数$u=\varphi^{-1}(x)$存在，于是
+\[\begin{split}
+    \frac{\dd}{\dd x}F[\varphi^{-1}(x)]&=\frac{\dd}{\dd u}F[\varphi^{-1}(x)]\cdot \frac{\dd }{\dd x}\varphi^{-1}(x)\\
+    &=\frac{\dd}{\dd u}F(u)\cdot \frac{1}{\frac{\dd}{\dd u}\varphi(u)}\\
+    &=F'(u)\cdot \frac{1}{\varphi'(u)}\\
+    &=\left\{f[\varphi(u)]\varphi'(u)\right\}\cdot \frac{1}{\varphi'(u)}\\
+    &=f[\varphi(u)]\\
+    x=\varphi(u)\to &=f(x)
+\end{split}\]
+\end{proof}
+
+
+\begin{example}
+    求$\Int\frac{\dd x}{\sqrt{x}+\sqrt[3]{x}}$.
+\end{example}
+
+\begin{solution}
+    \[\Int\frac{\dd x}{\sqrt{x}+\sqrt[3]{x}}=\int \frac{\dd x}{\left(\sqrt[6]{x}\right)^3+\left(\sqrt[6]{x}\right)^2}\]
+设$x=u^6$，$u>0$，则可化去被积函数中的根号，于是
+\[\frac{1}{\sqrt{x}+\sqrt[3]{x}}=\frac{1}{u^3+u^2}\quad \Rightarrow\quad \dd x=6u^5\dd u\]
+从而
+\[\begin{split}
+    \Int\frac{\dd x}{\sqrt{x}+\sqrt[3]{x}}&=\int \frac{6u^5}{u^3+u^2}\dd u=\int\frac{6u^3}{u+1}\dd u\\
+    &=6\int \left(u^2-u+1-\frac{1}{u+1}\right)\dd u\\
+    &=6\left\{\frac{u^3}{3}-\frac{u^2}{2}+u-\ln|u+1|\right\}+C\\
+    &=2\sqrt{x}-3\sqrt[3]{x}+6\sqrt[6]{x}-\ln\left(\sqrt[6]{x}+1\right)+C
+\end{split}
+    \]
+\end{solution}
+
+\begin{example}
+    求$\Int \frac{x+1}{\sqrt[3]{3x+1}}\dd x$.
+\end{example}
+
+\begin{solution}
+    设$3x+1=t^3$，即$x=\frac{1}{2}(t^3-1)$，于是：$\dd x=t^2\dd t$
+\[\begin{split}
+    \Int \frac{x+1}{\sqrt[3]{3x+1}}\dd x&=\int \frac{\frac{1}{3}(t^3-1)+1}{t}t^2\dd t\\
+&=\frac{1}{3}\int (t^4+2t)\dd t\\
+&=\frac{1}{3}\left(\frac{1}{5}t^5+t^2\right)+C=\frac{1}{15}(3x+1)^{\tfrac{5}{3}}+\frac{1}{3}(3x+1)^{\tfrac{2}{3}}+C\\
+&=\frac{1}{5}(x+2)(3x+1)^{\tfrac{2}{3}}+C
+\end{split}\]
+\end{solution}
+
+上面所介绍的两种变量代换法的基本思想是一致的。第一种是把被积函数中的一个小部分看作一个变量，即“化繁为简”；第二种则把积分变量代以一个新变量的函数，表面上看来是“化简为繁”，但实际上克服了求积分的困难。应当注意，在使用第二种变量代换法时，要保证变换是可微的和一对一的，否则会出现错误.
+
+下面介绍当被积函数含有二次根式$\sqrt{a^2-x^2}$, $\sqrt{a^2+x^2}$, $\sqrt{x^2-a^2}$时，怎样作代换。
+
+\begin{example}
+    求$\Int \sqrt{a^2-x^2}\dd x\quad (a>0)$.
+\end{example}
+
+\begin{solution}
+因为\[\sqrt{a^2-x^2}=\sqrt{a^2\left(1-\frac{x^2}{a^2}\right)}=a\sqrt{1-\left(\frac{x}{a}\right)^2}\]
+所以可作正弦代换
+\[\frac{x}{a}=\sin t\quad \left(-\frac{\pi}{2}\le t\le \frac{\pi}{2}\right)\]
+$\sin t$在$\left[-\frac{\pi}{2},\frac{\pi}{2}\right]$上连续且递增，有反函数$t=\arcsin\frac{x}{a},\; -1\le x\le 1$. 于是
+\[\begin{split}
+    \dd x&=\dd (a\sin t)=a\cos t\dd t\\
+    \sqrt{a^2-x^2}&=a\sqrt{1-\left(\frac{x}{a}\right)^2}=a\sqrt{1-\sin^2 t}=a\cos t
+\end{split}\]
+从而：
+\[\begin{split}
+    \Int \sqrt{a^2-x^2}\dd x&=\int a\cos t\cdot a\cos t\dd t=a^2\int \cos^2 t\dd t\\ 
+&=a^2\int \frac{1+\cos 2t}{2}\dd t=\frac{a^2}{2}\left[\int \dd t+\frac{1}{2}\int \cos 2t\dd (2t)\right]\\
+&=\frac{a^2}{2}\left(t+\frac{1}{2}\sin 2t\right)+C=\frac{a^2}{2}\left(t+\sin t\cos t\right)+C\\
+&=\frac{a^2}{2}\left[\arcsin\frac{x}{a}+\frac{x}{a}\sqrt{1-\left(\frac{x}{a}\right)^2}+C\right]\\
+&=\frac{a^2}{2}\arcsin\frac{x}{a}+\frac{x}{2}\sqrt{a^2-x^2}+C
+\end{split}\]
+\end{solution}
+
+\begin{example}
+    求$\Int \frac{\dd x}{\sqrt{a^2+x^2}}\quad (a>0)$.
+\end{example}
+
+\begin{solution}
+因为$\sqrt{a^2+x^2}=a\sqrt{1+\left(\frac{x}{a}\right)^2}$，设$\frac{x}{a}=\tan t\; \left(-\frac{\pi}{2}<t<\frac{\pi}{2}\right)$，则存在反函数
+\[t=\arctan\frac{x}{a}\quad \Rightarrow\quad \dd x=a\sec^2 t\dd t\]
+又$\sqrt{a^2+x^2}=a\sqrt{1+\tan^2 t}=a\sec t$
+，从而：
+\[\begin{split}
+    \Int \frac{\dd x}{\sqrt{a^2+x^2}}&=\int\frac{a\sec^2 t\dd t}{a\sec t}=\int\sec t\dd t\\
+    &=\ln|\sec t+\tan t|+C_1\\
+    &=\ln\left|\frac{1}{a}\sqrt{a^2+x^2}+\frac{x}{a}\right|+C_1\\
+    &=\ln\left|x+\sqrt{a^2+x^2}\right|-\ln a+C_1\\
+    &=\ln\left|x+\sqrt{a^2+x^2}\right|+C\qquad (C=C_1-\ln a)
+\end{split}\]
+\end{solution}
+
+\begin{example}
+    求$\Int \frac{\dd x}{\sqrt{x^2-a^2}}\quad (a>0)$
+\end{example}
+
+\begin{solution}
+
+    \begin{center}
+\begin{tikzpicture}[scale=.7]
+\draw[very thick](0,0)--node[below]{$a$}(3,0)--node[right]{$\sqrt{x^2-a^2}$}(3,4)--node[left]{$x$}(0,0);
+\draw(.75,0) arc (0:53.13:.75)node[right]{$t$};
+\end{tikzpicture}
+    \end{center}
+
+    作正割代换。设$x=a\sec t\; \left(0<t<\frac{\pi}{2}\right)$，此函数在$t=\frac{\pi}{2}$点间断，在区间$\left[0,\frac{\pi}{2}\right)$上由$a$递增到$+\infty$，而在区间$\left(\frac{\pi}{2},\pi\right]$上由$-\infty$递增到$-a$。因此，$x=a\sec t$在$\left(0,\frac{\pi}{2}\right]$上的反函数是 
+\[t=\arcsec\frac{x}{a}\quad \left(1<\frac{x}{a}<\infty,\; \text{即}x>a\right)\]
+于是，当$x>a$时，有
+\[\begin{split}
+    \sqrt{x^2-a^2}&=\sqrt{a^2\sec^2 t-a^2}=\sqrt{a^2(\sec^2 t-1)}\\
+    &=a\sqrt{\tan^2 t}=a|\tan t|\\
+    &=a\tan t \quad \left(0\le t<\frac{\pi}{2}\right)
+\end{split}\]
+\[\dd x=\dd(a\sec t)=a\frac{\sin t}{\cos^2 t}\dd t\]
+从而：
+\[\begin{split}
+    \Int \frac{1}{\sqrt{x^2-a^2}}\dd x&=\int\frac{1}{a\tan t}\cdot \frac{a\sin t}{\cos^2 t}\dd t\\
+    &=\int \frac{1}{\cos t}\dd t=\ln|\sec t+\tan t|+C_1\\
+    &=\ln\left|\frac{x}{a}+\frac{\sqrt{x^2-a^2}}{a}\right|+C_1\\
+    &=\ln\left|x+\sqrt{x^2-a^2}\right|+C_1-\ln a=\ln\left|x+\sqrt{x^2-a^2}\right|+C
+\end{split}\]
+其中$C=C_1-\ln a$.
+
+又函数$x=a\sec t$在$\left(\frac{\pi}{2},\pi\right]$上的反函数是
+\[t=\arcsec\frac{x}{a}\quad \left(-\infty<\frac{x}{a}<-1,\; \text{即}x<-a\right)\]
+于是，当$x<-a$时，有
+\[\sqrt{x^2-a^2}=a\sqrt{\tan^2 t}=a|\tan t|=-a\tan t\quad \left(\frac{\pi}{2}<t\le \pi\right)\]
+\[\dd x=\dd(a\sec t)=a\frac{\sin t}{\cos^2 t}\cdot \dd t\]
+\[\begin{split}
+    \Int \frac{1}{\sqrt{x^2-a^2}}\dd x&=\int-\frac{1}{a\tan t}\cdot \frac{a\sin t}{\cos^2 t}\dd t\\
+    &=-\int \frac{1}{\cos t}\dd t=-\ln|\sec t+\tan t|+C_2\\
+    &=-\ln\left|\frac{x}{a}-\frac{\sqrt{x^2-a^2}}{a}\right|+C_2\\
+    &=-\ln\left|x-\sqrt{x^2-a^2}\right|+C_2+\ln a\\
+    &=\ln\left|\frac{1}{x-\sqrt{x^2-a^2}}\right|+C'\qquad (C'=C+\ln a)\\
+    &=\ln\left|\frac{x+\sqrt{x^2-a^2}}{a^2}\right|+C'=\ln\left|x+\sqrt{x^2-a^2}\right|+C'-\ln a^2\\
+    &=\ln\left|x+\sqrt{x^2-a^2}\right|+C''\qquad (C''=C'-\ln a^2)
+\end{split}\]
+因此，不论$x>a$或$x<-a$，都有
+\[\int\frac{\dd x}{\sqrt{x^2-a^2}}=\ln\left|x+\sqrt{x^2-a^2}\right|+C\]
+\end{solution}
+
+到现在为止，我们又得到四个重要的不定积分公式：
+
+\begin{blk}{}
+\begin{align}
+\Int \frac{\dd x}{a^2+x^2}&=\frac{1}{a}\arctan\frac{x}{a}+C\\
+\Int\frac{\dd x}{a^2-x^2}&=\frac{1}{2a}\ln\left|\frac{a+x}{a-x}\right|+C\\
+ \Int\frac{\dd x}{\sqrt{a^2-x^2}}&=\arcsin\frac{x}{a}+C\\
+\Int \frac{\dd x}{\sqrt{x^2\pm a^2}}&=\ln\left|x+\sqrt{x^2\pm a^2}\right|+C
+\end{align}
+\end{blk}
+
+利用这些公式可以进一步求出许多不定积分。
+
+\begin{blk}
+ {类型A}
+\[\int \frac{\dd x}{ax^2+bx+c}\]
+\end{blk}
+
+如果被积函数的分母可以分解因式，则把被积函数分解成部分分式，就很容易分项求出不定积分。
+
+如分母不能分解因式，那么将它配方得
+\[ax^2+bx+c=a\left(x+\frac{b}{2a}\right)^2+\frac{4ac-b^2}{4a}\]
+于是
+\begin{itemize}
+    \item 当$4ac>b^2$时，上面不定积分归结到(4.10);
+    \item 当$4ac<b^2$时，上面不定积分归结到(4.11).
+\end{itemize}
+
+\begin{example}
+    求$\Int \frac{\dd x}{3x^2+x-1}$.
+\end{example}
+
+\begin{solution}
+\[\begin{split}
+    \Int \frac{\dd x}{3x^2+x-1}&=\frac{1}{3}\int \frac{\dd x}{\left(x+\frac{1}{6}\right)^2-\frac{13}{36}}\\
+&=\frac{1}{3}\frac{1}{2\sqrt{\frac{13}{36}}}\ln\left|\frac{x+\frac{1}{6}-\frac{\sqrt{13}}{6}}{x+\frac{1}{6}+\frac{\sqrt{13}}{6}}\right|+C\\
+&=\frac{1}{\sqrt{13}}\ln\left|\frac{6x+1-\sqrt{13}}{6x+1+\sqrt{13}}\right|+C
+\end{split}\]    
+\end{solution}
+
+\begin{blk}
+    {类型B}
+   \[\int \frac{px+q}{ax^2+bx+c}\dd x\]
+   \end{blk}
+
+注意到$\frac{\dd}{\dd x}(ax^2+bx+c)=2ax+b$，被积函数的分子可以写成
+\[px+q=\frac{p}{2a}(2ax+b)+q-\frac{pb}{2a}\]
+于是
+\[\int\frac{px+q}{ax^2+bx+c}\dd x=\frac{p}{2a}\int\frac{2ax+b}{ax^2+bx+c}\dd x+\left(q-\frac{bp}{2a}\right)\int\frac{\dd x}{ax^2+bx+c}\]
+等式右端第一项是$\frac{p}{2a}\ln(ax^2+bx+c)$，第二项可归结到类型A.
+
+\begin{example}
+    求$\Int \frac{5x-1}{3x^2+x+2}\dd x$.
+\end{example}
+
+\begin{solution}
+\[\begin{split}
+    \Int \frac{5x-1}{3x^2+x+2}\dd x&=\frac{5}{6}\int \frac{6x+1}{3x^2+x+2}\dd x-\frac{11}{6}\int\frac{\dd x}{3x^2+x+2}\\
+&=\frac{5}{6}\ln(3x^2+x+2)-\frac{11}{6}\cdot \frac{1}{3}\cdot \int \frac{\dd x}{\left(x+\frac{1}{6}\right)^2+\frac{23}{36}}\\
+&=\frac{5}{6}\ln(3x^2+x+2)-\frac{11}{6}\cdot\frac{1}{3}\cdot\frac{6}{\sqrt{23}}\arctan\frac{6x+1}{\sqrt{23}}+C\\
+&=\frac{5}{6}\ln(3x^2+x+2)-\frac{11}{3\sqrt{23}}\arctan\frac{6x+1}{\sqrt{23}}+C
+\end{split}\]    
+\end{solution}
+
+\begin{blk}{类型C}
+\[\int \frac{\dd x}{\sqrt{ax^2+bx+c}}\]
+\end{blk}
+
+\begin{itemize}
+    \item 若$a>0$, 则被积函数的根底式经配方后，所求积分可归结到积分公式(4.13);
+    \item  若$a<0$, 则此积分可归结到积分公式(4.12).
+\end{itemize}
+
+\begin{example}
+    求$\Int \frac{\dd x}{\sqrt{2+x-3x^2}}$
+\end{example}
+
+\begin{solution}
+    \[\begin{split}
+        \Int \frac{\dd x}{\sqrt{2+x-3x^2}}&=\frac{1}{\sqrt{3}}\int \frac{\dd x}{\sqrt{\frac{2}{3}+\frac{1}{3}x-x^2}}\\
+        &=\frac{1}{\sqrt{3}}\int \frac{\dd x}{\sqrt{\frac{25}{36}-\left(x-\frac{1}{6}\right)^2}}\\
+        &=\frac{1}{\sqrt{3}}\arcsin\frac{x-\frac{1}{6}}{\frac{5}{6}}+C\\
+        &=\frac{1}{\sqrt{3}}\arcsin\frac{6x-1}{5}+C       
+    \end{split}\]
+\end{solution}
+
+\begin{blk}{类型D}
+\[\int \frac{px+q}{\sqrt{ax^2+bx+c}}\dd x\]
+\end{blk}
+
+被积函数的分子可写成
+\[px+q=\frac{p}{2a}(2ax+b)+q-\frac{pb}{2a}\]
+所以
+\[
+    \int \frac{px+q}{\sqrt{ax^2+bx+c}}\dd x=\frac{p}{2a}\int \frac{2ax+b}{\sqrt{ax^2+bx+c}}\dd x+\left(q-\frac{pb}{2a}\right)\int\frac{\dd x}{\sqrt{ax^2+bx+c}}
+\]
+等式右端第一个积分等于被积函数的分母的2倍，即$2\sqrt{ax^2+bx+c}$, 第二个是类型C的积分．
+
+\begin{example}
+    求$\Int \frac{5x-1}{\sqrt{3x^2+x+2}}\dd x$.
+\end{example}
+
+\begin{solution}
+    \[\begin{split}
+        \Int \frac{5x-1}{\sqrt{3x^2+x+2}}\dd x&=\frac{5}{6}\int \frac{6x+1}{\sqrt{3x^2+x+2}}\dd x-\frac{11}{6}\int \frac{\dd x}{\sqrt{3x^2+x+2}}\\
+&=\frac{5}{6}\cdot 2\sqrt{3x^2+x+2}\\
+&\qquad -\frac{11}{6}\cdot\frac{1}{\sqrt{3}}\ln\left[x+\frac{1}{6}+\sqrt{\left(x+\frac{1}{6}\right)^2+\frac{23}{36}}\right]+C\\
+&=\frac{5}{3}\sqrt{3x^2+x+2}-\frac{11}{6\sqrt{3}}\ln\left[x+\frac{1}{6}+\sqrt{\left(x+\frac{1}{6}\right)^2+\frac{23}{36}}\right]+C        
+    \end{split}\]
+\end{solution}
+
+\begin{blk}{类型E}
+    \[\int \frac{\dd x}{x\sqrt{ax^2+bx+c}}\]
+\end{blk}
+
+作变量代换$x=\frac{1}{y}$，所求积分可化为类型C。因为$\dd x=-\frac{1}{y^2}\dd y$，并且
+\[\int \frac{\dd x}{x\sqrt{ax^2+bx+c}}=\int\frac{-\frac{1}{y^2}\dd y}{\frac{1}{y}\sqrt{\frac{a}{y^2}+\frac{b}{y}+c}}=-\int\frac{\dd y}{\sqrt{a+by+cy^2}}\]
+
+\begin{example}
+    求$\Int\frac{\dd x}{x\sqrt{x^2+x+1}}$
+\end{example}
+
+\begin{solution}
+\[\begin{split}
+    \Int\frac{\dd x}{x\sqrt{x^2+x+1}}&=-\int \frac{-\frac{1}{y^2}\dd y}{\frac{1}{y}\sqrt{\frac{1}{y^2}+\frac{1}{y}+1}}=-\int \frac{\dd y}{\sqrt{y^2+y+1}}\\
+    &=-\int \frac{\dd y }{\sqrt{\left(y+\frac{1}{2}\right)^2+\frac{3}{4}}}  \\
+    &=-\ln \left[y+\frac{1}{2}+\sqrt{\left(y+\frac{1}{2}\right)^2+\frac{3}{4}}\right]+C \\
+    &=-\ln \left[y+\frac{1}{2}+\sqrt{y^2+y+1}\right]+C\\
+    &=-\ln\left[\frac{1}{x}+\frac{1}{2}+\sqrt{\frac{1}{x^2}+\frac{1}{x}+1}\right]+C\\
+    &=-\ln\frac{2+x+2\sqrt{x^2+x+1}}{2x}+C
+\end{split}\]
+\end{solution}
+    
+\begin{ex}
+\begin{enumerate}
+    \item 求下列不定积分：
+\begin{multicols}{2}
+\begin{enumerate}
+    \item $\Int \frac{1}{1+\sqrt[3]{x}}\dd x$
+    \item $\Int \frac{1}{(x+2) \sqrt{x+1}}\dd x$
+    \item $\Int  \frac{x}{\sqrt[3]{1-x}}\dd x $
+    \item $\Int \frac{\sqrt{x}}{\sqrt[3]{x^{2}}-\sqrt[4] {x}}\dd x$
+    \item $\Int  \frac{\sqrt{x^{2}-a^{2}}}{x}\dd x $
+    \item $\Int  \frac{\sqrt{x^{2}-a^{2}}}{x^{2}}\dd x$
+    \item $\Int  \frac{\sqrt{a^{2}-x^{2}}}{x}\dd x$
+    \item $\Int \frac{\sqrt{a^{2}-x^{2}}}{x^{2}}\dd x$
+    \item $\Int \frac{x^{2}}{\sqrt{1-x^{2}}}\dd x$
+    \item $\Int \frac{1}{x^{4} \sqrt{1+x^{2}}}\dd x$
+\end{enumerate}
+\end{multicols}
+
+    \item 求下列不定积分：
+\begin{multicols}{2}
+\begin{enumerate}
+\item $\Int \frac{1}{\sqrt{4 x^{2}+6 x}}\dd x $
+\item $\Int \frac{x}{\sqrt{4 x^{2}+6 x}}\dd x$
+\item $\Int  \frac{1}{\sqrt{1-x-4 x^{2}}}\dd x$
+\item $\Int \frac{x+1}{\sqrt{1-x-4 x^{2}}}\dd x$
+\item $\Int \frac{1}{x \sqrt{x^{2}+1}}\dd x$
+\item $\Int \frac{1}{x \sqrt{1-x^{2}}}\dd x$
+\item $\Int \frac{1}{x \sqrt{x^{2}-4 x}}\dd x$
+\item $\Int \sqrt{\frac{x-1}{x+1}}\dd x$  
+\end{enumerate}
+\end{multicols}
+
+\end{enumerate}    
+\end{ex}
+
+\subsection{有理函数的积分}
+如果$P(x)$, $Q(x)$是两个多项式，则$\Int \frac{P(x)}{Q(x)}\dd x$可以化
+归为下列类型的积分：
+\begin{center}
+\begin{tabular}{p{.3\textwidth}p{.3\textwidth}}
+        $\Int \frac{A \dd x}{x-a}$ & $\Int \frac{A \dd x}{(x-a)^{n}}$ \\
+        $\Int \frac{p x+q}{x^{2}+b x+c} \dd x$ & $\Int \frac{p x+q}{\left(x^{2}+b x+c\right)^{n}} \dd x$
+\end{tabular}
+\end{center}
+
+对这些积分，我们是有办法的。下面我们通过举例来说明求这些积分的大概的方法。
+
+如果有理分式的分子次数高于分母的次数时，则只要作一次除法就可以把它写成一个多项式与一个真分式的和，而前者是容易求积的。所以我们只须注意真分式的积分如何求。
+
+\begin{example}
+    求$\Int \frac{x^3+x+1}{x^2+1}\dd x$
+\end{example}
+
+\begin{solution}
+    \[\begin{split}
+        \Int \frac{x^3+x+1}{x^2+1}\dd x&=\int\left(x+\frac{1}{x^2+1}\right)\dd x\\
+&=\int x\dd x+\int\frac{\dd x}{1+x^2}\\
+&=\frac{x^2}{2}+\arctan x+C        
+    \end{split}\]
+\end{solution}
+
+\begin{example}
+    求$\Int \frac{\dd x}{x^4-1}$
+\end{example}
+
+\begin{solution}
+$\because\quad x^4-1=(x-1)(x+1)(x^2+1)$
+
+$\therefore\quad \frac{1}{x^4-1}=\frac{A}{x-1}+\frac{B}{x+1}+\frac{Cx+D}{x^2+1}$
+
+把等式右端通分，再比较两端系数，于是等式
+\[A (x^2+1) (x+1)+B(x^2+1)(x-1)+(Cx+D) (x^2-1)=1\]
+的左边多项式的$x^3,x^2,x$的系数应为零，常数项应为1, 从而得到
+\begin{numcases}{}
+    A+B+C=0\\
+    A-B+D=0\\
+    A+B-C=0\\
+    A-B-D=1
+\end{numcases}
+由$(4.14)+(4.16)$和$(4.15)+(4.17)$得到：
+\[A+B=0,\qquad A-B=\frac{1}{2}\]
+解得：
+\[A=\frac{1}{4},\quad B=-\frac{1}{4},\quad C=0,\quad D=-\frac{1}{2}\]
+即：
+\[\frac{1}{x^4-1}=\frac{1}{4(x-1)}-\frac{1}{4(x+1)}-\frac{1}{2(x^2+1)}\]
+从而
+\[\begin{split}
+    \int\frac{\dd x}{x^4-1}&=\frac{1}{4}\int \frac{\dd x}{x-1}-\frac{1}{4}\int\frac{\dd x}{x+1}-\frac{1}{2}\int\frac{\dd x}{1+x^2}\\
+    &=\frac{1}{4}\ln\left|\frac{x-1}{x+1}\right|-\frac{1}{2}\arctan x+C
+\end{split}\]
+\end{solution}
+
+\begin{example}
+求$\Int \frac{3x^2+x-2}{(x-2)^2(1-2x)}\dd x$
+\end{example}
+
+\begin{solution}
+设$\frac{3x^2+x-2}{(x-2)^2(1-2x)}=\frac{A}{1-2x}+\frac{B}{x-2}+\frac{C}{(x-2)^2}$，则
+\[3x^2+x-2=A(x-2)^2+B(1-2x)(x-2)+C(1-2x)\]
+
+令$1-2x=0$，则$A=-\frac{1}{3}$；令$x-2=0$，则$C=-4$. 比较等式两端$x^2$的系数，得
+\[3=A-2B\quad\Rightarrow\quad B=-\frac{5}{3}\]
+所以
+\[\frac{3x^2+x-2}{(x-2)^2(1-2x)}=-\frac{1}{3(1-2x)}-\frac{5}{3(x-2)}-\frac{4}{(x-2)^2}\]
+从而
+\[\begin{split}
+\int \frac{3x^2+x-2}{(x-2)^2(1-2x)}\dd x &=\frac{1}{6}\int \frac{\dd x}{x-\frac{1}{2}}-\frac{5}{3}\int \frac{\dd x}{x-2}-4\int \frac{\dd x}{(x-2)^2}\\
+&=\frac{1}{6}\ln\left|x-\frac{1}{2}\right|-\frac{5}{3}\ln|x-2|+\frac{4}{x-2}+C
+\end{split}\]
+\end{solution}
+
+三角函数有理式的积分
+\[\int R (\sin x,\cos x) \dd x\]
+恒可用“半角变换”法，即设$t=\tan\frac{x}{2}$或$x=2\arctan t$化为$t$的有理函数的积分。
+
+事实上，由$t=\tan\frac{x}{2}$, 知
+\[\begin{split}
+\sin x&=\frac{2 \sin \frac{x}{2} \cos \frac{x}{2}}{\sin ^{2} \frac{x}{2}+\cos ^{2} \frac{x}{2}}=\frac{2 \tan \frac{x}{2}}{1+\tan^{2} \frac{x}{2}}=\frac{2 t}{1+t^{2}}\\
+\cos x &=\frac{\cos ^{2}-\frac{x}{2}-\sin ^{2} \frac{x}{2}}{\sin ^{2} \frac{x}{2}+\cos ^{2} \frac{x}{2}}=\frac{1-\tan^{2} \frac{x}{2}}{1+\tan^{2} \frac{x}{2}} 
+=\frac{1-t^{2}}{1+t^{2}}
+\end{split}\]
+又由 $x=2 \arctan t$, 知
+\[\dd x=\frac{2 \dd t}{1+t^{2}}\]
+于是
+\[
+\int R(\sin x,  \cos x) \dd x=\int R\left(\frac{2 t}{1+t^{2}}, \frac{1-t^{2}}{1+t^{2}}\right) \cdot \frac{2}{1+t^{2}} \dd x 
+\]
+上式右端是 $t$ 的有理函数.
+
+\begin{example}
+    求$\Int \frac{\dd\theta}{\sin\theta}$.
+\end{example}
+
+\begin{solution}
+令$t=\tan\frac{\theta}{2}$，则：$\theta=2\arctan t,\quad \dd\theta=\frac{2\dd t}{1+t^2}$，从而：
+\[\begin{split}
+    \int\frac{\dd\theta}{\sin\theta}=\int\frac{1+t^2}{2t}\cdot \frac{2\dd t}{1+t^2}&=\int\frac{\dd t}{t}\\
+    &=\ln|t|+C=\ln\left|\tan\frac{\theta}{2}\right|+C
+\end{split}\]
+又$\tan\frac{\theta}{2}=\frac{\sin\frac{\theta}{2}}{\cos\frac{\theta}{2}}=\frac{2\sin^2 \frac{\theta}{2}}{2\sin\frac{\theta}{2}\cos \frac{\theta}{2}}=\frac{1-\cos\theta}{\sin\theta}=\csc\theta-\cot\theta$，
+所以
+\[\int\frac{\dd\theta}{\sin\theta}=\ln\left|\tan\frac{\theta}{2}\right|+C=\ln|\csc\theta-\cot\theta|+C\]    
+\end{solution}
+
+\begin{example}
+    求$\Int \frac{\dd\theta}{3+2\cos\theta}$
+\end{example}
+
+\begin{solution}
+    令$t=\tan\frac{\theta}{2}$，则：$\dd\theta=\frac{2\dd t}{1+t^2}$，于是
+\[\begin{split}
+    \Int \frac{\dd\theta}{3+2\cos\theta}=\int\frac{\frac{2\dd t}{1+t^2}}{3+2\frac{1-t^2}{1+t^2}}&=\int \frac{2\dd t}{5+t^2}\\
+    &=\frac{2}{\sqrt{5}} \arctan\frac{t}{\sqrt{5}}+C\\
+    &=\frac{2}{\sqrt{5}}\arctan\left(\frac{1}{\sqrt{5}}\tan\frac{\theta}{2}\right)+C
+\end{split}\]
+\end{solution}
+
+\begin{ex}
+\begin{enumerate}
+\item 求下列不定积分:
+\begin{multicols}{2}
+\begin{enumerate}
+\item  $\Int \frac{1}{x^{2}-3 x+2}\dd x$
+\item  $\Int  \frac{x}{x^{2}-3 x+2}\dd x$
+\item  $\Int  \frac{x^{2}}{x^{2}-3 x+2}\dd x$
+\item  $\Int \frac{x^{2}+1}{x+3}\dd x$
+\item  $\Int \frac{1}{x^{2}-3 x+1}\dd x$
+\item  $\Int \frac{x}{x^{2}-3 x+1}\dd x$
+\item  $\Int \frac{x^{2}}{x^{2}-3 x+1}\dd x$
+\end{enumerate}
+\end{multicols}
+
+\item 求下列不定积分:
+\begin{multicols}{2}
+    \begin{enumerate}
+        \item  $\Int  \frac{\cos \theta \dd \theta}{1+\sin ^{2} \theta}$
+        \item  $\Int \frac{\sin x+\cos x}{\cos ^{2} x}\dd x$
+        \item  $\Int  \frac{\dd x}{4 \cos x+3 \sin x+5}$
+        \item  $\Int \frac{\sin x}{\cos x+\sin x}\dd x$
+    \end{enumerate}
+\end{multicols}
+\end{enumerate}
+\end{ex}
+
+\subsection{分部积分法}
+
+分部积分法是从两个函数乘积的微分公式得到的求积分方法。
+
+设$u=u(x)$, $v=v(x)$是两个可微函数，乘积$u\cdot v$的微分法则是$$\dd (u\cdot v) =u\dd v+v\dd u$$
+移项，得$u\dd v=\dd (w\cdot v) -v\dd u$，
+两边积分得
+\begin{equation}
+    \int u\dd v=u\cdot v-\int v\dd u
+\end{equation}
+公式(4.18)表示如果积分$\Int u\dd v=\Int u(x)v'(x)\dd x$不可能直接求出，就改为求积分$\Int v\dd u=\Int v(x)u'(x)\dd x$, 设$F(x)$是$v(x)\cdot u'(x)$的一个原函数，那么$u(x)\cdot v(x)-F(x)$是$u(x)v'(x)$的一个原函数，用公式(4.18)求不定积分的方法叫做\textbf{分部积分法}，公式(4.18)叫做\textbf{分部积分公式}．
+
+\begin{example}
+    求$\Int x\sin 3x\dd x$.
+\end{example}
+
+\begin{solution}
+被积函数$x\sin3x$不能由前面的基本积分表求出它的原函数，我们把$x\sin3x$分成两部分，设$u(x)=x$, $v'(x)=\sin3x$, 于是
+\[\int v' (x) \dd x= \int \sin3x\dd x=-\frac{\cos3x}{3}+C\]
+即$v(x)=-\frac{\cos3x}{3}$是$v'(x)=\sin3x$的一个原函数，根据公
+式(4.18)，有
+\[\begin{split}
+    \int x\sin 3x\dd x&=\int x\dd\left(-\frac{\cos 3x}{3}\right)\\
+    &=x\left(-\frac{\cos 3x}{3}\right)-\int\left(-\frac{\cos3x}{3}\right)\dd x \\
+&=-\frac{x\cos 3x}{3}+\frac{1}{3}\int \cos 3x\dd x\\
+&=-\frac{x\cos 3x}{3}+\frac{\sin 3x}{9}+C
+\end{split}\]
+\end{solution}
+
+运用公式(4.18)时，应首先将被积表达式分成函数$u(x)$和微分$\dd v=v'(x)\dd x$两部分，选取$u(x)$和$v'(x)\dd x$的原则是：
+\begin{itemize}
+    \item 充当微分部分的$v'(x)\dd x$, 其$v'(x)$的原函数能够比较容易地求出；
+\item 
+充当$u(x)$的部分经求微商后要化简，以便使积分$\Int v\dd u$较$\Int u\dd v$简单，容易求出结果。
+\end{itemize}
+
+在应用分部积分法求不定积分时，往往要连续使用这个
+方法多次才能求出最后结果。
+
+我们把能够应用分部积分法求积分的例题分为以下几类：
+
+\begin{blk}
+ {类型A} 被积函数是$x^ne^{ax}$, $x^n\sin ax$, $x^n\cos ax$, 其中$x$的方幂因子经求微商后降次，而非$x$的方幂因子的原函数是容易求得的。   
+\end{blk}
+
+\begin{example}
+求$\Int x^2 e^{2x}\dd x$.
+\end{example}
+
+\begin{solution}
+\[\begin{split}
+    \Int x^2 e^{2x}\dd x=\int x^2 \dd\left(\frac{e^{2x}}{2}\right)&=\frac{x^2e^{2x}}{2}-\int \frac{e^{2x}}{2}\dd(x^2)\\
+&=\frac{x^2e^{2x}}{2}-\int xe^{2x}\dd x=\frac{x^2e^{2x}}{2}-\left(\frac{xe^{2x}}{2}-\int \frac{e^{2x}}{2}\dd x\right)\\
+&=\frac{x^2}{2}e^{2x}-\frac{x}{2}e^{2x}+\frac{e^{2x}}{4}+C\\    
+&=e^{2x}\left(\frac{x^2}{2}-\frac{x}{2}+\frac{1}{4}\right)+C
+\end{split}\]
+\end{solution}
+
+\begin{blk}
+    {类型B} 被积函数是$x^n\sin^{-1}x$, $x^n\tan^{-1}x$, $x^n\ln x$, 其中乘积中的因子$\tan^{-1} x$, $\ln x$的导数是$x$的有理函数，$\sin^{-1}x$的
+导数是$\frac{1}{\sqrt{1-x^2}}$，
+它们的积分可求，而$x^n$的原函数是$\frac{x^{n+1}}{n+1}$.
+\end{blk}
+
+
+\begin{example}
+求$\Int x\arctan x\dd x$.    
+\end{example}
+
+\begin{solution}
+  \[\begin{split}
+    \Int x\arctan x\dd x=\int \arctan x \dd\left(\frac{x^2}{2}\right)&=\frac{x^2\arctan x}{2}-\int \frac{x^2}{2}\dd(\arctan x)\\
+    &=\frac{x^2\arctan x}{2}-\frac{1}{2}\int \frac{x^2}{1+x^2}\dd x\\
+    &=\frac{x^2\arctan x}{2}-\frac{1}{2}\int \left(1-\frac{1}{1+x^2}\right)\dd x\\
+    &=\frac{x^2\arctan x}{2}-\frac{1}{2}x+\frac{1}{2}\arctan x+C
+  \end{split}\]  
+\end{solution}
+
+
+\begin{example}
+    求$\Int x^3\ln x\dd x$.
+\end{example}
+
+\begin{solution}
+\[\begin{split}
+    \Int x^3\ln x\dd x=\int \ln x\dd\left(\frac{x^4}{4}\right)&=\frac{x^4}{4}\ln x-\int \frac{x^4}{4}\dd(\ln x)\\
+    &= \frac{x^4}{4}\ln x-\int  \frac{x^4}{4}\cdot \frac{1}{x}\dd x\\
+    &= \frac{x^4}{4}\ln x- \frac{x^4}{16}+C
+\end{split}\]
+\end{solution}
+
+\begin{blk}
+    {类型C} 被积函数是$\sin^{-1}x$, $\tan^{-1}x$, $\ln x$, 这里没有乘积的形式，不妨设$v'(x)=1$.
+\end{blk}
+
+\begin{example}
+求$\Int \arcsin x\dd x$.
+\end{example}
+
+\begin{solution}
+\[\begin{split}
+    \Int \arcsin x\dd x=x\arcsin x-\int x\dd(\arcsin x)&=x\arcsin x-\int\frac{x}{\sqrt{1-x^2}}\dd x  \\
+    &=x\arcsin x+\frac{1}{2}\int \frac{\dd(1-x^2)}{\sqrt{1-x^2}}\\
+    &=x\arcsin x+\frac{1}{2}\cdot 2\sqrt{1-x^2}+C\\
+    &=x\arcsin x+\sqrt{1-x^2}+C
+\end{split}\]
+
+另解：设$y=\arcsin x,\; -1\le x\le 1$，则$\sin y=x,\; -\frac{\pi}{2}\le y\le \frac{\pi}{2}$
+\[\begin{split}
+    \Int \arcsin x\dd x=x\arcsin x-\int x\dd(\arcsin x)&=y\sin y-\int \sin y \dd y\\
+    &=y\sin y+\cos y+C\\
+    &=x\arcsin x+\sqrt{1-\sin^2 y}+C\\
+    &=x\arcsin x+\sqrt{1-x^2}+C
+\end{split}\]
+\end{solution}
+
+\begin{example}
+    求$\Int \ln^2 x\dd x$.
+\end{example}
+
+\begin{solution}
+    \[\begin{split}
+        \Int \ln^2 x\dd x=x(\ln x)^2-\int x\dd (\ln^2 x)&=x(\ln x)^2-\int x\cdot 2\ln x\cdot \frac{1}{x}\dd x\\
+        &=x(\ln x)^2-2\int \ln x\dd x\\
+        &=x(\ln x)^2-2\left[x\ln x-\int x\d(\ln x)\right]\\
+        &=x(\ln x)^2-2x\ln x+2\int \dd x\\
+        &=x(\ln x)^2-2x\ln x+2x+C   
+    \end{split}\]
+\end{solution}
+
+\begin{blk}
+    {类型D} 被积函数是$e^{ax}\sin bx$, $\sec^3 x$, $\sqrt{a^2+x^2}$. 对于这类例题，两次使用这个方法可以得到含有这个积分作未知元的一次方程。
+\end{blk}
+
+\begin{example}
+    求$\Int e^{ax}\sin bx\dd x$
+\end{example}
+
+\begin{solution}
+\[\begin{split}
+    I=\Int e^{ax}\sin bx\dd x
+    &=\int \sin bx \dd\left(\frac{e^{ax}}{a}\right)\\
+&=\sin bx\cdot \frac{e^{ax}}{a}-\int \frac{e^{ax}}{a}\dd(\sin bx)\\
+&=\sin bx\cdot \frac{e^{ax}}{a}-\int \frac{e^{ax}}{a}b\cos bx\dd x\\
+&=\sin bx\cdot \frac{e^{ax}}{a}-\frac{b}{a}\int \cos bx\dd\left(\frac{e^{ax}}{a}\right)\\
+&=\sin bx\cdot \frac{e^{ax}}{a}-\frac{b}{a}\left[\cos bx\cdot \frac{e^{ax}}{a}-\int \frac{e^{ax}}{a}\dd\left(\cos bx\right)\right]\\
+&=\sin bx\cdot \frac{e^{ax}}{a}-\frac{b}{a^2}\cos bx\cdot e^{ax}-\frac{b^2}{a^2}\int e^{ax}\sin bx\dd x\\
+&=\sin bx\cdot \frac{e^{ax}}{a}-\frac{b}{a^2}\cos bx\cdot e^{ax}-\frac{b^2}{a^2}I
+\end{split}\]
+所以：
+\[\begin{split}
+    I\left(1+\frac{b^2}{a^2}\right)&=\frac{1}{a}\sin bx\cdot e^{ax}-\frac{b}{a^2}\cos bx\cdot e^{ax}\\
+    I&=\frac{e^{ax}(a\sin bx-b\cos bx)}{a^2+b^2}+C
+\end{split}\]    
+\end{solution}
+
+\begin{example}
+    求$\Int \sqrt{a^2+x^2}\dd x$.
+\end{example}
+
+\begin{solution}
+\[    \begin{split}
+    I =\int \sqrt{a^{2}+x^{2}} \dd x 
+    &=x \sqrt{a^{2}+x^{2}}-\int x \dd\left(\sqrt{a^{2}+x^{2}}\right) \\
+    &=x \sqrt{a^{2}+x^{2}}-\int \frac{x^{2}}{\sqrt{a^{2}+x^{2}}} \dd x \\
+    &=x \sqrt{a^{2}+x^{2}}-\int \frac{x^{2}+a^{2}}{\sqrt{a^{2}+x^{2}}} \dd x+\int \frac{a^{2}}{\sqrt{a^{2}+x^{2}}} \dd x \\
+    &=x \sqrt{a^{2}+x^{2}}-I+a^{2} \ln \left(x+\sqrt{a^{2}+x^{2}}\right)
+    \end{split}\]
+    所以
+\[    I=\frac{1}{2} x \sqrt{a^{2}+x^{2}}+\frac{1}{2} a^{2} \ln \left(x+\sqrt{a^{2}+x^{2}}\right)\]
+\end{solution}
+
+应用分部积分公式(4.18)还能导出一些求积分的递归公式。所谓求积分的递归公式就是建立一个被积函数含有正整数$n$的积分与被积函数含有非负整数$n-1$或$n-2$的积分的关系式。每次要求$n=k$时的积分，重复利用这个关系式总能回到当$n=0, 1, 2$时的起始积分，于是所求积分总能用$n$的起始值$n=0, 1, 2$中的一个已知积分表示出来。这也就是递归的
+意思。
+    
+\begin{example}
+    求$\Int \sin^n x\dd x$.
+\end{example}
+
+\begin{solution}
+当$n=0$时，$I_0=\Int (\sin x)^0\dd x=\Int \dd x=x+C$
+
+又：
+\[
+\begin{split}
+I_{n} =\int \sin ^{n} x \dd x&=\int \sin ^{n-1} x \dd(-\cos x) \\
+&=-\cos x \sin ^{n-1} x+\int \cos x \dd\left(\sin ^{n-1} x\right) \\
+&=-\cos x \sin ^{n-1} x+(n-1) \int \cos x \sin ^{n-2} x \cdot \cos x \dd x \\
+&=-\cos x \sin ^{n-1} x+(n-1) \int \sin ^{n-2} x\left(1-\sin ^{2} x\right) \dd x
+\end{split}
+\]
+所以
+$$
+I_{n}=-\cos x \sin ^{n-1} x+(n-1) I_{n-2}-(n-1) I_{n}
+$$
+即
+\begin{equation}
+   n I_{n}=-\cos x \sin ^{n-1} x+(n-1) I_{n-2} 
+\end{equation}
+
+现在我们用递归关系(4.19)来求 $\Int \sin ^{4} x \dd x$. 
+设 $I_{4}=\Int \sin ^{4} x \dd x$, 于是
+\begin{align}
+4 I_{4}&=-\cos x \sin ^{3} x+3 I_{2} \\
+2 I_{2}&=-\cos x \sin x+I_{0} 
+\end{align}
+将(4.21)代入(4.20)得：
+\[\begin{split}
+    4I_4&=-\cos x\sin^3 x+3\left(-\frac{\sin x\cos x}{2}+\frac{1}{2}I_0\right)\\
+    &=-\cos x\sin^3 x-\frac{3}{2}\cos x\sin x+\frac{3}{2}x+C
+\end{split}\]
+所以
+\[I_4=\int \sin^4 x\dd x=-\frac{1}{4}\cos x\sin^3 x-\frac{3}{8}\cos x\sin x+\frac{3}{8}x+C\]
+
+
+\begin{ex}
+\begin{enumerate}
+    \item 求下列不定积分：
+\begin{multicols}{2}
+\begin{enumerate}
+    \item $\Int x \sin x\dd x$
+    \item $\Int x \cos 3 x\dd x$
+    \item $\Int x \sin ^{2} \frac{x}{2}\dd x$
+    \item $\Int x e^{-x}\dd x$
+    \item $\Int (x-1) e^{x}\dd x$
+    \item $\Int \left(x^{2}+x\right) e^{-x}\dd x$
+    \item $\Int  x \sec ^{2} x\dd x$
+    \item $\Int  x \arcsin x\dd x$
+    \item $\Int  \frac{\arcsin x}{x^{2}}\dd x$
+    \item $\Int  \frac{\arctan x}{x^{2}}\dd x$
+    \item $\Int  x^{2} e^{3 x}\dd x$
+    \item $\Int  e^{a x} \sin ^{2} b x\dd x$
+    \item $\Int  \sin x \cdot \ln (\tan x)\dd x$
+    \item $\Int  x^{2} \arctan x\dd x$
+    \item $\Int  \frac{x^{2} e^{x}\dd x}{(x+2)^{2}}$
+    \item $\Int \frac{x e^{x}}{(x+1)^{2}}\dd x$
+\end{enumerate}
+\end{multicols}
+ \item   求下列不定积分:    
+   \begin{multicols}{2}
+        \begin{enumerate}
+    \item $\Int \arctan \sqrt{x}\dd x$
+    \item $\Int \ln ^{2} x \dd {x}$
+    \item $\Int \ln \left(x+\sqrt{1+x^{2}}\right)\dd x$
+    \item $\Int (\arcsin x)^{2}\dd x$
+    \item $\Int \sin(\ln x)\dd x$
+    \item $\Int \sqrt{4+x^2}\dd x$
+\end{enumerate}
+\end{multicols}
+\end{enumerate}
+\end{ex}
+\end{solution}
+    
+\section{定积分的计算与应用}
+
+\subsection{定积分的计算}
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{example}
+    
+\end{example}
+
+\begin{solution}
+    
+\end{solution}
+
+
+
+
+\begin{example}
+    
+\end{example}
+
+\begin{solution}
+    
+\end{solution}
+
+
+
+
+
+\begin{example}
+    
+\end{example}
+
+\begin{solution}
+    
+\end{solution}
+
+
+
+\begin{example}
+    
+\end{example}
+
+\begin{solution}
+    
+\end{solution}
+
+
+
+
+
+\begin{example}
+    
+\end{example}
+
+\begin{solution}
+    
+\end{solution}
+
+
+
+
+\begin{example}
+    
+\end{example}
+
+\begin{solution}
+    
+\end{solution}
+
+
+
+\begin{example}
+    
+\end{example}
+
+\begin{solution}
+    
+\end{solution}
+
+
+
+\begin{example}
+    
+\end{example}
+
+\begin{solution}
+    
+\end{solution}
+
+
+
+\begin{example}
+    
+\end{example}
+
+\begin{solution}
+    
+\end{solution}
+
+
+
+\begin{example}
+    
+\end{example}
+
+\begin{solution}
+    
+\end{solution}
+
+
+
+
+\begin{example}
+    
+\end{example}
+
+\begin{solution}
+    
+\end{solution}
+
+
+
+\begin{example}
+    
+\end{example}
+
+\begin{solution}
+    
+\end{solution}
+
+
+
+\begin{example}
+    
+\end{example}
+
+\begin{solution}
+    
+\end{solution}
+
+\section{简单初值问题——不定积分的简单应用}
+
+在本章第2节，我们曾说过，一个函数的原函数有无穷多个，它们彼此之间相差一个常数。但是，在许多问题中，我们感兴趣的往往并不是这无穷多个原函数的全体（不定积分），而是某一个特定的原函数，在几何上，就是一条特定的积分曲线。为了求得这条积分曲线，必须知道它所经过的一个点，也就是说，要知道初始条件，在实际问题中，求满足一定初始条件的原函数问题是很多的，下面举一些简单的实例。
+
+\begin{example}
+    已知一质点$m$作具有匀加速度$a$的直线运动，设它的初速度为$u$, 求质点在$t$秒后所经过的距离。
+\end{example}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+总结上面的讨论，得到以下命题：
+
+\begin{blk}{命题}
+    设$y'(t)=ky(t)$，$y(0)=A$，则：
+    \[y(t)=Ae^{kt}\]
+\end{blk}
+
+
+
+
+\begin{example}
+    若某城市现有人口10万，按照每年3\%的比率增长，问几年后人口是现有人口的2倍？
+\end{example}
+
+\begin{solution}
+    设$t_1$年后人口加倍，于是依题意有
+\[10e^{3\%t_1}=2\x10\]
+即：$e^{0.03t_1}=2$, 两边取常用对数，得
+\[\begin{split}
+    0.03t_1\lg e&=\lg2\\
+t_1&= \frac{100\lg2}{3\lg e}\approx \frac{100}{3}\cdot\frac{0.3010}{0. 4343}\\
+&\approx \frac{100}{3}\cdot 0.6931\approx 23.
+\end{split} \]
+答：约23年后，人口会加倍．
+\end{solution}
+
+从问题的解法看出，人口的加倍期仅与增长率有关，即$t_1=\frac{\ln2}{k}$, 下面是二者之间的对照表。
+
+\begin{center}
+\begin{tabular}{c|ccccc}
+\hline
+    增长率$k$ & 0.05&0.04&0.03&0.02&0.01\\
+\hline
+加倍期$t_1$ & 约14年& 约17年& 约23年& 约34.5年& 约39年\\
+\hline
+        \end{tabular}
+\end{center}
+
+同样地可把上述命题应用于放射性元素蜕变问题。
+
+\begin{example}
+    放射性元素的数量随时间$t$变化的函数是$N(t)$, $A=N(0)$是起算时的数量，$k$是蜕变率，且知放射性元素经过$\Delta t$这段时间的蜕变，它减少的数量$\Delta N(t)=N(t+\Delta t)-N(t)$与在时刻$t$的数量$N(t)$及这段蜕变时间$\Delta t$成比
+例，即
+\[\Delta N (t) =-kN (t) \cdot \Delta t\]
+因为放射性元素不断减少，所以$\Delta N$是负数，问经过多少年放射性元素剩下了一半？
+\end{example}
+
+\begin{solution}
+    依题意，有
+\[\frac{\dd N}{\dd t}=-kN (t) \]
+根据本节命题，得到
+\[N (t) =Ae^{-kt}\]
+
+设经过$t_1$年，放射性元素减少了一半，通常称$t_1$为放射性元素的半衰期，于是
+\[t_1=\frac{\ln 2}{k}\approx \frac{0. 6931}{k}\]
+\end{solution}
+
+下面是一些放射性元素的半衰期的简表。
+
+\begin{center}
+    \begin{tabular}{c|ccc}
+    \hline
+        元素 & 氩Ar$^{39}$ &碳C$^{14}$&氢H$^3$  \\
+    半衰期 & 269年& 5730年& 12.3年 \\
+    \hline
+    元素 & 碘I$^{129}$ &铀U$^{238}$& 铀U$^{235}$ \\
+    半衰期 &  $16\x10^6$年& $4.5\x 10^9$年& $0.71\x 10^9$年\\
+    \hline
+            \end{tabular}
+    \end{center}
+
+我们可以把岩石或化石中所含的各种微量的放射性元素，当作天然的计时仪表，因为各种放射性元素的微量都可以测量十分准确，所以我们可以通过对残留微量的测定，
+用半衰期去推算岩石或化石的“年龄”，甚至于我们所居住的地球的“年龄”。
+
+\begin{ex}
+\begin{enumerate}
+    \item 求下列积分曲线：
+\begin{multicols}{2}
+\begin{enumerate}
+    \item $\begin{cases}
+        y'=2x\\
+        y|_{x=x_0}=y_0
+    \end{cases}$
+    \item $\begin{cases}
+        y'=2\sqrt{y}\\
+        y|_{x=0}=0
+    \end{cases}$
+    \item $\begin{cases}
+        y'=\frac{2}{3\sqrt[3]{x}}\\
+        y|_{x=0}=4
+    \end{cases}$
+\end{enumerate}
+\end{multicols}
+\item 在$20.2^{\circ}{\rm C}$, 细菌受到5\%的消毒溶液消毒，每小时细菌死
+    亡的比率为11\%, 假如开始时有1000个细菌，那么在24小时后还剩下多少？
+    \item 化学反应速度$v$和温度$t$的增加是按照有机体生长的规律
+    进行的，当$t=0$时，$v=30$; 当$t=9.90$时，$v=60$, 求反应率以及当$t=20$时，$v$的值．
+\item 若函数$y=f(x)$的变率$\frac{\dd y}{\dd x}$与当时的函数值的平方成
+    正比例，且当$x=0$时，$y=f(0)=2$; 当$x=1$时，$y=f(1)=4$, 求函数$y=f(x)$.
+\end{enumerate} 
+\end{ex}
+
+\subsection*{习题4.5}
+\begin{enumerate}
+    \item 计算下列不定积分：
+\begin{multicols}{2}
+\begin{enumerate}
+    \item $\displaystyle\int \frac{\dd x}{1-3x^2}$
+    \item $\displaystyle\int \frac{1-\sin^{-3}x}{1-\cos^2 x}\dd x$
+    \item $\displaystyle\int \frac{\dd x}{\sin x\cos x}$
+    \item $\displaystyle\int x\sec^2 x\dd x$
+    \item $\displaystyle\int xe^{2x+1}\dd x$
+    \item $\displaystyle\int \frac{x^2+2}{x(x-1)}\dd x$
+\end{enumerate}
+\end{multicols}
+
+\item 求下列定积分：
+\begin{multicols}{2}
+    \begin{enumerate}
+        \item  $\displaystyle\int_{-1}^{3} \frac{\dd x}{x^{2}+7 x+10} $
+        \item  $\displaystyle\int_{\sqrt{3}}^{0} \frac{\dd x}{2+x^{2}}$
+        \item  $\displaystyle\int_{0}^{1} x \sqrt{\left(2-x^{2}\right)^{3}} \dd x$
+        \item  $\displaystyle\int_{0}^{\ln 3} \frac{\dd x}{e^{x}+5+6 e^{-x}}$
+        \item  $\displaystyle\int_{1}^{\tfrac{7}{5}} \frac{x^{\tfrac{3}{4}}+x^{\tfrac{1}{4}}}{x^{\tfrac{9}{4}}-x^{\tfrac{5}{4}}+x^{\tfrac{1}{4}}} \dd x$
+        \item  $\displaystyle\int_{1}^{2} \frac{2-x+x^{2}}{(1+x)(1-x)^{2}} \dd x$
+        \item  $\displaystyle\int_{1}^{2} x \ln x \dd x$
+        \item  $\displaystyle\int_{-\pi}^{\pi} \sin m x \sin n x \dd x$
+        (此处 $m, n$ 是整数且 $m \pm n\ne 0$)
+\item  $\displaystyle\int_{\tfrac{a}{\sqrt{3}}}^{a} \frac{\dd x}{\left(a^{2}+x^{2}\right)^{3 / 2}}$
+\end{enumerate}
+\end{multicols}
+\item  求下列极限：
+    \begin{enumerate}
+\item  $\displaystyle\lim _{n \to  \infty} \frac{1}{n}\left\{\left(1+
+\frac{1}{n}\right)^2+\left(1+\frac{2}{n}\right)^2+\cdots+
+\left(1+\frac{n}{n}\right)^{2}\right\}$
+\item $\displaystyle\lim _{n \to  \infty} \frac{1^{4}+2^{4}+\cdots+n^{4}}{n^{5}}$
+\item $\Lim_{n\to\infty}\frac{1}{n}\left(\sin\frac{\pi}{n}+\sin\frac{2\pi}{n}+\cdots+\sin\frac{n\pi}{n}\right)$
+\item $\Lim_{n\to\infty}\left(\frac{1}{\sqrt{n+1}}+\frac{1}{\sqrt{n+2}}+\cdots+\frac{1}{\sqrt{n+n}}\right)\cdot \frac{1}{\sqrt{n}}$
+\end{enumerate}
+
+\item 利用求$y=\frac{1}{x}$的定积分，证明
+\[\ln(n+1)<1+\frac{1}{2}+\frac{1}{3}+\cdots+\frac{1}{n}<1+\ln n\]
+\item 设$0<a\le 1$，求证：
+\[\int^a_0\frac{\dd x}{x^3+1}<\int^a_0\frac{\dd x}{x^4+1} \]
+\item 设$0\le x\le \frac{\pi}{4}$，利用不等式$0\le \sin x\le x$证明：
+\[\frac{\pi}{4}<\int^{\pi/4}_0\frac{\dd x}{\sqrt{1-\sin x}}<2-\sqrt{4-\pi}\]
+
+\item 若$m,n$是正整数，求证：
+\[\int^1_0 x^m (1-x)^n\dd x=\frac{n}{m+1}\int^1_0x^{m+1}(1-x)^{n-1}\dd x \]
+\item 求证：$\displaystyle\int^\pi_0 xf(\sin x)\dd x=\frac{\pi}{2}\int^\pi_0f(\sin x)\dd x$
+\item 若$I_n=\displaystyle\int^{\pi/4}_0 \tan^n \theta \dd \theta\quad (n\ge 2)$. 试求$I_n$和$I_{n-2}$的关系式。
+\item 若$I_n=\displaystyle\int \frac{\dd x}{(x^2+a^2)^n}$，求证：
+\[2na^2I_{n+1}=\frac{x}{(x^2+a^2)^n}+(2n-1)I_n\]
+\item 设$S_n=\frac{1}{\sqrt{1}}+\frac{1}{\sqrt{2}}+\cdots+\frac{1}{\sqrt{n}}$，$n$为正整数。
+\[T_n=\frac{1}{\sqrt{1+\frac{1}{2}}}+\frac{1}{\sqrt{2+\frac{1}{2}}}+\cdots+\frac{1}{\sqrt{n+\frac{1}{2}}}\]
+求证：
+\begin{multicols}{2}
+\begin{enumerate}
+    \item $S_n\ge \displaystyle\int^{n+1}_1 \frac{\dd x}{\sqrt{x}}$
+    \item $\Lim_{n\to\infty}\frac{1}{S_n}=0$
+    \item $S_{n+1}-1\le T_n\le S_n$
+    \item $\Lim_{n\to\infty}\frac{T_n}{S_n}=1$
+\end{enumerate}
+\end{multicols}
+
+\item 设$f(x)=(ax+b)e^{x/2}$, 求$a,b$的值，使得等式
+\[f (x) =e^{x/2}-1+\frac{1}{2}\int^x_0 f (t) \dd t\]
+对于任何$x$的值都成立。
+\item 求由曲线$y=\frac{4}{x^2}$, $y=x-1$, $x=1$所围区域的面积．
+\item 求在曲线$x^2+y^2=9$和$y=\frac{1}{3}(-x^2+1)$之间位于
+第二象限那部分的面积。
+\item 求积分$I(a)=\displaystyle\int^1_{-1}|x-a|e^x\dd x$在$|a|\le 1$时的最大值。
+\item 设$0<t<\pi$，考察$x$的函数$f(x)=2\sin x\sin(t-x)$
+\begin{enumerate}
+    \item 画出$f(x)$在区间$0\le x\le \pi$上的图象，再设
+    \[F (t) =\int^\pi_0 |f (x)|\dd x\]
+根据所作的图象说明$F(t)$所表示的是什么？
+\item 用关于$t$的式子写出$F(t)$, 并求出使$F(t)$取最小值时$t$的值。
+\end{enumerate}
+\item  设$T_1$是由抛物线$y=4x^2$和直线$x=a$, $x=1$, $y=0$所
+围成的区域，$T_2$是抛物线$y=4x^2$和二直线$x=a$, $y=0$围成的区域，但是$0<a<1$，试求：
+\begin{enumerate}
+\item $T_1$绕$x$轴旋转而成的旋转体体积$V_1$;    \item $T_2$绕$y$轴旋转而成的旋转体体积$V_2$;    \item 使$V_1+V_2$为最大时$a$的值。
+\end{enumerate}
+\item 设$0\le t\le \frac{\pi}{2}$，曲线$y=\sin x$与三条直线$x=t$, $x=2t$, 
+$y=0$围成部分绕$x$轴旋转所成的旋转体的体积为$V(t)$。当$t=\alpha$时$V(t)$最大，试求$\cos\alpha$的值。
+\item 设曲线$y=f(x)$通过点$P(3, 4)$, 并满足微分方程
+$\frac{\dd y}{\dd x}=\frac{y}{x}$，
+求此积分曲线。
+
+\item 若$\frac{\dd y}{\dd x}=\cos(x+y)$，求不定积分。（提示：设$z=x+y$）
+\end{enumerate}

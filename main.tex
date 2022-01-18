@@ -3,7 +3,7 @@
 
 \usepackage[margin=2.5cm]{geometry}
 
-
+\usepackage{physics}
 \usepackage{pifont}
 \usepackage[perpage,symbol*]{footmisc}
 \DefineFNsymbols{circled}{{\ding{192}}{\ding{193}}{\ding{194}}
@@ -39,7 +39,7 @@
 
 \usepackage[framemethod=tikz]{mdframed}
 
-
+\usepackage{circuitikz}
 
 \newtheorem{example}{\bf 例}[chapter]
 \newenvironment{solution}{\noindent {\bf 解：}}{}  %{\hfill $\clubsuit$\par}
@@ -60,7 +60,7 @@
 \newcommand{\Var}{{\rm Var}}
 \newcommand{\Cov}{{\rm Cov}}
 \newcommand{\x}{\times}
-
+\renewcommand{\dd}{\,{\rm d}}
 
  \usepackage{tcolorbox}
  \tcbuselibrary{breakable}
@@ -146,9 +146,13 @@ subsubsection = {
 \newcommand{\oc}{$^{\circ}{\rm C}$}
 \usepackage{longtable}
 \usepackage{tkz-euclide, tkz-base}
-
-
-
+\newcommand{\NC}{\text{N}/\text{C}}
+\newcommand{\ms}{\text{m}/\text{s}}
+\newcommand{\cms}{\text{cm}/\text{s}}
+\newcommand{\msq}{\text{m}/\text{s}^2}
+\newcommand{\cmsq}{\text{cm}/\text{s}^2}
+\newcommand{\kmh}{\text{km}/\text{h}}
+\newcommand{\Int}{\displaystyle\int}
 \usepackage{cases}
 \begin{document}
 %\fontsize{10.5}{11}\selectfont
@@ -188,13 +192,9 @@ subsubsection = {
 
 \input{1.tex}
 
- \input{2.tex}
+\input{2.tex}
 \input{3.tex}
 \input{4.tex}
-
-
-
-
 
 
 
