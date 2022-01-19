@@ -1424,23 +1424,200 @@ $$
 
 \subsection{定积分的计算}
 
+由微积分的基本定理得知，定积分$\Int^b_a f(x)\dd x$的计算归结为不定积分$\Int f(x)\dd x$的计算，由后者计算得到$f(x)$的原函数$F(x)$, 则
+\[\Int^b_a f(x)\dd x=F (x)\Bigg|^b_a=F (b) -F (a)\] 
+于是计算不定积分的各种方法也可移植过来求定积分。
+
+\subsubsection{定积分的换元积分法}
+
+第一换元法：设$\Int f(u)\dd u=F(u)$, $u=\varphi(x)$可微，
+那么
+\[\begin{split}
+    \int^b_a f(\varphi(x))\varphi'(x)\dd x&=\int^{\varphi(b)}_{\varphi(a)}f(u)\dd u\\
+    &=F(u)\Big|^{\varphi(b)}_{\varphi(a)}=F[{\varphi(b)}]-F[{\varphi(a)}]
+\end{split}\]
+
+\begin{example}
+    求$\Int^{\tfrac{\pi}{2}}_0 \sin^3x \cos x\dd x$.
+\end{example}
+
+\begin{solution}
+    因为
+\[\int \sin^3x\cos x\dd x= \int \sin^3x\dd (\sin x) =\frac{1}{4}\sin^4x+C\]
+所以
+\[\begin{split}
+    \Int^{\tfrac{\pi}{2}}_0 \sin^3x \cos x\dd x&=\frac{1}{4}\sin^4 x\Big|^{\tfrac{\pi}{2}}_0 \\
+    &=\frac{1}{4}\left[\sin^4\frac{\pi}{4}-0\right]=\frac{1}{4}
+\end{split}\]
+\end{solution}
+
+\begin{blk}
+ {定理1（第二种变量代换法）}设$f(x)$在$[a,b]$上连续，作代换$x=\varphi (t)$, 其中$\varphi (t)$在某一闭区间$[\alpha,\beta]$上有连续导数$\varphi '(t)$, 当$\alpha\le t\le \beta$时，$a\le \varphi (t)\le b$, 且$\varphi (\alpha)=a$, $\varphi (\beta)=b$, 那么
+\[\int^b_a f(x) \dd x= \int^{\beta}_{\alpha} f [\varphi  (t) ] \varphi ' (t) \dd t\]   
+\end{blk}
+
+\begin{proof}
+    设$f(x)$的一个原函数是$G(x)$, 即有
+\[\frac{\dd}{\dd x}G (x) =f (x)\]
+于是由微积分基本定理得
+\begin{equation}
+    \int^b_a f (x)\dd x=G(x)\Big|^b_a=G(b) -G (a)
+\end{equation}
+根据复合函数求导法则，知
+\[\begin{split}
+    \frac{\dd}{ \dd t}G[\varphi  (t) ] &=\frac{\dd}{ \dd x}G (x)\cdot  \frac{\dd}{ \dd t}\varphi  (t)\\
+    &=f(x)\cdot \varphi'(t)=f[\varphi(t)]\varphi'(t)
+\end{split}\]
+所以$G[\varphi (t)]$是$f[\varphi (t)]\varphi '(t)$的一个原函数，从而
+\begin{equation}
+    \begin{split}
+\int^{\beta}_{\alpha} f [\varphi  (t) ] \varphi ' (t) \dd t&=G [\varphi  (t) ]\Big|^{\beta}_{\alpha}\\
+&=       G [\varphi  (\beta) ] -G [\varphi  (\alpha) ]=G (b) -G (a)
+    \end{split}
+\end{equation}
+因为(4.22)(4.23)两个积分相等，所以
+\[\int^b_a f(x) \dd x= \int^{\beta}_{\alpha} f [\varphi  (t) ] \varphi ' (t) \dd t\]
+\end{proof}
+
+这个公式与不定积分的换元公式很类似，所不同的是，后者最后需要将变量还原，而现在只须把积分限作相应的改变。
+
+\begin{example}
+    求$\Int^a_0 \sqrt{a^2-x^2}\dd x$
+\end{example}
+
+\begin{solution}
+作代换$x=a\sin t$，当$x$从0变到$a$时，相应地$t$自0变到$\frac{\pi}{2}$，于是
+\[\begin{split}
+    \Int^a_0 \sqrt{a^2-x^2}\dd x=a^2\int^{\tfrac{\pi}{2}}_0 \cos ^2 t\dd t&=a^2\int^{\tfrac{\pi}{2}}_0 \frac{1+\cos 2t}{2}\dd t\\
+    &=\frac{a^2}{2}\left(t+\frac{1}{2}\sin 2t\right)\Bigg|^{\tfrac{\pi}{2}}_0=\frac{\pi a^2}{4} 
+\end{split}\]
+\end{solution}
+
+\begin{example}
+    求$\Int^4_0 \frac{1}{1+\sqrt{x}}\dd x$
+\end{example}
+
+\begin{solution}
+    设$x=u^2$，于是
+\[\frac{1}{1+\sqrt{x}}=\frac{1}{1+u},\qquad \dd x=2u\dd u\]
+定限：当$x=0$时，从变换$\sqrt{x}=u$中解出$u=0$；当$x=4$时，解出$u=2$. 于是
+\[\begin{split}
+    \Int^4_0 \frac{1}{1+\sqrt{x}}\dd x=\int^2_0 \frac{1}{1+u}\cdot 2u\dd u&=2\int^2_0 \left(1-\frac{1}{1+u}\right)\dd u\\
+    &=2\left[u-\ln(1+u)\right]\Big|^2_0=2(2-\ln 3)
+\end{split}\]
+\end{solution}
+
+\begin{example}
+求证：$\Int^a_0 f(x)\dd x=\Int^a_0 f(a-x)\dd x$
+\end{example}
+
+\begin{proof}
+    设$x=a-t$，则$\dd x=-\dd t$，且当$x=0$时，$t=a$；当$x=a$时，$t=0$. 于是：
+\[\begin{split}
+    \Int^a_0 f(x)\dd x=\int^0_a f(a-t)(-\dd t)&=-\int^0_a f(a-t)\dd t\\
+    &=\int^a_0 f(a-t)\dd t=\Int^a_0 f(x)\dd x
+\end{split}\]
+\end{proof}
+
+我们在第三节曾指出，使用第二种变量代换时，要注意条件是否满足，否则会出现矛盾，这里举一反例。
+
+求$\Int^{1}_{-1}\frac{\dd x}{1+x^2}$时，如作变换$x=\frac{1}{t}$，则
+\[\Int^{1}_{-1}\frac{\dd x}{1+x^2}=-\Int^{1}_{-1}\frac{\dd t}{1+t^2}\]
+于是$\Int^{1}_{-1}\frac{\dd x}{1+x^2}=0$，这当然不对，问题在于，代换$x=\frac{1}{t}$
+在$[-1,1]$上并不是连续变化的。
 
 
+\subsubsection{定积分的分部积分法}
+\begin{blk}
+    {定理2} 设$u=u(x)$, $v=v(x)$在$[a,b]$上有连续的导数$u'(x)$, $v'(x)$, 则有分部积分公式
+\[\int^b_a u\dd v=u\cdot v\Big|^b_a- \int^b_a v\dd u\]
+\end{blk}
+
+\begin{proof}
+    由牛顿-莱布尼兹公式，显然有
+\[\begin{split}
+    u (x) v (x)\Big|^b_a &=\int^b_a (u (x) v (x) ) '\dd x\\
+&=\int^b_a u' (x) v (x) \dd x+\int^b_a u (x) v' (x) \dd x
+\end{split}\]
+移项，得
+\[\int^b_a u (x) \dd [v (x) ] =u (b) v (b) -u (a) v (a) -\int^b_a v (x) \dd [u (x) ] \]
+\end{proof}
+
+这个公式与不定积分的分部积分公式很相似，但是，这里每一项都带着积分限。
+
+\begin{example}
+求$\Int^{\sqrt{3}}_{-\sqrt{3}}|\arctan x|\dd x$
+\end{example}
+
+\begin{solution}
+因为$|\arctan x|$是偶函数，所以
+\[I=\Int^{\sqrt{3}}_{-\sqrt{3}}|\arctan x|\dd x=2\Int^{\sqrt{3}}_{0}|\arctan x|\dd x=2\Int^{\sqrt{3}}_{0}\arctan x\dd x\]
+设$u(x)=\arctan x$, $v'(x)=1$, 则$v(x)=x$，利用分部积分公式，得到：
+\[\begin{split}
+    I=2\Int^{\sqrt{3}}_{0}\arctan x\dd x &=2\left[x\arctan x\Big|^{\sqrt{3}}_0-\int^{\sqrt{3}}_0 x\dd (\arctan x)\right]\\
+    &=2\left[\sqrt{3}\arctan\sqrt{3}-\int^{\sqrt{3}}_0 x\cdot \frac{1}{1+x^2}\dd x \right]\\
+    &=2\sqrt{3}\cdot \frac{\pi}{3}-\int^{\sqrt{3}}_0 \frac{\dd(1+x^2)}{1+x^2}\\
+    &=\frac{2\sqrt{3}}{3}\pi -\ln(1+x^2)\Big|^{\sqrt{3}}_0= \frac{2\sqrt{3}}{3}\pi -\ln 4
+\end{split}\]
+\end{solution}
 
 
+\begin{example}
+    求$\Int^{\tfrac{\pi}{2}}_0 \sin^n \theta\dd \theta$.
+\end{example}
+
+\begin{solution}
+    设$I_n=\Int^{\tfrac{\pi}{2}}_0 \sin^n \theta\dd \theta$，利用例4.42的结果，得到：
+\[nI_n=\left[-\cos\theta\sin^{n-1}\theta\right]\Big|^{\tfrac{\pi}{2}_0} +(n-1)I_{n-2}\]
+因为方括号的式子对于积分上，下限的值等于零，所以上面等式化简为
+\[I_n=\frac{n-1}{n}I_{n-2}\]
+分别考虑$n$是偶数和奇数两种情况：
+\begin{enumerate}
+    \item 若$n$是偶数，那么
+\[\begin{split}
+    I_n=\frac{n-1}{n}I_{n-2}&=\frac{n-1}{n}\cdot \frac{n-3}{n-2}I_{n-4}\\
+    &=\cdots=\frac{n-1}{n}\cdot \frac{n-3}{n-2}\cdot \frac{n-5}{n-4}\cdots \frac{1}{2}I_{0}
+\end{split}
+    \]
+此处$I_0=\Int^{\tfrac{\pi}{2}}_0 1\cdot \dd \theta=\frac{\pi}{2}$，所以
+\[I_n=\frac{(n-1)(n-3)\cdots 3\cdot 1}{n(n-2)\cdots 4\cdot 2}\cdot \frac{\pi}{2}\]
+
+\item 若$n$是奇数，由于
+\[I_1=\Int^{\tfrac{\pi}{2}}_0 \sin\theta\dd\theta =(-\cos\theta)\Big|^{\tfrac{\pi}{2}}_0=1\]
+所以
+\[I_n=\frac{(n-1)(n-3)\cdots 4\cdot 2}{n(n-2)\cdots 5\cdot 3}\]
+\end{enumerate}
+\end{solution}
+
+\begin{ex}
+\begin{enumerate}
+    \item 求下列定积分：
+\begin{multicols}{2}
+\begin{enumerate}
+    \item $\Int_{0}^{\tfrac{\pi}{4}}(1+\sin \theta)^{2} \dd \theta $ 
+    \item $\Int_{0}^{\tfrac{\pi}{4}} \frac{\cos \theta \dd \theta}{1+\sin ^{2} \theta}$
+    \item $\Int_{0}^{1} \frac{x^{2}}{\left(1+x^{2}\right)^{2}} \dd x$
+    \item $\Int_{0}^{\tfrac{1}{\sqrt{2}}} \frac{x^{2}}{\sqrt{1-x^{2}}} \dd x$
+    \item $\Int_{\tfrac{1}{\sqrt{2}}}^{1} \sqrt{1-x^{2}} \dd x$
+    \item $\Int_{0}^{x} \frac{\cos ^{2} x \dd x}{a^{2} \cos ^{2} x+b^{2} \sin x}$
+    \item $\Int_{0}^{2 n}[\sin \omega t -\sin (\omega t+\varphi)]^{2} \dd t$
+    \item $\Int_{2}^{4} \sqrt{(4-x)(x-2)} \dd x$
+    \item $\Int_{1}^{5} \frac{1}{\sqrt{2 x-1}} \dd x$ 
+    \item $\Int_{0}^{1} \frac{x+1}{\sqrt{1 - x^{2}}} \dd x$
+    \item $\Int_{\tfrac{\pi}{6}}^{\tfrac{\pi}{2}} \cot \theta \dd \theta$
+    \item $\Int_{1}^{0} \frac{x^{2}}{ 1+x^{3}} \dd x$
+    \item $\Int^{\tfrac{\pi}{2}}_0 \frac{\sin x}{\cos^2 x}\dd x$
+    \item $\Int^{2a}_0 x^2\sqrt{2ax-x^2}\dd x$
+\end{enumerate}
+\end{multicols}
+
+\item 证明：$\Int^{\tfrac{\pi}{2}}_0 \frac{\cos x}{\cos x+\sin x}\dd x=\Int^{\tfrac{\pi}{2}}_0 \frac{\sin x}{\cos x+\sin x}\dd x$
+
+（提示：用变量代换$x=\frac{\pi}{2}-y$.）
 
 
-
-
-
-
-
-
-
-
-
-
-
+\end{enumerate} 
+\end{ex}
 
 
 \begin{example}
@@ -1450,54 +1627,6 @@ $$
 \begin{solution}
     
 \end{solution}
-
-
-
-
-\begin{example}
-    
-\end{example}
-
-\begin{solution}
-    
-\end{solution}
-
-
-
-
-
-\begin{example}
-    
-\end{example}
-
-\begin{solution}
-    
-\end{solution}
-
-
-
-\begin{example}
-    
-\end{example}
-
-\begin{solution}
-    
-\end{solution}
-
-
-
-
-
-\begin{example}
-    
-\end{example}
-
-\begin{solution}
-    
-\end{solution}
-
-
-
 
 \begin{example}
     
@@ -1585,19 +1714,6 @@ $$
 \begin{example}
     已知一质点$m$作具有匀加速度$a$的直线运动，设它的初速度为$u$, 求质点在$t$秒后所经过的距离。
 \end{example}
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
