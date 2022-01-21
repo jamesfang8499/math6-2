@@ -1474,120 +1474,397 @@ $y=\sqrt{16-x^2}$和$y=-\sqrt{16-x^2},\; x\in [-4, 4]$. 求每一个函数的导
 至于在什么条件下，这种假设是合理的问题，已经超出了本书的范围，故不在此讨论。
 \end{rmk}
 
-
-
-
-
-
-
-
-
 \begin{example}
+求证椭圆$\frac{x^2}{a^2}+\frac{y^2}{b^2}=1$在点$(x_0,y_0)$处切线的方程为$\frac{x_0x}{a^2}+\frac{y_0y}{b^2}=1$.
+\end{example}
+
+\begin{proof}
+\[\begin{split}
+    \left(\frac{x^2}{a^2}+\frac{y^2}{b^2}\right)'_x&=(1)'_x\\
+    \frac{2x}{a^2}+\frac{2y}{b^2}\cdot y_x&=0
+\end{split}\]
+若$y\ne 0$，则：
+\[y'_x=-\frac{b^2x}{a^2y}\]
+于是，在点$(x_0,y_0)$处（这里$y_0\ne 0$）的切线方程为
+\[y-y_0=-\frac{b^2x}{a^2y}(x-x_0)\]
+即：$b^2x_0x+a^2y_0y=b^2x^2_0+a^2y^2_0$
+
+$\because\quad $点$(x_0,y_0)$在椭圆上，
+
+$\therefore\quad b^2x_0^2+a^2y^2_0=a^2b^2$，因此，所求切线方程是
+\[b^2x_0 x+a^2y_0 y=a^2b^2\]
+也就是
+\[\frac{x_0x}{a^2}+\frac{y_0y}{b^2}=1\]
+
+若$y=0$则$x=\pm a$, 显然在点$(-a,0)$和点$(a,0)$处的切线方程分别是$x=-a$, $x=a$, 它们是方程$\frac{x_0x}{a^2}+\frac{y_0y}{b^2}=1$的特殊形式．
+\end{proof}
     
+\begin{example}
+    如果将抛物线$y^2=2px$绕它的对称轴旋转成旋转挑物面，那么与对称轴平行的光线射到曲面上，经曲面反射后通过焦点，试证明之。
 \end{example}
 
 
+\begin{proof}
+从物理学知道，光线经镜面反射后，要服从光的反射定律：
+\begin{enumerate}
+    \item 在均匀介质中，光沿直线传播。
+    \item 当光线碰到平面镜时，光线要反射。入射线与镜面法线夹角（记作$i$）等于反射线与镜面法线的夹角（记作$r$），见图2.11, 角$i$称为入射角，角$r$称为反射角．
+\item 光从曲面镜的反射也遵守同样的法则：
+  \[  \text{入射角}i=\text{反射角}r\]
+    此时镜面的法线定义为与镜面在入射点的切线相垂直的直线。
+\end{enumerate}
+
+\begin{figure}[htp]
+    \centering
+    \begin{tikzpicture}[>=latex, scale=1]
+        \fill[pattern=north east lines](-2,-.25) rectangle (2,0);
+        \draw(-2,0)node[left]{镜面}--(2,0);
+        \draw[->, very thick](140:3)node[left]{入射线}--(140:2);
+        \draw[->, very thick](140:2)--(0,0)--(40:3)node[right]{反射线};
+        \draw(0,0)--(0,3)node[above]{法线};
+        \draw[<->, thick](90:1.8) arc (90:40:1.8);
+        \draw[<->, thick](90:1.8) arc (90:140:1.8);
+        \node at (60:2){$r$};
+        \node at (120:2){$i$};
+            \end{tikzpicture}
+    \caption{}
+\end{figure}
+
+假设光线经位于$xy$平面上的抛物线$y^2=2px$形的镜面反射。当入射线与x轴平行且与抛物线交于$P_1(x_1,y_1)$点时，我们要求反射线的方
+程，并证明它通过焦点$F\left(\frac{p}{2},0\right)$. 如果过$P_1(x_1,y_1)$点的切线与$x$轴成$\theta$角，那么平行于$x$轴的入射光线与法线的夹角是$90^{\circ}-\theta$. 由光的反射定律，反射光线与法线的夹角也是$90^{\circ}-\theta$. 于是，从图2.12上看出，反射光线与$x$轴的夹角是$2\theta$.
+
+现在，在方程$y^2=2px$的两边对$x$求导数，得到
+\[2yy'=2p\quad \Rightarrow\quad y'=\frac{2p}{2y}=\frac{p}{y}\]
+所以，由导数的几何意义得出，在$P_1(x_1,y_1)$点的切线的斜率是
+\[\tan\theta=y'_{x_1}=\frac{p}{y_1}\]
+于是反射光线的斜率是
+\[\begin{split}
+    \tan2\theta=\frac{2\tan\theta}{1-\tan^2\theta}&=\frac{2\cdot \frac{p}{y_1}}{1-\frac{p^2}{y^2_1}}\\
+    &=\frac{2py_1}{y^2_1-p^2}=\frac{2py_1}{2px_1-p^2}=\frac{2y_1}{2x_1-p}
+\end{split}\]
+从而，得出反射线方程
+\[y-y_1=\frac{2y_1}{2x_1-p}(x-x_1) \]
+令$y=0$, 得到反射光线与$x$轴交点的横坐标，
+\[0-y_1=\frac{2y_1}{2x_1-p}(x-x_1)\quad \Rightarrow\quad x=\frac{p}{2}\]
+即反射线通过焦点$F\left(\frac{p}{2},0\right)$. 由于$P_1(x_1,y_1)$是抛物线上
+任意一点，所以只要入射光线与$x$轴平行，反射光线必通过焦
+点。如果把光源放在焦点$F\left(\frac{p}{2},0\right)$上，那么从焦点发出的
+光线经抛物线镜面反射后的反射光线是与对称轴（$x$轴）平行的光线。我们常利用这个原理获得平行光。
+\end{proof}
+
+\begin{figure}[htp]\centering
+\begin{tikzpicture}[>=latex, scale=1.2]
+\draw[->](-1.5,0)--(5,0)node[right]{$x$};
+\draw[->](0,-3)--(0,3)node[right]{$y$};
+\draw[domain=2.5:-2.5, samples=100, very thick]plot({0.5*\x*\x}, \x)node[right]{$y^2=2px$};
+\draw[domain=-1:3.5, samples=10, thick]plot(\x, {0.707*(\x+1)});
+\draw[thick](.5,0)node[below right]{$F\left(\frac{p}{2},0\right)$}--(1,1.414)--(4,1.414);
+\draw[->, thick](4,1.414)--(3,1.414);
+\tkzDefPoints{-1/0/A, 1/1.414/P, .5/0/F, 4/1.414/B, 3/2.828/C, 5/0/D}
+\tkzMarkAngles[mark=none, size=.45](D,A,P D,F,P A,P,F B,P,C)
+\tkzLabelAngle[pos=.6](D,A,P){$\theta$}
+\tkzLabelAngle[pos=.6](D,F,P){$2\theta$}
+\tkzLabelAngle[pos=.6](A,P,F){$\theta$}
+\tkzLabelAngle[pos=.6](B,P,C){$\theta$}
+
+\draw[domain=.5:1.5, samples=10]plot(\x, {1.414*(-\x+2)});
+\tkzDefPoints{1.5/0.707/E}
+\tkzMarkAngles[mark=none, size=.6, <->](E,P,B)
+\tkzLabelAngle[pos=1.2](E,P,B){$90^{\circ}-\theta$}
+\node at (P) [left]{$P_1(x_1,y_1)$};
+\node at (0,0)[below left]{$O$};
+\end{tikzpicture}
+\caption{}
+\end{figure}
+
+\begin{ex}
+\begin{enumerate}
+    \item 求下列隐函数在指定点的导数$\frac{\dd y}{\dd x}$:
+\begin{enumerate}
+    \item $y=\cos x+\frac{1}{2}\sin y$, 点$\left(\frac{\pi}{2},0\right)$
+    \item $ye^x+\ln y=1$, 点$\left(0,1\right)$
+    \item $x^2+xy+y^2=1$, 点$\left(1,-1\right)$
+    \item $x^2y^2+x^2+y^2=9$, 点$\left(1,2\right)$
+\end{enumerate}
+    \item 求下列隐函数的导数$\frac{\dd y}{\dd x}$:
+\begin{multicols}{2}
+\begin{enumerate}
+    \item $\frac{x^2}{a^2}+\frac{y^2}{b^2}=1$
+    \item $y^2=8x$
+    \item $x^2=2y$
+    \item $\sqrt{x}+\sqrt{y}=1$
+    \item $x^3+y^3=a^3$
+    \item $x^{\tfrac{2}{3}}+y^{\tfrac{2}{3}}=a^{\tfrac{2}{3}}$
+    \item $y-\cos(x+y)=0$
+    \item $y=x+\arctan y$
+    \item $y=1-\ln(x+y)+e^y$
+    \item $\arctan \frac{y}{x}=\ln\sqrt{x^2+y^2}$
+\end{enumerate}
+\end{multicols}
+
+\item 求下列方程在指定点的导数$\frac{\dd y}{\dd x}$:
+\begin{enumerate}
+    \item $x-\sqrt{xy}+y=2$，点$(x_1,y_1)$
+    \item $(ax)^{\tfrac{2}{3}}-(by)^{\tfrac{2}{3}}=(a^2+b^2)^{\tfrac{2}{3}}$，点$(x_0,y_0)$
+    \item $(x+y)^{\tfrac{2}{3}}+(x-y)^{\tfrac{2}{3}}=2a^{\tfrac{2}{3}}$在$x=0$的点；在$x=y$的点；在$x=-y$的点
+    \item $x^2+xy+y^2=c^2$，在斜率等于$-1$的点
+\end{enumerate}
+\item 若$x\sqrt{y}+y\sqrt{x}=c$，求$\frac{\dd y}{\dd x}$和$\frac{\dd x}{\dd y}$.
+\item 求椭圆$x^2+4y^2=9$的切线方程，使它和直线$2x+3y=0$
+平行。
+\item 曲线$y=(x-2)(x-3)(x-4)$和$x$轴交于$P(2, 0)$, $Q(3,0)$和$R(4, 0)$点．
+\begin{enumerate}
+    \item 求证在$P$点和$R$点处的切线互相平行；
+    \item 求曲线在$Q$点处的法线与$y$轴的交点．
+\end{enumerate}
+\item 求曲线 $2x^3-xy+8=0$上的$P$点，使在该点的切线通过
+原点，过$P$点的切线与曲线交于另一点$Q$的坐标。
+\item \begin{enumerate}
+    \item 求证直线$\ell x +my+n=0$与椭圆$\frac{x^2}{a^2}+\frac{y^2}{b^2}=1$, 双曲线$\frac{x^2}{a^2}-\frac{y^2}{b^2}=1$, 抛物线$y^2=2px$相切的条件分别是$a^2\ell^2+b^2m^2=n^2$, $a^2\ell^2-b^2m^2=n^2$, $pm^2=2n\ell$.
+    \item 证明对于任意$k$, 直线$y=kx+\sqrt{a^2k^2+b^2}$是椭圆曲线$\frac{x^2}{a^2}+\frac{y^2}{b^2}=1$的切线。    
+\end{enumerate}
+\item \begin{enumerate}
+    \item 求过$P(5, 3)$点与椭圆$\frac{x^2}{16}+{y^2}=1$相切的直线
+    方程.
+    \item 求过(a)中的两切点的直线方程．
+\end{enumerate}
+
+\item 椭圆$\frac{x^2}{16}+{y^2}=1$的切线与$x$轴成$60^{\circ}$角，求该切线的方程。
+\item 通过双曲线$\frac{x^2}{a^2}-\frac{y^2}{b^2}=1$的焦点而与横轴垂直的弦的
+两个端点分别记作$A$和$B$, 求证过$A$、$B$两点的切线交于
+横轴上的点$Q$, 且$Q$点离中心的距离等于$\frac{a}{e}$.
+\item 求证过双曲线上一点$P$的切线与过$P$点的焦点半径成等角。
+\end{enumerate}
+\end{ex}
+
+\subsection{高阶导数}
+对于给定的可微函数$f(x)$, 它的导数$f'(x)$仍是$x$的函数。如果$f'(x)$是可微的，它的导函数$(f'(x))'=f''(x)$或$f^{(2)}(x)$称为$f(x)$的\textbf{二阶导函数}，……如此类推，$f(x)$
+的$n$阶导函数$f^{(n)}(x)$, 可以归纳地定义为：
+\[\begin{split}
+  f ^{(1)} (x)&=f'(x)\\
+  f ^{(n)} (x)&=\left(f^{(n-1)}(x)\right)',\qquad n=2,3,\ldots  
+\end{split}\]
+因此，求高阶导函数，实际上就是连续地求一阶导函数。
+
+高阶导函数有时也记作$\frac{\dd^n y}{\dd x^n}$或$\frac{\dd^n }{\dd x^n}f(x)$. 例如
+\[\begin{split}
+    f''(x)&=\frac{\dd}{\dd x}f'(x)=\frac{\dd}{\dd x}\left(\frac{\dd y}{\dd x}\right)=\frac{\dd^2 y}{\dd x^2}\\
+    f^{(3)}(x)&=\frac{\dd}{\dd x}\left(\frac{\dd^2 y}{\dd x^2}\right)=\frac{\dd^3 y}{\dd x^3}
+\end{split}\]
+
+二阶导数有它的实际意义，例如动点的速度$v$等于它所
+经过的路程$S$对于时间$t$的变率：$v=\frac{\dd S}{\dd t}$；而加速度$a$是速度$v$
+对于时间$t$的变率：$a=\frac{\dd v}{\dd t}$，
+这就是说加速度是路程$S$对于时间$t$的二阶导数：$a=\frac{\dd^2 S}{\dd t^2}$。
+在以后的学习中，我们还会知道二阶导数有它的重要的几何意义。我们已经知道一次函数$f(x)=ax+b\; (a\ne 0)$的图象是一条直线，而它的二阶导数$f''(x)=(f'(x))'=(a)'=0$. 因此，若一函数的二阶导数$f''(x)\ne 0$, 那么它的图象就不是直线．
+
+\begin{example}
+设$y=\frac{x}{1-x}$，求$\frac{\dd^2 y}{\dd x^2}$, $\frac{\dd^3 y}{\dd x^3}$.
+\end{example}
+
 \begin{solution}
-    
+\[\begin{split}
+    y&=\frac{x}{1-x}=-1+\frac{1}{1-x}\\
+\frac{\dd y}{\dd x}&=-\frac{(1-x)'}{(1-x)^2}=\frac{1}{(1-x)^2}
+\end{split}\]
+\[\begin{split}
+    \frac{\dd^2 y}{\dd x^2}&=\frac{-[(1-x)^2]'}{(1-x)^4}=\frac{-2(1-x)(-1)}{(1-x)^4}=\frac{2}{(1-x)^3}\\
+    \frac{\dd^3 y}{\dd x^3}&=\frac{-2[(1-x)^3]'}{(1-x)^6}=\frac{2\cdot 3(1-x)^2(-1)}{(1-x)^6}=\frac{6}{(1-x)^4}  
+\end{split}\]
 \end{solution}
 
 
 \begin{example}
-    
+若$f(x)=\sqrt{a^2+x^2}$，求$f''(x)$
 \end{example}
 
 
 \begin{solution}
-    
+\textbf{解法1: }
+\[\begin{split}
+    f'(x)&=\frac{1}{2}(a^2+x^2)^{-\tfrac{1}{2}}(a^2+x^2)'\\
+    &=\frac{1}{2}(a^2+x^2)^{-\tfrac{1}{2}}(2x)=\frac{x}{\sqrt{a^2+x^2}}\\
+\end{split}\]
+\[\begin{split}
+f''(x)&=\frac{\sqrt{a^2+x^2}\cdot x'-x\left(\sqrt{a^2+x^2}\right)'}{a^2+x^2}\\
+&=\frac{\sqrt{a^2+x^2}-\frac{x^2}{\sqrt{a^2+x^2}}}{{a^2+x^2}}\\
+&=\frac{a^2+x^2-x^2}{(a^2+x^2)^{\tfrac{3}{2}}}=\frac{a^2}{(a^2+x^2)^{\tfrac{3}{2}}}
+\end{split}\]
+
+\textbf{解法2: } 将原来的函数变形为隐函数，用隐函数微分法求二阶导数。
+
+设$y=\sqrt{a^2+x^2}$, 则$y^2=a^2+x^2$, 对$x$微分得：
+\[y\cdot y_x=x\]    
+再对$x$微分得：
+\[y\cdot y_x''+(y_x')^2=1\]
+将$y'=\frac{x}{y}$代入，得
+\[y\cdot y''_x+\frac{x^2}{y^2}=1\]
+因此：
+\[y''_x=\frac{1-\frac{x^2}{y^2}}{y}=\frac{1-\frac{x^2}{x^2+a^2}}{\sqrt{a^2+x^2}}=\frac{a^2}{(a^2+x^2)^{\tfrac{3}{2}}}\]
 \end{solution}
 
+\begin{example}
+    若$y=\frac{x^2}{\sqrt{x^2+1}}$，求证：
+\[(x^2+1)\frac{\dd^2 y}{\dd x^2}+3x\frac{\dd y}{\dd x}-y=2\sqrt{x^2+1}\]
+\end{example}
 
+\begin{proof}
+将原式去分母
+\[y\sqrt{x^2+1}=x^2\]
+对$x$微分得
+\[\sqrt{x^2+1}\cdot\frac{\dd y}{\dd x}+y\cdot \frac{x}{\sqrt{x^2+1}}=2x\]
+两边乘以$\sqrt{x^2+1}$，得到
+\[(x^2+1)\cdot \frac{\dd y}{\dd x}+y\cdot x=2x\sqrt{x^2+1}\]
+再对$x$微分得：
+\[(x^2+1)\frac{\dd^2 y}{\dd x^2}+(2x)\cdot \frac{\dd y}{\dd x}+x\frac{\dd y}{\dd x}+y=2\sqrt{x^2+1}+\frac{2x^2}{\sqrt{x^2+1}}\]
+即：
+\[(x^2+1)\frac{\dd^2 y}{\dd x^2}+3x\frac{\dd y}{\dd x}+y=2\sqrt{x^2+1}+2y\]
+因此：
+\[(x^2+1)\frac{\dd^2 y}{\dd x^2}+3x\frac{\dd y}{\dd x}-y=2\sqrt{x^2+1}\]
+\end{proof}
+
+有时需要求一些函数的$n$阶导数，但是在一般情形下，函数的$n$阶导数是如此的复杂，以致求函数的$n$阶导数的通式是办不到的，然而有一些函数，我们不难写出它的$n$阶导数的通式。
+
+\begin{example}
+  设$y=(ax+b)^m$, 求$y^{(n)}\; (m>n)$  
+\end{example}
+
+\begin{solution}
+\[\begin{split}
+y'&=ma(ax+b)^{m-1}\\
+y''&=m(m-1)a^2(ax+b)^{m-2}\\
+y^{(3)}&=m(m-1)(m-2)a^3(ax+b)^{m-3}\\
+\cdots\quad &\cdots\quad \cdots
+\end{split}\]
+由此推知：
+\[y^{(n)}=m(m-1)\cdots(m-n+1)a^n(ax+b)^{m-n}=\frac{m!}{(m-n)!}a^n(ax+b)^{m-n}\]
+这个结果的正确性可用数学归纳法证明。
+\end{solution}
 
 
 \begin{example}
-    
+设$y=\frac{1}{x^2-4x+3}$，求$y^{(n)}$.
 \end{example}
 
 
 \begin{solution}
-    
+\[y=\frac{1}{x^2-4x+3}=\frac{1}{2}\left(\frac{1}{x-3}-\frac{1}{x-1}\right)\]
+\[\begin{split}
+    y'&=\frac{1}{2}\left[\frac{-1}{(x-3)^2}-\frac{-1}{(x-1)^2}\right]=\frac{(-1)}{2}\left[\frac{1}{(x-3)^2}-\frac{1}{(x-1)^2}\right]\\
+    y''&=\frac{(-1)}{2}\left[\frac{-2(x-3)}{(x-3)^4}-\frac{-2(x-1)}{(x-1)^4}\right]=\frac{(-1)^2 2!}{2}\left[\frac{1}{(x-3)^3}-\frac{1}{(x-1)^3}\right]\\
+    \cdots\quad &\cdots\quad \cdots
+\end{split}\]
+假设一般地有：
+\[y^{(n)}=\frac{(-1)^n n!}{2}\left[\frac{1}{(x-3)^{n+1}}-\frac{1}{(x-1)^{n+1}}\right]\]
+那么：
+\[\begin{split}
+    y^{(n+1)}&=\frac{(-1)^n n!}{2}\left[\frac{-(n+1)(x-3)^n}{(x-3)^{2(n+1)}}-\frac{-(n+1)(x-1)^n}{(n-1)^{2(n+1)}}\right]\\
+    &=\frac{(-1)^{n+1} (n+1)!}{2}\left[\frac{1}{(x-3)^{n+2}}-\frac{1}{(x-1)^{n+2}}\right]
+\end{split}\]
+即仍有此规律。因此，对于任何自然数$n$，都有
+\[y^{(n)}=\frac{(-1)^n n!}{2}\left[\frac{1}{(x-3)^{n+1}}-\frac{1}{(x-1)^{n+1}}\right]\]
+成立。
 \end{solution}
-
-
-
-
 
 \begin{example}
-    
+    设$y=\sin(ax+b)$，求$y^{(n)}$.
 \end{example}
 
 
 \begin{solution}
-    
+    \[y'=a\cos(ax+b)=a\sin\left(ax+b+\frac{\pi}{2}\right)\]
+因此，求$\sin(ax+b)$的导数是将函数乘以$a$，同时将幅角加上$\frac{\pi}{2}$.
+
+不难推知：
+\[y^{(n)}=a^n\sin\left(ax+b+\frac{n\pi}{2}\right)\]
+请读者用数学归纳法证明这个猜想正确。
 \end{solution}
-
-
-
-
-
 
 \begin{example}
-    
+设$f(x)=a_0+a_1x+a_2x^2+\cdots+a_nx^n$，$h$为任取非零实数，求证：
+\[f(a+h)=f(a)+f'(a)h+\frac{f''(a)}{2!}h^2+\cdots+\frac{f^{(n)}(a)}{n!}h^n\]
 \end{example}
 
 
-\begin{solution}
-    
-\end{solution}
+\begin{proof}
+已给$f(x)=a_0+a_1x+\cdots+a_nx^n$，令$x=a+h$，并按$h$的升幂展开每一项，得到一个形式如
+\begin{equation}
+    f(a+h)=C_0+C_1 h+C_2 h^2+\cdots +C_n h^n
+\end{equation}
+的表达式。
 
+我们将说明，系数$C_0,C_1,\ldots,C_n$由$f(x)$在点$a$的函数值$f(a)$以及直到$n$阶为止的各阶导数在$x=a$的值表示，即
+\[C_0=f (a) ,\quad  C_i =\frac{1}{i!}f' (a) ,\qquad i=1, 2,\ldots ,n\]
 
+为了证明这个事实，(2.10)中把$h$看作自变量，首先令$h\to 0$, 立刻得到
+\[f (a) =C_0\]
 
-\begin{example}
-    
-\end{example}
+然后，应用复合函数求导法则，对方程(2.10), 关于$h$逐次求导，依次得到：
+\[\begin{split}
+f'(a+h)&=C_1+2C_2 h+3C_3h^2+\cdots +nC_nh^{n-1}\\
+f''(a+h)&=2C_2+3\x 2C_3h+\cdots+n(n-1)C_nh^{n-2}\\
+f^{(3)}(a+h)&=3!C_3+\frac{4!}{1!}C_4h+\frac{5!}{2!}C_5x^2+\cdots+\frac{n!}{(n-3)!}C_nh^{n-3}\\
+\cdots\quad &\cdots\quad \cdots\\
+f^{(i)}(a+h)&=i! C_i+\frac{(i+1)!}{1!}C_{i+1}h+\cdots+\frac{n!}{(n-i)!}C_nh^{n-i}\\
+\cdots\quad &\cdots\quad \cdots\\
+f^{(n-1)}(a+h)&=(n-1)!C_{n-1}+n!C_nh\\
+f^{(n)}(a+h)&=n!C_n
+\end{split}\]
+把$h=0$代入上面一个方程中，便得到
+\[C_1=f^{(1)}(a),C_2=\frac{f^{(2)}(a)}{2!},C_3=\frac{f^{(3)}(a)}{3!},\ldots,C_i=\frac{f^{(i)}(a)}{i!},\ldots,C_n=\frac{f^{(n)}(a)}{n!}\]
 
+把上面$C_0=f(a),\; C_i=\frac{f^{(i)}(a)}{i!},\quad i=1,2,\ldots,n$代入(2.10)中，最后得到：
+\begin{equation}
+    f(a+h)=f(a)+f'(a)h+\frac{f^{(2)}(a)}{2!}h^2+\cdots+\frac{f^{(n)}(a)}{n!}h^n
+\end{equation}
+这个公式叫做多项式的泰勒公式。
 
-\begin{solution}
-    
-\end{solution}
+在(2.11)中，令$a+h=x$, 则(2.11)可以改写成
+\[    f(x)=f(a)+f'(a)(x-a)+\frac{f^{(2)}(a)}{2!}(x-a)^2+\cdots+\frac{f^{(n)}(a)}{n!}(x-a)^n\]
+\end{proof}
 
+\begin{ex}
+\begin{enumerate}
+    \item 求下列函数的$n$阶导数：
+\begin{multicols}{2}
+\begin{enumerate}
+    \item $f(x)=\frac{1-x}{1+x}$
+    \item $f(x)=\sin^2 x$
+\end{enumerate}
+\end{multicols}
+    \item 若$y=\tan(m\cdot \arctan x)$，验证
+\[(1+x^2)\frac{\dd^2 y}{\dd x^2}=2(my-x)\frac{\dd y}{\dd x}\]
+\item 若$y=\frac{A\cos mx+B\sin mx}{x^n}$，其中$A,B,m,n$是常数，验证
+\[\frac{\dd^2 y}{\dd x^2}+2\frac{n}{x}\frac{\dd y}{\dd x}+\left[\frac{n(n-1)}{x^2}+m^2\right]y=0\]
 
-\begin{example}
-    
-\end{example}
+\item 若$h(x)=f(x)g(x)$，其中$f(x)$, $g(x)$和$h(x)$都是$n$阶可微，求证：
+\[\begin{split}
+    h^{(n)}(x)&=f(x)\cdot g^{(n)}(x)+C^1_n f^{(1)}(x)g^{(n-1)}(x)+\cdots \\
+    &\qquad +C^h_n f^{(h)}(x)g^{(n-h)}(x)+\cdots\\
+    &\qquad  +C^{n-1}_n f^{(n-1)}(x)g^{(1)}(x)+C^n_n f^{(n)}(x)g(x)
+\end{split}\]
+\item 求下列函数的$n$阶导数：
+\begin{multicols}{2}
+\begin{enumerate}
+\item $f(x)=x\ln x$
+\item $f(x)=xe^x$
+\item $f(x)=e^{ax}\sin\beta x$
+\end{enumerate}
+\end{multicols}
+\item 证明 $x^3-7x^2+15x-9=0$有一个二重根．
+\item 检验方程 $x^3-6x^2+11x-6=0$有无重根？
+\item 方程$x^4-6x^2-8x-3=0$有重根，解此方程．
+\item 应用泰勒公式将多项式$(x+a)^n$按$x$的升幂展开．
+\item 若$f(x)=x^3-3kx+2k+8$在实数范围内能分解成一个二重因式，试求$k$值和它的因式乘积。
+\end{enumerate}   
+\end{ex}
 
+\subsection{参数方程表示的函数的导数}
+用方程$y=f(x)$来表示曲线在几何上受很大的限制：这样表示的曲线与平行于$y$轴的任意直线相交不能多于一点。通常，把曲线分成可以表为$y=f(x)$的若干部分来克服这个限制，例如，以原点为中心，$r$为半径的圆，可以由定义在闭区间$[-r,r]$上的两个函数$y=\sqrt{r^2-x^2}$和$y=-\sqrt{r^2-x^2}$给出。
 
-\begin{solution}
-    
-\end{solution}
-
-
-
-
-
-
-
-
-\begin{example}
-    
-\end{example}
-
-
-\begin{solution}
-    
-\end{solution}
-
-
-
-
-\begin{example}
-    
-\end{example}
-
-
-\begin{solution}
-    
-\end{solution}
+曲线最直接和最灵活的描述法是参数表示。我们不把直角坐标$x$或$y$中的一个看成另一个的函数，而把两个坐标$x$和$y$都看成为第三个自变量$t$的函数，$t$叫做\textbf{参数}或\textbf{参变量}。当$t$在$t$轴上或$t$轴上的一个区间$[a,b]$变化时，由$t$轴上的原象点，通过参数方程$x=\varphi(t)$, $y=\psi(t)$映射到曲线$C$上的一点$(x,y)=(\varphi(t),\psi(t))$, 使得对应于$t$的某个区间$[a,b]$或$(-\infty, \infty)$, 一对函数值$x=\varphi(t)$, $y=\psi(t)$定义的点集
+$$\Big\{\big(\varphi(t), \psi(t)\big)\Big|t\in [a,b]\Big\}$$
+就是曲线$C$上的全部点，而且没有其它点。
 
 
 
