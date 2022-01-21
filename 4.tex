@@ -1614,98 +1614,539 @@ $$
 \item 证明：$\Int^{\tfrac{\pi}{2}}_0 \frac{\cos x}{\cos x+\sin x}\dd x=\Int^{\tfrac{\pi}{2}}_0 \frac{\sin x}{\cos x+\sin x}\dd x$
 
 （提示：用变量代换$x=\frac{\pi}{2}-y$.）
+\item \begin{enumerate}
+    \item 求常数$A,B,C,D$使等式$$\frac{1+2x^2}{(1-x)(1+x)^2}=A+\frac{B}{1-x}+\frac{C}{(1+x)^2}+\frac{D}{1+x}$$成立，并计算$$\Int^{\tfrac{1}{2}}_0 \frac{1+2x^3}{(1-x)(1+x)^2}\dd x$$
+    \item 求常数$a$，使$\Int^1_0 \frac{x-a}{(x+1)(3x+1)}\dd x=0$
+\end{enumerate}
+\item 求极限：$\Lim_{n\to\infty}\left(\frac{1}{n+1}+\frac{1}{n+2}+\cdots +\frac{1}{n+n}\right)$
+\item 求一三次多项式$f(x)=ax^3+bx^2+cx+d$, 使它满足下
+列条件：
+\begin{enumerate}
+    \item $f (-1) =f (1) =0$
+    \item $\Int^1_{-1} f(x)\dd x=6$
+\end{enumerate}
+\item 
+\begin{enumerate}
+\item 在同一个坐标系内，作$y=(x-1)(x-2)$和$y=\Int^x_0 (t-1)(t-2)\dd t$的函数图象．
+\item 求函数$\Int^x_0 (t-1)(t-2)\dd t$在闭区间$[0, 3]$上的最大值和最小值；
+\item 求在曲线$y=(x-1)(x-2)$, $x$轴和纵坐标$x=0$, $x=3$之间的区域的面积．
+\end{enumerate}
+\item 
+\begin{enumerate}
+    \item 若$f(2a-x)=-f(x)$, 求证$\Int^{2a}_0 f (x) \dd x=0$；
+\item 
+若$f(2a-x)=f(x)$, 求证$\Int^{2a}_0 f (x) \dd x=2\int^a_0 f (x) \dd x$. 
+\item 试计算$\int^{\pi}_0 \sin^6 x\cos^3x\dd x$和$\Int^{\pi}_0 \sin^3x \cos^2 x\dd x$.
+\end{enumerate}
 
-
+\item 求$\Int^{\tfrac{\pi}{2}}_0 \cos^n \theta\dd \theta$
+\item 求$\Int^{\tfrac{\pi}{4}}_0 x^3\cos2x\dd x$
+\item 求$\Int^{\tfrac{3\pi}{2}}_0 \sin^3\theta \cos^2 \theta\dd \theta$
 \end{enumerate} 
 \end{ex}
 
+\subsection{平面图形的面积}
+我们已经证明过在曲线$y=f(x)$与$x$轴，$x=a$, $x=b$之间的曲边梯形的有号面积等于
+\[\int^b_a y\dd x=\int^b_a f(x)\dd x\]
+对于任意的平面图形。我们总可以取适当的直角坐标系，使得它的边界为两条曲线
+\[y=f (x) ,\qquad  y=g (x) ,\quad x\in [a,b]\]
+所描述，现在我们来求这样的区域$R$的面积（图4.4）。
+
+\begin{blk}
+   {定理} 若$f$和$g$是在区间$[a,b]$上的连续函数，而且$f(x)\ge g(x)$, 那么在曲线$y=f(x)$, $y=g(x)$和$x=a$, $x=b$之间的区域$R$的面积等于
+\[A=\int^b_a [f (x) -g (x) ] \dd x\] 
+\end{blk}
+
+\begin{figure}[htp]\centering
+	\begin{minipage}[t]{0.48\textwidth}
+		\centering
+        \begin{tikzpicture}[>=latex, scale=.8]
+\draw[->](-2.5,0)--(3,0)node[right]{$x$};
+\draw[->](0,-3)--(0,3)node[right]{$y$};
+\draw[domain=-2:2, samples=100, very thick]plot(\x, {.15*(-\x*\x-4*\x +5) })node[right]{$y=f(x)$};
+\draw[domain=-2:2, samples=100, very thick]plot(\x, {.1*(\x*\x-4*\x -15)})node[right]{$y=g(x)$};
+\draw[domain=-2:2, samples=100, pattern=north east lines, dashed]plot(\x, {.15*(-\x*\x-4*\x +5) })--plot(-\x, {.1*(\x*\x+4*\x -15)});
+\node at (0,0)[below left]{$O$};
+\draw[dashed](-1.75,-2)--(-1.75,2)node[above]{$x=a$};
+\draw[dashed](1.75,-2)--(1.75,2)node[above]{$x=b$};
+
+
+
+    \end{tikzpicture}
+    \caption{}
+\end{minipage}
+\begin{minipage}[t]{0.48\textwidth}
+    \centering
+\begin{tikzpicture}[>=latex, scale=.8]
+\draw[->](-2.5,0)--(3,0)node[right]{$x$};
+\draw[->](0,-3)--(0,3)node[right]{$y$};
+\draw[domain=-2:2, samples=100, very thick]plot(\x, {.15*(-\x*\x-4*\x +5) })node[right]{$y=f(x)-k$};
+\draw[domain=-2:2, samples=100, very thick]plot(\x, {.1*(\x*\x-4*\x -15)})node[right]{$y=g(x)-k$};
+\draw[domain=-2:2, samples=100, pattern=north east lines, dashed]plot(\x, {.15*(-\x*\x-4*\x +5) })--plot(-\x, {.1*(\x*\x+4*\x -15)});
+\node at (0,0)[below left]{$O$};
+
+\node at (0,3)[left]{$y'$};
+\draw[thick, ->](-2.5,-2.5)--(3,-2.5)node[right]{$x'$};
+\draw[dashed](-1.75,-2.5)node[below]{$a$}--(-1.75,2);
+\draw[dashed](1.75,-2.5)node[below]{$b$}--(1.75,2);
+\node at (0,-2.5)[below right]{$O'$};
+\end{tikzpicture}
+\caption{}
+\end{minipage}
+\end{figure}
+
+\begin{proof}
+让我们选择一个常数$k$使其小于函数$g$在区间$[a,b]$上的最小值，则对于每一个$x\in [a,b]$, $g(x)
+-k\ge 0$.
+
+又因为$f(x)\ge g(x)$, 因此对于每一个$x\in [a,b]$, 
+也有$f(x)-k\ge 0$. 将坐标系$x,y$平行于$y$轴平移到新坐标系$x',y'$, 使新原点在原来坐标系中的坐标为$(0,k)$ (图4.5), 这个坐标系的平移由变换
+\[\begin{cases}
+    x=x'\\
+    y=y'+k
+\end{cases}\]
+实现，于是原来的函数图象在新坐标的方程是
+\[f_1 (x) =f (x) -k,\qquad g_1 (x) =g (x) -k\]
+函数$f_1$和$g_1$在区间$[a,b]$上仍连续且取非负值，显然在函数$f_1$和$g_1$之间的区域$R=\{a\le x\le b,\; g_1(x)\le y\le f_1(x)\}$就是原来的区域$R=\{a\le x\le b,\; g(x)\le y\le f(x)\}$, 但是，$R'$的区域的面积等于
+\[A=\int^b_a f_1(x)\dd x-\int^b_a g_1(x)\dd x\]
+根据定积分的性质进一步得到
+\[\begin{split}
+    A&=\int^b_a [f_1(x)-g_1(x)]\dd x\\
+    &=\int^b_a \Big\{\big[f(x)-k\big]-\big[g(x)-k\big]\Big\}\dd x\\
+    &=\int^b_a [f(x)-g(x)]\dd x\\
+\end{split}\]
+\end{proof}
 
 \begin{example}
-    
+求直线$y=x-2$和抛物线$y=2x-x^2$所围成的图形的面积$A$.
 \end{example}
 
 \begin{solution}
-    
-\end{solution}
-
-\begin{example}
-    
-\end{example}
-
-\begin{solution}
-    
+直线与抛物线交于$(2, 0)$, $(-1,-3)$两点，作出它的草图（图4.6）. 依本节定理，得到
+\[\begin{split}
+    A=\int^2_1 [(2x-x^2)-(x-2)]\dd x
+    &=\int^2_1 (-x^2+x+2)\dd x\\
+    &=\left[-\frac{1}{3}x^3+\frac{1}{2}x^2+2x\right]\Bigg|^2_1=\frac{9}{2}
+\end{split}\]
 \end{solution}
 
 
+\begin{figure}[htp]\centering
+	\begin{minipage}[t]{0.48\textwidth}
+		\centering
+        \begin{tikzpicture}[>=latex, scale=.7]
+\draw[->](-2,0)--(5,0)node[right]{$x$};
+\draw[->](0,-5)--(0,2.5)node[right]{$y$};
+\draw[domain=-1.25:3.25, samples=100, very thick]plot(\x, {2*\x-\x*\x});
+\draw[domain=-2:4, samples=10, very thick]plot(\x, {\x-2});
+\node at (1,1)[above]{$(1,1)$};
+\node at (2,0)[below right]{$(2,0)$};
+\node at (-1,-3)[left]{$(-1,-3)$};
+\node at (0,0)[above left]{$O$};
+\draw[domain=-1:2, samples=100, pattern=north west lines]plot(\x, {2*\x-\x*\x})--(-1,-3);
 
-\begin{example}
-    
-\end{example}
-
-\begin{solution}
-    
-\end{solution}
-
-
-
-\begin{example}
-    
-\end{example}
-
-\begin{solution}
-    
-\end{solution}
-
-
-
-\begin{example}
-    
-\end{example}
-
-\begin{solution}
-    
-\end{solution}
-
-
-
-\begin{example}
-    
-\end{example}
-
-\begin{solution}
-    
-\end{solution}
+    \end{tikzpicture}
+    \caption{}
+\end{minipage}
+\begin{minipage}[t]{0.48\textwidth}
+    \centering
+\begin{tikzpicture}[>=latex, scale=.8]
+    \draw[->](-2,0)--(3.5,0)node[right]{$x$};
+\draw[->](0,-3.5)--(0,3.5)node[right]{$y$};
+\node at (0,0)[below left]{$O$};
+\draw[domain=-2.5:2.5, samples=100, very thick]plot({2-0.5*\x*\x}, \x);
+\draw[domain=-2.75:2.75, samples=100, very thick]plot({1-0.25*\x*\x}, \x);
+\foreach \x in {2,-2}
+{
+    \node at (0,\x) [left]{$\x$};
+}
+\node at (1,0)[below left]{1};
+\node at (2,0)[below right]{2};
+\draw[domain=-2:2, samples=100, pattern=north east lines]plot({2-0.5*\x*\x}, \x)--plot({1-0.25*\x*\x}, -\x);
 
 
+\end{tikzpicture}
+\caption{}
+\end{minipage}
+\end{figure}
 
 
 \begin{example}
-    
+求抛物线$y^2=-4(x-1)$, $y^2=-2(x-2)$所围成的图形的面积。
 \end{example}
 
 \begin{solution}
-    
+    先作出它们的草图（图4.7）, 且解得它的两个交点$(0, 2)$和$(0,-2)$. 于是
+\[\begin{split}
+    A=\int^2_{-2} \left[\left(2-\frac{1}{2}y^2\right)-\left(1-\frac{1}{4}y^2\right)\right]\dd y
+    &=\frac{1}{4}\int^2_{-2} (4-y^2)\dd y\\
+    &=\frac{1}{4}\left[4y-\frac{1}{3}y^3\right]\Bigg|^2_{-2}=\frac{8}{3}
+\end{split}\]
 \end{solution}
 
+\begin{example}
+求半径等于$r$, 中心角等于$\alpha,\; \left(0<\alpha\le \frac{\pi}{2}\right)$的扇形的面积。
+\end{example}
+
+\begin{figure}[htp]
+    \centering
+\begin{tikzpicture}[>=latex, scale=1.5]
+\draw[->](-1.5,0)--(2,0)node[right]{$x$};
+\draw[->](0,-1.5)--(0,1.5)node[right]{$y$};
+\draw[very thick] (0,0) circle (1);
+\draw[pattern=north west lines](0,0)--(1,0)node[below right]{$B$} arc (0:60:1)node[above right]{$P(r\cos\alpha, r\sin\alpha)$}--(0,0);
+\node at (0,0)[below left]{$O$};
+\draw(.5,0)node[below]{$C$}--(60:1);
+\draw[<->](.2,0) arc (0:60:.2)node[right]{$\alpha$};
+
+\end{tikzpicture}
+    \caption{}
+\end{figure}
+
+\begin{solution}
+    如图4.8, 扇形$OBP$的区域划分为$\triangle OCP$的区域与曲边三角形$CBP$的区域的和，因此
+\[A (OBP) =A (OCP) +A (CBP) \]
+因为$P$点坐标是$(r\cos\alpha, r\sin\alpha)$，所以
+\[A(OCP)=\frac{1}{2}(r\cos\alpha)\cdot (r\sin\alpha)=\frac{r^2}{4}\sin 2\alpha\]
+又扇形的圆方程是$x^2+y^2=r^2$，所以
+\[A(CBP)=\int^r_{r\cos \alpha}\sqrt{r^2-x^2}\dd x\]
+从而
+\[A(OBP)=\frac{r^2}{4}\sin2\alpha+\int^r_{r\cos \alpha}\sqrt{r^2-x^2}\dd x\]
+
+令$x=r\sin\theta,\; \theta\in\left[-\frac{\pi}{2},\frac{\pi}{2}\right]$，则
+\[\theta=\arcsin\frac{x}{r},\qquad \dd x=r\cos\theta \dd\theta\]
+且当$x=r\cos \alpha$时，
+\[\theta=\arcsin(\cos\alpha)=\arcsin\left[\sin\left(\frac{\pi}{2}-\alpha\right)\right]=\frac{\pi}{2}-\alpha\]
+当$x=r$时，$\theta=\arcsin 1=\frac{\pi}{2}$
+
+所以
+\[\begin{split}
+    A(OBP)&=\frac{r^2}{4}\sin2\alpha+\int^{\tfrac{\pi}{2}}_{\tfrac{\pi}{2}-\alpha}(r\cos\theta)(r\cos\theta)\dd \theta\\
+&=\frac{r^2}{4}\sin2\alpha+r^2\int^{\tfrac{\pi}{2}}_{\tfrac{\pi}{2}-\alpha}\cos^2\theta\dd\theta\\ 
+&=\frac{r^2}{4}\sin2\alpha+r^2\left.\left[\frac{\theta}{2}+\frac{\sin 2\theta}{4}\right]\right|^{\tfrac{\pi}{2}}_{\tfrac{\pi}{2}-\alpha}\\
+&=\frac{r^2}{2}\alpha
+\end{split}\]
+
+当$\alpha=2\pi$时，由上面公式就得到圆面积$\pi r^2$.
+\end{solution}
+
+\begin{example}
+$P$点是位于曲线$y=x^2$上的动点，从原点$O$向点$A(1, 1)$移动，过二点$O,P$引直线，它与曲线$y=x^2$及直线$x=1$所围图形的面积为图4.9中阴影部分所示，求使这部分面积最小时$P$点的坐标。
+\end{example}
+
+\begin{figure}[htp]\centering
+        \begin{tikzpicture}[>=latex, scale=3]
+\draw[->](-.2,0)--(1.5,0)node[right]{$x$};
+\draw[->](0,0)node[below]{$O$}--(0,1.5)node[right]{$y$};
+\draw(0,1)--(1,1)node[right]{$A(1,1)$}--(1,0);
+\draw[domain=0:1.15, samples=100, very thick]plot(\x, {\x*\x})node[above right]{$y=x^2$};
+\draw[domain=0:1, samples=100, thick, pattern=north west lines]plot(\x, {\x*\x})--(1,.8)--(0,0);
+\node at (.8,.64)[left]{$P(t,t^2)$};
+        \end{tikzpicture}
+        \caption{}
+    \end{figure}
+
+\begin{solution}
+    设$P$点的坐标是$(t,t^2),\; (0\le t\le 1)$. 直线$OP$的方程是$y=tx$，设阴影部分的面积为$S$，则
+\[\begin{split}
+S&=\int^t_0 (tx-x^2)\dd x+\int^1_t (x^2-tx)\dd x\\
+&=\left[\frac{t}{2}x^2-\frac{x^3}{3}\right]\Bigg|^t_0+\left[\frac{x^3}{3}-\frac{t}{2}x^2\right]\Bigg|^1_t\\
+&=\frac{t^3}{3}-\frac{t}{2}+\frac{1}{3}
+\end{split}\]
+\[S'=t^2-\frac{1}{2}=\left(t+\frac{\sqrt{2}}{2}\right)\left(t-\frac{\sqrt{2}}{2}\right)\]
+由$S'$符号的变化，当$t=\frac{\sqrt{2}}{2}$时，$S$极小也就是最小，故所求点的坐标是$\left(\frac{\sqrt{2}}{2},\frac{1}{2}\right)$.
+\end{solution}
+
+\begin{example}
+    求椭圆$\frac{x^2}{a^2}+\frac{y^2}{b^2}=1\; (a>b>0)$的面积$A$（图4.10）.
+\end{example}
+
+\begin{figure}[htp]
+    \centering
+\begin{tikzpicture}[>=latex]
+    \draw[->](-3,0)--(3,0)node[right]{$x$};
+\draw[->](0,-2)--(0,2)node[right]{$y$};
+\node at (0,0) [below left]{$O$};
+\draw[very thick](0,0) ellipse [x radius=2.2, y radius=1.3];
+
+\end{tikzpicture}
+    \caption{}
+\end{figure}
+
+\begin{solution}
+由于图形的对称性，只要求出椭圆在第一象限内的面积，再乘以4就是该椭圆的面积，所以
+\[\frac{A}{4}=\int^a_0 y\dd x\]
+这里将椭圆用参数方程
+$\begin{cases}
+    x=a\cos t\\ y=b\sin t
+\end{cases}$
+表出，当$x=a$时，$t=\arccos 1=0$; 当$x=0$时，$t=\arccos 0=\frac{\pi}{2}$, 于是
+\[\begin{split}
+    \frac{A}{4}=\int^0_{\tfrac{\pi}{2}}b\sin t \dd(a\cos t)&=\int^0_{\tfrac{\pi}{2}}(b\sin t )(-a\sin t)\dd t\\
+&=ab \int^{\tfrac{\pi}{2}}_0 \sin^2 t\dd t=\frac{1}{4}ab\pi 
+\end{split}\]
+所以：$A=\pi ab$.
+\end{solution}
+
+\begin{ex}
+\begin{enumerate}
+    \item 求在曲线$y=\sin2x$, $y=0$, $x\in[0, 2\pi]$之间的面积．
+    \item 求下列曲线所围图形的面积：
+\begin{enumerate}
+    \item $y=8-\frac{1}{2}x^2$和$y=3.2$ 
+    \item $y=x^2-5x+7$和$y=-2x^2+10x-5$
+    \item $y=\sin x$和$y=\frac{2}{\pi} x,\; x\ge 0$
+\end{enumerate}
+\item 求以曲线$y=\sin x\; \left(0\le x\le \frac{\pi}{4}\right)$；$y=\cos x\; \left(\frac{\pi}{4}\le x\le \frac{\pi}{2}\right)$和$y=0$为边界的区域的面积．
+
+\item \begin{enumerate}
+    \item 证明点$x=t^2-1$, $y=t(t^2-1)$在曲线$y^2=x^2(x+1)$上；
+    \item 当$t$由$t=-2$变化到$t=2$时，作出曲线$\begin{cases}
+        x=t^2-1\\x=t (t^2-1)
+    \end{cases}$的图象；
+\item 求由曲线的环路所围区域的面积．
+\end{enumerate}
+
+\item 在曲线$y=x^2-2x+2$与过点$(2, 3)$的直线所围的图形
+中，求图形面积最小时的直线方程。
+\item 求抛物线$y=x^2$及过此抛物线上点$(2, 4)$的切线和$x$轴所围图形的面积。
+\item 已知曲线$C:\; y=x^2-7x+10\; (x>0)$与点$A(0, 1)$, 
+回答下列问题：
+\begin{enumerate}
+    \item 求过点$A$所引曲线$C$的切线方程以及切点$T$的坐标。
+    \item 设$S$是直线$x=1$与曲线$C$的交点．若曲线$C$上的动点$P$从$S$点运动到$T$点时，将线段$AP$所在的区域用阴影表示出来，并求出这个区域的面积。
+\end{enumerate}
+
+\item 求通过$(0, 0)$, $(1, 2)$两点的抛物线，要求它具有以
+下的性质：
+\begin{enumerate}
+    \item 它的对称轴平行于$y$轴，且凸向上，
+    \item 它与$x$轴所围区域的面积最小．
+\end{enumerate}
+
+\item 对称轴平行$y$轴的抛物线与圆$x^2+y^2=4$切于$A(0, 2)$点并通过$B(-2, 0)$点，计算抛物线与圆所围区域的面积．
+\end{enumerate}
+\end{ex}
+
+\subsection{利用横断面算体积法}
+对于空间的一个立体，我们取一条直线作为坐标轴，取直线上一点作为原点（图4.11），假定这立体紧夹于在$x=a$与$x=b$两点所作的$x$轴的垂直平面之间，又如果在离原点$x$处作这轴的一个垂直平面，并且该垂直平面截得立体的截面的面积是$x$的连续函数$A(x),\; a\le x\le b$, 那么立体的体积可由定积分来计算：
+\begin{figure}[htp]
+    \centering
+    
+    \caption{}
+\end{figure}
+
+\begin{enumerate}
+    \item 分$[a,b]$为$n$份，其分点
+\[a=x_0<x_1<x_2<\cdots<x_n=b\]
+    记$\|P_n\|=\max(x_i-x_{i-1})\quad i=1, 2,\ldots,n$.
+
+    以平面$x=x_i,\; i=0, 1, 2,\ldots,n$截此立体为$n$个小单元，于是整个体积被看作这$n$个小单元的和。
+\item  求阶梯函数的总和作为所求立体体积的近似和．考虑这样一个单元，它介于两个截面$x=x_{i-1},x=x_i$之间，于是以$(x_i-x_{i-1})$为高，以$A(x_{i-1})$作为底面积的直棱柱的体积是
+  \[  A (x_{i-1}) (x_i-x_{i-1})\]
+    于是，我们得到所求的体积$V$的近似表达式
+    \[\sum^n_{i=1}A (x_{i-1}) (x_i-x_{i-1})\] 
+    \item 对和取极限：当断面无限增加，$\|P_n\|\to 0$时，有
+\[V=\lim_{n\to\infty}\sum^n_{i=1}A (x_{i-1}) (x_i-x_{i-1})=\int^b_a A(x)\dd x\]
+\end{enumerate}
+
+现在将上面的讨论总结为下面的定理。
+
+\begin{blk}
+   {定理} 如果已知一个给定的立体的垂直于一定方向所有的横断面的面积，取这些横断面的垂直方向作为$x$轴的方向，则这立体的体积由公式
+\[V=\int^b_a A (x) \dd x\]
+表达。其中$A(x)$是横坐标为$x$的横断面的面积，$a$、$b$为这立体的两端断面的横坐标。 
+\end{blk}
+
+\begin{example}
+    求底边长为$a$, 高为$h$的正四棱锥的体积。
+\end{example}
+
+\begin{figure}[htp]
+    \centering
+\begin{tikzpicture}[>=latex]
+    \tkzDefPoints{0/0/A, 3/0/B, 4/1/C}
+    \tkzDefPointsBy[translation= from B to C](A){D}
+    \tkzInterLL(A,C)(B,D)  \tkzGetPoint{O}
+    \tkzDefPoints{0/3.5/E, 5/3.5/F}
+    \tkzDefPointBy[projection = onto E--F](O) \tkzGetPoint{OO}
+    \draw[|<->|](.7,1.4)--node[fill=white]{$y$}(2.7,1.4);
+    \tkzDrawSegments(OO,A OO,B OO,C A,B B,C)
+    \tkzDrawSegments[dashed](OO,D OO,O C,D D,A)
+    
+    \foreach \x in {A,B,C,D,O}
+    {
+        \tkzDefPointWith[linear, K=.66](OO,\x)  \tkzGetPoint{\x'}
+        \tkzDefPointWith[linear, K=.33](OO,\x)  \tkzGetPoint{\x''}
+    }
+    \tkzDrawSegments(A',B' B',C' A'',B'' B'',C'')
+    \tkzDrawSegments[dashed](C',D' D',A' C'',D'' D'',A'')
+\draw[->](OO)--(2,4)node[right]{$x$};
+\draw(-1,3.5)--(5,3.5);
+\draw[dashed](.2,.5)--(O);
+\draw(-1,0.5)--(.2,.5);
+\draw[<->](-.8,0.5)--node[fill=white]{$h$}(-.8,3.5);
+\draw[<->](4.8,0.5)--node[fill=white]{$x$}(4.8,1.5);
+\draw[<->](4.8,1.5)--node[fill=white]{$h-x$}(4.8,3.5);
+\draw[<->](3.8,1.5)--node[fill=white]{$\Delta x$}(3.8,2.5);
+\tkzDefMidPoint(B,C) \tkzGetPoint{G}
+\tkzDefMidPoint(B',C') \tkzGetPoint{G'}
+\tkzDefMidPoint(B'',C'') \tkzGetPoint{G''}
+\tkzDrawSegments[dashed](O,G O',G' O'',G'')
+\tkzDefPointWith[linear, K=2](O,G) \tkzGetPoint{H}
+\tkzDefPointWith[linear, K=3](O',G') \tkzGetPoint{H'}
+\tkzDefPointWith[linear, K=4.5](O'',G'') \tkzGetPoint{H''}
+\tkzDrawSegments(G,H G',H' G'',H'')
+\tkzLabelPoints[below](O)
+
+\draw[|<->|](0,-0.25)--node[fill=white]{$a$}(3,-.25);
+
+
+\end{tikzpicture}
+    \caption{}
+\end{figure}
+
+\begin{solution}
+    设$x$为从底面到截面的距离，$y$为截面正方形的边长（图4.12），于是
+\[\frac{h-x}{h}=\frac{y}{a}\]
+即：$y=\frac{a}{h}(h-x)$.
+
+截面面积
+\[A(x)=\frac{a^2}{h^2}(h-x)^2\]
+所以
+\[\begin{split}
+    V&=\int^h_0 \left(\frac{a}{h}\right)^2(h-x)^2 \dd x\\
+    &=-\left(\frac{a}{h}\right)^2\frac{(h-x)^3}{3}\Bigg|^h_0=\frac{1}{3}a^2 h
+\end{split}\]
+\end{solution}
+
+如果立体是一个旋转体，即先给出一条平面曲线
+$y=f(x)$, 绕$x$轴旋转所得出的立体，我们的横断面就是以$y$为半径的圆，所以这立体的体积就等于
+\[V=\pi \int^b_a y^2\dd x\]
+如果$c\le y\le d$，$x=g(y)$绕$y$轴旋转，则
+\[V=\pi \int^d_c x^2\dd y\]
 
 
 \begin{example}
-    
+若球的半径是$a$, 球缺的高是$h$, 求球缺的体积。
 \end{example}
 
+\begin{figure}[htp]
+    \centering
+\begin{tikzpicture}[>=latex, scale=1.5]
+    \draw[->](-1.5,0)--(2,0)node[right]{$x$};
+    \draw[->](0,-1.5)--(0,1.5)node[right]{$y$};
+    \draw[very thick](0,0)circle(1);
+\draw(.4,1)--(.4,-1.5);
+\draw(1,0)--(1,-1.5);
+\draw[<->](0,-1.3)--node[below]{$a-h$}(.4,-1.3);
+\draw[<->](0.4,-1.1)--node[fill=white]{$h$}(1,-1.1);
+\draw[<->](-.2,0)--node[fill=white]{$a$}(-.2,1);
+
+\draw[pattern=north east lines](45:1) arc (45:50:1)--(.64,0)--(1/1.414,0)--(45:1);
+\draw[<->](0,1.3)--node[below]{$x$}(.64,1.3);
+\draw(.64,1.5)--(.64,0);
+\end{tikzpicture}
+    \caption{}
+\end{figure}
+
+
 \begin{solution}
-    
+球是由圆$x^2+y^2=a^2$绕$x$轴旋转所得到的立体，且球心到球缺底面的距离为$a-h$, 设球心到截面的距离为$x$, 则截面圆的面积$A (x) =\pi y^2=\pi  (a^2-x^2)$.（图4.13）
+
+所以
+\[\begin{split}
+    V=\pi\int^a_{a-h}(a^2-x^2)\dd x&=\pi\left[a^2 x-\frac{1}{3}x^3\right]\Bigg|^a_{a-h}\\
+    &=\frac{\pi h^2}{3}(3a-h)
+\end{split} \]
 \end{solution}
-
-
 
 \begin{example}
-    
+    计算底面半径分别为$r$和$R$, 高为$h$的圆台体积$V$.
 \end{example}
 
 \begin{solution}
-    
+此圆台可看作$xy$平面上的直线段
+\[y=\frac{R-r}{h}x+r,\; (0\le x\le h),\quad x=0,\quad x=h,\quad y=0\]
+所围成的直角梯形绕$x$轴旋转所得到的立体，从而
+\[\begin{split}
+    V&=\pi\int^h_0 \left(\frac{R-r}{h}x+r\right)^2 \dd x\\
+    &=\pi\left[\left(\frac{R-r}{h}\right)^2\frac{x^3}{3}+2r\cdot \frac{R-r}{h}\cdot \frac{x^2}{2}+r^2 x\right]\Bigg|^h_0\\
+    &=\frac{\pi h}{3}(R^2+Rr+r^2)
+\end{split}\]
 \end{solution}
+
+\begin{example}
+在第一象限中，由$y=\frac{x}{1-x}\; (x\ne 1)$, $y=1$, $y=0$和$x=1$所围成的图形绕着直线$x=1$旋转，求所生成的旋转体的体积（图4.14）。
+\end{example}
+
+\begin{figure}[htp]
+    \centering
+\begin{tikzpicture}[>=latex, scale=2.5]
+    \draw[->](-.25,0)--(1.8,0)node[right]{$x$};
+    \draw[->](0,-.25)--(0,1.8)node[right]{$y$};
+\draw[domain=0:.6, samples=100, very thick]plot(\x, {\x/(1-\x)});
+\draw(1,0)node[below]{1}--(1,1.5)node[above]{$x=1$};
+\draw[dashed](0,1)node[left]{1}--(1,1);
+\draw[domain=0:.5, samples=100, pattern=north east lines]plot(\x, {\x/(1-\x)})--(1,1)--(1,0)--(0,0);
+
+\draw[<->|](1.1,0)--node[fill=white]{$y$}(1.1,.4);
+\draw[domain=0.286:.333, samples=10, pattern=north west lines]plot(\x, {\x/(1-\x)})--(1,.5)--(1,0.4)--(0.286,0.4);
+\draw[|<->|](0.286,0.25)--node[fill=white]{$1-x$}(1,.25);
+
+\end{tikzpicture}
+    \caption{}
+\end{figure}
+
+\begin{solution}
+$y$轴垂直于旋转体的横断面，设原点到横断面的距离为$y$, 则该横断面的面积
+\[A (y) =\pi  (1-x)^2\]
+由于函数$y=\frac{x}{1-x}$是单射的，故反函数存在，由它解出
+\[x=\frac{y}{1+y},\qquad 1-x=\frac{1}{1+y}\]
+于是
+\[A(y)=\frac{\pi}{(1+y)^2}\]
+\[\begin{split}
+    V=\int^1_0 A(y)\dd y&=\pi\int^1_0 \frac{\dd y}{(1+y)^2}\\
+&=-\pi\left(\frac{1}{1+y}\right)\Bigg|^1_0=-\pi\left(\frac{1}{2}-1\right)=\frac{\pi}{2}
+\end{split}\]
+\end{solution}
+
+\begin{figure}[htp]
+    \centering
+    \begin{tikzpicture}
+
+    
+
+
+
+
+
+
+
+
+    
+    \end{tikzpicture}    
+    \caption{}
+\end{figure}
+
+\begin{ex}
+\begin{enumerate}
+    \item 底面半径为$a$的直圆柱，用通过底面一条直径并与底面成$60^{\circ}$角的平面去
+    截，得到图4.15的立体，求其体积．
+    \item 由抛物线$y^2=4ax$和直线$x=h$所围成
+    的区域绕$x$轴旋转一周，求所生成旋转体的体积。
+    \item 求底面半径为$r$, 高为$h$的圆锥体的
+    体积。
+    \item 设由椭圆$\frac{x^2}{a^2}+\frac{y^2}{b^2}=1$所围成的区域绕$x$轴旋转，求此旋转
+    椭圆体的体积。
+    \item 由曲线$y=\frac{\ln x}{x}$, $x$轴和通过曲线的最高点的纵坐标所围
+    成的区域绕$x$轴旋转，求该旋转体的体积。
+    \item 两条抛物线有公共的顶点和公共的对称轴，但位于两个
+    互相垂直的平面内，一个运动着的椭圆，其中心在两抛物线的公共轴上，它的平面与公共轴垂直，它的顶点位于两条抛物线上，如果椭圆从公共顶点开始，移动一段距离$h$, 求由此椭圆所生成的体积。
+    \item 求$y=4-x^2$与$x$轴之间的区域绕直线$y=-1$一周所生成的体积。
+    \item 求圆$x^2+(y-b)^2=a^2\; (0<a<b)$绕$x$轴旋转所生成的旋转体的体积。
+\end{enumerate}
+\end{ex}
 
 \section{简单初值问题——不定积分的简单应用}
 
@@ -1715,37 +2156,141 @@ $$
     已知一质点$m$作具有匀加速度$a$的直线运动，设它的初速度为$u$, 求质点在$t$秒后所经过的距离。
 \end{example}
 
+\begin{solution}
+由于$\frac{\dd v}{\dd t}=a$，所以
+\begin{equation}
+    v=at+C
+\end{equation}
+因为，当$t=0$时，$v=u$，代入(4.24)得：$C=u$，所以
+\begin{equation}
+    v=at+u
+\end{equation}
+由于$\frac{\dd s}{\dd t}=u+at$，分离变量，把它写成
+\[\dd s=(u+at)\dd t\]
+两边求不定积分，得
+\[\int \dd s=\int (u+at)\dd t\]
+\begin{equation}
+    s=ut+\frac{1}{2}at^2+C'
+\end{equation}
+由初始条件：当$t=0$时，$s=0$，代入(4.26)，得：$C'=0$，所以
+\begin{equation}
+    s=ut+\frac{1}{2}at^2
+\end{equation}
+为所求。(4.25)和(4.27)就是我们常见的运动学公式.
+\end{solution}
 
 
+\begin{example}
+假设在原点处斜抛一质点$m$, 它的初速度$v_0$与水平$x$轴成$\alpha$角，又作用在质点$m$上的力只有向下的重力，求质点$m$的轨迹方程。
+\end{example}
+
+\begin{solution}
+    设质点$m$的坐标是$(x,y)$, 它的质量为$M$克，于是沿着$x$轴和$y$轴的速度分量分别是
+    \[v_x=\frac{\dd x}{\dd t},\qquad v_y=\frac{\dd y}{\dd t}\]
+    而沿着$x$轴和$y$轴的加速度分量分别是
+    \[\frac{\dd v_x}{\dd t}=\frac{\dd^2 x}{\dd t^2},\qquad \frac{\dd v_y}{\dd t}=\frac{\dd^2 y}{\dd t^2}\]
+    根据牛顿第二定律，得到
+\begin{align}
+\begin{cases}
+        M\frac{\dd v_x}{\dd t}=0\\
+    M\frac{\dd v_y}{\dd t}=-Mg
+\end{cases}
+\end{align}
+即：
+\[\begin{cases}
+    \dd v_x=0\\ \dd v_y=-g\dd t
+\end{cases}\]
+所以
+\begin{align}
+\begin{cases}
+    v_x=C_1\\ v_y=-gt+C_2
+\end{cases}
+\end{align}
+常数$C_1$和$C_2$由初始条件决定，所以
+\begin{align}
+\begin{cases}
+v_x=\frac{\dd x}{\dd t}=v_0\cos\alpha\\
+v_y=\frac{\dd y}{\dd t}=-gt+v_0\sin\alpha
+\end{cases}
+\end{align}
+即：    
+\[\begin{cases}
+    \dd x=v_0\cos\alpha \dd t\\ \dd y=(-g t+v_0\sin\alpha)\dd t
+\end{cases}\]
+再求不定积分得
+\[\begin{cases}
+    x=(v_0\cos\alpha)t+C_3\\
+    y=-\frac{gt^2}{2}+(v_0\sin\alpha)t+C_4
+\end{cases}\]
+由于，当$t=0$时，$x=y=0$，因此：
+\[C_3=C_4=0\]
+于是得到质点$m$以时间$t$为参变数的轨迹方程
+\begin{align}
+\begin{cases}
+    x=(v_0\cos\alpha)t\\
+    y=-\frac{gt^2}{2}+(v_0\sin\alpha)t
+\end{cases}
+\end{align}
+消去$t$，得：
+\[y=\frac{-gx^2}{2v^2_0 \cos^2\alpha}+x\tan\alpha\]
+化为标准式，得
+\[\left(x-\frac{v^2_0\sin2\alpha}{2g}\right)^2=-\frac{2v^2_0\cos^2\alpha}{g}\left(y-\frac{v^2_0\sin^2\alpha}{2g}\right)\]
+这是顶点在$\left(\frac{v^2_0\sin2\alpha}{2g},\frac{v^2_0\sin^2\alpha}{2g}\right)$处的抛物线方程（如图4.16），且从顶点到焦点的方向是$y$轴的负方向，又焦点到准线的距离是$\frac{v^2_0 \cos^2\alpha}{g}$，因此，从顶点到它的上方的准线距离等于$\frac{v^2_0 \cos^2\alpha}{2g}$，而准线到$x$轴的距离就等于
+\[\frac{v^2_0 \cos^2\alpha}{2g}+\frac{v^2_0 \sin^2\alpha}{2g}=\frac{v^2_0}{2g}\]
+故准线的位置仅依赖于初速度的大小，而与抛射角的大小无关。
+
+\begin{figure}[htp]
+    \centering
+\begin{tikzpicture}[>=latex]
+\draw[->](-.5,0)--(5,0)node[right]{$x$};
+\draw[->](0,-.5)--(0,4)node[right]{$y$};
+\draw[domain=0:4.2, samples=100, very thick]plot(\x, {0.5*(-\x*\x+4*\x)});
+\draw(-.5,2.75)--(4.5,2.75)node[right]{$y=\frac{v^2_0}{2g}$};
+\node at (3.5,1)[right]{$y=\frac{-gx^2}{2v^2_0 \cos^2\alpha}+x\tan\alpha$};
+\node at (0,0)[below left]{$O$};
+\draw(2,2.75)--(2,0);
+\tkzDefPoints{2/2/A, 2/1.25/S}
+\tkzDrawPoints(A,S)
+\tkzLabelPoints[above right](A,S)
+\draw[->, thick](0,0)--(1,2)node[right]{$v_0$};
 
 
+\end{tikzpicture}
+    \caption{}
+\end{figure}
+\end{solution}
 
+下面我们来讨论人口的增长与放射性元素蜕变的问题。
 
+在很多单纯的自然现象中，一个随着时间而变化的量$y(t)$的变化率常常和$y(t)$当时的值成正比例，用数学式表达，即存在一个随该现象而定的常数$k$（与$t$无关），使得
+\[y' (t) =ky (t) \]
+或
+\begin{equation}
+    \frac{\dd }{\dd t}y(t)=ky(t)
+\end{equation}
+人口的增长与放射性元素的蜕变就是这样的两个例子。
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+假如人口按某一固定的“增长率”$k$增长，譬如时间单位是“年”，增长率2\%, 则$k=2\%$. 设人口随时间变化的函数是$y(t)$, 本来$y(t)$是整数，但由于数量很大，我们可以把它看作一个平滑函数，$y(t)$满足下面的条件：
+\[y(t+\Delta t)-y(t)=ky(t)\cdot \Delta t\]
+换言之，人口增加数量与这段时间开始的人口数，以及这段时间间隔成比例，也即
+\[\frac{y(t+\Delta t)-y(t)}{\Delta t}=ky(t)\]
+令$\Delta t\to 0$, 由上式得到
+\[\frac{\dd }{\dd t}y(t)=ky(t)\]
+也就是说，人口在时刻$t$的瞬时变率与当时的值$y(x)$成正比例。为求出函数$y(t)$, 我们来解具有初始条件的微分方程
+\begin{numcases}{}
+    \frac{\dd }{\dd t}y(t)=ky(t)\\
+    y(0)=A
+\end{numcases}
+将(4.33)改写成
+\[\frac{\dd y(t)}{y(t)}=k\dd t\]
+即：$\ln[y(t)]=kt+C$，由初始条件确定常数$C$的值，得：
+\[\ln A=C\]
+所以：$\ln[y(t)]=kt+\ln A$，
+移项，得：
+\[\ln\frac{y(t)}{A}=kt\]
+由此得：
+\[\frac{y(t)}{A}=e^{kt}\]
+所以：$y(t)=Ae^{kt}$为所求。
 
 
 
