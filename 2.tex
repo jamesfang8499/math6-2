@@ -1866,101 +1866,746 @@ f^{(n)}(a+h)&=n!C_n
 $$\Big\{\big(\varphi(t), \psi(t)\big)\Big|t\in [a,b]\Big\}$$
 就是曲线$C$上的全部点，而且没有其它点。
 
+在解析几何中，我们已经知道：
 
+圆的参数方程是
+\[x=a\cos t,\qquad y=a\sin t\]
+这里$t$表示圆心角。
+
+椭圆的参数方程是
+\[x=a\cos t,\qquad y=b\sin t\quad (a>b>0)\]
+这里$t$是偏心角．（图2.13）
+
+\begin{figure}[htp]
+    \centering
+\begin{tikzpicture}[>=latex]
+    \draw[<->|](0,-.25)--node[fill=white]{$a$}(2,-.25);
+    \draw[<->|](.25,0)--node[fill=white]{$b$}(.25,1.2);
+\draw[->](-2.8,0)--(2.8,0)node[right]{$x$};
+\draw[->](0,-2.8)--(0,2.8)node[right]{$y$};
+\draw[thick](0,0) circle (2);
+\draw[thick](0,0) circle (1.2);
+\draw[very thick](0,0) ellipse [x radius=2, y radius=1.2];
+\node at (0,0)[below left]{$O$};
+\draw(0,0)--(30:3);
+\draw(30:1.2)node[above]{$B$}--(1.04,0)node[above right]{$N$};
+\draw(30:2)node[above]{$A$}--(1.73,0)node[above right]{$M$};
+\draw(.5,0) arc (0:30:.5)node[right]{$t$};
+\draw(30:1.2)--(1.9,.6)node[right]{$P$};
+
+\end{tikzpicture}
+    \caption{}
+\end{figure}
+
+曲线$C$可以有许多参数表示法，就好象同一条路可以有许多不同走法，例如抛物线$y^2=2px$可以用在其上的点$(x,y)$的切线的斜率作参数，由于
+$2yy'=2p$, 所以抛物线$y^2=2px$的参数方程是
+\[x=\frac{p}{2(y')^2},\qquad y=\frac{p}{y'}\]
+其中$y'\in (-\infty,0)\cup (0, \infty)$.
+
+如果用$\frac{1}{y'}=\cot\theta$作参数，那么它的参数方程是
+\[x=\frac{p}{2}\cot^2 \theta,\qquad y=p\cot\theta\]
+
+我们也可以用$\frac{y}{2p}=\frac{x}{y}=\lambda,\quad \lambda\in (-\infty, \infty)$作参数，于
+是又得一参数方程
+\[x=2p\lambda^2,\qquad y=2p\lambda\]
 
 
 \begin{example}
-    
+讨论由参数方程
+\[x=\sin t,\qquad y=\cos^2 t,\quad t\in[0,2\pi]\]
+所定义的曲线$C$.
+\end{example}
+
+\begin{solution}
+因为$\sin^2 t+\cos^2 t=1 $，所以曲线$C$在抛物线
+\begin{equation}
+    x^2+y=1
+\end{equation}
+上。反过来，抛物线(2.12)并不与曲线$C$一致，我们要说明限制在长方形区域$R=\{-1\le x\le 1,\; 0\le y\le 1\}$内的抛物线(2.12)上的部分是曲线$C$（图2.14）。
+
+\begin{figure}[htp]
+    \centering
+\begin{tikzpicture}[>=latex, scale=1.5]
+    \draw[->](-2,0)--(2,0)node[right]{$x$};
+    \draw[->](0,-1.5)--(0,2)node[right]{$y$};
+\node at (0,0)[below left]{$O$};
+\draw(-1,0) rectangle (1,1);
+\draw[domain=-1.5:1.5, samples=100, very thick, dashed]plot(\x, {1-\x*\x});
+\draw[domain=-1:1, samples=100, very thick]plot(\x, {1-\x*\x});
+\node at (-1,0)[below left]{$(-1,0)$};
+\node at (1,0)[below right]{$(1,0)$};
+\node at (0,1)[above right]{$(0,1)$};
+\end{tikzpicture}
+    \caption{}
+\end{figure}
+
+事实上，$x=\sin t$在闭区间$[0,2\pi]$上处处连续，且在闭区间$\left[\frac{\pi}{2},\frac{3\pi}{2}\right]$上由1单调递减到$-1$，因此根据反函数存在定理，对于每一个$x\in[-1,1]$，存在唯一的一个$t$，使得$\sin t=x$成立，从而得到
+\[y=1-x^2=1-\sin^2 t=\cos^2 t\in [0,1]\]
+这就说明了，点$(x,1-x^2)\; (x\in [-1, 1])$在曲线$C$上，而且只有这些点在曲线$C$上，换言之，在(2.12)上的除去这些点的其它任何一点不在曲线$C$上。
+\end{solution}
+
+在参数方程$x=\varphi(t)$, $y=\psi(t)$中，由于$t$轴是有序的，我们可以用明显的方式把曲线$C$的点规定一个次序或“指向”，即如果$t_1<t_2$，那么由$t_1$映射的点在由$t_2$映射的点的前面。例如例2.38的曲线上的动点$P$随着$t$增加的方向这样运动：$P$点在$t=0$时，由点$(0,1)$开始移动到在$t=\frac{\pi}{2}$时的$(1,0)$点，然后沿原路线返回移动到$t=\pi$时的$(0,1)$点，再继续移动到在$t=\frac{3\pi}{2}$时的$(-1, 0)$点，最后又返回到在$t=2\pi$时的$(0, 1)$点．
+
+如果函数$\varphi(t)$, $\psi(t)$的定义域是$t$轴上的闭区间$[a,b]$, 而且在这区间上的$t$的不同值对应曲线$C$上不同的点，
+那么我们称$C$为\textbf{简单弧}，例2.38中的抛物线，由上面知道不是简单弧，而抛物线$x=t$, $y=t^2,\; t\in [0, 1]$是简单弧的一个例子。
+
+如果曲线$C$上的始点$P(\varphi(a),\psi(a))$与终点$P(\varphi(b),\psi(b))$相同，并且除$t=a$和$t=b$外，在$[a,b]$上没有另外一对不同值对应曲线上同一点，那么曲线$C$叫做\textbf{简单闭曲线}。$x=a\cos t$, $y=a\sin t,\; t\in [-\pi,\pi]$就是简单的闭曲线。
+
+有时我们使用$y=f(x)$表示曲线$C$或$C$的一部分是方便的，如果$C$用参数方程$x=\varphi(t)$, $y=\psi(t)$给出，而对于曲线的一部分$t_2\le t\le t_1$, 函数$\varphi(t),\psi(t)$中的一个，譬如说$x=\varphi(t)$是单调的和连续的，那么这样的表示法总是可能的，办法是先由$x=\varphi(t)$解出它的反函数$t=\varphi^{-1}(x)$, 再代入$y=\psi(t)$中，便得到
+\[y=\psi\left(\varphi^{-1}(t)\right)=f(x)\]
+即$y=f(x)$是由$y=\psi(t)$和$t=\varphi^{-1}(x)$复合而成的复合函数。
+
+要求曲线$C$的斜率，我们不必重新建立$y$对$x$的函数关系$y=f(x)$, 再去求导，只须由方程组
+\begin{equation}
+    \begin{cases}
+        x=\varphi(t)\\ y=\psi(t)
+    \end{cases}
+\end{equation}
+当$\frac{\dd\varphi}{\dd t}\ne 0$时，按照复合函数求导法则可以直接得到$f'(x)$.
+
+事实上，当$\varphi'(t)\ne 0$时，$t=\varphi^{-1}(x)$的导数存在，并且是$\frac{\dd t}{\dd 
+x}=\frac{1}{\varphi'(t)}$.
+
+按照复合函数求导法则，得到
+\[f'(x)=\frac{\dd y}{\dd t}\cdot \frac{\dd t}{\dd x}=\frac{\psi'(t)}{\varphi'(t)}\]
+于是，当$\frac{\dd\varphi}{\dd t}\ne 0$时，就得到曲线$C$的斜率：
+\begin{equation}
+    \frac{\dd y}{\dd x}=\frac{\psi'(t)}{\varphi'(t)}
+\end{equation}
+当$\frac{\dd\psi}{\dd t}\ne 0$时，就得到
+\begin{equation}
+    \frac{\dd x}{\dd y}=\frac{\varphi'(t)}{\psi'(t)}
+\end{equation}
+因此，只要$[\varphi'(t)]^2+[\psi'(t)]^2\ne 0$, 切线总是存在的：如果$\psi'(t)=0$, 切线是水平的；如果$\varphi'(t)=0$, 切线是垂直的。
+
+当曲线由参数方程组(2.13)给出，那么曲线上点$(x_0,y_0)$处的切线方程为
+\begin{equation}
+    (y-y_0)\frac{\dd x}{\dd t}-(x-x_0)\frac{\dd y}{\dd t}=0
+\end{equation}
+
+法线的斜率是$-\frac{1}{y'_x}$，因此法线方程为
+\begin{equation}
+    (x-x_0)\frac{\dd x}{\dd t}+(y-y_0)\frac{\dd y}{\dd t}=0
+\end{equation}
+
+\begin{example}
+求椭圆$\begin{cases}
+    x=a\cos t\\ y=b\sin t
+\end{cases}$在点$t$的切线方程和法线方程。
 \end{example}
 
 
 \begin{solution}
+椭圆在点t的切线方程，按照(2.16)得到
+\[(y-b\sin t) (-a\sin t )-(x-a\cos t)(b\cos t)=0\]
+    化简得
+ \[   y ( - a\sin t) - x(b\cos t)+ab=0\]
+    两边除以$-ab$, 得到在点$t$的切线方程
+\[\frac{x}{a}\cos t+\frac{y}{b}\sin t=1\]
+
+在点$t$的法线方程，按照(2.17)得到
+\[(x-a\cos t) (-a\sin t)+(y-b\sin t)(b\cos t)=0\]
+    化简得
+\[   -ax\sin t+by\cos t+ (a^2-b^2) \sin t\cdot \cos t=0\]
+    或
+    \[xa\sin t-yb\cos t-\frac{c^2}{2}\sin 2t=0\]
+\end{solution}    
+
+\begin{example}
+    求曲线$\begin{cases}
+        x=t^2\\y=t^3
+    \end{cases}$
+    在点$t$的切线方程，并求此切线与曲线的另一交点的坐标.
+\end{example}
+
+\begin{solution}
+在点$t$的切线方程是
+\[(y-t^3)(2t)-(x-t^2)(3t^2)=0\]
+
+若$t\ne 0$, 则得切线方程
+  \[  2y-3tx+t^3=0\]
+    设此切线与曲线交于$(T^2,T^3)$点，于是数$T$满足等式
+   \[ 2T^3-3tT^2+t^3=0\]
+    这是$T$的三次方程，它表示切线与曲线相交于三个点，由于切点的$t$值是它的二重根，根据根和系数的关系，得
+\[2t+T=-(-3t)\quad \Rightarrow\quad T=-\frac{1}{2}t\]
+故切线与曲线的另一交点的坐标是$\left(\frac{1}{4}t^2,-\frac{1}{6}t^3\right)$
+
+如果再假定$\varphi''(t)$，$\psi''(t)$存在，则$y$对$x$的二阶导数可按照复合函数求导法及商的导数法来求：
+\[\begin{split}
+    y''=\frac{\dd y'}{\dd x}&=\frac{\dd y'}{\dd t}\cdot \frac{\dd t}{\dd x}\\
+    &=\frac{\dd }{\dd t}\left(\frac{\psi'(t)}{\varphi'(t)}\right)\cdot \frac{1}{\varphi'(t)}\\
+    &=\frac{\varphi'(t)\psi''(t)-\psi'(t)\varphi''(t)}{\big\{\varphi'(t)\big\}^3}
+\end{split}\]
+\end{solution}
+
+\begin{ex}
+\begin{enumerate}
+    \item 设$x=\frac{1}{2}p\lambda^2$, $y=p\lambda$是抛物线以$\lambda$为参数的方程，求在
+    点$\lambda$的切线方程和法线方程。
+    \item 过点$(x_0,y_0)$作抛物线$y^2=2px$的两条切线，设切点的参数为$\lambda_1$和$\lambda_2$, 求证
+    \[\begin{cases}
+        p(\lambda_1+\lambda_2)=2y_0\\
+        p_1\lambda_1\lambda_2=2x_0
+    \end{cases}\]
+    \item 过抛物线$y^2=2px$的定长为$c$的弦的两端作切线，求切线交点的轨迹方程。
     
+    \item 求曲线
+    $\begin{cases}
+        x=t (1-t^2) \\ y=1+t^2
+    \end{cases}$在点$t$的切线方程。
+
+\item 曲线$y^2=x^3$上点$P(t^2,t^3)$的切线交$x$轴于$T$点，过$T$
+点与$PT$垂直的直线交$y$轴于$N$点，求证$\frac{ON^2}{OT}$是一个与
+$t$无关的常数，这里$O$是原点。
+\item 如果曲线$ay^2=x^3$上$P(at^2,at^3)$点的切线交曲线于另一点$Q$, 交$y$轴于$R$点，
+\begin{enumerate}
+    \item 求$Q$点坐标；
+    \item 如果
+由点$P$引$x$轴的垂线的垂足为$N$点，求证：$OQ$和$RN$的斜率的绝对值相等。
+\end{enumerate}
+\item \begin{enumerate}
+    \item 求以$a$为参数的抛物线系
+\[y+\frac{35}{16}a=\frac{a^3}{3}\left(x+\frac{3}{4a}\right)^2\]
+的顶点的轨迹方程。
+\item 证明对应于参数$a$的抛物线与双曲线$xy=-\frac{7}{6}$ 
+相切于点$\left(\frac{1}{a},-\frac{7a}{6}\right)$，又与双曲线$xy=\frac{10}{3}$, 相切
+于点$\left(-\frac{2}{a},-\frac{5}{3}a\right)$.
+\end{enumerate} 
+
+\item 试证曲线
+$x=a(\cos t+t\sin t)$, $y=a(\sin t-t\cos t)$的每
+条法线都与圆$x^2+y^2=a^2$相切
+
+\item 若$x=\sec\theta$ 和$y=2\tan\theta$,
+\begin{enumerate}
+    \item 求$\frac{\dd y}{\dd x}$和$\frac{\dd^2 y}{\dd x^2}$以$\theta$表示之；
+\item 求证：$y^3\frac{\dd^2 y}{\dd x^2}+16=0$
+\end{enumerate}
+
+\item 求证过椭圆$x=a\cos\varphi$, $y=b\sin\varphi$上两点$\varphi_1$、$\varphi_2$的切线
+的交点的坐标为
+$\left(a\frac{\cos\frac{\varphi_1+\varphi_2}{2}}{\cos\frac{\varphi_1-\varphi_2}{2}}, b\frac{\sin\frac{\varphi_1+\varphi_2}{2}}{\cos\frac{\varphi_1-\varphi_2}{2}}\right)$
+\end{enumerate}
+\end{ex}
+
+\subsection{微分与变率（微商）}
+
+\subsubsection{微分的概念}
+
+当函数$y=f(x)$的自变量$x$在点$x_0$处得到一个微小的改变量$\Delta x=x-x_0$时，函数$y$的值得到相应的改变量，即
+\begin{equation}
+    \Delta y=f (x_0+\Delta x) -f (x_0) 
+\end{equation} 
+函数的改变量$\Delta y$最能表现函数的特征，无论函数变化的大小，或者是函数在某一点的递增或递减的变化趋势，都是由它来刻画的。
+
+从数的观点来看，一个变量就是一个可以取很多不同的值的符号，所以我们也可以把$\Delta x$看成一个新变量，这样$\Delta y$就是$x_0$和$\Delta x$这两个变量的函数。如
+
+\begin{example}
+    设$y=x^3$，那么
+\[\Delta y=(x_0+\Delta x)^3-x^3_0 =3x_0^2\Delta x+3x_0(\Delta x)^2+(\Delta x)^3\]
+\end{example}
+
+\begin{example}
+    设$f(x)=x^2-\frac{1}{x}$，那么
+\[\begin{split}
+    \Delta y&=\left[(x+\Delta x)^2-\frac{1}{x+\Delta x}\right]-\left[x^2-\frac{1}{x}\right]\\
+    &=2x\Delta x+(\Delta x)^2+\frac{\Delta x}{x(x+\Delta x)}
+\end{split}\] 
+\end{example}
+
+从上面的例子看出，通常$\Delta y=f(x_0+\Delta x)-f(x_0)$是一个很复杂的关系，但是如果函数$f(x)$在点$x_0$存在变率$f'(x_0)$, 我们可以把$\Delta y$分解成一个的线性部分和一个比$\Delta x$变小得更快的微量部分．事实上
+\begin{equation}
+ f'(x_0)=\lim_{\Delta x\to 0}\frac{f(x_0+\Delta x)-f(x_0)}{\Delta x}
+\end{equation}
+我们用$\varepsilon(x_0,\Delta x)$表示$\frac{\Delta 
+y}{\Delta x}$与$f'(x_0)$的差，那么，我们可以写出
+\begin{equation}
+\frac{f(x_0+\Delta x)-f(x_0)}{\Delta x}=f'(x_0)+\varepsilon(x_0,\Delta x)
+\end{equation}
+这里因为(2.19)，而有$\Lim_{\Delta x\to 0}\Delta x \cdot \varepsilon(x_0,\Delta x)=0$.
+
+将(2.20)的两边乘以$\Delta x$，我们得到
+\begin{equation}
+    f(x_0+\Delta x)-f(x_0)=f'(x_0)\Delta x+\Delta x\cdot \varepsilon(x_0,\Delta x)
+\end{equation}
+这个等式右边的第一项是与$\Delta x$成比例的量，其比例常数是$f(x)$在点$x_0$的变率$f'(x_0)$, 而第二项$\varepsilon(x_0,\Delta x)\Delta x$和$\Delta x$比较起来，当$|\Delta x|$很小时，$|\varepsilon(x_0,\Delta x)\cdot \Delta x|$就更小，从极限的观点来看，就是
+\[\lim_{\Delta x\to 0} \frac{\varepsilon(x_0,\Delta x)\cdot \Delta x}{\Delta x} =\lim_{\Delta x\to 0}\varepsilon(x_0,\Delta x)   =0\]
+这也就是说，$\varepsilon(x_0,\Delta x)\cdot \Delta x$比$\Delta x$变小得更快．因此，若$f'(x_0)\ne 0$, (2.21)中的线性部分$f'(x_0)\Delta x$, 当$|\Delta x|$很小时就是函数改变量$f(x_0+\Delta x)-f(x_0)$的很好的近似值，它的误差等于$\varepsilon(x_0,\Delta x)\cdot \Delta x$, 由于这个与$\Delta x$成比例的部分是$\Delta y$的\textbf{主要部分}，我们把$f'(x_0)\Delta x$叫做函数$f(x)$在$x=x_0$处\textbf{微分}。
+
+\begin{blk}
+    {定义} 设函数$y=f(x)$是可微的，我们称$f'(x)\Delta x$为函数$y=f(x)$在点$x$处与自变量的改变量$\Delta x$相对应的微分，记作$\dd y$, 于是
+\begin{equation}
+   \dd y=f' (x) \Delta x 
+\end{equation}
+\end{blk}
+
+因为函数$f(x)=x$的导数等于1, 所以对于任何$x$来说，微分$\dd f(x)$便等于$\dd x=(x')\Delta x=\Delta x$. 因此，习惯上，常以$\dd x$代替$\Delta x$, 于是(2.22)就可以写成
+\begin{equation}
+    \dd y=f'(x)\dd x
+\end{equation}
+从而
+\[f' (x) =\frac{\dd y}{\dd x}\]
+即变率等于微分的商，这也就是称变率（导数）为微商的根据。
+
+下面我们用前面的例2.41和例2.42将$\dd y$和$\Delta y$的值作个比较。
+
+
+\begin{example}
+\[y=x^3,\qquad \dd y=3x^2\dd x,\qquad \Delta y=3x^2\dd x+(3x+\dd x)(\dd x)^2\]
+
+当$x=1$时，$\dd y=3\dd x$, $\Delta y=3\dd x+(3+\dd x)(\dd x)^2$.
+
+\begin{center}
+\begin{tabular}{cccccc}
+    \hline
+$\dd x$ & 10& 1& 0.1 & 0.01& $\cdots$\\
+    \hline
+$\dd y$& 30&3&0.3& 0.03&$\cdots$\\
+\hline
+$\Delta y$& 1330& 7&0.331&0.030301&$\cdots$\\
+    \hline
+\end{tabular}
+\end{center}
+我们注意到$|\dd x|$愈小，$\dd y$与$\Delta y$的值愈靠近，而且 $\Delta y$与$\dd y$的差的绝对值比$\dd x$的绝对值变小得更快。
+\end{example}
+
+\begin{example}
+\[f(x)=x^2-\frac{1}{x},\qquad \dd f(x)=f'(x)\dd x=\left(2x+\frac{1}{x^2}\right)\dd x\]
+\[\Delta y=2x\dd x+(\dd x)^2+\frac{\dd x}{x(x+\dd x)}\]
+令$x=2$，则$\dd y=4.25\dd x$, $\Delta y=\left[4+\dd x+\frac{1}{2(2+\dd x)}\right]\dd x$
+\begin{center}
+    \begin{tabular}{cccccc}
+        \hline
+    $\dd x$ & 1& 0.5& 0.1 & 0.01& $\cdots$\\
+        \hline
+    $\dd y$& 4.25&2.13&0.425& 0.0425&$\cdots$\\
+    \hline
+    $\Delta y$& 5.17& 2.35&0.434&0.0426&$\cdots$\\
+        \hline
+    \end{tabular}
+    \end{center}
+上面的例子验证了我们在前面讨论的结论：当自变量的改变量$\Delta x$很小时，可以用微分$\dd y$来近似地代替函数改变量
+$\Delta y$.
+\end{example}
+
+\begin{example}
+    半径为$r$的金属圆片加热膨胀，求当半径从$r$变到$r+\Delta r$时，圆面积$S$变化大小和此时圆面积$S$与$\Delta r$相应的微分$\dd S$, 并试用几何图形解释所得的结果。
+\end{example}
+
+\begin{solution}
+    已知圆面积$S=\pi r^2$, 设$\Delta S$是半径从$r$变到$r+\Delta r$时圆面积改变量，即圆环的面积（图2.15），则
+\[\begin{split}
+    \Delta S=\pi(r+\Delta r)^2-\pi r^2&=\pi\left[2r\Delta r+(\Delta r)^2\right]\\
+    &=\frac{1}{2}\left[2\pi r+2\pi(r+\Delta r)\right]\Delta r
+\end{split}\]
+此时，$\dd S=2\pi r\Delta r$.
+
+\begin{figure}[htp]\centering
+	\begin{minipage}[t]{0.48\textwidth}
+		\centering
+        \begin{tikzpicture}[>=latex, scale=.8]
+\draw[thick](0,0) circle(2);
+\draw[thick](0,0) circle(2.8);
+\draw(0,0)--(2.8,0);
+\draw[|<->|](0,-.2)--node[below]{$r$}(2,-.2);
+\draw[|<->|](2.8,.2)--node[above]{$\Delta r$}(2,.2);
+    \end{tikzpicture}
+    \caption{}
+\end{minipage}
+\begin{minipage}[t]{0.48\textwidth}
+    \centering
+\begin{tikzpicture}[>=latex, scale=.8]
+\tkzDefPoints{-1.5/0/A, 1.5/0/B, 2.7/1.2/C, -2.7/1.2/D}
+\tkzDrawPolygon(A,B,C,D)
+\tkzDefPoints{1.5/1.2/E, -1.5/1.2/F}
+\tkzDrawPolygon[pattern=north east lines](A,D,F)
+\tkzDrawPolygon[pattern=north west lines](B,C,E)
+\node at (0,1.2)[above]{$2\pi(r+\Delta r)$};
+\node at (0,0)[below]{$2\pi r$};
+\draw[|<->|](3,0)--node[fill=white]{$\Delta r$}(3,1.2);
+\end{tikzpicture}
+\caption{}
+\end{minipage}
+\end{figure}
+
+把圆沿半径剖开，把圆周拉直，圆环就“变成”一个梯形，它的两个底边长分别是$2\pi r$, $2\pi(r+\Delta r)$, 高为$\Delta r$（图2.16），其中的矩形面积就是微分$\dd S=2\pi r\cdot \Delta r$, 它表示圆面积$S$在从$r$到$r+\Delta r$的整段变化过程中都以同一瞬时变率$(\pi r^2)'=2\pi r$作匀速变化所产生的面积增量．图2.16中的两个小直角三角形的面积表示$\Delta S$与$\dd S$的误差，即
+\[\Delta S-\dd S=\pi  (\Delta r)^2\]
+它比$|\Delta r|$更快地变小，即
+\[\lim_{\Delta r\to 0}\frac{\Delta S-\dd S}{\Delta r}=\lim_{\Delta r\to 0}\pi(\Delta r)=0\]
+\end{solution}
+
+\subsubsection{微分的几何意义}
+
+从几何的观点来说，变率的根本想法就是以直代曲，即以在点$x_0$处的切线$y=f(x_0)＋f'(x_0)(x-x_0)$来逼近曲线$y=f(x)$的微段。因此，$f'(x_0)\Delta x$的几何意义可以从图2.17看出．
+
+\begin{figure}[htp]
+    \centering
+    
+    \caption{}
+\end{figure}
+
+在直角三角形$TPN$中，$PN=\Delta x$, $\tan\alpha=f'(x_0)$, 故
+\[NT=PN\cdot \tan\alpha=\Delta x\cdot f'(x_0)=f'(x_0)\Delta x\]
+也就
+是切线函数$y=f (x_0) +f' (x_0) (x-x_0)$的相应改变量。至于函数的改变量则是曲线$y=f(x)$本身
+的纵坐标在这一段的改变量，在图2.17中用线段$NP'$来代表。所以$f(x)$相应于这一段的微分就是以曲线的切线改变量代替函数的改变量．从图2.17可以看出，当$|\Delta x|$减小时，$TP'$跟着减小，但$TP'$比$|\Delta x|$要变小得更快。
+
+回顾上面的讨论，微分的意义是，当$|\Delta x|$充分小时，曲线$y=f(x)$在点$x_0$的切线
+\[y=f (x_0) +f' (x_0) (x-x_0)\]
+的改变量$\dd y=f'(x_0)\Delta x=f'(x_0)(x-x_0)$, 就是相应于函数改变量$\Delta y=f(x_0+\Delta x)-f(x_0)$的微分，它可以近似地表达函数改变量，而差是一个比$|\Delta x|=|x-x_0|$变小得更快的微量。因此我们得到
+\[\Delta y\approx \dd y\qquad \text{或}\qquad f(x_0+\Delta x)-f(x_0)\approx f'(x_0)\Delta x\]
+上式可改写为
+\[f (x_0+\Delta x) \approx f (x_0) +f' (x_0) \Delta x\]
+可见$f(x)$在$x_0+\Delta x$点的函数值，可以通过它在$x_0$的函数值$f(x_0)$加上一个与$\Delta x$成正比例的量$f'(x_0)\Delta x$来表达，比例系数就是$f$在点$x_0$的微商。上面的公式常用来作近似计算。
+
+\begin{example}
+    计算$\sqrt{101}$
+\end{example}
+
+
+\begin{solution}
+设$y=\sqrt{x}$，令$x_0=100$, $\Delta x=1$，则
+\[\dd y=\frac{\Delta x}{2\sqrt{x_0}}=\frac{1}{2\sqrt{100}}=\frac{1}{20}=0.05\]
+因此：
+\[\sqrt{101}\approx \sqrt{100}+\dd y=10+0.05=10.05\]
 \end{solution}
 
 
 
 \begin{example}
-    
+一个立方体形状的盒子，它的设计边长等于4(dm), 但允许误差为0.05(dm), 求盒子体积的可能误差。
 \end{example}
 
 
 \begin{solution}
-    
+设盒子的边长由$x$改为$x+\dd x$, 那么盒子体积的改变量是
+\[\Delta V= (x+\dd x)^3-x^3\]
+但是
+\[\Delta V\approx \dd V=3x^2\dd x\]
+令$x=4$, $\dd x=\pm 0.05$, 那么
+\[\dd V=3\x16\x (\pm 0. 05) =\pm 2.4\]
+因此，体积的可能误差近似地等于$\pm 2.4({\rm dm})^3$.
 \end{solution}
 
+\begin{example}
+    证明当$|x|$很小时，$\ln(1+x)\approx x$.
+\end{example}
 
-
-
-
+\begin{solution}
+    设$f(x)=\ln(1+x)$, 令 $x_0=0$, $\Delta x=x$，则
+\[\dd f (x) =f' (x_0) \Delta x=\frac{1}{1+x_0}\Delta x=x\]
+因此：
+\[f (x_0+\Delta x) =\ln (1+x) \approx \ln 1+x=x\]
+即：$\ln(1+x)\approx x$
+\end{solution}
 
 
 \begin{example}
-    
+    当$|x|$很小时，导出近似公式：$\tan x\approx x$.
 \end{example}
 
 
 \begin{solution}
-    
+    设$f(x)=\tan x$, 令 $x_0=0$, $\Delta x=x$, 则
+\[\dd f (x) =\sec^2x_0 \dd x=\sec^2 0\cdot x=1\cdot x=x\]
+因此：
+\[f (x_0+\Delta x) =\tan x\approx \tan 0+x=x\]
+即：$\tan x\approx x$.
 \end{solution}
-
-
-
-
-
 
 \begin{example}
-    
+如图2.18, 加工锥形工件时，已知工件两头直径分别为$d_1,d_2$, 长度为$\ell$, 当斜角$\alpha$很小时，导出近似公式：
+\[\alpha=28.6^{\circ}\x\frac{d_1-d_2}{\ell}\]
+\end{example}
+
+\begin{figure}[htp]
+    \centering
+\begin{tikzpicture}[>=latex]
+    \draw[|<->|](-0.5,.9)--node[fill=white]{$d_2$}(-.5,-.9);
+\draw[|<->|](4.8,1.5)--node[fill=white]{$d_1$}(4.8,-1.5);
+\draw[very thick](4,0) ellipse [x radius=.5, y radius=1.5];
+\draw[dashed](0,0) ellipse [x radius=.3, y radius=.9];
+\draw[dashed](0,-.9) rectangle (4,.9);
+\draw[very thick](0,-.9)--(4,-1.5);\draw[very thick](0,.9)--(4,1.5);
+\draw[dashdotted](0,0)--(4,0);
+\draw[dashed](4,-1.5)--(4,1.5);
+\draw[|<->|](0,1.8)--node[fill=white]{$\ell$}(4,1.8);
+\draw[very thick] (0,.9) arc [start angle =90, end angle =270, x radius=.3, y radius=.9] ;
+\draw (1.5,.9) arc (0:9:1.5)node[below right]{$\alpha$};
+\end{tikzpicture}  
+    \caption{}
+\end{figure}
+
+\begin{solution}
+由图：$\tan\alpha=\frac{d_1-d_2}{2\ell}$. 当$\alpha$很小时，根据$\tan\alpha\approx \alpha$，得到：
+\[\alpha\approx \frac{d_1-d_2}{2\ell}\]
+又：$1\text{弧度}=\left(\frac{180}{\pi}\right)^{\circ}\approx 57.3^{\circ}$，因此：
+\[\alpha\approx 57.3^{\circ}\x \frac{d_1-d_2}{2\ell}\approx 28.6^{\circ}\x \frac{d_1-d_2}{\ell}\]
+\end{solution}
+
+\subsubsection{微分的运算}
+
+如果函数$f(x)$可微，即导数$f'(x)$存在，求函数的微分只要求出导数再乘以自变量的改变量$\Delta x$就行了，求已知函数的微分或求导数的方法都叫做微分法。
+
+我们已经知道当$x$是自变量时，$\dd x=\Delta x$, 原来的微分表达式$\dd y=f'(x)\Delta x$就可以改写为$\dd y=f'(x)\dd x$, 例如$\d(\sin x)=\cos x \dd x$. 所以我们可以根据函数的和、积、商的求导数法则得到函数的和、积、商的求微分法则，即
+\begin{enumerate}
+    \item $\dd(cu)=c\dd u$
+    \item $\dd(u\pm v)=\dd u\pm \dd v$
+    \item $\dd(uv)=v\dd u+u\dd v$
+    \item $\dd\left(\frac{u}{v}\right)=\frac{v\dd u-u\dd v}{v^2}$
+\end{enumerate}
+这里只证明最后一个法则，其余请读者自证。
+
+\begin{proof}
+    \[\begin{split}
+\dd\left(\frac{u}{v}\right)=\left(\frac{u}{v}\right)'\dd x&=\frac{u'v-uv'}{v^2}\dd x\\
+&=\frac{v(u'\dd x)-u(v'\dd x)}{v^2}\\
+&=\frac{v\dd u-u\dd v}{v^2}        
+    \end{split}\]
+\end{proof}
+
+现在我们来研究求复合函数的微分法则。
+
+如果$y=f(x)$, $x=\varphi (t)$, 那么$y$是$t$的复合函数$y=f(\varphi (t))$, 这时$x$和$y$的微分根据定义都要以$t$为自变量来确定。在这情况下，须注意$\dd x\ne \Delta x$, 比如若$x=t^2$, 则$\dd x=2t\dd t$, 而$\Delta x=(t+\Delta t)^2-t^2=2t\Delta t+(\Delta t)^2$, 显然$\dd x\ne \Delta x$, 对于复合函数$y=f(\varphi (t))$的微分，我们有下面重要定理。
+
+\begin{blk}
+    {定理} 设$y=f(x)$, $x=\varphi (t)$都是可微函数，$x$是中间变量，那么关系式
+$\dd y=f (x) \dd x$
+仍成立。
+\end{blk}
+
+\begin{proof}
+   \[ \dd y=[f(\varphi (t))]'\dd t\]
+根据复合函数求导数法则有
+\[[f (\varphi  (t) ) ] '=f' (\varphi  (t) ) \cdot \varphi ' (t)\]
+因此
+\[\dd y=f' (\varphi  (t) ) \cdot \varphi' (t) \dd t\]
+
+因为$x=\varphi  (t)$, $\dd x=\varphi ' (t) \dd t$，最后得到
+\[\dd y=f' (x) \dd x\]
+\end{proof}
+
+这个定理是说不论$x$是自变量或是中间变量，函数$f(x)$
+的微分形式不变，只须注意，若$x$是中间变量，$\dd x$不是任意增量$\Delta x$, 而是$x$的微分，$\dd y$不能写成$f'(x)\Delta x$即$\dd y\ne f'(x)\Delta x$, 这个性质叫做\textbf{微分不变性}。有了微分不变性，我们在作微分运算时，就无需指明对哪一个变量的微分，而在求函数的变率时，总要指明对中间变量求导数还是对自变量求导数。另外，求复合函数的导数法则用微分符号写出，就是
+\[\frac{\dd y}{\dd t}=\frac{\dd y}{\dd x}\cdot \frac{\dd x}{\dd t}\]
+它就成为简单的代数恒等式了。
+
+\begin{example}
+    求由方程$y^3=x^2+xy+y^2$确定的隐函数的导数$\frac{\dd y}{\dd x}$.
+\end{example}
+
+\begin{solution}
+    对等式两边求微分得到
+\[3y^2\dd y=2x\dd x+ (x\dd y+y\dd x) +2y\dd y\]
+移项
+\[(3y^2-x-2y)\dd y=(2x+y)\dd x\]
+最后得到
+\[\frac{\dd y}{\dd x}=\frac{2x+y}{3y^2-x-2y}\]
+\end{solution}
+
+\begin{example}
+    求$\dd\sin [\tan(x^2-x+1)]$.
 \end{example}
 
 
 \begin{solution}
-    
+\[\begin{split}
+    \dd\sin \left[\tan(x^2-x+1)\right]&=\cos\left[\tan(x^2-x+1)\right]\dd \tan(x^2-x+1)\\
+    &=\cos\left[\tan(x^2-x+1)\right]\cdot \sec^2 (x^2-x+1)\cdot \dd (x^2-x+1)\\
+    &=\cos\left[\tan(x^2-x+1)\right]\sec^2(x^2-x+1)\cdot (2x-1)\dd x 
+\end{split}\]
 \end{solution}
+（例2.52的计算中，将微分符号“$\dd$”逐步顺着复合函数
+的层次从$\sin$到$\tan$到$x^2-x+1$, 由外到里，尤如剥笋。）
+
+\begin{ex}
+\begin{enumerate}
+    \item 边长4cm的正方形铁皮，在加热中边长增加了0.001cm, 
+求此时刻面积的可能误差$\Delta S$, 和可能误差的近似值$\dd s$, 又正方形的面积近似值是多少？
+\item 半径为10cm的球，在冷却中$R$缩短了0.001cm, 求此时
+刻体积的微分$\dd V$和体积的近似值。
+\item 当$|x|$很小时，导出下列近似公式：
+\begin{multicols}{2}
+\begin{enumerate}
+    \item  $\sqrt{1+x} \approx 1+\frac{x}{2}$
+\item $e^{x} \approx 1+x$
+\item  $(1+x)^{n} \approx 1+n x$
+\item  $\sqrt[n]{1+x} \approx 1+\frac{1}{n} x$
+\item  $\sin x \approx x$
+\item  $\arcsin x \approx x$
+\item  $\ln (1+\sin x) \approx x$
+\end{enumerate}
+\end{multicols}
+
+\item  计算下列各式的值：
+\begin{multicols}{2}
+\begin{enumerate}
+\item  $\sqrt[3]{1.02}$
+\item  $\sqrt[3]{0.998}$
+\item   $e^{-0.1}$
+\item   $\tan 0.01$ 
+\item   $\sin 0.1^{\circ}$
+\item   $\ln 1.0021$   
+\end{enumerate}
+\end{multicols}
+
+\item 求下列函数的徽分:
+\begin{multicols}{2}
+\begin{enumerate}
+    \item $y=\frac{x+5}{x^{2}-2}$
+    \item  $y=\left(\sqrt{1+x^{2}}\right)^{n}$
+    \item  $y=\ln (\sin \sqrt{x})$
+    \item  $y=\sin ^{3}(\sqrt{x})$
+    \item  $y=\arcsin \sqrt{2 x}$
+    \item  $y=\arctan (\cos x)$ 
+    \item $y=\sin (\ln x)$
+    \item $y=x^{n} \ln (n x)$
+    \item $y=e^{x} \ln x$
+    \item $y=\left(e^{x}+e^{-x}\right)^{2}$
+\end{enumerate}
+\end{multicols}
+
+\item 一直圆锥内接于半径等于$R$的球中，球心在直圆锥的内部
+且到圆锥底面的距离等于$p$, 若$p$增加一个微量$x$而球半径$R$不变，求证圆锥体积的增量约等于$\frac{\pi}{3}(R+p)(R-3p) x$.
+\item 直圆锥的底面半径为$r$cm, 高为$h$cm, 若半径$r$和高$h$分别
+有一个增量$\rho$cm和$\lambda$cm, 求证圆锥体积的增量近似地等于$\left(\frac{2\rho}{r}+\frac{\lambda}{h}\right)$.
+\end{enumerate}
+\end{ex}
 
 
 
+\subsection*{习题2.2}
+\begin{enumerate}
+    \item 求下列函数的导函数：
+\begin{enumerate}
+    \begin{multicols}{2}
+ \item $f(x)=2 x^{3}-3 x^{3}+4 x-5 $
+\item $f(x)=x^{5}-6 x^{2}+13$
+\item $f(x)=\frac{x^{3}-4 x}{x^{2}+1} $
+\item $f(x)=\cos m x \sin n x$       
+    \end{multicols}
+
+\item $f(x)=\left[\sin x+\cos x+\left(x^{2}+x+1\right)\right]^{2}$
+\item $f(x)=\tan\left[\sin x+\cos x+\left(x^{2}+x+1\right)\right]$
+\begin{multicols}{2}
+ \item $f'(x)=\cot \left(x^{2}+1\right)$
+\item $f(x)=\sqrt{a^{2}+b^{2} x^{2}}$
+\item $f(x)=\sqrt[3]{x^{4}+x^{2}+1}$
+\item $f(x)=\cos \left(\sqrt[3]{3 x^{4}+5 x^{2}+6}\right)$
+\item $f(x)=(\sqrt{x}+1)\left(\frac{1}{\sqrt{x}}-1\right)$
+\item $f(x)=x \sin x+\cos x$
+\item $f(x)=2^{\sin ^{2}\tfrac{1}{x}} $
+\item $f(x)=x^{\sin x}$       
+\end{multicols}
+\begin{multicols}{2}
+\item $f(x)=e^{-x^{2}} \cos \left(e^{-x^{2}}\right) $
+\item  $f(x)=\arctan\sqrt{x^{2}-2 x}$
+\item  $f(x)=x e^{1-\cos x}$
+\item  $f(x)=x \arccos x-\sqrt{1-x^{2}}$
+\item  $f(x)=(\sin x)^{\cos x}$
+\item  $f(x)=\sqrt[5]{\frac{x-5}{\sqrt[5]{x^{2}+2}}}$
+\end{multicols}
+\item  $f(x)=x-\ln \left(2 e^{x}+1+\sqrt{e^{2 x}+4 e^{x}+1}\right)$
+\begin{multicols}{2}
+\item $f(x)=\sqrt{x \sqrt{x \sqrt{x}}}$
+\item  $f(x)=\log _{a} e ^{\sin ^{2} x+1}$
+\end{multicols}
+\item  $f(x)=\ln \tan  \frac{x}{2}-\cot x \cdot \ln (1+\sin x)-x$
+\end{enumerate}
+
+\item 验证函数$f(x)=e^x \sin x$满足方程
+\[f'' (x) -2f' (x) +2f (x) =0\]
+\item 验证函数$f(x)=\frac{x-3}{x+4}$满足方程
+\[2 [f' (x) ]^2= [f (x) -1] f'' (x) \]
+\item $P$点在直线上运动，在时刻$t$, 点$P$与直线上的定点$O$的距离由方程
+$s^2=a^2+V^2t^2$
+给出，其中$a$和$V$是常量，试用$s$表示$P$点在时刻$t$的速度和加速度。
+\item 在$xy$平面上，求通过点$P(-3, 6)$且与曲线$y=x^3-5x^2+x+5$
+相切，并且切点的横坐标满足$x\ge 0$的切线方程。
+\item 求证方程$16x^4-24x^2+16x-3=0$在$(0, 1)$内有
+一个三重根，又在$(-2,-1)$内有一个单根．
+\item 设三次函数$y=x^3-3ax^2+bx+c$ （其中$a,b,c$是
+常数）。
+\begin{enumerate}
+    \item 该曲线与直线$y=2x-1$切于点$(2, 3)$, 试用$a$的式子表示$b,c$;
+    \item 另外，该曲线还与$y=2x+3$相切，试确定$a,b,c$的值。
+\end{enumerate}
+\item 在中午十二点整，甲船以6公里/小时的速率向东行，乙船在甲船之北16公里，以8公里/小时的速率向南行，在下午一点整两船相近之速率为多少？在下午两点整两船相离之速率是多少？
+\item 已知圆心为$O$, 半径为1的圆与直线$\ell$相切于点$A$, 一动点$P$自切点$A$沿直线$\ell$向右移动时，取弧$\wideparen{AC}$的长为$\frac{2}{3}AP$，
+直线$PC$与直线$AO$交于点$M$(图2.19), 又知当$AP=\frac{3\pi}{4}$时，点$P$的速率为$v$, 求这时$M$点的速率。
+\begin{figure}[htp]
+    \centering
+\begin{tikzpicture}
+\draw(-2,0)--(2,0)node[right]{$\ell$};
+\draw[very thick](0,1) circle (1);
+\draw(0,0)node[below]{$A$}--(0,2.5);
+\draw(0,1.7)node[left]{$M$}--(1.7,0)node[below]{$P$};
+\node at (30:1)[right]{$C$};
+\tkzDefPoints{0/1/O}
+\tkzLabelPoints[left](O)
+\tkzDrawPoints(O)
+
+\end{tikzpicture}    
+    \caption{}
+\end{figure}
+
+\item 溶液自深18cm, 顶直
+径12cm的正圆锥形漏斗中漏入一直径为10cm的圆柱形筒中，开始时漏斗中盛满了水，已知当溶液在漏斗中深为12cm时，其水平面下落速率为1cm/s, 问此时圆柱形筒中水平面上升之速率为多少？
+\item 求曲线$y=\arctan\ln x$与$x$轴的交角。
+\item 设质点$P$在时刻$t$的位移方程是
+\[x=\frac{58}{240}+A\cos\left(\sqrt{24}gt+\alpha\right)\]
+其中$A,\alpha$是待定常数，$g\approx 9.8{\rm m/s}$，且知当$t=0$时，$x=0$, $\frac{\dd x}{\dd t}=0$，求$A$和$\alpha$.
+
+
+\begin{figure}[htp]
+    \centering
+\begin{tikzpicture}[>=latex, scale=1.7]
+    \draw[dashdotted] (-3.5,0)--(1.2,0);
+    \draw (-3.5,.5) rectangle (-1.5,-.5);
+    \draw (0,0) circle (.75);
+    \node at (-.75,0)[below left]{$K_0$};
+    \node at (.75,0)[above right]{$K_1$};
+\draw [fill=gray!20](-2.5,.5) rectangle (-2.6,-.5);
+\draw[very thick] (0,0)node[below]{$O$}--node[above]{$r$}(90+30:.75)node[above]{$K$}--node[above right]{$\ell$}(-2.5,0)node[below]{$M$};
+\draw [dashed](-3.3,.5)node[below]{$M_0$}--(-3.3,-.5);
+\draw [dashed](-1.7,.5)node[below]{$M_1$}--(-1.7,-.5);
+\draw (-.25,0) arc (180:180-60:.25)node[below left]{$\varphi$};
+\draw[dashed] (90+30:.75)--(-.75/2,0);
+\draw[|<->|] (-3.3,-.7)--node[fill=white]{$x$}(-2.5,-.7);
+
+\draw (-2,0) arc (0:15:.5)node[below right]{$\alpha$};
+
+
+\end{tikzpicture}
+    \caption{}
+\end{figure}
 
 
 
+\item 图2.20表示曲柄机构装置的图样，连接杆$MK$
+的长$\ell=125$cm, 曲柄$OK$的长$r=25$cm, 连杆与汽缸的轴$OM$成$\alpha$角，曲柄与同一轴成$\varphi$角。
+\begin{enumerate}
+    \item 求用$\varphi$的式子表示活塞$M$的位移$x$的公式；
+    \item 如果$\frac{\dd \varphi}{\dd t}=\omega$ （$\omega$
+    是常量），求活塞$M$的速率。
+\end{enumerate}
+\item 在抛物线$y=ax^2+bx+c\; (a\ne 0)$上两点作切线，
+它们在何处相交？
+\item 求抛物线$y^2=4ax$在点$(a\lambda^2, 2a\lambda)$的切线方程，并求它的两条互相垂直的切线的交点的轨迹方程。
+\item 
+\begin{enumerate}
+    \item 求曲线$4y^3=27x^2$ 在点$(2t^3, 3t^2)$的切
+线方程；
+\item 求互相垂直的两条切线的交点的轨迹方程．
+\end{enumerate}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+\item 计算$\sqrt{\frac{2.037^2-1}{2.037^2+1}}$的近似值。
+\item 计算$\cos151^{\circ}$的近似值．
+\item 设$f(x)=e^{0.1x(1-x)}$, 试计算$f(1.05)$的近
+似值。
+\item 若球体积的相对误差$\frac{\Delta V}{V}=0.01$, 试计算球半径的
+相对误差$\frac{\Delta R}{R}$约等于多少？
+\end{enumerate}
 
 
 
