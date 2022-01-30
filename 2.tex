@@ -2609,7 +2609,1959 @@ $s^2=a^2+V^2t^2$
 
 
 
+\section{微商运算的初步应用——函数的增减与极值}
+\subsection{局部极值和中值定理}
+我们在第一章中曾说明在闭区间$[a,b]$上连续的函数必有最大值和最小值。函数$f$在闭区间$M=[a,b]$上的最大值的大小涉及到两个因素，既依赖于$f$, 也依赖于$M$.
+
+如图2.21, 若$N=[c,d]\subset M=[a,b]$, 则
+\[\max_N f\le \max_M f\]
+相应地，
+\[\min_N f\ge \min_M f\]
+在这两种情形里都可能出现严格不等式（即不带等号的不等式）。
+
+\begin{figure}[htp]
+    \centering
+\begin{tikzpicture}[>=latex]
+
+\end{tikzpicture}
+    \caption{}
+\end{figure}
+
+现在我们将阐明一种只决定于$f$的性质的局部极大与极小的概念。
+
+\begin{blk}
+    {定义} 设函数$f$在点$x$的某个$\delta>0$的邻域，即$(x-\delta,x+\delta)$内有定义，如果对于充分小的$|\Delta x|<\delta$, 能使$x+\Delta x\in (x-\delta,x+\delta)$, 而且对于一切$x'=x+\Delta x\in (x-\delta,x+\delta)$, 都有
+\[f(x+\Delta x)\le f(x)\quad \text{或}\quad f(x+\Delta x)\ge f(x)\]
+那么函数$f$在点$x$达到局部极大值（或局部极小值）。
+\end{blk}
+
+\begin{blk}
+    {费马定理} 如果函数$f$在区间$(a,b)$上有定义，并且在这个区间内的一点$c$取局部极大值（或极小值），又若$f$在$c$点可微，那么
+    \[f' (c) =0\]
+\end{blk}
+
+\begin{proof}
+    为确定起见，设$f(x)$在点$c\in (a,b)$取最大值、于是对于一切点$x\in (a,b)$, 就有
+\[f (x) \le f (c) \]
+由导数定义：
+\[\lim_{x\to c}\frac{f (x) -f (c)}{x-c} =f' (c) \]
+并且极限$f'(c)$的存在与$x$是从右边还是从左边趋向$c$无关。
+\begin{enumerate}
+    \item 如果$x>c$，我们有$\frac{f (x) -f (c)}{x-c}\le 0$，从而
+\[\lim_{x\to c^+}\frac{f (x) -f (c)}{x-c}\le 0\]
+\item 如果$x<c$，我们有$\frac{f (x) -f (c)}{x-c}\ge 0$，从而
+\[\lim_{x\to c^-}\frac{f (x) -f (c)}{x-c}\ge 0\]
+\end{enumerate}
+根据假设$f$在$c$点可微，因此这两个极限必相等，且应等于$f'(c)$, 这表示$f'(c)\ge 0$和$f'(c)\le 0$, 由此得：$f' (c) =0$.
+
+$f$在$c$点有局部极小值的情形留给读者自证。
+\end{proof}
+
+\begin{blk}
+  {罗尔定理} 如果函数$f$在闭区间$[a,b]$上连续，在开区间$(a,b)$内可微，且在两端点的函数值相等，即$f(a)=f(b)$, 那么至少存在一个点$c$, $c\in (a,b)$, 使$f'(c)=0$.  
+\end{blk}
+
+\begin{proof}
+如果$f$在$[a,b]$上恒为常数，无疑对于任何
+$c\in (a,b)$有$f'(c)=0$. 因此，可设$f$在$[a,b]$中不为常数，此时$f$在$[a,b]$上的最大值$M$和最小值$m$至少有一个不等于$f(a)=f(b)$, 为确定起见，不妨设$M\ne f(a)=f(b)$。故$f$在$[a,b]$上的最大值$M$不会在$a$点或$b$点达到，这时根据闭区间上连续函数的性质，在$(a,b)$内至少有一点$c$, 使$f(c)=M$, 于是，由费马定理，即得$f'(c)=0$. 
+
+本定理的几何意义如图2.22, 曲线$y=f(x)$在$a,b$处有相同高度，如果在点$c$处、曲线达到最高度，并有切线存在，那么，曲线在该处的切线与$x$轴平行。同样，在曲线的最低点处的切线也与$x$轴平行。
+\end{proof}
+
+\begin{figure}[htp]
+    \centering
+    \begin{minipage}[t]{0.48\textwidth}
+    \centering
+\begin{tikzpicture}[>=latex, scale=1]
+    \draw[->](-.5,0)--(5,0)node[right]{$x$};
+    \draw[->](0,-.5)--(0,2.8)node[right]{$y$};
+    \node at (0,0)[below left]{$O$};
+    \draw[domain=.5:4.5, samples=100, thick]plot(\x, {sin((\x-.5)*pi/2 r)+.5});
+    \draw[dashed](.5,0)node[below]{$a$}--(.5,.5)--(4.5,.5)--(4.5,0)node[below]{$b$};
+    \draw(1.5,0)node[below]{$c$}--(1.5,1.5);
+\end{tikzpicture}
+    \caption{}
+    \end{minipage}
+    \begin{minipage}[t]{0.48\textwidth}
+    \centering
+    \begin{tikzpicture}[>=stealth, scale=1.5]
+        \draw[->](-1.5,0)--(1.5,0)node[right]{$x$};
+        \draw[->](0,-.25)--(0,2)node[right]{$y$};
+        \draw[thick](-1,0)node[below]{$(-1,0)$}--(0,1)node[above right]{$(0,1)$}--node[right]{$g(x)=1-|x|$}(1,0)node[below]{$(1,0)$};
+        \node at (0,0)[below left]{$O$};
+    \end{tikzpicture}
+    \caption{}
+    \end{minipage}
+    \end{figure}
+
+
+\begin{rmk}
+    注意 如果罗尔定理中的条件不被满足，结论就不成立．例如$g(x)=1-|x|$在$[-1, 1]$上连续，且$g(-1)=g(1)=0$, 但在$x=0$处，$g'(x)$不存在，对于这个$g$, 在$(-1,1)$中就设有$c$能使$g'(c)=0$. 它的图象如图2.23所示，
+\end{rmk}
+
+\begin{blk}
+    {拉格朗日中值定理} 如果函数$f$在闭区间$[a,b]$上连续，在开区间$(a,b)$内可导，那么在$(a,b)$内至少有一点$c$, 使得
+\[f'(c)=\frac{f(b)-f(a)}{b-a}\]
+\end{blk}
+
+罗尔定理是拉格朗日定理的特殊情形，我们借助于罗尔定理来证明这个重要的定理。
+
+\begin{proof}
+ 我们作一个辅助函数$\Phi$使它具有函数f的性质：即它在$[a,b]$上连续且在$(a,b)$内可微，同时满足$\Phi (a)=\Phi (b)$. 为此，设$\Phi  (x) =f (x) +k (x-a)$, 并由条件$\Phi (a)=\Phi (b)$来决定参数$k$. 
+
+因为当$x=a$时，有$\Phi (x)=f(a)$; 当$x=b$时，有$\Phi (b)=f(b)+k(b-a)$, 所以
+\[k=-\frac{f (b) -f (a)}{b-a}\]
+这样得到的函数
+\[\Phi  (x) =f (x) -\frac{f (b) -f (a) }{b-a}(x-a)\]
+就满足罗尔定理中的所有的条件，由罗尔定理，至少存在一点$c\in (a,b)$使得$\Phi '(c)=0$,
+但
+\[\Phi ' (x) =f' (x) -\frac{f (b) -f (a)}{b-a}\]
+所以
+\[\Phi ' (c) =f' (c) -\frac{f (b) -f (a)}{b-a} =0\]
+即
+\[f' (c) =\frac{f (b) -f (a)}{b-a}\]
+\end{proof}
+
+为了便于应用，拉格朗日定理的结论，通常写成如下形式：
+\begin{equation}
+   f (b) -f (a) =f' (c) (b-a),\qquad a<c<b 
+\end{equation}
+在上式中，令$b=a+h$，$c=a+\theta h$，$0<\theta<1$，得到中值定理的另一形式：
+\begin{equation}
+    f (a+h) -f (a) =hf' (a+\theta h) ,\qquad 0<\theta<1
+\end{equation}
+
+中值定理的几何意义如图2.24所示．在闭区间$[a,b]$上有一条连续的曲线，且过曲线$y=f(x)$上每一点（端点除外），都可以作出一条切线，那么在曲线上至少有一点$M(c, f( c)),\; c\in (a,b)$, 使得过点$M$的切线与弦$AB$平行。
+
+\begin{figure}[htp]
+    \centering
+\begin{tikzpicture}
+
+\end{tikzpicture}
+    \caption{}
+\end{figure}
+
+
+
+\begin{example}
+求$f(x)=1+\frac{4}{x}$在$(1, 4)$内满足中值定理$f(b)-f(a)=f'(c)\cdot (b-a)$的点$c$的值。
+\end{example}
+
+
+\begin{solution}
+    显然$f$在$[1, 4]$上连续，又$f'(x)=-\frac{4}{x^2}$, 故$f$在$(1, 4)$内可微，根据中值定理，存在点$c\in (1, 4)$, 使得
+\[    f (4) -f (1) = (4-1) f' (c)\]
+成立。
+
+$\because\quad f (4) =2,\quad f (1) =5$,
+
+$\therefore\quad 2-5=3 \left(-\frac{4}{c^2}\right),$
+即：$c^2=4$，得$c=\pm 2$.
+
+又$\because\quad 2\in (1, 4),\quad -2\notin (1, 4)$,
+
+$\therefore\quad c=2$. 于是
+\[    f (4) -f (1) = (4-1) f' (2) \]
+\end{solution}
+
+\begin{example}
+    设$f(x)=a_0+a_1x+a_2x^2+\cdots+a_nx^n$, 求证在$f'(x)=0$的相邻二根之间，至多有$f(x)=0$的一个根．   
+\end{example}
+
+\begin{proof}
+因为多项式函数处处连续和可微，所以若在$f'(x)=0$的两相邻实根$x_1,x_2$之间有$f(x)=0$的二实根$\alpha,\beta\; (\alpha<\beta)$, 那么根据罗尔定理，至少存在$f'(x)=0$的一个根$c$, 使得$\alpha<c<\beta$。但是$(\alpha,\beta)\subset (x_1,x_2)$，于是$x_1<c<x_2$，由此得出矛盾，所以在$f'(x)=0$的相邻两根之间，至多有$f(x)=0$的一个根。
+\end{proof}
+
+
+    
+
+\begin{example}
+    求证不等式$\frac{h}{1+h}<\ln(1+h)<h$，
+    对于$h\in (-1, 0)\cup (0,+\infty)$成立．
+\end{example}
+
+
+\begin{proof}
+    设$f(x)=\ln x$, 于是$(\ln x)'=\frac{1}{x}$. 由于$\ln x$在区间$[a,b],\; (0<a<b)$上连续且在$(a,b)$内可微，根据中值定理$(a,b)$内存在$c$，使得：
+\begin{equation}
+    \ln b-\ln a=\frac{1}{c}(b-a),\quad a<c<b
+\end{equation}
+
+若$h>0$, 令$a=1$, $b=1+h$, 于是$c=1+\theta h$, 这样(2.26)可写成
+\[\ln (1+h) =\frac{h}{1+\theta h},\quad 0<\theta<1\]
+若把上式中的$\theta$看作变数，由0变到1, 那么$\ln(1+h)=\frac{h}{1+\theta h}=\frac{1}{\frac{1}{h}+\theta}$
+便由$h$递减到$\frac{h}{1+h}$，所以
+\[h>\ln(1+h)>\frac{h}{1+h},\quad h>0\]
+
+若$-1<h<0$，令$a=1+h$，$b=1$，于是$c=1+\theta h$，这样
+(2.26)可以写成
+\[\ln1-\ln (1+h) =\frac{-h}{1+\theta h}\]
+仍得
+\[\ln (1+h) =\frac{h}{1+\theta h}\]
+同样可证
+\[h> \ln (1+h) >\frac{h}{1+h}\]
+因此，当$h>-1$且$h\ne 0$时，不等式
+\[\frac{h}{1+h}<\ln(1+h)<h\]
+成立。
+\end{proof}
+
+    
+\begin{ex}
+\begin{enumerate}
+    \item 曲线$y=x^2$上的某点的切线平行于连接横坐标为$a,b$两点的弦，求出此点。
+    \item 曲线$y=\frac{1}{x}$上的某点的切线平行于连接横坐标为$a,b\;(0<a<b)$两点的弦，求出此点。
+    \item 若$\varphi(x)=(x-a)^m(x-b)^n$，验证罗尔定理成立。
+    \item 用罗尔定理证明，无论$m$为何值，多项式函数$f_m(x)=x^3-3x+m$在$[0, 1]$之间至多有一个根．
+    \item 证明下列不等式：
+\begin{enumerate}
+    \item $|\sin x-\sin y|\le |x-y|$
+    \item $\frac{a-b}{a}<\ln \frac{b}{a}<\frac{a-b}{b},\quad 0<b<a$
+    \item $\frac{h}{1+h^2}<\arctan h<h,\quad h>0$
+    \item 若$0<m<1$，且$x>1$，则：$\frac{m(x-1)}{x^{1-m}}<x^m-1<m(x-1)$
+    
+    （提示：利用中值定理形式1，取$b=x,\; a=1$）
+    \item 若$h>-1$，$h\ne 0$，$n>1$，则：$(1+h)^{\tfrac{1}{n}}<1+\frac{h}{n}$
+    \item 若$h>-1$，$h\ne 0$，则：$1-\frac{h}{2}<\frac{1}{\sqrt{1+h}}<1-\frac{h}{2\sqrt{(1+h)^3}}$
+\end{enumerate}
+\item 说明方程$3x^5-25x^3+60x-20=0$有三个实数根，给出根所在的区间，使每个区间只含一个根。
+\end{enumerate}
+\end{ex}
+
+\subsection{函数的增减与极值——中值定理的应用}
+
+\subsubsection{函数的增减性}
+
+我们已经学过增函数与减函数的概念，现在要阐明导数的正负与函数的增减的关系。
+
+读者已经知道常量的导数等于零，现在反过来问：如果
+函数$f$在给定区间上的导数永远是零，那么这个函数在这个区间上就是一个常量？由拉格朗日定理可得到肯定的回答。
+
+\begin{blk}
+  {定理1} 如果函数$f$在开区间$(a,b)$上的每一点的导数等于零，即$f'(x)=0$, 那么函数$f$在$(a,b)$上是一个常数．  
+\end{blk}
+
+\begin{proof}
+  我们从区间$(a,b)$中固定某一点$x_0$, 再取其它的任何一点$x\in (a,b)$. 对于区间$[x_0,x]$或$[x,x_0]$, 函数$f$满足拉格朗日定理条件，因此，我们可以写出
+  \[f (x) -f (x_0) =f' (c) (x-x_0),\qquad c\in (x_0,x)\text{ 或 }(x,x_0)\]
+  也就是$c\in (a,b)$, 依已知条件$f'(c)=0$, 因而对任何一点$x\in (a,b)$, $f(x)=f(x_0)=$常数。  
+\end{proof}
+
+
+
+\begin{example}
+    求证：如果$x>1$，那么$2\arctan x+\arcsin\frac{2x}{1+x^2}=\pi$成立。
+\end{example}
+
+\begin{proof}
+设$f(x)=2\arctan x+\arcsin\frac{2x}{1+x^2}$，因为当$x>1$时，$\left|\frac{2x}{1+x^2}\right|<1$，故对于所指定的$x$值的范围，$f(x)$有定义，又因为：
+\[\begin{split}
+    f'(x)&=2(\arctan x)'+\left(\arcsin\frac{2x}{1+x^2}\right)'\\
+    &=\frac{2}{1+x^2}+\frac{1}{\sqrt{1-\left(\frac{2x}{1+x^2}\right)^2}}\cdot \left(\frac{2x}{1+x^2}\right)'\\
+    &=\frac{2}{1+x^2}+\frac{1}{\sqrt{1-\left(\frac{2x}{1+x^2}\right)^2}}\cdot \frac{(1+x^2)\cdot 2-2x(2x)}{(1+x^2)^2}\\
+    &=\frac{2}{1+x^2}+\frac{2(1-x^2)}{(x^2-1)(1+x^2)}\\
+    &=2\left(\frac{1}{1+x^2}-\frac{1}{1+x^2}\right)=0
+\end{split}\]
+所以：
+\[2\arctan x+\arcsin\frac{2x}{1+x^2}=c\; \text{（常数）}\]
+另一方面，因为
+\[f\left(\sqrt{3}\right)=2\arctan\sqrt{3}+\arcsin\frac{\sqrt{3}}{2}=\frac{2\pi}{3}+\frac{\pi}{3}=\pi\]
+因此：
+\[2\arctan x+\arcsin\frac{2x}{1+x^2}=\pi,\quad (x>1)\]
+\end{proof}
+
+
+\begin{blk}
+    {定理2} 若$f(x)$在$[a,b]$连续，在$(a,b)$内$f'(x)＞0$ (或$f'(x)<0$)，那么$f(x)$在$[a,b]$上严格递增（或严格递减）。
+\end{blk}
+
+
+\begin{proof}
+    设$a\le x_1<x_2\le b$，由于在闭区间$[x_1,x_2]$上满足拉格朗日定理的条件，因此，在开区间$(x_1,x_2)$上可以找到点$c$，使得
+\[f(x_2)-f(x_1)=(x_2-x_1)f'(c)\quad (x_1<c<x_2)\]
+根据条件，如果在$(a,b)$内，$f'(x)>0$ (或$f'(x)<0$), 那么$f'(c)>0$ (或$f'(c)<0$), 从而
+\[f(x_2)-f(x_1)>0\quad (\text{或}<0)\]
+因为对于任意$x_1$和$x_2$ (其中$a\le x_1<x_2\le b$)，上面不等式成立，所以$f(x)$在$[a,b]$上严格递增（或严格递减）。
+\end{proof}
+
+定理2的几何意义是明显的，$f'(x)$是函数图象上点$x$处的切线的斜率$\tan\theta$, 这里$0\le\theta \le \pi$. 这斜率的符号指出切线是向上或向下倾斜的，而曲线本身也就随着它向上升或向下降。
+
+如果$f'(x)$在个别的$x$值等于零，其他条件不变，则定理
+2仍然成立，这一点很容易证实，就是把区间$[a,b]$用使$f'(x)=0$的点来分成若干个小区间，再在每个小区间上分别应用定理2. 图2.25和2.26表示定理2的几何意义．
+
+\begin{figure}[htp]
+    \centering
+    \begin{minipage}[t]{0.48\textwidth}
+    \centering
+\begin{tikzpicture}[>=latex, scale=1]
+    
+\end{tikzpicture}
+    \caption{}
+    \end{minipage}
+    \begin{minipage}[t]{0.48\textwidth}
+    \centering
+    \begin{tikzpicture}[>=stealth, scale=1.5]
+       
+    \end{tikzpicture}
+    \caption{}
+    \end{minipage}
+    \end{figure}
+
+
+
+\begin{example}
+证明$\tan x>x,\quad 0<x<\frac{\pi}{2}$
+\end{example}
+
+
+\begin{proof}
+我们只须证明$\tan x-x>0,\; 0<x<\frac{\pi}{2}$。为此，设$f(x)=\tan x-x,\; x\in\left(0,\frac{\pi}{2}\right)$，因为$f(x)$在$\left[0,\frac{\pi}{2}\right)$
+上连续，且在$\left(0,\frac{\pi}{2}\right)$内$f'(x)=\sec^2x-1=\tan^2 x>0$，依定理2, $f(x)$在$\left[0,\frac{\pi}{2}\right)$上递增，所以有
+\[f (x) > f (0) =\tan 0-0=0,\quad x\in \left(0,\frac{\pi}{2}\right)\]
+即：$\tan x-x>0$，
+也就是$\tan x>x,\quad 0<x<\frac{\pi}{2}$.
+\end{proof}
+
+\begin{example}
+        求证当$x>0$时，有
+$e^x> 1+\ln (1+x) $.
+\end{example}
+
+
+\begin{proof}
+设$f(x)=e^x-1-\ln(1+x)\; (x>0)$, 则
+\[f' (x) =e^x-\frac{1}{1+x},\qquad 
+f''(x) =e^x +\frac{1}{(1+x)^2}\] 
+    显然，当$x>0$时，$f''(x)>0$, 又$f'(x)$在$[0,\infty)$上连续，由定理2, $f'(x)$在$[0,\infty)$上递增，所以
+\[f' (x) > f' (0) =e^0-\frac{1}{1+0}=0\quad  (x> 0) \]
+又$f(x)$在$[0, \infty)$连续，同理$f(x)$在$[0, \infty)$上递增，所以当$x>0$时，有
+\[f (x) > f (0) =e^0-1-\ln (1+0) =0\]
+即：
+\[e^x-1-\ln(1+x)>0\quad \text{或}\quad e^x>1+\ln(1+x)\]
+\end{proof}
+
+
+\begin{example}
+    确定$f(x)=2x^3-9x^2+12x+5$的递增区间和递减区间，并画出这个函数图象的草图。
+\end{example}
+
+
+\begin{solution}
+  \[  f'(x)=6x^2-18x+12=6(x-1)(x-2)\]
+
+  当$x<1$或$x>2$时，$f'(x)>0$, 所以$f(x)$在区间$(-\infty,1)$和$(2,+\infty)$内递增；
+
+  当$1<x<2$时，$f'(x)<0$，所以$f(x)$在区间$(1,2)$内递减。
+  
+  图象的$y$截距$f(0)=5$，为确定图象的$x$截距，根据例2.54和连续函数中间值定理，由计算的结果
+  \[f(-1)=-18,\quad f(1)=10,\quad f(2)=9,\quad f(+\infty)>0\]
+  得知$f(x)$在$(1, 2)$和$(2,+\infty)$内没有零点，即图象在$x>1$的范围内与$x$轴不相交：由于$f(x)$在$x<1$的区间内递增，并且$f(-1)\cdot f(0)<0$, 故$f(x)$的图象在
+  $x<1$的范围内与$x$轴只有一个交点，它的横坐标在区间$(-1,0)$内．
+
+  把$f(x)$的递增、递减情况列成下表，就更加醒目。
+
+  \begin{center}
+\begin{tabular}{c|ccccc}
+\hline
+$x$ & $(-\infty,1)$& 1& $(1,2)$ & 2& $(2,+\infty)$\\
+\hline
+$f'(x)$ & $+$ &0&$-$&0&$+$\\
+$f(x)$ & $\nearrow$ &10&$\searrow$ &9&$\nearrow$ \\
+\hline
+\end{tabular}
+  \end{center}
+图象的草图如图2.27.
+
+\begin{figure}[htp]
+    \centering
+\begin{tikzpicture}[>=latex, yscale=.3]
+\draw[->](-2,0)--(4,0)node[right]{$x$};
+\draw[->](0,-2)--(0,15)node[right]{$y$};
+\draw[domain=-1:3, samples=300, very thick]plot(\x, {2*\x^3-9*\x^2+12*\x+5});
+\draw[dashed](1,0)node[below]{1}--(1,10);
+\draw[dashed](2,0)node[below]{2}--(2,9);
+\draw(-1,0)node[below]{$-1$}--(-1,.2);
+\end{tikzpicture}
+    \caption{}
+\end{figure}
+\end{solution}
+
+\begin{ex}
+\begin{enumerate}
+    \item     若$|f(x)-f(y)|\le (x-y)^n,\; n>1$，
+   求证$f$是一常数。
+    \item 若$f'(x)=g'(x)$, $x\in(-\infty,+\infty)$, 求证$f(x)=g (x) +c$.
+    \item 证明在任何区间内，函数$x-\sin x$是增函数，又$\alpha$为何
+    值，函数$\alpha x-\sin x$是增函数，$\alpha x-\sin x$为减函数？
+    \item 证明$\frac{x}{\sin x}$在$\left(0,\frac{\pi}{2}\right]$内是增函数．
+    \item 若$x>0$, 求证
+\begin{multicols}{2}
+  \begin{enumerate}
+\item  $\cos x-1+\frac{1}{2}x^2> 0$
+\item $\sin x-x+\frac{1}{6}x^3> 0$
+\item  $x-\frac{x^2}{2}<\ln (1+x)<x$
+\end{enumerate}  
+\end{multicols}
+
+\item 证明下列不等式当$0<x<\frac{\pi}{2}$时成立：
+\begin{multicols}{2}
+    \begin{enumerate}
+        \item $\tan x> x+\frac{x^3}{3}$
+        \item $\frac{\sin x}{x}> \frac{2}{\pi}$
+    \end{enumerate}
+\end{multicols}
+
+\item 已知$x+e^x=y+e^y$, 问$\sin x=\sin y$是否为真？
+\item 若$a>b$, 求证$a^3-3a^2+3a>b^3-3b^2+3b$.
+\item 设$f(0)=0$, 且$f'$在$[0,+\infty)$内递增，证明
+$ g(x) =\frac{f (x)}{x}$在$(0,+\infty)$内递增．
+\item 
+\begin{enumerate}
+    \item 已知$a,b$为实数，并且$e<a<b$，其中$e$是自然对数的底，证明：$a^b>b^a$.
+    \item 如果正实数$a,b$满足$a^b=b^a$, 且$a<1$, 则$a=b$.
+\end{enumerate}
+
+\item 证明：对于所有$x\in\left(0,\frac{\pi}{2}\right]$, 有不等式
+$(\sin x)^{-2}\le x^{-2}+1-\frac{4}{\pi^2}$
+成立。
+\end{enumerate}
+\end{ex}
+
+
+\subsubsection{函数的极大值与极小值}
+
+从例2.59我们看到$x=1$和$x=9$分别是函数$f(x)=2x^3-9x^2+12x+5$取到极大值$f(1)=10$和极小值$f(2)=9$的点，我们称$x=1$为极大点，$x=9$为极小点，以后，极大值与极小值统称为\textbf{极值}，极大点与极小点统称为\textbf{极值点}。
+
+下面我们来讨论如何确定一个函数的极值。
+\begin{enumerate}
+    \item 若$x_0$是$f(x)$的极值点，且$f(x)$在点$x_0$可微，那么总存在$x_0$的一个邻域，使$f(x)$在点$x_0$的邻域中满足费马条件，因而必有$f'(x_0)=0$. 例如例2.59, $f'(1)=f' (2) =0$.
+    \item 若$f(x)$在$x_0$不可微，这时$x_0$也可能是极值点，例如，$f(x)=|x|$, 它在$x_0=0$这一点不可微，但从图2.28即可看出$x_0=0$是它的极小点．
+\end{enumerate}
+
+\begin{figure}[htp]
+    \centering
+    \begin{minipage}[t]{0.48\textwidth}
+    \centering
+\begin{tikzpicture}[>=latex, scale=1.3]
+    \draw[->](-2,0)--(2,0)node[right]{$x$};
+\draw[->](0,-.5)--(0,2)node[right]{$y$};
+\draw[very thick](-1.8,1.8)--(0,0)node[below left]{$O$}--(1.8,1.8)node[right]{$y=|x|$};
+\end{tikzpicture}
+    \caption{}
+    \end{minipage}
+    \begin{minipage}[t]{0.48\textwidth}
+    \centering
+    \begin{tikzpicture}[>=stealth, scale=.35]
+        \draw[->](-5,0)--(5,0)node[right]{$x$};
+\draw[->](0,-8)--(0,9)node[right]{$y$};
+\draw[domain=-2:2, samples=100, very thick]plot(\x, {\x^3});
+\node at (0,0)[below right]{$O$};
+\foreach \x in {2,4,6,8}
+{
+    \draw(0,\x)node[left]{$\x$}--(.3,\x);
+}
+\draw(2,0)node[below]{2}--(2,.3);
+    \end{tikzpicture}
+    \caption{}
+    \end{minipage}
+    \end{figure}
+
+
+这就告诉我们连续函数的极值点应该从它的导函数$f'(x)$的零点和$f(x)$的不可微点中去找，但是，$f'(x)$的零点和$f(x)$的不可微点只是$f(x)$可能达到极值的点，并不一定是极值点，例如$f(x)=x^3$, $x=0$是$f'(x)=3x^2$的零点，然而在整个区间$(-\infty,+\infty)$上，$f'(x)\ge 0$, 而且只在$x=0$时，$f'(x)=0$, 即函数$f(x)=x$在$(-\infty,+\infty)$上严格递增，因而$x=0$不是极值点，它的图象如图2.29, 在$y$轴的左侧，图象位于切线$y=0$的下方；而在$y$轴的右侧，图象位于切线$y=0$的上方，我们把方程$f'(x)=0$的根称为函数$f(x)$的\textbf{驻点}。
+
+又如函数
+\[g(x)=\begin{cases}
+    \frac{1}{2}(x-1), & x\in[1,2]\\
+    \frac{3}{2}(x-2)+ \frac{1}{2}(2-1), & x\in[2,3]\\
+ (x-3) +\frac{1}{2}(2-1) + \frac{3}{2}(3-2), & x\in[3,4]
+\end{cases}\]
+的图象是折线，如图2.30, 易知
+\[g' (x) > 0,\quad x\in (1, 2) \cup (2, 3) \cup (3, 4) \]
+但$g'(2)$和$g'(3)$不存在，由于$g(x)$在$[1, 4]$上严格递增，所以$x=2$, $x=3$都不是极值点．
+
+\begin{figure}[htp]
+    \centering
+\begin{tikzpicture}[>=latex]
+    \draw[->](-.5,0)--(5,0)node[right]{$x$};
+    \draw[->](0,-.5)--(0,4)node[right]{$y$};
+\draw[domain=1:2, samples=5, very thick]plot(\x, {.5*(\x-1)});
+\draw[domain=2:3, samples=5, very thick]plot(\x, {1.5*(\x-2)+.5});
+\draw[domain=3:4, samples=5, very thick]plot(\x, {(\x-3)+2});
+\foreach \x in {1,2,3,4}
+{
+    \node at (\x,0)[below]{$\x$};
+}
+\draw[dashed](2,0)--(2,.5);
+\draw[dashed](3,0)--(3,2)node[above left]{$y=g(x)$};
+\draw[dashed](4,0)--(4,3);
+\node at (0,0)[below left]{$O$};
+\end{tikzpicture}
+    \caption{}
+\end{figure}
+
+综上讨论，我们得到函数$f$取极值的必要条件：
+
+\begin{blk}
+    {定理1（极值的必要条件）}若$f(x)$在$[a,b]$上连续，$x_0$是$f(x)$的极值点，那么$x_0$只可能是$f'(x)$的零点或$f(x)$的不可微点。
+\end{blk}
+
+下面给出极值点的两个充分性判别法。
+
+\begin{blk}
+  {定理2} 如果函数$f$在$x_0$的邻域内连续，并且在$(x_0-\delta,x_0)$和$(x_0,x_0+\delta)\; (\delta>0)$可微：
+\begin{itemize}
+    \item 在$(x_0-\delta,x_0)$内，$f'(x)<0\; (>0)$;
+    \item 在$(x_0,x_0+\delta)$内，$f'(x)>0\; (<0)$;
+\end{itemize}
+那么，$x_0$是$f$的局部极小点（极大点）。
+\end{blk}
+
+\begin{proof}
+按照前一节中定理2, $f$在$(x_0-\delta,x_0)$内严格递减（递增），而在$(x_0,x_0+\delta)$内严格递增（递减），故$f(x_0)$必为极小值（极大值）。
+\end{proof}
+
+\begin{rmk}
+    这个定理并不要求函数$f$在点$x_0$处存在导数，如果导数存在，那么根据费马定理，它等于零。
+\end{rmk}
+
+
+\begin{example}
+    讨论$y=\sqrt[3]{(x-1)(x+2)^2}$的极值，并绘出图象的草图。
+\end{example}
+
+\begin{solution}
+将$y=\sqrt[3]{(x-1)(x+2)^2}$的两边立方，得
+\[\begin{split}
+    y^3&= (x-1) (x+2)^2\\
+    3y^2\cdot y'&= (x+2)^2+ (x-1)\cdot 2\cdot  (x+2)\\
+    &= (x+2) [x+2+2(x-1)]\\
+    &=3x (x+2) 
+\end{split}\]
+
+$\therefore\quad 
+y'=\frac{x (x+2)}{y^2}=\frac{x (x+2)}{\sqrt[3]{(x-1)^2(x+2)^4}}$
+即
+\[y'=\frac{x}{\sqrt[3]{(x-1)^2(x+2)}}\quad 
+(x\ne 1,\; x\ne -2)\]
+\begin{itemize}
+    \item 当$x=0$时，$y'=0$, 函数图象在点$x=0$处有水平切线；
+    \item 当$x=-2$和1时，$y'$不存在，但是由$\Lim_{x\to 1}y'=+\infty$和$\Lim_{x\to -2^+}y'=-\infty$, 而$\Lim_{x\to -2^-}y'=+\infty$得知函数图象在点$x=1$和$x=-2$处有平行$y$轴的切线，所以函数的可能的极值点是$x=-2, 0, 1$这三个点．
+\end{itemize}
+
+为确定曲线的$y$截距，令$x=0$, 得$y=-\sqrt[3]{4}4\approx -1.59$; 为确定它的$x$截距，令$y=0$, 得$x=-2$和$x=1$, 现列表讨论它的增减性与极值如下：
+\begin{center}
+\begin{tabular}{c|ccccccc}
+\hline
+$x$ &$(-\infty,-2)$ & $-2$ & $(-2,0)$ & 0&$(0,1)$& 1& $(1,+\infty)$\\
+\hline
+$y'$ & $+$ & 不存在 & $-$ &0&$+$&不存在&$+$\\
+$y$ & $\nearrow$ &极大值&$\searrow$ &极小值&$\nearrow$ &0&$\nearrow$\\ 
+&&&0&&$-\sqrt[3]{4}\approx -1.59$\\
+\hline
+\end{tabular}
+\end{center}
+
+函数$y=\sqrt[3]{(x-1)(x+2)^2}$的图象如图2.31.
+\begin{figure}[htp]
+    \centering
+\begin{tikzpicture}[>=latex]
+    \draw[->](-4,0)--(3,0)node[right]{$x$};
+    \draw[->](0,-3)--(0,3)node[right]{$y$};
+\draw[domain=-4:-2.001, samples=100, very thick]plot(\x, {-exp(1/3*ln(1-\x)+2/3*ln(-\x-2))});
+
+\draw[domain=-1.999:.999, samples=100, very thick]plot(\x, {-exp(1/3*ln(1-\x)+2/3*ln(\x+2))});
+\draw[domain=1.001:2.25, samples=100, very thick]plot(\x, {exp(1/3*ln(\x-1)+2/3*ln(\x+2))});
+\draw[very thick](1,.4)--(1,-.4);
+
+\node at (-2,0) [above]{$-2$};
+\node at (1,0) [below right]{$1$};
+\draw(2,0)node[below]{$2$}--(2,.1);
+\draw(-3,0)node[below]{$-3$}--(-3,.1);
+\draw(-1,0)node[below]{$-1$}--(-1,.1);
+\draw[dashed](-2,-3)--(-2,3);
+\draw[dashed](1,-3)--(1,3);
+\end{tikzpicture}
+    \caption{}
+\end{figure}
+\end{solution}
+
+\begin{blk}
+{定理3} 设函数$f(x)$在区间$(a,b)$中有二阶连续的导函数，又$c\in (a,b)$, 使得$f' (c) =0$,
+\begin{enumerate}
+    \item 如果$f''(c)<0$, 则$c$是$f(x)$的一个极大点。
+    \item 如果$f''(c)>0$, 则$c$是$f(x)$的一个极小点。
+\end{enumerate}
+\end{blk}
+
+\begin{proof}
+设$f''(c)<0$, 由于$f''(x)$的连续性，故存在点$c$的一个$\delta>0$的邻域$(c-\delta,c+\delta)\subset (a,b)$, 使得$f''(x)＜0$, $x\in (c-\delta,c+\delta)$. 按前节定理2, $f'(x)$在$(c-\delta,c+\delta)$中是递减的，又由于$f'(c)=0$, 因此，
+$f'(x)$在点$c$处由正变为负，由前面的定理2, $c$是$f(x)$的极大点。
+
+当$f''(c)>0$时，同理可证$c$是$f(x)$的一个极小点．
+
+为说明定理3的应用，我们求例2.60的二阶导函数：
+\[\begin{split}
+   y''&=\frac{y^2 (2x+2) -x (x+2) \cdot 2y\cdot y'}{y^4}\\
+&=\frac{2 [ (x+1) y-x (x+2) y']}{y^3} 
+\end{split}\]
+
+从例2.60知，当$x=0$时，$y'=0$. 又$f(a)=-\sqrt[3]{4}$. 故在$x=0$处
+\[y''_{x=0}=\frac{2\left[(0+1)\left(-\sqrt[3]{4}\right)-0\right]}{-4}=\frac{\sqrt[3]{4}}{2}>0\]
+由定理3, $x=0$是函数$y=\sqrt[3]{(x-1)(x+2)^2}$的极小点．
+\end{proof}
 
 
 
 
+\begin{example}
+    讨论$y=x^3+ax^2+bx+c$的极值．
+\end{example}
+
+
+\begin{solution}
+\[y=x^3+ax^2+bx+c,\qquad 
+    y'=3x^2+2ax+b\]
+
+$ \Delta=a^2-3b$是导函数的判别式．
+    我们可以分$\Delta>0$, $\Delta=0$和$\Delta<0$的三种情形讨论$y'$的正负区间。
+\begin{enumerate}
+    \item 若$\Delta>0$, 则
+\[    y'=3x^2+2ax+b=3 (x-x_1) (x-x_2)\]
+    这里$x_1=\frac{1}{3}\left(-a-\sqrt{a^2-3b}\right)$和$x_2=\frac{1}{3}\left(-a+\sqrt{a^2-3b}\right)$
+    是导函数$y'$的二个实根。
+\begin{enumerate}
+    \item 当$x\in (-\infty,x)\cup (x_2,+\infty)$时，$y'>0$;
+    \item 当$x\in (x_1,x_2)$时，$y'<0$
+\end{enumerate}
+    所以，$x_1$是$y$的一个极大点，$x_2$是$y$的一个极小点．
+    
+\item 若$\Delta=0$, 则
+    \[y'=3x^2+2ax+\frac{a^2}{3}=3\left(x+\frac{a}{3}\right)^2\]
+这里，$y'$虽然在$-\frac{a}{3}$处等于0, 但$y'$在$-\frac{a}{3}$的左、右两侧都取正值，即$y=x^3+ax^2+bx+c$是一个递增函数．因此，$-\frac{a}{3}$不是$y$的极值点．
+\item 若$\Delta<0$, 则对于任意$x\in\mathbb{R}$, 恒有\[y'=3x^2+2ax+b=3 \left(x+\frac{a}{3}\right)^2+\frac{3b-a^2}{3}> 0\]
+因此，$y=x^3+ax^2+bx+c$是一个增函数，也是没有极值点．
+\end{enumerate}    
+\end{solution}
+
+\begin{ex}
+\begin{enumerate}
+    \item 先求出$f'(x)$, 然后由$f'(x)$的正负去讨论$f(x)$的增减与极值，并画出函数图象的草图：
+\begin{multicols}{2}
+    \begin{enumerate}
+        \item $f (x) =2x^3+9x^2-24x+5$
+        \item $f (x) =x^4-6x^2-8x+15$
+        \item $f (x) =-x^5-5x^4$
+        \item $f (x) = (x-1)^3$
+     \item  $f (x) =|x^2-1|$
+     \item $f (x) = (x^2-1)^3+1$
+    \end{enumerate}
+\end{multicols}
+\item 讨论$f(x)=\frac{x^2-2x-3}{x^2+1}$的增减和极值，并画函数图象的草图。
+    \item 求$f(\theta)=\sin\theta-\frac{1}{2}\sin2\theta$在$(-\pi,\pi)$内的极大值和极
+    小值。
+    \item 
+\begin{enumerate}
+    \item 求两条曲线$y=\frac{4e^x+2e^{-x}}{3}$和$y=e^{-x}$的交点的坐标；
+    \item 求函数$y=\frac{4e^x+2e^{-x}}{3}$的极值点，又它在此点取极大值，还是极小值？
+\end{enumerate}
+
+\item 讨论函数$y=x^2e^{-x^2}$的增减与极值。
+\item 求$f(x)=x^x\; (x>0)$的极值，并说明此极值是极大值
+还是极小值。
+\item 求函数$\frac{\ln x}{x}$的极大值，
+
+\item 函数$f(x)=\frac{ax+b}{(x-1)(x-4)}$在点$(2,-1)$有一极值，
+求$a,b$并证明此极值是极大值。
+\item 证明$f(x)=\left(\alpha-\frac{1}{\alpha}-x\right)(4-3x^2)$仅有一个极大值
+和一个极小值，且它们的差是$\frac{4}{9}\left(\alpha+\frac{1}{\alpha}\right)^3$, 又此差值的绝对值的最小值是多少？
+\item 函数$f(x)=x(x-1)(x-a)$有绝对值相等，符号相反的
+极大值与极小值，试确定常数$a$的值。
+\item 求曲线$y=e^{-x}\sin x$上的极值点，并证明极值点上的纵坐
+标成等比数列，又该等比数列的公比是多少？  
+\end{enumerate} 
+\end{ex}
+
+
+\subsubsection{函数的最大值和最小值}
+在实践中有一类“最大”、“最小”、“最省”的问题，例如生产搪瓷杯时，就要考虑在一定容积下，杯子的高和直径取多大时，用料最省。又如把一根圆木锯成矩形截面横梁时，怎样选取矩形的长和宽才能使横梁强度最大？这类“最大”、“最小”、“最省”等问题，在数学上叫做最大值、最小值问题。
+
+我们曾在第一章中指出过“在闭区间$[a,b]$上连续的函数$f(x)$总是具有最大值和最小值”，但是，微积分并未提供确定函数$f(x)$的最大值、最小值的直接方法。如果我们讨论的函数$f(x)$在$(a,b)$上有连续的一阶导数，那么只要求出$f(x)$在$(a,b)$内的驻点，即$f'(x)=0$的根，就可以求出$f(x)$的局部极值。显然，$f(x)$在$[a,b]$上的最大值和最小值一定出现在局部极大值、局部极小值和端点值之中，从几何上来说，最大值、最小值如果不是位于定义区间的端点上，则分别是曲线的波峰和波谷．从图2.33可以看到局部极大值可能小于局部极小值。
+
+\begin{figure}[htp]
+    \centering
+\begin{tikzpicture}[>=latex]
+    
+\end{tikzpicture}
+    \caption{}
+\end{figure}
+
+下面给出求函数$f(x)$在$[a,b]$上最大值和最小值的法则，这个法则适用于在$[a,b]$上连续，在$(a,b)$内可
+微的函数$f(x)$,并且$f'(x)$最多在有限个点上等于零。
+\begin{enumerate}
+    \item 求$f(x)$在$(a,b)$内的驻点，即解$f'(x)=0$;
+    \item 计算$f(x)$在驻点和端点的函数值，并把这些值加以比较，其中最大的一个为最大值，最小的一个为最小值。
+\end{enumerate}
+
+假如$f'(x)$在$(a,b)$内有一个驻点$c$, 且在整个$(a,b)$
+上，$f''(x)<0\; (>0)$, 那么点$c$是最大值（最小值）点．
+
+事实上，如果$f''(x)<0,\; x\in (a,b)$, 那么函数$f'(x)$在$[a,b]$上递减，因而$c$是其唯一的驻点，由中值定理知：
+
+当$a\le x<c$时，$f'(x)-f'(c)=(x-c)\cdot f''(\xi)$，这里$x<\xi<c$。
+
+$\because\quad f' (c) =0,\quad f'' (\xi)<0,\quad x-c<0$,
+
+$\therefore\quad f'(x)>0$
+
+同理说明当$c<x\le b$时，$f'(x)<0$。再根据$f(x)$在$[a,c]$上递增而在$[c,b]$上递减。故当$x\ne c$时有$f(x)<f(c)$。由此可知$c$是最大值点。当$f''(x)<0$时，也可以进行同样的论证。
+
+如果$f(x)$在$[a,b]$内有不可微的点，而且这种点只有有限个，那么求最大值和最小值的法则改为求出三种点的对应函数值再加以比较，即$f(x)$的驻点的函数值，$f(x)$的不可微点的函数值，最后还有端点的函数值$f(a)$和$f(b)$, 这些值中最大的就是最大值，最小的就是最小值。
+
+在实际问题中，如果在$(a,b)$内部，$f(x)$只有一个驻点$c$, 而且从实际问题本身又可以知道在$(a,b)$内必定有最大值或最小值，那么$f(c)$就是所要求的最大值或最小值，不需要算出$f(a)$, $f(b)$了。
+
+\begin{example}
+求函数$f(x)=x^{\tfrac{2}{3}}-(x^2-1)^{\tfrac{1}{3}}$在区间$[-2,2]$上的最大值和最小值。
+\end{example}
+
+
+\begin{solution}
+\[\begin{split}
+f'(x)&=\frac{2}{3}x^{-\tfrac{1}{3}}-\frac{1}{3}(x^2-1)^{-\tfrac{2}{3}}\cdot 2x\\
+&=\frac{2}{3} \frac{(x^2-1)^{\tfrac{2}{3}}-x^{\tfrac{4}{3}}}{x^{\tfrac{1}{3}}(x^2-1)^{\tfrac{2}{3}}}    
+\end{split}\]
+    故$f(x)$的驻点是$\pm\frac{1}{\sqrt{2}}$, 不可微点是$x=0$, $x=\pm 1$, 且这些点都在$[-2, 2]$内，因此$f(x)$的极值点可能是
+\[-1,\quad \frac{-1}{\sqrt{2}},\quad  0,\quad \frac{1}{\sqrt{2}},\quad  1\]
+    由于$f(x)$是偶函数，故仅需计算
+\[    f (0) =1,\qquad f\left(\frac{1}{\sqrt{2}}\right) =4,\qquad f (1) =1\]
+    又在端点$x=2$处的函数值$f(2)=\sqrt[3]{4}-\sqrt[3]{3}$, 把上面这些函数直相互比较，可见$f(x)$在$[-2, 2]$中的最大值为$\sqrt[3]{4}\approx 1.59$, 最小值为$\sqrt[3]{4}-\sqrt[3]{3}\approx 1.59-1. 44\approx 0.15$.
+\end{solution}
+
+\begin{example}
+    设$a>0$, 证明
+$    f (x) =\frac{1}{1+|x|}+\frac{1}{1+|x-a|}$
+    的最大值是$\frac{2+a}{1+a}$.
+\end{example}    
+
+\begin{proof}
+把$f(x)$写成分段函数
+\[f(x)=\begin{cases}
+    \frac{1}{1-x}+\frac{1}{1+a-x}, & x<0\\
+    \frac{1}{1+x}+\frac{1}{1+a-x}, & 0\le x\le a\\
+    \frac{1}{1+x}+\frac{1}{1+x-a}, & x>a
+\end{cases}\]
+于是
+\[f‘(x)=\begin{cases}
+    \frac{1}{(1-x)^2}+\frac{1}{(1+a-x)^2}, & x<0\\
+    \frac{-1}{(1+x)^2}+\frac{1}{(1+a-x)^2}, & 0\le x\le a\\
+    \frac{-1}{(1+x)^2}+\frac{1}{(1+x-a)^2}, & x>a
+\end{cases}\]
+因而$f(x)$在$(-\infty, 0]$上递增，而在$[a,+\infty)$上递减，由此得知$f(x)$在$[0,a]$上的最大值也就是在$\mathbb{R}$上的最大值。
+
+设对于$(0,a)$内的$x$有$f'(x)=0$, 则
+\[(1+x)^2- (1+a-x)^2=0\]
+上式唯一解是$x=\frac{a}{2}$. 
+因为$f\left(\frac{a}{2}\right)=\frac{4}{2+a}$, $f(0)=f(a)=\frac{2+a}{1+a}$，
+并且
+\[\frac{2+a}{1+a}-\frac{4}{2+a}= \frac{a^2+4a}{(1+a) (2+a)}>0\quad  (a>0)\]
+所以$f(x)$的最大值是$\frac{2+a}{1+a}$.
+\end{proof}
+
+\begin{example}
+    用铁皮做体积为$V$的圆柱形封闭容器，如何使材料最省？
+\end{example}
+
+
+\begin{solution}
+\textbf{解法1:} 设圆柱形底面半径为$r$, 高为$h$, 于是需用材料即圆柱表面积
+\[S=2\pi rh+2\pi r^2\]
+但$V=\pi r^2h$为已知，因此，$h=\frac{V}{\pi r^2}$，
+从而问题变为求函数$S(r)=\frac{2V}{r}+2\pi r^2\; (0<r<+\infty)$的最小值。
+
+根据经验，当$r$很小时，$S$很大，又当$r$很大时，$S$也很大，因此在$(0,+\infty)$内必有$r$的一个值使$S$最小，即它是$S'(r)=0$的一个根，由
+\[S' (r) =-\frac{2V}{r^2}+4\pi r=0\]
+得唯一正根$r=\sqrt[3]{\frac{V}{2\pi}}$。
+从这个实际问题知道，当$r=\sqrt[3]{\frac{V}{2\pi}}$
+时，$S$为最小，这时相应的高为
+\[h=\frac{V}{\pi r^2}=\frac{2\pi r^3}{\pi r^2}=2r=2\sqrt[3]{\frac{V}{2\pi}}\]
+这说明圆柱的高和直径相等时，用料最省。
+
+\textbf{解法2:}  我们可以不先将下面两个式子中的$h$消去，再求$\frac{\dd S}{\dd r}=0$的根
+\begin{align}
+    S&=2\pi r h+2\pi r^2\\
+    \pi r^2 h&=V
+\end{align}
+而是保留辅助变量$h$，将
+(2.27), (2.28)对$r$求导数，只须记着$V$是常量，$h$是$r$的函数，于是由$\frac{\dd S}{\dd r}=0$，得
+\begin{equation}
+    \frac{\dd S}{\dd r}=2\pi\left(h+r\frac{\dd h}{\dd r}+2r\right)=0
+\end{equation}
+由(2.28)得
+\begin{equation}
+    \pi\left(2rh+r^2\frac{\dd h}{\dd r}\right)=0
+\end{equation}
+由此得：
+\[\frac{\dd h}{\dd r}=-\frac{2h}{r}\]
+将它代入(2.29)，得
+\[2r\left[h+r\left(-\frac{2h}{r}\right)+2r\right]=0\]
+所以：$2r=h$. 
+
+同样地说明了圆柱的高和直经相等时，用料最省。
+\end{solution}
+
+
+\begin{example}
+由半径为$\ell$的圆铁皮，剪去一个扇形，把剩下的部分围成一个圆锥形容器，为了使用所得圆锥容器有最大的容积，问剪去扇形的中心角应该多大？
+\end{example}
+
+\begin{figure}[htp]
+    \centering
+\begin{tikzpicture}[>=latex]
+\begin{scope}[scale=1.5]
+\draw[pattern=north east lines](0,0)--(-135:1.5) arc (-135:135:1.5)--(0,0);
+\draw[<->](-135:.2) arc (-135:135:.2);
+\node at (.5,0)[fill=white]{$x$};
+\node at (1,1)[above right]{$x\ell=2\pi r$};
+\tkzDefPoint(-30:1.5){A}
+\tkzDefPoint(-30:2){B}
+\tkzDrawCircle(B,A)
+\draw[->](B)--node[above]{$r$}+(10:.5);
+\draw[decorate,decoration={brace,mirror,raise=2pt}](135:1.5)--node[below left]{$\ell$}(0,0);
+
+
+\end{scope}
+\begin{scope}[xshift=7cm, scale=.7]
+\draw[dashed](0,-2) ellipse [x radius=1.5cm, y radius=.5cm];
+\draw[thick](-1.5,-2)--(0,3)--node[above right]{$\ell$}(1.5,-2);
+\draw[dashed](0,3)--node[left]{$h$}(0,-2)--node[below]{$r$}(1.5,-2);
+\draw[thick](1.5,-2) arc [start angle =0, end angle=-180, x radius=1.5cm, y radius=.5cm];
+\end{scope}
+
+
+\end{tikzpicture}
+    \caption{}
+\end{figure}
+
+
+\begin{solution}
+    设剪去扇形后，所剩材料的圆心角为$x$（弧度），扇形的弧长为$x\ell$, 由它围成一个圆锥，其底面半径为$r$, 母线长为$\ell$, 高为$h$, 如图2.34. 于是
+\[r=\frac{\ell x}{2\pi}\]
+圆锥高为
+\[h=\sqrt{\ell^2-r^2}=\sqrt{\ell^2-\left(\frac{\ell x}{2\pi}\right)^2}=\frac{\ell }{2\pi}\sqrt{4\pi^2-x^2}\]
+因此圆锥的体积为
+\[\begin{split}
+    V&=\frac{1}{3}\pi r^2 h\\
+    &=\frac{1}{3}\pi\left(\frac{\ell x}{2\pi}\right)^2\cdot \frac{\ell}{2\pi}\sqrt{4\pi^2-x^2}\\
+    &=\frac{\ell^3 x^2}{24\pi^2}\sqrt{4\pi^2-x^2}\quad (0\le x\le 2\pi)
+\end{split}\]
+由于$V(0)=0$, $V(2\pi)=0$, 故在$(0, 2\pi)$内必有一个值$x_0$使$V$的值最大，因而使$V'(x_0)=0$. 由于
+\[\begin{split}
+    V'(x)&=\frac{\ell^3}{24\pi^2}\left[2x\sqrt{4\pi^2-x^2}+\frac{1}{2}x^2(4\pi^2-x^2)^{-\tfrac{1}{2}}\cdot (-2x)\right]\\
+    &=\frac{\ell^3}{24\pi^2}\left(\frac{8\pi^2 x-3x^3}{\sqrt{4\pi^2-x^2}}\right)
+\end{split}\]
+令$V'(x)=0$, 即$8\pi^2 x-3x^3=0$, 解得
+\[x_1=0,\quad x_2=-2\pi\sqrt{\frac{2}{3}}, \quad x_3=2\pi\sqrt{\frac{2}{3}}\]
+这里只有$x_3=2\pi\sqrt{\frac{2}{3}}\in (0, 2\pi)$, 故知$x=2\pi\sqrt{\frac{2}{3}}$是$V(x)$在$[0, 2\pi]$内的唯一的极大点，因而也是最大点．于是最后得到结论，剪去扇形的圆心角为
+\[2\pi-2\pi\sqrt{\frac{2}{3}}=\frac{2}{3}\pi\left(3-\sqrt{6}\right)\; \text{（弧度）}\]
+时，才能使所围成的容器有最大的容积。
+\end{solution}
+
+\begin{example}
+    求证：若$p>q>1$，又$x\ge 0$且$x\ne 1$，则$\frac{x^p-1}{p}>\frac{x^q-1}{q}$.
+\end{example}
+
+\begin{proof}
+设$f(x)=\frac{x^p-1}{p}-\frac{x^q-1}{q}\; (x\ge 0)$，则：
+\[f'(x)=x^{p-1}-x^{q-1}=x^{p-1}\left(x^{p-q}-1\right)\quad (p>q>1)\]
+    函数的增、减如下表所示：
+\begin{center}
+\begin{tabular}{c|cccc}
+\hline
+$x$&0&$(0,1)$&1& $(1,+\infty)$\\
+\hline
+$f'(x)$&0&$-$&0&$+$\\
+$f''(x)$&$\frac{1}{q}-\frac{1}{p}$&$\searrow$&极小值0& $\nearrow$\\ 
+\hline
+    \end{tabular}
+\end{center}
+
+$\because\quad f(0)=\frac{1}{q}-\frac{1}{p}>0=f(1)$
+
+$\therefore\quad f(1)=0$不仅是极小值也是最小值。于是：
+\[f(x)=\frac{x^p-1}{p}-\frac{x^q-1}{q}\ge 0\quad (x\ge 0)\]
+因为$x\ne 1$，所以
+\[\frac{x^p-1}{p}>\frac{x^q-1}{q}\quad (x\ge 0,\; x\ne 1)\]
+\end{proof}
+
+\begin{example}
+ （光的折射定律）设有两种介质，$X'X$是它们的交界线，光由一种介质中的某点$A$走向另一种介质中的某点$B$. 又设当光走过交界线$X'X$时，它的速度由$v_1$变成$v_2$. 依据物理学中的一个基本原理“光由$A$到达$B$时，所采取的途径要使用的时间为最小”，如果两种介质是均匀的（例如一为空气，一为水），那么$v_1,v_2$都是常数，从而光在这两种介质中所走的路径是两段直线$AP$, $PB$, $P$表示光达到交界线时与这条线的交点，如果$AB$不与$X'X$垂直，一般$APB$不是直线，我们来定出$AP$, $BP$与$X'X$的法线的夹角$\theta_1$和$\theta_2$的关系。
+\end{example}
+
+    \begin{figure}[htp]
+    \centering
+\begin{tikzpicture}[>=latex, scale=.7]
+\draw[->](-1,0)node[left]{$X'$}--(6,0)node[right]{$X$};
+\draw[->](0,-4)node[right]{$S'$}--(0,4)node[right]{$S$};
+\node at (0,0)[below left]{$O$};
+\draw[->, very thick](0,3)node[left]{$A(0,a)$}--(2,0)node[above left]{$P$};
+\draw[->, very thick](2,0)--(4.2,-4)node[right]{$B(c,b)$};
+\draw[dashed](2,-2)--(2,2);
+\draw[<->](0,-.4)--node[fill=white]{$x$}(2,-.4);
+\draw[|<->](4.2,.4)--node[fill=white]{$c-x$}(2,.4);
+\draw[dashed](4.2,-4)--(4.2,0);
+\draw(2,.75) arc (90:90+33.7:.75)node[above]{$\theta_1$};
+\draw(2,-.75) arc (-90:-90+28.8:.75)node[below]{$\theta_2$};
+
+
+\end{tikzpicture}
+    \caption{}
+\end{figure}
+
+\begin{solution}
+如图2.35建立坐标系，$A$点坐标是$(0,a)$, $B$点的坐标是$(c,b)$, 设$P$点的坐标是$(x,0)$, 光由$A$到$P$所需时间是$\frac{\sqrt{a^2+x^2}}{v_1}$，从$P$到$B$所需时间是$\frac{\sqrt{b^2+(c-x)^2}}{v_2}$, 
+则整个时间$t(x)$是
+\[t (x) =\frac{\sqrt{a^2+x^2}}{v_1}+\frac{\sqrt{b^2+(c-x)^2}}{v_2}\]
+
+为了使$t(x)$极小，应使$t'(x)=0,\; x\in (0,c)$. 由$t(x)$得
+\[\begin{split}
+    t' (x) &=\frac{x}{v_1\sqrt{a^2+x^2}}-\frac{c-x}{v_2\sqrt{b^2+(c-x)^2}}\\
+    t'' (x) &=\frac{-x^2}{v_1(a^2+x^2)^{\tfrac{3}{2}}}+\frac{1}{v_1\sqrt{a^2+x^2}}+\frac{1}{v_2\sqrt{b^2+(c-x)^2}}-\frac{(c-x)^2}{v_2\left[b^2+(c-x)^2\right]^{\tfrac{3}{2}}}\\
+    &=\frac{a^2}{v_1(a^2+x^2)^{\tfrac{3}{2}}}+\frac{b^2}{v_2\left[b^2+(c-x)^2\right]^{\tfrac{3}{2}}}>0.
+\end{split}\]
+既然$t'(0)<0$, $t'(c)>0$, 及$t'$是严格递增的，故在$(0,c)$内有唯一的$x_0$, 使得
+\[t'(x_0)=0\]
+从而当$x=x_0$时，$t(x_0)$是极小值也是最小值，于是由$t'(x_0)=0$得到
+\[\frac{x_0}{v_1\sqrt{a^2+x^2_0}}=\frac{c-x_0}{v_2\sqrt{b^2+(c-x_0)^2}}\]
+即
+\[\frac{\sin\theta_1}{v_1}=\frac{\sin\theta_2}{v_2}\]
+这就是光的折射定律。
+\end{solution}
+
+\begin{ex}
+\begin{enumerate}
+    \item 由$y=0$, $x=8$, $y=x^2$围成一曲边三角形$OAB$, 在曲边$\wideparen{OB}$上，求一点使得过此点所作$y=x^2$的切线与$OA$、$AB$所围成的三角形面积最大。
+    \item 椭圆$\frac{x^2}{a^2}+\frac{y^2}{b^2}=1$的内接矩形中怎样的矩形面积最大？又此最大的矩形面积比椭圆的内接正方形的面积大多少？
+    \item 设$\triangle ABC$是定圆的内接三角形，其中$A$、$B$两点固定，$C$点在圆周上变动，试求其面积最大时的位置。
+    \item 要做一个底面为长方形的带盖箱子，其体积为72立方厘米，其底边成$1:2$的关系，问各边的长怎样，才能使表面积最小？
+    \item 设有底为等边三角形的直棱柱，体积为$V$, 要使其总面积为最小，问底边长应为多少？
+    \item 设正三棱锥的侧面积为$S$, 问当侧面与底面所成角$\alpha$为何值时，其体积最大？
+    \item 平面上通过一个已知点$P(1, 4)$引一条直线，要使它在两个坐标轴上的截距都为正，且它们的和为最小，求这条直线的方程。
+    \item 直圆柱内接于半径为$R$的球中，当圆柱的高为何值时，其
+    体积最大。
+    \item 三个点$A$, $B$和$C$不在同一直线上，$\angle ABC=60^{\circ}$, 汽车以80公里/小时的速度由$A$向$B$行驶，同时火车以50公里/小时的速度由$B$向$C$行驶．若$AB=200$公里，问运动开始几小时后汽车与火车的距离最小？
+    \item 船航行一昼夜的耗费由两部分组成：一为固定部分，设为$a$元；另一为变动部分，设它与速度立方成比例，试问船应以怎样的速度$v$行驶为最经济？
+    \item 在某种产品的制造过程中，次品率$y$依赖于日产量$x$, 即$y=y(x)$, 已知
+\[y(x)=\begin{cases}
+    \frac{1}{101-x},& 0\le x\le 100,\\
+    1,& x>100
+\end{cases}\]
+其中$x$为正整数。又该厂每生产一件产品可盈利$A$元，但每生产出一件次品就要损失$\frac{A}{3}$元。问为了获得最大盈利，该厂的日产量应定为多少？
+\item 抛物线$y=x^2$上的哪一点到直线$x-y-2=0$的距离最短？\item 一弹在空中飞行（不计空气阻力），其弹道方程为
+\[y=mx-\frac{(m^2+1)x^2}{800}\]
+这里原点取在此弹发射之点，其中$m$为曲线在原点处的切线斜率。
+\begin{enumerate}
+    \item 若要此弹击中同一水平面上最远距离的目标；
+    \item 若要此弹击中300米远处一直立墙壁上的最大高度，问$m$之值各为多少？
+\end{enumerate}
+\item 若直角三角形的周长$2p$一定，求它的面积的最大值．
+\end{enumerate}  
+\end{ex}
+
+\subsection{函数的凸性与拐点}
+上面已经讨论了函数的增减性与极值，这对于我们了解函数的性质与图象形状有很大的帮助。现在我们还要进一步考察函数在什么区间是向上凸的，什么区间是向下凸的，以及上凸函数和下凸函数的一些性质。
+
+\begin{blk}
+    {定义1} 函数$f$在区间$(a,b)$内，称为向下（上）凸的，指对于任意$c\in (a,b)$, 曲线位于在点$(c,f(c))$处的切线上（下）面（见图2.37和2.38）.
+\end{blk}    
+
+
+\begin{figure}[htp]
+    \centering
+    \begin{minipage}[t]{0.48\textwidth}
+    \centering
+\begin{tikzpicture}[>=latex, scale=.9]
+\draw[->](-.5,0)--(5,0)node[right]{$x$};
+\draw[->](0,-.5)--(0,4)node[right]{$y$};
+\draw[domain=1:4, samples=100, very thick]plot(\x,{0.5*(\x-2)^2+1})node[right]{$y=f(x)$};
+\draw[dashed](1,1.5)--(1,0)node[below]{$a$};
+\draw[dashed](4,3)--(4,0)node[below]{$b$};
+\draw[domain=.5:5, samples=10,thick]plot(\x,{0.5*\x-0.125});
+\node at (0,0)[below left]{$O$};
+\node at (2.5,1.125)[below]{$(c,f(c))$};
+\end{tikzpicture}
+    \caption{}
+    \end{minipage}
+    \begin{minipage}[t]{0.48\textwidth}
+    \centering
+    \begin{tikzpicture}[>=stealth, scale=.9]
+\draw[->](-.5,0)--(5,0)node[right]{$x$};
+\draw[->](0,-.5)--(0,4)node[right]{$y$};
+\draw[domain=1.5:4, samples=100, very thick]plot(\x,{-0.5*(\x-3)^2+2})node[right]{$y=f(x)$};
+\draw[dashed](1.5,.875)--(1.5,0)node[below]{$a$};
+\draw[dashed](4,1.5)--(4,0)node[below]{$b$};
+\node at (2.5,1.875)[above]{$(c,f(c))$};
+\draw[domain=.5:5, samples=10,thick]plot(\x,{0.5*\x+0.625});
+\node at (0,0)[below left]{$O$};
+    \end{tikzpicture}
+    \caption{}
+    \end{minipage}
+    \end{figure}
+
+
+\begin{blk}
+    {定义2} 函数$f$的图象若经过某点$x=c$时，它的图象
+$y=f(x)$由向上凸变为向下凸，或者由向下凸变为向上凸，则点$x=c$称为函数$f$的\textbf{拐点}，如图2.39和2.40.
+\end{blk}    
+    
+
+\begin{figure}[htp]
+    \centering
+    \begin{minipage}[t]{0.48\textwidth}
+    \centering
+\begin{tikzpicture}[>=latex, yscale=.8]
+    \draw[->](0,.5)--(5,.5)node[right]{$x$};
+    \draw[->](1,0)--(1,4)node[right]{$y$};
+    \draw[domain=.5*pi:1.5*pi, samples=100, very thick]plot(\x,{sin(\x r)+2});
+    \node at (1,.5)[below left]{$O$};
+\node at (3.1416, 2)[above right]{$(c,f(c))$};
+\draw[domain=2:4.4, samples=10, thick]plot(\x,{-\x+5.1416});
+\draw[dashed](3.1416,2)--(3.1416,.5)node[below]{$c$};
+\end{tikzpicture}
+    \caption{}
+    \end{minipage}
+    \begin{minipage}[t]{0.48\textwidth}
+    \centering
+    \begin{tikzpicture}[>=stealth, yscale=.8]
+   \draw[->](-3,.5)--(2,.5)node[right]{$x$};
+    \draw[->](-2,0)--(-2,4)node[right]{$y$};
+    \draw[domain=-.5*pi:.5*pi, samples=100, very thick]plot(\x,{sin(\x r)+2});
+    \node at (-2,.5)[below left]{$O$};
+\node at (0,2)[above left]{$(c,f(c))$};
+\draw[domain=-1.25:1.25, samples=10, thick]plot(\x,{\x+2});   
+\draw[dashed](0,2)--(0,.5)node[below]{$c$};
+
+    \end{tikzpicture}
+    \caption{}
+    \end{minipage}
+    \end{figure}
+
+
+这时过$x=c$的点的切线，把曲线分成两部分，换言之，存在充分小的邻域$\delta>0$, 使得对于一切$x\in (c-\delta,c)$, 曲线位于在点$c$处的切线的一方，而对于$x\in (c,c+\delta)$, 曲线在该切线的另一方。
+
+\begin{blk}
+  {凸性判定定理} 设函数$f$在区间$(a,b)$内有二阶导数，则
+\begin{enumerate}
+    \item 函数f在区间$(a,b)$内为向下凸的充分必要条件是，对于每个$x\in (a,b)$, 有$f''(x)\ge 0$;
+    \item 函数f在区间$(a,b)$内为向上凸的充分必要条件是，对于每个$x\in (a,b)$, 有$f''(x)\le 0$.
+\end{enumerate}
+\end{blk}
+
+\begin{proof}
+    假设曲线$y=f(x)$在$(a,b)$内是向下凸的，因为函数$f$在$(a,b)$内有二阶导数，则对于任意一点$c\in(a,b)$, $f'(c)$存在，曲线$y=f(x)$在点$x=c$处的切线方程是
+\begin{equation}
+    y=f (c) +f' (c) (x-c)
+\end{equation}
+    对于每个点$x\in (a,b)$, 曲线$y=f(x)$的对应点的纵坐
+标与切线上的对应点的纵坐标之差用$g(x)$表示，如图2.41, 于是
+\begin{equation}
+   g (x) =f (x) -[f (c) +f' (c) (x-c)]=[f(x)-f (c) ] - (x-c) f' (c)  
+\end{equation}
+根据中值定理，得到
+\[g (x) = (x-c) f' (d) - (x-c) f'(c)\]
+这里$d\in (x,c)$或$(c,x)$. 又$g(x)=(x-c)\cdot [f'(d)-f'(c)]$, 再根据中值定理，得到
+\begin{equation}
+    g (x) = (x-c) (d-c)f''(e)
+\end{equation}
+这里$e\in (d,c)$或$(c,d)$.
+
+于是对于一切$x\in (a,b)$, 点$(x,f(x))$不在切线(2.31)的下方的充要条件是$g(x)\ge 0$, 显然只有点$c$使$g(c)=0$. 根据等式(2.33), 并且注意到
+\[(x-c)(d-c)>0\]
+便知道$g(x)\ge 0$的充分必要条件是$f''(e)\ge 0$. 这里$e\in(a,b)$且随着$c$和$x$的不同值而改变。因此，依曲线向下凸的定义，曲线向下凸的充分必要条件是对于任意$x\in (a,b)$有$f''(x)\ge 0$.
+
+用同样的方法便可说明曲线$y=f(x)$向上凸的充分必要条件是$f''(x)\le 0$.
+\end{proof}
+
+\begin{figure}[htp]
+    \centering
+    \begin{minipage}[t]{0.48\textwidth}
+    \centering
+\begin{tikzpicture}[>=latex, scale=1]
+    \draw[->](-.5,0)--(5,0)node[right]{$x$};
+\draw[->](0,-.5)--(0,4)node[right]{$y$};
+\draw[domain=.75:3.1, samples=100, very thick]plot(\x, {-1/(\x-3.5)+1})node[right]{$y=f(x)$};
+\draw[domain=.75:3, samples=10, thick]plot(\x,{\x-0.5});
+\draw[dashed] (2.5,2)node[left]{$(c,f(c))$}--(2.5,0)node[below]{$c$};
+\draw[dashed] (1,1.4)--(1,0)node[below]{$x$};
+\draw[|<->|](.8,1.4)--node[left]{$g(x)$}(.8,.5);
+\node at (0,0) [below left]{$O$};
+\end{tikzpicture}
+    \caption{}
+    \end{minipage}
+    \begin{minipage}[t]{0.48\textwidth}
+    \centering
+    \begin{tikzpicture}[>=stealth, scale=1]
+       \draw[->](-.5,0)--(5,0)node[right]{$x$};
+\draw[->](0,-.5)--(0,4)node[right]{$y$};
+\draw[domain=.25:4, samples=100, very thick]plot(\x,{0.4*(\x-1.5)^2+1})node[right]{$y=f(x)$};
+\draw[domain=.25:4, samples=10, thick]plot(\x,{.6*\x+.5})node[right]{$y=\ell(x)$};
+
+\draw[dashed] (1,1.1)--(1,0)node[below]{$a$};
+\draw[dashed] (3.5,2.6)--(3.5,0)node[below]{$b$};
+\draw(2,0)node[below]{$x$}--(2,1.7)node[above left]{$(x,\ell(x))$};
+\draw[<->|](2.2,0)--node[right]{$(x,f(x))$}(2.2,1.1);
+\node at (0,0)[below left]{$O$};
+    \end{tikzpicture}
+    \caption{}
+    \end{minipage}
+    \end{figure}
+
+向下凸或向上凸的函数的重要性质如下面的定理所述：
+
+\begin{blk}
+    {定理} 设$f$是$[a,b]$上二次可微函数，并且$f''(x)>0$, $x\in (a,b)$, 那么对于每一个满足$a<x<b$的$x$，有
+\[f(x)<f(b)\cdot \frac{x-a}{b-a}+f(a)\cdot \frac{b-x}{b-a}\]
+\end{blk}
+
+这一定理有一个明显的几何意义（图2.42），用$\ell(x)$表示右端的一次函数：
+\[\ell(x)=f(b)\cdot \frac{x-a}{b-a}+f(a)\cdot \frac{b-x}{b-a}\]
+    它在$x=a$和$x=b$的值是$\ell(a)=f(a)$和$\ell(b)=f(b)$, 即与$f(x)$在这些点的值一致．因为$y=\ell(x)$的图象是$y=f(x)$在$[a,b]$上的割线，因此$[a,b]$上的向下凸函数$f$的图象$y=f(x)$位于该区间的割线的下面。
+
+
+
+
+
+\begin{proof}
+设$F(x)=f(x)-f(b)\frac{x-a}{b-a}-f(a)\frac{b-x}{b-a}$，
+这里$x\in [a,b]$. 我们需要证明在$[a,b]$上，$F(x)\le 0$. 因为$F(x)$在$[a,b]$上连续，所以$F(x)$在$[a,b]$的某点达到它的最大值，用$c$表示最大值点，我们证明$c$是两端点之一。
+
+假设$a<c<b$，那么$c$也是$F(x)$的极大值点。因此$F'(c)=0$. 又
+\[\begin{split}
+    F'(x)&=f'(x)-\frac{f(b)}{b-a}+\frac{f(a)}{b-a}\\
+    F''(x)&=f''(x)>0,\qquad x\in(a,b)
+\end{split}\]
+因此我们得出结论，$F(c)$是$[a,b]$上的最小值，即对于
+任意$x\in [a,b]$且$x\ne c$, 有
+\[F (x) > F (c) =f (c) -\ell (c)\]
+这与$c$是极大值点矛盾，因此，唯一的可能是$c$是一个端点$a$或$b$, 但是$f(a)=\ell(a)$, $f(b)=\ell(b)$, 这表明$F(x)=f(x)-\ell(x)$的最大值是0, 因此在$[a,b]$上除端点以外的所有其它点$x$, 有
+\[F (x) =f (x) -f (b) \frac{x-a}{b-a}-f (a) \frac{b-x}{b-a}<0\]
+即
+\[f (x)<f (b) \frac{x-a}{b-a}+f (a) \frac{b-x}{b-a}\]
+这就完成了向下凸函数定理的证明。
+\end{proof}
+
+对于向上凸函数有类似的定理，即：区间$[a,b]$上向上凸的函数的图象位于$[a,b]$的割线上面，用式子表示就是
+\[f (x)>f (b) \frac{x-a}{b-a}+f (a) \frac{b-x}{b-a},\quad x\in(a,b)\]
+
+\begin{example}
+    求证 $\cos\pi x>1-2x,\quad x\in\left(0, \frac{1}{2}\right)$.
+\end{example}
+
+
+\begin{proof}
+    设$f(x)=\cos\pi x$, $\ell (x)=1-2x$, 因为
+\[f (0) =1=\ell (0) ,\qquad f \left(\frac{1}{2}\right) =0=\ell\left(\frac{1}{2}\right)\]
+所以：$y=1-2x$是曲线$y=\cos\pi x$在$\left[0,\frac{1}{2}\right]$上的割线。
+
+又$f'(x)=-\pi \sin\pi x$, $f''(x)=-\pi^2\cos\pi x$, 且当$x\in \left(0,\frac{1}{2}\right)$时，有$f''(x)<0$, 即$f(x)$在$\left(0,\frac{1}{2}\right)$内是向上凸
+的．因此，$y=\cos\pi x$在$\left[0,\frac{1}{2}\right]$上的图象是在该区间的割
+线$y=1-2x$的上面，从而
+\[\cos\pi x>1-2x,\qquad x\in \left(0,\frac{1}{2}\right)\]
+\end{proof}
+
+下面给出拐点满足的必要条件。
+
+\begin{blk}
+    {定理} 如果$x=c$是曲线$y=f(x)$的拐点，并且$f''(c)$存在，则$f''(c)=0$.
+\end{blk}
+
+\begin{proof}
+    因为$x=c$是曲线的拐点，即它是曲线$y=f(x)$向上凸和向下凸的分界点，依凸性判定定理，我们可以取$a<c<b$, 使得$f''(x)$在$(a,c)$内的函数值的符号与在$(c,b)$内的函数值的符号相反。
+
+设$g(x)=f'(x),\; x\in (a,b)$, 于是$g'(x)=f''(x)$经过$c$点由负变正或由正变负，因此点$c$是$g(x)$在$(a,b)$内的唯一的极值点，又$g'(c)=f''(c)$存在，根据费马定理
+\[g' (c) =f'' (c) =0\]
+\end{proof}
+
+
+\begin{example}
+    讨论函数$f(x)=x^3$和$f(x)=x^4$有无拐点．
+\end{example}
+
+
+\begin{solution}
+    $f(x)=x^3$有导数$f'(x)=3x^2$, $f''(x)=6x$, 显然$f'(0)=f''(0)=0$, 而且：
+当$x>0$时，$f''(x)>0$; 当$x<0$时，$f''(x)<0$, 即曲线$y=x^3$在$(-\infty, 0)$内是向下凸的，而在$(0,+\infty)$区间内是向上凸的．因此，$x=0$是曲线的拐点而不是极值点．
+
+又$f(x)=x^4$有导数$f'(x)=4x^3$, $f''(x)=12x^2$, 显然$f'(0)=f''(0)=0$, 并且对于每一个$x\ne 0$都有$f''(x)>0$, 因此这个曲线$y=x^4$是处处向下凸的，$x=0$不是曲线$y=x^4$的拐点而是一个极小点。
+\end{solution}
+
+
+下面给出判定拐点的充分条件。
+    
+\begin{blk}
+   {定理（拐点的充分条件）} 设$f$在点$c$处连续，在点$c$附近（可以不包括$c$点）具有二阶导数，如果自变量$x$通过$c$时，二阶导数变号，则$x=c$是曲线$y=f(x)$的拐点。
+\end{blk}
+
+\begin{proof}
+    我们可以取$c$点的一个邻域$(a,b)$使$f''(x)$在
+$(a,c)$上的函数值的符号和在$(c,b)$上的相反，依凸性判定定理，$f$经过$c$时将由向上凸变为向下凸或者由向下凸变为向上凸，即$x=c$是曲线$y=f(x)$的拐点。
+\end{proof}
+
+
+\begin{example}
+说明$x=0$是曲线$y=x^{\tfrac{1}{3}}$的拐点。
+\end{example}
+
+\begin{proof}
+    设$f(x)=x^{\tfrac{1}{3}}$，则
+\[f'(x)=\frac{1}{3x^{\tfrac{2}{3}}},\qquad f''(x)=\frac{-2}{9x^{\tfrac{5}{3}}}\]
+显然$f'(0)$和$f''(0)$都不存在，但是当$x<0$时，$f''(x)>0$, 即曲线$y=x^{\tfrac{1}{3}}$向下凸；当$x>0$时，$f''(x)<0$, 即曲线$y=x^{\tfrac{1}{3}}$向上凸，因此点$x=0$是曲线的拐点．
+
+由$\Lim_{x\to 0}f'(x)=\Lim_{x\to 0}\frac{1}{3x^{\tfrac{2}{3}}}=+\infty$知，曲线在点$x=0$处的切线就是$y$轴本身（见图2.43）。
+\end{proof}
+
+\begin{figure}[htp]
+    \centering
+    \begin{minipage}[t]{0.48\textwidth}
+    \centering
+\begin{tikzpicture}[>=latex, scale=1]
+    \draw[->](-2.5,0)--(2.5,0)node[right]{$x$};
+\draw[->](0,-2)--(0,2)node[right]{$y$};
+\draw[domain=-1.3:1.3, samples=100, very thick]plot({\x^3},\x)node[above]{$y=x^{\tfrac{1}{3}}$};
+\node at (0,0) [above left]{$O$};
+\end{tikzpicture}
+    \caption{}
+    \end{minipage}
+    \begin{minipage}[t]{0.48\textwidth}
+    \centering
+    \begin{tikzpicture}[>=stealth, xscale=.6]
+       \draw[->](-4.5,0)--(5.5,0)node[right]{$x$};
+\draw[->](0,-4)--(0,2)node[right]{$y$};
+\draw[->](-4.5,-3)--(5.5,-3)node[right]{$x$};
+\node at (0,0)[below left]{$O$};
+\draw[domain=-4:5, samples=100, very thick]plot(\x, {sin((\x+pi/3)*180/pi)});
+\draw[domain=-4:5, samples=100, very thick]plot(\x, {cos((\x+pi/3)*180/pi)-3});
+
+\foreach \x/\xtext in {1.5*pi/m_3, -.5*pi/m_1, 0/I_1, pi/I_2}
+{
+   \draw[dashed](\x-pi/3, 0)node[above]{$\xtext$}--(\x-pi/3, -3);
+}
+\draw[dashed](.5*pi-pi/3, 1)--(.5*pi-pi/3, -3);
+\node at (.5*pi-pi/3,0)[above right]{$m_2$};
+
+\draw[domain=-2.5:.5, samples=10, thick]plot(\x, {\x+pi/3});
+\draw[domain=1:3.2, samples=10, thick]plot(\x, {-\x+2*pi/3});
+\node at (2,1)[right]{$y=f(x)$};
+\node at (3,-4)[right]{$y=f'(x)$};
+    \end{tikzpicture}
+    \caption{}
+    \end{minipage}
+    \end{figure}
+
+在图2.44中，函数$y=f(x)$的图象上的极值点$m_1$, $m_2$和$m_3$, 对应于函数$y=f'(x)$图象上的零点；$y=f(x)$的图象上的拐点对应于$y=f'(x)$的图象上的极值点。
+
+\begin{ex}
+\begin{enumerate}
+    \item 讨论下列函数的极值、凸性及拐点，并出函数图象的
+    草图；
+\begin{multicols}{2}
+\begin{enumerate}
+    \item $f(x)=\frac{1}{1+x^2}$
+    \item $y=(x-1)\sqrt[3]{x^2}$
+\end{enumerate}
+\end{multicols}
+\item 如果函数$f(x)$在区间$(a,b)$内有二阶导数，并且向上凸，求证：对于满足条件$a\le x_1<x_2\le b$的任意两点$x_1,x_2$，恒有
+\[f (\lambda x_1+ (1-\lambda) x_2) \ge \lambda f (x_1) + (1-\lambda)f (x_2) ,\quad  0\le\lambda\le 1\]
+如果上面的函数在区间$(a,b)$内向下凸，则应有怎样的结论？
+\item 求证函数
+\begin{enumerate}
+    \item $y=\log_ax \; (a>1)$在区间$(0,+\infty)$内是向上凸的；
+    \item $f(x)=\sin x$在$[0,\pi]$内是向上凸的；
+    \item $\log_a\frac{x_1+x_2}{2}\ge \frac{\log_a x_1+\log_a x_2}{2}\quad (x_1> 0,\; x_2>2)$
+    \item $\sin\frac{x_1+x_2}{2}\ge \frac{\sin x_1+\sin x_2}{2}\quad  (0\le x_1,x_2\le \pi)$
+\end{enumerate}
+
+\item 如果函数$f(x)$在$(a,b)$内是向上凸的，求证：对于任意$a\le x_1<x_2<x_3\le b$，$\sum^3_{i=1}\lambda_i=1$，有
+\[f(\lambda_1x_1+\lambda_2x_2+\lambda_3x_3)\ge \lambda_1f(x_1)+\lambda_2f(x_2)+\lambda_3f(x_3)\]
+
+\item  求证对于任意正数$x_1,x_2,x_3$有
+\[\ln\left(\frac{1}{6}x_1+\frac{1}{3}x_2+\frac{1}{2}x_3\right) \ge \ln \left(x_1^{\tfrac{1}{6}}x_2^{\tfrac{1}{3}}x_3^{\tfrac{1}{2}} \right)\]
+\item  若$A,B,C$是任意三角形的三个内角，求证
+\[\sin A+\sin B+\sin C\le \frac{3\sqrt{3}}{2}\]
+又当$A,B,C$为何值时，上面等式成立？
+\item  对于$a>0$, $b>0$, $0<\alpha<1$, $0<\beta<1$，$\alpha+\beta=1$，求证：
+$a^{\alpha}b^{\beta}\le \alpha a+\beta b$成立．
+（提示：利用对数函数是上凸函数）
+\item  $f(x)=a_4x^4+a_3x^3+a_2x^2+a_1x+a_0$为具有正系数
+的非零多项式，若为偶函数，求证$f(x)$在$(-\infty,+\infty)$内向下凸，且仅有一个极值。
+\end{enumerate}
+\end{ex}
+
+\subsection{作函数的图象}
+给出函数$y=f(x)$, 常常希望画出它的图象来，这对于许多问题是有用的，在初中我们所介绍的用列表法来描绘函数的图象，有很大的不精确性和盲目性，由于所取的点是有穷多个，很可能在所要画出的某两点之间的曲线有比较剧烈的变化，如果我们用比较平滑的曲线弧去连结，于是所得
+曲线与实际相差很大．以前各节所介绍的函数性态可以帮助我们断定函数图象的主要特征，因此在取点之前，应先对函数的性态作一番讨论，兹将描绘曲线的一般步骤列出如下：
+
+\begin{enumerate}
+\item 确定函数的定义域;
+\item 确定曲线关于坐标轴的对称性；
+\item 确定曲线与坐标轴的交点（如果不易确定，不必强求）；
+\item 确定函数的增减性，极大值与极小值；
+\item 确定函数的凸性与拐点；
+\item 确定曲线的渐近线；
+\item 需要时，还得由曲线方程计算出一些适当的点的坐标；
+\item 把上面所得的结果，按自变量大小顺序列入一个表格内，以观察图形的大概形态，然后描绘成图。
+\end{enumerate}
+
+在用例子说明如何绘图之前，我们需要补充说明如何求曲线的渐近线。
+
+\begin{blk}
+    {定义}假设曲线$y=f(x)$不限制在有限平面内，即其上的点$P$可以趋于无穷远，如果曲线的点$P$到直线$\ell:\; ax+ty+c=0$的距离$d$, 当$P$沿曲线趋于无穷远时，
+    $d\to 0$，
+    那么我们称直线$\ell$为所给曲线的\textbf{渐近线}。
+\end{blk}
+
+\subsubsection{水平渐近线及其求法}
+
+设$\ell_1:\; y=\alpha$是曲线$y=f(x)$的一条渐近线，曲线上的$P(x,f(x))$点到$\ell_1$的距离为
+\[d=|\alpha-f(x)|\]
+因$\ell_1$为渐近线，所以，当$x\to +\infty$或$x\to -\infty$时，应有$d\to 0$, 即
+\[\lim_{x\to+\infty}f(x)=\alpha,\qquad \text{或}\qquad \lim_{x\to -\infty}f(x)=\alpha\]
+反之，若上式成立，则$y=\alpha$必为$y=f(x)$的一条渐近线。
+
+\subsubsection{铅直渐近线及其求法}
+
+设$\ell_2:\; x=\beta$是曲线$y=f(x)$的一条渐近线，又$P(x,f(x))$为曲线上的任意一点，它到$x=\beta$的距离是
+\[d=|\beta-x|\]
+因为$\ell_2$是$y=f(x)$的渐近线，那么
+\[\lim_{x\to\pm\beta} f (x) =\pm\infty\]
+反之，若上式成立，则$\ell_2$为$y=f(x)$的一条渐近线．
+
+例如，对于$y=\frac{1}{x}$, 当$x\to 0$, $y\to \pm\infty$，故$x=0$是$y=\frac{1}{x}$的一条渐近线。
+
+\subsubsection{任意渐近线及其求法}
+
+设直线$\ell_3:\; y=kx+b$是曲线$y=f(x)$的一条渐近线，曲线上任意一点$P(x,f(x))$到直线$\ell_3$的距离是
+\[d=\left|\frac{kx+b-f(x)}{\sqrt{1+k^2}}\right|\]
+因为$\ell_3$是渐近线，所以当$x\to\pm\infty$时，$d\to 0$, 即
+\[kx+b-f (x) \to 0\]
+我们必须用上式求出$k,b$, 才能确定$\ell_3$. 由于当$x\to\pm\infty$时，$\frac{1}{x}\to 0$, 所以
+\[\begin{split}
+\lim_{x\to\pm\infty}\left[k+\frac{b}{x}-\frac{f(x)}{x}\right]&=\lim_{x\to\pm\infty}\frac{1}{x}[kx+b-f(x)]\\
+&=\lim_{x\to\pm\infty}\frac{1}{x}\cdot \lim_{x\to\pm\infty}[kx+b-f(x)]=0
+\end{split}\]
+由于$b$是常数，故有
+\begin{align}
+    k&=\lim_{x\to\pm\infty}\frac{f(x)}{x}\qquad \text{(渐近线方向)}\\
+b&=\lim_{x\to\pm\infty}[f(x)-kx]
+\end{align}
+
+\begin{example}
+求函数$f(x)=-3x^5+5x^3$的极值、拐点，并画出它的图象的草图。
+\end{example}
+
+\begin{solution}
+\begin{enumerate}
+\item 曲线的范围与截距：这函数$f$的定义域与值域都是无限的，它的曲线伸展在整个平面内，与$y$轴的交点是原点，而与$x$轴有三个交点，其零点是$0,\pm\sqrt{\frac{5}{3}}$.
+\item 对称性：因为$f(-x)=-f(x)$, 所以曲线关于原点对称。
+\item 函数的增、减与极值：
+\[f' (x) =-15x^4+15x^2=-15x^2 (x-1) (x+1)\]
+由此知$f(x)$的驻点是$-1, 0, 1$. $f'(x)$的符号变化的情
+况是：
+\begin{itemize}
+    \item 当$x<1$时，$f'(x)<0$, 这时$f(x)$递减；
+    \item 当$-1<x<1$时, $f'(x)>0$，这时$f(x)$递增；
+    \item 当$x>1$时，$f'(x)<0$, 这时$f(x)$递减．
+\end{itemize}
+因此，$x=-1$是极小点，极小值$f(-1)=-2$; $x=1$是极大点，极大值$f(1)=2$.
+\item 函数的凸性与拐点：
+\[f''(x)=-60x^3+30x=-60x\left(x+\frac{\sqrt{2}}{2}\right)\left(x-\frac{\sqrt{2}}{2}\right)\]
+拐点的可能值是$-\frac{\sqrt{2}}{2},0,\frac{\sqrt{2}}{2}$. 又$f''(x)$的符号变化情况是
+\begin{itemize}
+    \item 当$x<-\frac{\sqrt{2}}{2}$时，$f''(x)>0$, 此时曲线向下凸；
+    \item 当$-\frac{\sqrt{2}}{2}<x<0$时，$f''(x)<0$, 此时曲线向上凸；
+    \item 当$0<x<\frac{\sqrt{2}}{2}$时，$f''(x)>0$, 此时曲线向下凸；
+    \item 当$x>\frac{\sqrt{2}}{2}$时，$f''(x)<0$, 此时曲线向上凸；
+\end{itemize}
+因此：$x=-\frac{\sqrt{2}}{2},0,\frac{\sqrt{2}}{2}$的点都是拐点。
+
+\item 列表：今将讨论情况列成下表，并作图（如图2.45）
+\end{enumerate}    
+\begin{center}\small
+    \begin{tabular}{cccccccccccc}
+    \hline
+    $x$ & &$-1$&&$-\frac{\sqrt{2}}{2}$&&0&&$\frac{\sqrt{2}}{2}$&&1\\
+    \hline
+    $f'(x)$& $-$ & 0&$+$&$+$&$+$&0&$+$&$+$&$+$&0&$-$\\
+    $f''(x)$&$+$&$+$&$+$&0&$-$&0&$+$&0&$-$&$-$&$-$\\
+    $f(x)$&下凸&极小值& $\nearrow$  & $-1.24$&上凸 & 0& 下凸 &1.24& 上凸 & 极大值 & $\searrow$  \\
+    & $\searrow $ &$-2$&&&$\nearrow $&&$\nearrow $&&$\nearrow $&2\\
+    \hline
+    \end{tabular}
+    \end{center}
+    
+\begin{figure}[htp]
+    \centering
+\begin{tikzpicture}[>=latex, xscale=1.5]
+\draw[->](-2.5,0)--(2.5,0)node[right]{$x$};
+\draw[->](0,-3)--(0,3)node[right]{$y$}; 
+\draw[domain=-1.4:1.4, samples=200, very thick]plot(\x, {-3*\x^5+5*\x^3});
+\foreach \x in {-1,-2,1,2}
+{
+    \draw(\x,.1)--(\x,0)node[below]{$\x$};
+}
+\node at (0,0)[below right]{$O$};
+\draw[dashed](-.707,-1.24)--(-.707,0)node[above]{$-\tfrac{\sqrt{2}}{2}$};
+\draw[dashed](.707,1.24)--(.707,0)node[below]{$\tfrac{\sqrt{2}}{2}$};
+\node at (1.29,0)[above]{$\sqrt{\tfrac{5}{3}}$};
+
+\end{tikzpicture}
+    \caption{}
+\end{figure}
+\end{solution}
+
+
+\begin{example}    
+描绘函数$y=\frac{(x-3)^2}{4(x-1)}$的图象。
+\end{example}
+
+\begin{solution}
+    这个函数在$x=1$这点没有定义，并且，当$x\to 1^-$时，$y\to -\infty$; 当$x\to 1^+$时，$y\to +\infty$, 所以$x=1$是曲线的铅直渐近线，曲线在$x=1$这点断开．
+    
+求导数，得
+\[y'= \frac{(x+1) (x-3)}{4 (x-1)^2}\]
+
+当$x<-1$时，$y'>0$; 当$-1<x<3$时，$y'>0$. 因此，$x=-1$是极大点；$x=3$是极小点．又极大值$f(-1)=-2$; 极小值$f(3)=0$
+
+求二阶导数，得
+\[y''=\frac{2}{(x-1)^3}\]
+\begin{itemize}
+    \item 当$x<1$时，$y''<0$, 曲线向上凸；
+    \item 当$x>1$时，$y''>0$, 曲线向下凸，但是曲线在$x=1$这一
+    点断开，因此$x=1$不是曲线的拐点．
+\end{itemize}
+
+又因为
+\[y=\frac{(x-3)^2}{4(x-1)}=\frac{1}{4}(x-5)+\frac{1}{x-1}\]
+\[\lim_{x\to \infty}\left[\frac{(x-3)^2}{4(x-1)}-\frac{1}{4}(x-5)\right]=\lim_{x\to\infty}\frac{1}{x-1}=0\]
+这就是说曲线以$y=\frac{1}{4}x-\frac{5}{4}$为渐近线。
+
+综合起来得到下面结果：
+\begin{center}
+    \begin{tabular}{cccccccccccc}
+    \hline
+    $x$ & &$-1$&&0&&1&&3&\\
+    \hline
+    $y'$& $+$ & 0&$-$&$-$&$-$&$\x$&$-$&0&$+$\\
+    $y''$&$-$&$-$&$-$&$-$&$-$&$\x$&$+$&$+$&$+$\\
+    $y$&$\nearrow$ &极大值& $\searrow$  & $\searrow$&$\searrow$ & $\x$& $\searrow$ & 极小值 & $\nearrow$  \\
+    &  &$-2$&&$-\frac{9}{4}$&$-\infty $&&$+\infty$&0 &\\
+    \hline
+    \end{tabular}
+    \end{center}
+
+画出具体图形如图2.46.
+\begin{figure}[htp]
+    \centering
+\begin{tikzpicture}[>=latex]
+    \draw[->](-3.5,0)--(6.5,0)node[right]{$x$};
+    \draw[->](0,-5)--(0,3)node[right]{$y$}; 
+\draw[domain=-3.5:6.5, samples=10, thick]plot(\x, {0.25*\x -1.25});
+\draw[domain=-3:.7, samples=100, very thick]plot(\x, {(\x-3)^2/(4*(\x-1))});
+\draw[domain=1.3:6, samples=100, very thick]plot(\x, {(\x-3)^2/(4*(\x-1))});
+\node at (0,0)[below left]{$O$};
+\draw[dashed](1,-5)--(1,3);
+\foreach \x in {1,2,3,4}
+{
+    \draw(\x,0)node[below]{$\x$}--(\x,.1);
+}
+\foreach \x in {-1,-2}
+{
+    \draw(0,\x)node[left]{$\x$}--(.1,\x);
+}
+
+\node at (2,-1)[ right]{$y=\frac{1}{4}x-\frac{5}{4}$};
+\node at (3,1)[ right]{$y=\frac{(x-3)^2}{4(x-1)}$};
+
+\end{tikzpicture} 
+    \caption{}
+\end{figure}
+\end{solution}
+
+
+
+\begin{ex}
+\begin{enumerate}
+    \item 讨论下列函数的极值、凸性和拐点, 并画出函数图象.
+\begin{multicols}{2}
+\begin{enumerate}
+\item  $y=\frac{6(x-1)}{x^{2}+3}$
+\item  $y=(x-1)^{3}-3(x-1)$
+\item  $y=\frac{x^{4}}{2}-x^{2}$
+\item  $y=1+4 x^{3}-3 x^{4}$
+\item  $y=\sqrt{(x+2)^{2}\left(16-x^{2}\right)}$
+\item  $y=x^{x}\quad (x>0.1)$
+\item  $y=x e^{-x}$
+\end{enumerate}
+\end{multicols}
+
+    \item 作下列函数的图象, 并画出渐近线及在拐点处的切线:
+    \begin{multicols}{2}
+        \begin{enumerate}
+            \item $y=x+\frac{1}{x}$
+            \item $y=\frac{x^{2}}{1+x^{3}}$
+            \item $y=\frac{2 x}{1-x^{2}}$
+            \item $y=\frac{x^{3}}{x^{2}-4}$
+            \item $y=\frac{(x-5)(x+3)}{(x+2)^{2}}$
+\end{enumerate}
+\end{multicols}
+\end{enumerate}
+\end{ex}
+
+\subsection*{习题2.3}
+\begin{enumerate}
+    \item 求函数$f(x)=x^3+ax^2-3bx+c$的图象关于原点对称时，$f(x)$在区间$-2\le x\le 2$上的最小值，其中$b>0$.
+    
+    \item 函数$f(x)=3x^2-ax^3$在区间$0\le x\le 2$上的最小值
+    是$-4$, 求
+\begin{enumerate}
+    \item $a$的值
+    \item $f(x)$在区间$0\le x\le 2$的最大值$M$
+\end{enumerate}
+\item 设$a,b$为实数，求函数$y=x^3-3ax^2+bx+1$在区间$0\le x\le 1$上单调增加时，点$(a,b)$存在范围，并用图表示出来。
+
+\item 设$f(x)=x^3-5x^2+3x+a$, 在怎样的情况下对于
+$x$的正值，总有$f(x)>0$成立？
+\item 设$a$是常数，对于函数$f(x)=4x^3-3x+a$
+\begin{enumerate}
+    \item 求$y=f(x)$的极大值和极小值；
+    \item 确定当方程$f(x)=0$有三个不相等的实根时，$a$值的范围。
+\end{enumerate}
+
+\item 讨论函数$y=\frac{x^3}{2 (x+2)}$的极值，凸向，拐点，渐近线，
+并作出它的图象。
+
+\item 求证$\pi<\frac{\sin\pi x}{x(1-x)}\le 4$.
+\item 对于已知半径为$R$的球，求具有最小体积的外切圆锥
+的体积。
+\item 一长方体的对角线长$\sqrt{11}$cm，全面积为$14{\rm cm}^2$, 求它的体积的最大值，并求体积为最大时三边的长。
+\item 一浮标由三部分组成，一个圆筒与两个相等的圆
+锥，其中每一个圆锥的高等于圆筒的高，问当表面积一定时，什么样的形状会有最大的体积。
+\end{enumerate}     
+
+
+\begin{proof}
+    设$F(x)=f(x)-f(b)\frac{x-a}{b-a}-f(a)\frac{b-x}{b-a}$，
+    这里$x\in [a,b]$. 我们需要证明在$[a,b]$上，$F(x)\le 0$. 因为$F(x)$在$[a,b]$上连续，所以$F(x)$在$[a,b]$的某点达到它的最大值，用$c$表示最大值点，我们证明$c$是两端点之一。
+    
+    假设$a<c<b$，那么$c$也是$F(x)$的极大值点。因此$F'(c)=0$. 又
+    \[\begin{split}
+        F'(x)&=f'(x)-\frac{f(b)}{b-a}+\frac{f(a)}{b-a}\\
+        F''(x)&=f''(x)>0,\qquad x\in(a,b)
+    \end{split}\]
+    因此我们得出结论，$F(c)$是$[a,b]$上的最小值，即对于
+    任意$x\in [a,b]$且$x\ne c$, 有
+    \[F (x) > F (c) =f (c) -\ell (c)\]
+    这与$c$是极大值点矛盾，因此，唯一的可能是$c$是一个端点$a$或$b$, 但是$f(a)=\ell(a)$, $f(b)=\ell(b)$, 这表明$F(x)=f(x)-\ell(x)$的最大值是0, 因此在$[a,b]$上除端点以外的所有其它点$x$, 有
+    \[F (x) =f (x) -f (b) \frac{x-a}{b-a}-f (a) \frac{b-x}{b-a}<0\]
+    即
+    \[f (x)<f (b) \frac{x-a}{b-a}+f (a) \frac{b-x}{b-a}\]
+    这就完成了向下凸函数定理的证明。
+    \end{proof}
+    
+    对于向上凸函数有类似的定理，即：区间$[a,b]$上向上凸的函数的图象位于$[a,b]$的割线上面，用式子表示就是
+    \[f (x)>f (b) \frac{x-a}{b-a}+f (a) \frac{b-x}{b-a},\quad x\in(a,b)\]
+    
+    \begin{example}
+        求证 $\cos\pi x>1-2x,\quad x\in\left(0, \frac{1}{2}\right)$.
+    \end{example}
+    
+    
+    \begin{proof}
+        设$f(x)=\cos\pi x$, $\ell (x)=1-2x$, 因为
+    \[f (0) =1=\ell (0) ,\qquad f \left(\frac{1}{2}\right) =0=\ell\left(\frac{1}{2}\right)\]
+    所以：$y=1-2x$是曲线$y=\cos\pi x$在$\left[0,\frac{1}{2}\right]$上的割线。
+    
+    又$f'(x)=-\pi \sin\pi x$, $f''(x)=-\pi^2\cos\pi x$, 且当$x\in \left(0,\frac{1}{2}\right)$时，有$f''(x)<0$, 即$f(x)$在$\left(0,\frac{1}{2}\right)$内是向上凸
+    的．因此，$y=\cos\pi x$在$\left[0,\frac{1}{2}\right]$上的图象是在该区间的割
+    线$y=1-2x$的上面，从而
+    \[\cos\pi x>1-2x,\qquad x\in \left(0,\frac{1}{2}\right)\]
+    \end{proof}
+    
+    下面给出拐点满足的必要条件。
+    
+    \begin{blk}
+        {定理} 如果$x=c$是曲线$y=f(x)$的拐点，并且$f''(c)$存在，则$f''(c)=0$.
+    \end{blk}
+    
+    \begin{proof}
+        因为$x=c$是曲线的拐点，即它是曲线$y=f(x)$向上凸和向下凸的分界点，依凸性判定定理，我们可以取$a<c<b$, 使得$f''(x)$在$(a,c)$内的函数值的符号与在$(c,b)$内的函数值的符号相反。
+    
+    设$g(x)=f'(x),\; x\in (a,b)$, 于是$g'(x)=f''(x)$经过$c$点由负变正或由正变负，因此点$c$是$g(x)$在$(a,b)$内的唯一的极值点，又$g'(c)=f''(c)$存在，根据费马定理
+    \[g' (c) =f'' (c) =0\]
+    \end{proof}
+    
+    
+    \begin{example}
+        讨论函数$f(x)=x^3$和$f(x)=x^4$有无拐点．
+    \end{example}
+    
+    
+    \begin{solution}
+        $f(x)=x^3$有导数$f'(x)=3x^2$, $f''(x)=6x$, 显然$f'(0)=f''(0)=0$, 而且：
+    当$x>0$时，$f''(x)>0$; 当$x<0$时，$f''(x)<0$, 即曲线$y=x^3$在$(-\infty, 0)$内是向下凸的，而在$(0,+\infty)$区间内是向上凸的．因此，$x=0$是曲线的拐点而不是极值点．
+    
+    又$f(x)=x^4$有导数$f'(x)=4x^3$, $f''(x)=12x^2$, 显然$f'(0)=f''(0)=0$, 并且对于每一个$x\ne 0$都有$f''(x)>0$, 因此这个曲线$y=x^4$是处处向下凸的，$x=0$不是曲线$y=x^4$的拐点而是一个极小点。
+    \end{solution}
+    
+    
+    下面给出判定拐点的充分条件。
+        
+    \begin{blk}
+       {定理（拐点的充分条件）} 设$f$在点$c$处连续，在点$c$附近（可以不包括$c$点）具有二阶导数，如果自变量$x$通过$c$时，二阶导数变号，则$x=c$是曲线$y=f(x)$的拐点。
+    \end{blk}
+    
+    \begin{proof}
+        我们可以取$c$点的一个邻域$(a,b)$使$f''(x)$在
+    $(a,c)$上的函数值的符号和在$(c,b)$上的相反，依凸性判定定理，$f$经过$c$时将由向上凸变为向下凸或者由向下凸变为向上凸，即$x=c$是曲线$y=f(x)$的拐点。
+    \end{proof}
+    
+    
+    \begin{example}
+    说明$x=0$是曲线$y=x^{\tfrac{1}{3}}$的拐点。
+    \end{example}
+    
+    \begin{proof}
+        设$f(x)=x^{\tfrac{1}{3}}$，则
+    \[f'(x)=\frac{1}{3x^{\tfrac{2}{3}}},\qquad f''(x)=\frac{-2}{9x^{\tfrac{5}{3}}}\]
+    显然$f'(0)$和$f''(0)$都不存在，但是当$x<0$时，$f''(x)>0$, 即曲线$y=x^{\tfrac{1}{3}}$向下凸；当$x>0$时，$f''(x)<0$, 即曲线$y=x^{\tfrac{1}{3}}$向上凸，因此点$x=0$是曲线的拐点．
+    
+    由$\Lim_{x\to 0}f'(x)=\Lim_{x\to 0}\frac{1}{3x^{\tfrac{2}{3}}}=+\infty$知，曲线在点$x=0$处的切线就是$y$轴本身（见图2.43）。
+    \end{proof}
+    
+    \begin{figure}[htp]
+        \centering
+        \begin{minipage}[t]{0.48\textwidth}
+        \centering
+    \begin{tikzpicture}[>=latex, scale=1]
+        \draw[->](-2.5,0)--(2.5,0)node[right]{$x$};
+    \draw[->](0,-2)--(0,2)node[right]{$y$};
+    \draw[domain=-1.3:1.3, samples=100, very thick]plot({\x^3},\x)node[above]{$y=x^{\tfrac{1}{3}}$};
+    \node at (0,0) [above left]{$O$};
+    \end{tikzpicture}
+        \caption{}
+        \end{minipage}
+        \begin{minipage}[t]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}[>=stealth, xscale=.6]
+           \draw[->](-4.5,0)--(5.5,0)node[right]{$x$};
+    \draw[->](0,-4)--(0,2)node[right]{$y$};
+    \draw[->](-4.5,-3)--(5.5,-3)node[right]{$x$};
+    \node at (0,0)[below left]{$O$};
+    \draw[domain=-4:5, samples=100, very thick]plot(\x, {sin((\x+pi/3)*180/pi)});
+    \draw[domain=-4:5, samples=100, very thick]plot(\x, {cos((\x+pi/3)*180/pi)-3});
+    
+    \foreach \x/\xtext in {1.5*pi/m_3, -.5*pi/m_1, 0/I_1, pi/I_2}
+    {
+       \draw[dashed](\x-pi/3, 0)node[above]{$\xtext$}--(\x-pi/3, -3);
+    }
+    \draw[dashed](.5*pi-pi/3, 1)--(.5*pi-pi/3, -3);
+    \node at (.5*pi-pi/3,0)[above right]{$m_2$};
+    
+    \draw[domain=-2.5:.5, samples=10, thick]plot(\x, {\x+pi/3});
+    \draw[domain=1:3.2, samples=10, thick]plot(\x, {-\x+2*pi/3});
+    \node at (2,1)[right]{$y=f(x)$};
+    \node at (3,-4)[right]{$y=f'(x)$};
+        \end{tikzpicture}
+        \caption{}
+        \end{minipage}
+        \end{figure}
+    
+    在图2.44中，函数$y=f(x)$的图象上的极值点$m_1$, $m_2$和$m_3$, 对应于函数$y=f'(x)$图象上的零点；$y=f(x)$的图象上的拐点对应于$y=f'(x)$的图象上的极值点。
+    
+    \begin{ex}
+    \begin{enumerate}
+        \item 讨论下列函数的极值、凸性及拐点，并出函数图象的
+        草图；
+    \begin{multicols}{2}
+    \begin{enumerate}
+        \item $f(x)=\frac{1}{1+x^2}$
+        \item $y=(x-1)\sqrt[3]{x^2}$
+    \end{enumerate}
+    \end{multicols}
+    \item 如果函数$f(x)$在区间$(a,b)$内有二阶导数，并且向上凸，求证：对于满足条件$a\le x_1<x_2\le b$的任意两点$x_1,x_2$，恒有
+    \[f (\lambda x_1+ (1-\lambda) x_2) \ge \lambda f (x_1) + (1-\lambda)f (x_2) ,\quad  0\le\lambda\le 1\]
+    如果上面的函数在区间$(a,b)$内向下凸，则应有怎样的结论？
+    \item 求证函数
+    \begin{enumerate}
+        \item $y=\log_ax \; (a>1)$在区间$(0,+\infty)$内是向上凸的；
+        \item $f(x)=\sin x$在$[0,\pi]$内是向上凸的；
+        \item $\log_a\frac{x_1+x_2}{2}\ge \frac{\log_a x_1+\log_a x_2}{2}\quad (x_1> 0,\; x_2>2)$
+        \item $\sin\frac{x_1+x_2}{2}\ge \frac{\sin x_1+\sin x_2}{2}\quad  (0\le x_1,x_2\le \pi)$
+    \end{enumerate}
+    
+    \item 如果函数$f(x)$在$(a,b)$内是向上凸的，求证：对于任意$a\le x_1<x_2<x_3\le b$，$\sum^3_{i=1}\lambda_i=1$，有
+    \[f(\lambda_1x_1+\lambda_2x_2+\lambda_3x_3)\ge \lambda_1f(x_1)+\lambda_2f(x_2)+\lambda_3f(x_3)\]
+    
+    \item  求证对于任意正数$x_1,x_2,x_3$有
+    \[\ln\left(\frac{1}{6}x_1+\frac{1}{3}x_2+\frac{1}{2}x_3\right) \ge \ln \left(x_1^{\tfrac{1}{6}}x_2^{\tfrac{1}{3}}x_3^{\tfrac{1}{2}} \right)\]
+    \item  若$A,B,C$是任意三角形的三个内角，求证
+    \[\sin A+\sin B+\sin C\le \frac{3\sqrt{3}}{2}\]
+    又当$A,B,C$为何值时，上面等式成立？
+    \item  对于$a>0$, $b>0$, $0<\alpha<1$, $0<\beta<1$，$\alpha+\beta=1$，求证：
+    $a^{\alpha}b^{\beta}\le \alpha a+\beta b$成立．
+    （提示：利用对数函数是上凸函数）
+    \item  $f(x)=a_4x^4+a_3x^3+a_2x^2+a_1x+a_0$为具有正系数
+    的非零多项式，若为偶函数，求证$f(x)$在$(-\infty,+\infty)$内向下凸，且仅有一个极值。
+    \end{enumerate}
+    \end{ex}
+    
+    \subsection{作函数的图象}
+    给出函数$y=f(x)$, 常常希望画出它的图象来，这对于许多问题是有用的，在初中我们所介绍的用列表法来描绘函数的图象，有很大的不精确性和盲目性，由于所取的点是有穷多个，很可能在所要画出的某两点之间的曲线有比较剧烈的变化，如果我们用比较平滑的曲线弧去连结，于是所得
+    曲线与实际相差很大．以前各节所介绍的函数性态可以帮助我们断定函数图象的主要特征，因此在取点之前，应先对函数的性态作一番讨论，兹将描绘曲线的一般步骤列出如下：
+    
+    \begin{enumerate}
+    \item 确定函数的定义域;
+    \item 确定曲线关于坐标轴的对称性；
+    \item 确定曲线与坐标轴的交点（如果不易确定，不必强求）；
+    \item 确定函数的增减性，极大值与极小值；
+    \item 确定函数的凸性与拐点；
+    \item 确定曲线的渐近线；
+    \item 需要时，还得由曲线方程计算出一些适当的点的坐标；
+    \item 把上面所得的结果，按自变量大小顺序列入一个表格内，以观察图形的大概形态，然后描绘成图。
+    \end{enumerate}
+    
+    在用例子说明如何绘图之前，我们需要补充说明如何求曲线的渐近线。
+    
+    \begin{blk}
+        {定义}假设曲线$y=f(x)$不限制在有限平面内，即其上的点$P$可以趋于无穷远，如果曲线的点$P$到直线$\ell:\; ax+ty+c=0$的距离$d$, 当$P$沿曲线趋于无穷远时，
+        $d\to 0$，
+        那么我们称直线$\ell$为所给曲线的\textbf{渐近线}。
+    \end{blk}
+    
+    \subsubsection{水平渐近线及其求法}
+    
+    设$\ell_1:\; y=\alpha$是曲线$y=f(x)$的一条渐近线，曲线上的$P(x,f(x))$点到$\ell_1$的距离为
+    \[d=|\alpha-f(x)|\]
+    因$\ell_1$为渐近线，所以，当$x\to +\infty$或$x\to -\infty$时，应有$d\to 0$, 即
+    \[\lim_{x\to+\infty}f(x)=\alpha,\qquad \text{或}\qquad \lim_{x\to -\infty}f(x)=\alpha\]
+    反之，若上式成立，则$y=\alpha$必为$y=f(x)$的一条渐近线。
+    
+    \subsubsection{铅直渐近线及其求法}
+    
+    设$\ell_2:\; x=\beta$是曲线$y=f(x)$的一条渐近线，又$P(x,f(x))$为曲线上的任意一点，它到$x=\beta$的距离是
+    \[d=|\beta-x|\]
+    因为$\ell_2$是$y=f(x)$的渐近线，那么
+    \[\lim_{x\to\pm\beta} f (x) =\pm\infty\]
+    反之，若上式成立，则$\ell_2$为$y=f(x)$的一条渐近线．
+    
+    例如，对于$y=\frac{1}{x}$, 当$x\to 0$, $y\to \pm\infty$，故$x=0$是$y=\frac{1}{x}$的一条渐近线。
+    
+    \subsubsection{任意渐近线及其求法}
+    
+    设直线$\ell_3:\; y=kx+b$是曲线$y=f(x)$的一条渐近线，曲线上任意一点$P(x,f(x))$到直线$\ell_3$的距离是
+    \[d=\left|\frac{kx+b-f(x)}{\sqrt{1+k^2}}\right|\]
+    因为$\ell_3$是渐近线，所以当$x\to\pm\infty$时，$d\to 0$, 即
+    \[kx+b-f (x) \to 0\]
+    我们必须用上式求出$k,b$, 才能确定$\ell_3$. 由于当$x\to\pm\infty$时，$\frac{1}{x}\to 0$, 所以
+    \[\begin{split}
+    \lim_{x\to\pm\infty}\left[k+\frac{b}{x}-\frac{f(x)}{x}\right]&=\lim_{x\to\pm\infty}\frac{1}{x}[kx+b-f(x)]\\
+    &=\lim_{x\to\pm\infty}\frac{1}{x}\cdot \lim_{x\to\pm\infty}[kx+b-f(x)]=0
+    \end{split}\]
+    由于$b$是常数，故有
+    \begin{align}
+        k&=\lim_{x\to\pm\infty}\frac{f(x)}{x}\qquad \text{(渐近线方向)}\\
+    b&=\lim_{x\to\pm\infty}[f(x)-kx]
+    \end{align}
+    
+    \begin{example}
+    求函数$f(x)=-3x^5+5x^3$的极值、拐点，并画出它的图象的草图。
+    \end{example}
+    
+    \begin{solution}
+    \begin{enumerate}
+    \item 曲线的范围与截距：这函数$f$的定义域与值域都是无限的，它的曲线伸展在整个平面内，与$y$轴的交点是原点，而与$x$轴有三个交点，其零点是$0,\pm\sqrt{\frac{5}{3}}$.
+    \item 对称性：因为$f(-x)=-f(x)$, 所以曲线关于原点对称。
+    \item 函数的增、减与极值：
+    \[f' (x) =-15x^4+15x^2=-15x^2 (x-1) (x+1)\]
+    由此知$f(x)$的驻点是$-1, 0, 1$. $f'(x)$的符号变化的情
+    况是：
+    \begin{itemize}
+        \item 当$x<1$时，$f'(x)<0$, 这时$f(x)$递减；
+        \item 当$-1<x<1$时, $f'(x)>0$，这时$f(x)$递增；
+        \item 当$x>1$时，$f'(x)<0$, 这时$f(x)$递减．
+    \end{itemize}
+    因此，$x=-1$是极小点，极小值$f(-1)=-2$; $x=1$是极大点，极大值$f(1)=2$.
+    \item 函数的凸性与拐点：
+    \[f''(x)=-60x^3+30x=-60x\left(x+\frac{\sqrt{2}}{2}\right)\left(x-\frac{\sqrt{2}}{2}\right)\]
+    拐点的可能值是$-\frac{\sqrt{2}}{2},0,\frac{\sqrt{2}}{2}$. 又$f''(x)$的符号变化情况是
+    \begin{itemize}
+        \item 当$x<-\frac{\sqrt{2}}{2}$时，$f''(x)>0$, 此时曲线向下凸；
+        \item 当$-\frac{\sqrt{2}}{2}<x<0$时，$f''(x)<0$, 此时曲线向上凸；
+        \item 当$0<x<\frac{\sqrt{2}}{2}$时，$f''(x)>0$, 此时曲线向下凸；
+        \item 当$x>\frac{\sqrt{2}}{2}$时，$f''(x)<0$, 此时曲线向上凸；
+    \end{itemize}
+    因此：$x=-\frac{\sqrt{2}}{2},0,\frac{\sqrt{2}}{2}$的点都是拐点。
+    
+    \item 列表：今将讨论情况列成下表，并作图（如图2.45）
+    \end{enumerate}    
+    \begin{center}\small
+        \begin{tabular}{cccccccccccc}
+        \hline
+        $x$ & &$-1$&&$-\frac{\sqrt{2}}{2}$&&0&&$\frac{\sqrt{2}}{2}$&&1\\
+        \hline
+        $f'(x)$& $-$ & 0&$+$&$+$&$+$&0&$+$&$+$&$+$&0&$-$\\
+        $f''(x)$&$+$&$+$&$+$&0&$-$&0&$+$&0&$-$&$-$&$-$\\
+        $f(x)$&下凸&极小值& $\nearrow$  & $-1.24$&上凸 & 0& 下凸 &1.24& 上凸 & 极大值 & $\searrow$  \\
+        & $\searrow $ &$-2$&&&$\nearrow $&&$\nearrow $&&$\nearrow $&2\\
+        \hline
+        \end{tabular}
+        \end{center}
+        
+    \begin{figure}[htp]
+        \centering
+    \begin{tikzpicture}[>=latex, xscale=1.5]
+    \draw[->](-2.5,0)--(2.5,0)node[right]{$x$};
+    \draw[->](0,-3)--(0,3)node[right]{$y$}; 
+    \draw[domain=-1.4:1.4, samples=200, very thick]plot(\x, {-3*\x^5+5*\x^3});
+    \foreach \x in {-1,-2,1,2}
+    {
+        \draw(\x,.1)--(\x,0)node[below]{$\x$};
+    }
+    \node at (0,0)[below right]{$O$};
+    \draw[dashed](-.707,-1.24)--(-.707,0)node[above]{$-\tfrac{\sqrt{2}}{2}$};
+    \draw[dashed](.707,1.24)--(.707,0)node[below]{$\tfrac{\sqrt{2}}{2}$};
+    \node at (1.29,0)[above]{$\sqrt{\tfrac{5}{3}}$};
+    
+    \end{tikzpicture}
+        \caption{}
+    \end{figure}
+    \end{solution}
+    
+    
+    \begin{example}    
+    描绘函数$y=\frac{(x-3)^2}{4(x-1)}$的图象。
+    \end{example}
+    
+    \begin{solution}
+        这个函数在$x=1$这点没有定义，并且，当$x\to 1^-$时，$y\to -\infty$; 当$x\to 1^+$时，$y\to +\infty$, 所以$x=1$是曲线的铅直渐近线，曲线在$x=1$这点断开．
+        
+    求导数，得
+    \[y'= \frac{(x+1) (x-3)}{4 (x-1)^2}\]
+    
+    当$x<-1$时，$y'>0$; 当$-1<x<3$时，$y'>0$. 因此，$x=-1$是极大点；$x=3$是极小点．又极大值$f(-1)=-2$; 极小值$f(3)=0$
+    
+    求二阶导数，得
+    \[y''=\frac{2}{(x-1)^3}\]
+    \begin{itemize}
+        \item 当$x<1$时，$y''<0$, 曲线向上凸；
+        \item 当$x>1$时，$y''>0$, 曲线向下凸，但是曲线在$x=1$这一
+        点断开，因此$x=1$不是曲线的拐点．
+    \end{itemize}
+    
+    又因为
+    \[y=\frac{(x-3)^2}{4(x-1)}=\frac{1}{4}(x-5)+\frac{1}{x-1}\]
+    \[\lim_{x\to \infty}\left[\frac{(x-3)^2}{4(x-1)}-\frac{1}{4}(x-5)\right]=\lim_{x\to\infty}\frac{1}{x-1}=0\]
+    这就是说曲线以$y=\frac{1}{4}x-\frac{5}{4}$为渐近线。
+    
+    综合起来得到下面结果：
+    \begin{center}
+        \begin{tabular}{cccccccccccc}
+        \hline
+        $x$ & &$-1$&&0&&1&&3&\\
+        \hline
+        $y'$& $+$ & 0&$-$&$-$&$-$&$\x$&$-$&0&$+$\\
+        $y''$&$-$&$-$&$-$&$-$&$-$&$\x$&$+$&$+$&$+$\\
+        $y$&$\nearrow$ &极大值& $\searrow$  & $\searrow$&$\searrow$ & $\x$& $\searrow$ & 极小值 & $\nearrow$  \\
+        &  &$-2$&&$-\frac{9}{4}$&$-\infty $&&$+\infty$&0 &\\
+        \hline
+        \end{tabular}
+        \end{center}
+    
+    画出具体图形如图2.46.
+    \begin{figure}[htp]
+        \centering
+    \begin{tikzpicture}[>=latex]
+        \draw[->](-3.5,0)--(6.5,0)node[right]{$x$};
+        \draw[->](0,-5)--(0,3)node[right]{$y$}; 
+    \draw[domain=-3.5:6.5, samples=10, thick]plot(\x, {0.25*\x -1.25});
+    \draw[domain=-3:.7, samples=100, very thick]plot(\x, {(\x-3)^2/(4*(\x-1))});
+    \draw[domain=1.3:6, samples=100, very thick]plot(\x, {(\x-3)^2/(4*(\x-1))});
+    \node at (0,0)[below left]{$O$};
+    \draw[dashed](1,-5)--(1,3);
+    \foreach \x in {1,2,3,4}
+    {
+        \draw(\x,0)node[below]{$\x$}--(\x,.1);
+    }
+    \foreach \x in {-1,-2}
+    {
+        \draw(0,\x)node[left]{$\x$}--(.1,\x);
+    }
+    
+    \node at (2,-1)[ right]{$y=\frac{1}{4}x-\frac{5}{4}$};
+    \node at (3,1)[ right]{$y=\frac{(x-3)^2}{4(x-1)}$};
+    
+    \end{tikzpicture} 
+        \caption{}
+    \end{figure}
+    \end{solution}
+    
+    
+    
+    \begin{ex}
+    \begin{enumerate}
+        \item 讨论下列函数的极值、凸性和拐点, 并画出函数图象.
+    \begin{multicols}{2}
+    \begin{enumerate}
+    \item  $y=\frac{6(x-1)}{x^{2}+3}$
+    \item  $y=(x-1)^{3}-3(x-1)$
+    \item  $y=\frac{x^{4}}{2}-x^{2}$
+    \item  $y=1+4 x^{3}-3 x^{4}$
+    \item  $y=\sqrt{(x+2)^{2}\left(16-x^{2}\right)}$
+    \item  $y=x^{x}\quad (x>0.1)$
+    \item  $y=x e^{-x}$
+    \end{enumerate}
+    \end{multicols}
+    
+        \item 作下列函数的图象, 并画出渐近线及在拐点处的切线:
+        \begin{multicols}{2}
+            \begin{enumerate}
+                \item $y=x+\frac{1}{x}$
+                \item $y=\frac{x^{2}}{1+x^{3}}$
+                \item $y=\frac{2 x}{1-x^{2}}$
+                \item $y=\frac{x^{3}}{x^{2}-4}$
+                \item $y=\frac{(x-5)(x+3)}{(x+2)^{2}}$
+    \end{enumerate}
+    \end{multicols}
+    \end{enumerate}
+    \end{ex}
+    
+    \subsection*{习题2.3}
+    \begin{enumerate}
+        \item 求函数$f(x)=x^3+ax^2-3bx+c$的图象关于原点对称时，$f(x)$在区间$-2\le x\le 2$上的最小值，其中$b>0$.
+        
+        \item 函数$f(x)=3x^2-ax^3$在区间$0\le x\le 2$上的最小值
+        是$-4$, 求
+    \begin{enumerate}
+        \item $a$的值
+        \item $f(x)$在区间$0\le x\le 2$的最大值$M$
+    \end{enumerate}
+    \item 设$a,b$为实数，求函数$y=x^3-3ax^2+bx+1$在区间$0\le x\le 1$上单调增加时，点$(a,b)$存在范围，并用图表示出来。
+    
+    \item 设$f(x)=x^3-5x^2+3x+a$, 在怎样的情况下对于
+    $x$的正值，总有$f(x)>0$成立？
+    \item 设$a$是常数，对于函数$f(x)=4x^3-3x+a$
+    \begin{enumerate}
+        \item 求$y=f(x)$的极大值和极小值；
+        \item 确定当方程$f(x)=0$有三个不相等的实根时，$a$值的范围。
+    \end{enumerate}
+    
+    \item 讨论函数$y=\frac{x^3}{2 (x+2)}$的极值，凸向，拐点，渐近线，
+    并作出它的图象。
+    
+    \item 求证$\pi<\frac{\sin\pi x}{x(1-x)}\le 4$.
+    \item 对于已知半径为$R$的球，求具有最小体积的外切圆锥
+    的体积。
+    \item 一长方体的对角线长$\sqrt{11}$cm，全面积为$14{\rm cm}^2$, 求它的体积的最大值，并求体积为最大时三边的长。
+    \item 一浮标由三部分组成，一个圆筒与两个相等的圆
+    锥，其中每一个圆锥的高等于圆筒的高，问当表面积一定时，什么样的形状会有最大的体积。
+    \end{enumerate}     
+    
+    
+    
