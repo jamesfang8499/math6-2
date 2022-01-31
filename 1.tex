@@ -17,7 +17,14 @@ $f (x_1 ) ,f (x_2) , \ldots,f (x_n ) ,\ldots$
 从几何上看，极限式(1.1)表示随着$x$无限增大，曲线$y=f(x)$以直线$\ell$为渐近线（图1.1）。
 \begin{figure}[htp]
     \centering
-    
+\begin{tikzpicture}[>=latex]
+\draw[->](-3,0)--(5,0)node[right]{$x$};  
+\draw[->](0,-1)--(0,3)node[right]{$y$};    
+\draw[thick](-3,1)--(5,1)node[right]{$y=\ell$};
+\draw[very thick, rounded corners=10pt](-3,.1) --(-1.5,.3) --(-.5,.8) --(1,1.5) --(2.5,.7) -- (3,1.2)--(3.5,.8) --(4.5,1.05);
+\node at (0,0)[below right]{$O$};
+
+\end{tikzpicture}
     \caption{}
 \end{figure}
 
@@ -76,7 +83,19 @@ $\Lim_{x\to\infty} \sin x$不存在。
 
 \begin{figure}[htp]
     \centering
-    
+\begin{tikzpicture}[>=latex]
+\draw[->](-3,0)--(5,0)node[right]{$x$};  
+\draw[->](0,-1)--(0,3)node[right]{$y$};    
+\draw[domain=-2:4, samples=100, very thick]plot(\x, {.5*cos(\x r)+1});
+\node at (0,0)[below right]{$O$};
+\node at (-1,1.5){$y=f(x)$};
+\draw[dashed](pi/2,0)node[below]{$a$}--(pi/2,1)node[above]{$(a,\ell)$};
+
+\tkzDefPoints{1.57/1/A, 1.3/1.133/B, 1.8/0.886/C}
+\tkzDrawPoints(A,B,C)
+\tkzLabelPoint[below left](B){$(x,f(x))$}
+\tkzLabelPoint[above right](C){$(x,f(x))$}
+\end{tikzpicture}
     \caption{}
 \end{figure}
 
@@ -1390,8 +1409,15 @@ $\therefore\quad \Lim_{x\to 2}\sqrt{\frac{1-\cos\pi x}{4-x^2}}=\sqrt{\Lim_{x\to 
 用几何术语来说，$y=f(x),\; a\le x\le b$的图象是一条连结$P(a,f(a))$点和$Q(b,f(b))$点的连续曲线，而$P$、$Q$分居于直线$y=c$的两侧，则曲线$y=f(x),\; a\le x\le b$至少和直线$y=c$有一个交点（$x_0,\; f(x_0)=c$）。(图1.14).
 \begin{figure}[htp]
     \centering
-\begin{tikzpicture}
-    
+\begin{tikzpicture}[>=latex, xscale=1.8]
+\draw[->](-1,-.2)--(3,-.2)node[right]{$x$};
+\draw[->](.5,-2.5)--(.5,2.5)node[right]{$y$};
+\draw[very thick, domain=-.5:2.4, samples=100]plot(\x, {\x*(\x-1)*(\x-2)})node[below left]{$y=f(x)$};
+\draw[dashed](-.5,-.2)node[below left]{$a$}--(-.5,-1.875)node[below]{$P(a,f(a))$};
+\draw[dashed](2.4,-.2)node[below]{$b$}--(2.4,1.344)node[above]{$Q(b,f(b))$};
+\draw[thick](-.75,.2)node[above]{$y=c$}--(2.75,.2);
+\draw[dashed](0.7909,.2)--(0.7909,-.2)node[below]{$x_0$};
+
 \end{tikzpicture}
     \caption{}
 \end{figure}
@@ -1408,6 +1434,41 @@ $\therefore\quad \Lim_{x\to 2}\sqrt{\frac{1-\cos\pi x}{4-x^2}}=\sqrt{\Lim_{x\to 
 
 从图1.15可以看出，在$[a,b]$中，能够找到两点$x_1,x_2$使$f(x_1)=M$, $f(x_2)=m$, 而对于$[a,b]$中所有的$x$, 都有
 \[m=f(x_2)\le f(x)\le f(x_1)=M\]
+
+
+\begin{figure}[htp]
+    \centering
+    \begin{minipage}[t]{0.48\textwidth}
+    \centering
+    \begin{tikzpicture}[>=latex, yscale=1.5]
+\draw[->](0,0)--(4,0)node[right]{$x$};
+\draw[->](.5,-.5)--(.5,2)node[right]{$y$};
+\draw[rounded corners=5pt, very thick](1,.5)--(1.25,1)--(1.5,1.3)--(1.75,1)--(2,0)--(2.25,-.5)--(2.6,0)--(2.8,.3)--(3,0)--(3.2,-.3);
+\draw[dashed](1,.5)--(1,0)node[below]{$a$};
+\draw[dashed](3.2,-.3)--(3.2,0)node[above]{$b$};
+\draw[dashed](1.5,1.2)--(1.5,0)node[below]{$x_1$};
+\draw[dashed](2.25,-.4)--(2.25,0)node[above]{$x_2$};
+\node at (.5,0)[below left]{$O$};
+
+    \end{tikzpicture}
+    \caption{}
+    \end{minipage}
+    \begin{minipage}[t]{0.48\textwidth}
+    \centering
+    \begin{tikzpicture}[>=latex, scale=1.5]
+\draw[->](-.5,0)--(2,0)node[right]{$x$};
+\draw[->](0,-.5)--(0,2)node[right]{$y$};
+\draw(1,0)node[below]{1}--(1,.1);
+\draw(0,1)node[left]{1}--(.1,1);
+\node at (0,0)[below right]{$O$};
+\draw[very thick](0,0)--(1,1);
+\tkzDefPoints{0/0/O, 1/1/A}
+\tkzDrawPoints(O,A)
+    \end{tikzpicture}
+    \caption{}
+    \end{minipage}
+  \end{figure}
+
 
 \begin{rmk}
     这个定理是假定$f$在整个闭区间上连续，如果在一点不连续，则定理的结论就可能不成立。

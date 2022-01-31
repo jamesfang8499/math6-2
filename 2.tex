@@ -49,8 +49,63 @@
 为，照此定义，图2.2所示的直线就不是过曲线上$P$点的切线了，实际上，尽管图2.2的直线与曲线还有一个交点$Q$, 但它在曲
 线$P$点邻近却与曲线密合，故仍应该是过曲线$P$点的切线；又图2.3表明过抛物线上任何一点$P$与$y$轴平行的直线虽然与抛物线只有一个交点，但它的其余部分却远离$P$点邻近的弧，故它不应该是抛物线的切线，定义切线的可行途径是从割线开始，并应用极限的概念。
 
+\begin{figure}[htp]
+    \centering
+    \begin{minipage}[t]{0.48\textwidth}
+    \centering
+    \begin{tikzpicture}[>=latex, scale=.7]
+\draw[->](-4,0)--(4,0)node[right]{$x$};
+\draw[->](0,-2)--(0,3.5)node[right]{$y$};
+\draw[domain=-3.2:3, very thick, samples=100]plot(\x, {.06*\x^3+.5})node[above]{$y=f(x)$};
+\node at (0,0)[below left]{$O$};
+\node at (1.5,.7025)[above]{$P$};
+\draw[domain=-4:3.5, samples=10, thick]plot(\x, {.405*\x+.095});
+\node at (-3,-1.12)[below right]{$Q$};
+    \end{tikzpicture}
+    \caption{}
+    \end{minipage}
+    \begin{minipage}[t]{0.48\textwidth}
+    \centering
+    \begin{tikzpicture}[>=latex, scale=.8]
+  \draw[->](-3,0)--(3,0)node[right]{$x$};
+\draw[->](0,-1)--(0,4)node[right]{$y$};
+\draw[domain=-2:2, very thick, samples=100]plot(\x, {\x*\x});
+\node at (-1.2,1)[left] {$f(x)=x^2$};
+\draw(1,0.2)--(1,2);
+\node at (1,1)[right]{$P$};
+\node at (0,0)[below left]{$O$};
+\draw[domain=.2:2, samples=10, thick]plot(\x, {2*\x-1});
+
+
+    \end{tikzpicture}
+    \caption{}
+    \end{minipage}
+  \end{figure}
+
+
 
 如图2.4所示，取曲线$y=f(x)$上点$P$附近的另一点$Q$, 通过这两点画一条直线，这直线叫做过曲线上$P$点的割线，让$Q$点沿曲线向点$P$移动，这条割线将达到极限位置，此极限位置与$Q$点从哪一侧趋向于$P$是无关的，我们称这个割线的极限位置为过曲线上$P$点的切线。
+
+\begin{figure}[htp]
+    \centering
+\begin{tikzpicture}[>=latex, scale=1.5]
+    \draw[->](-.5,0)--(4,0)node[right]{$x$};
+    \draw[->](0,-.5)--(0,3)node[right]{$y$};
+    \node at (0,0)[below left]{$O$};
+    \draw[domain=.5:3.2, samples=100, very thick]plot(\x, {-.5*(\x-2.25)^2+2})node[right]{$y=f(x)$};
+    \tkzDefPoints{1/1.22/P, 3/1.72/Q, 3.5/1.22/P'}
+    \tkzLabelPoints[above](P,Q)
+    \tkzDrawSegments(P,P')
+    \draw[domain=.2:2, samples=10, thick]plot(\x, {1.25*\x-0.03});
+    \tkzDefPoints{3/3.72/Q'}
+    \tkzDrawLines(P,Q)
+    \tkzMarkAngles[mark=none, size=.7](P',P,Q)
+    \tkzMarkAngles[mark=none, size=.3](P',P,Q')
+    \tkzLabelAngle[pos=.5](P',P,Q'){$\alpha_1$}
+    \tkzLabelAngle[pos=.9](P',P,Q){$\alpha$}
+\end{tikzpicture}
+    \caption{}
+\end{figure}
 
 割线的这种极限位置的存在性这一假设，与曲线在点$P$具有唯一的一条切线或确定的方向的假设是等价的。
 
@@ -271,6 +326,27 @@ $\frac{\dd y}{\dd x}\Big|_{x=x_0}$.
     求函数$f(x)=|x^2-1|$的导函数的定义域。
 \end{example}
 
+\begin{figure}[htp]
+    \centering
+\begin{tikzpicture}[>=latex, scale=1]
+    \draw[->](-2.5,0)--(2.5,0)node[right]{$x$};
+    \draw[->](0,-.5)--(0,5)node[right]{$y$};
+    \node at (0,0)[below left]{$O$};
+    \draw[domain=-2.3:-1, samples=100, very thick]plot(\x, {\x*\x-1});
+    \draw[domain=1:2.3, samples=100, very thick]plot(\x, {\x*\x-1});
+    \draw[domain=-1:1, samples=100, very thick]plot(\x, {-\x*\x+1});
+    \node at (0,0)[below left]{$O$};
+    \node at (-1,0)[below left]{$-1$};
+    \node at (1,0)[below right]{$1$};
+    
+    \draw[domain=-2:-.5, samples=10, thick]plot(\x, {-2*\x-2});
+    \draw[domain=-1.5:.5, samples=10, thick]plot(\x, {2*\x+2});
+    \draw[domain=-.5:1.5, samples=10, thick]plot(\x, {-2*\x+2});
+    \draw[domain=.5:2, samples=10, thick]plot(\x, {2*\x-2});
+
+\end{tikzpicture}
+    \caption{}
+\end{figure}
     
 \begin{solution}
 函数$f(x)=|x^2-1|$是一个到处连续的函数，它的图象如图2.6所示．
@@ -316,6 +392,61 @@ $f(x)$在$x=-1$点的右导数是
 点1(或$-1$)时，割线的极限位置存在；当动点由右侧趋于定点1(或$-1$)时，割线的极限位置也存在，这两个极限位置分别叫1(或$-1$)点的\textbf{左、右切线}，并且它们之间的夹角不为\textbf{平角}，点$-1$和1分别是曲线的一种\textbf{角点}．
     
 图2.7的情形是曲线$y=f(x)$在$P(x_0,y_0)$点连续并且在此点有平行于$y$轴的切线．现在我们来讨论图2.7中所示各函数在点$x_0$处的导数：
+
+\begin{figure}[htp]
+    \centering
+\begin{tikzpicture}[>=latex]
+\begin{scope}
+\draw[->](-.5,0)--(4,0)node[right]{$x$};
+\draw[->](0,-.5)--(0,4)node[right]{$y$};
+\node at (2,-1){(a)};
+\node at (0,0)[below left]{$O$};
+\draw(2,0)node[below]{$x_0$}--(2,3.5);
+\node at (2,2)[right]{$P(x_0,y_0)$};
+\tkzDefPoints{1.5/.2/A, 2/2/B, 2.5/3.8/C}
+\draw[very thick](A) to [bend right=18] (B) to [bend left=18](C);
+
+\end{scope}
+\begin{scope}[xshift=6cm]
+    \draw[->](-.5,0)--(4,0)node[right]{$x$};
+\draw[->](0,-.5)--(0,4)node[right]{$y$};
+\node at (2,-1){(b)};
+\node at (0,0)[below left]{$O$};
+\draw(2,0)node[below]{$x_0$}--(2,3.5);
+\node at (2,2)[right]{$P(x_0,y_0)$};
+\tkzDefPoints{2.5/.2/A, 2/2/B, 1.5/3.8/C}
+\draw[very thick](A) to [bend right=-18] (B) to [bend left=-18](C);
+
+\end{scope}
+\begin{scope}[yshift=-6cm]
+    \draw[->](-.5,0)--(4,0)node[right]{$x$};
+\draw[->](0,-.5)--(0,4)node[right]{$y$};
+\node at (2,-1){(c)};
+\node at (0,0)[below left]{$O$};
+\draw(2,0)node[below]{$x_0$}--(2,3.5);
+\node at (2,2)[right]{$P(x_0,y_0)$};
+\tkzDefPoints{1.5/.2/A, 2/2/B, 2.5/.2/C}
+\draw[very thick](A) to [bend right=18] (B) to [bend left=-18](C);
+
+
+\end{scope}
+
+\begin{scope}[xshift=6cm, yshift=-6cm]
+    \draw[->](-.5,0)--(4,0)node[right]{$x$};
+\draw[->](0,-.5)--(0,4)node[right]{$y$};
+\node at (2,-1){(d)};
+\node at (0,0)[below left]{$O$};
+\draw(2,0)node[below]{$x_0$}--(2,3.5);
+\node at (2,2)[right]{$P(x_0,y_0)$};
+\tkzDefPoints{1.5/3.8/A, 2/2/B, 2.5/3.8/C}
+\draw[very thick](A) to [bend right=-18] (B) to [bend left=18](C);
+
+
+
+\end{scope}
+\end{tikzpicture}
+    \caption{}
+\end{figure}
 
 图(a)表示的函数在点$x_0$的邻近递增，因此过曲线上$P(x_0,y_0)$和$Q(x_0+\Delta x,y_0+\Delta y)$两点的割线，无论$Q$点在$P$点的哪一侧，$\Delta x$与$\Delta y$都有相同正、负号，于是
 \[\frac{\Delta y}{\Delta x}=\frac{f(x_0+\Delta x)-f(x_0)}{\Delta x}>0\]
@@ -371,6 +502,28 @@ $x_0+\Delta x$，于是由$\Delta x$所引起的相应的函数的改变量$\Del
 其几何意义来说，当动点沿着曲线$y=x\sin\frac{1}{x}$趋于原点$O$
 时，割线$OQ$不断地在$-\frac{\pi}{4}\le \theta\le \frac{\pi}{4}$这个幅度之内摆动，而不趋于任何极限位置，即切线不存在（图2.8）。
 \end{solution}
+
+\begin{figure}[htp]
+    \centering
+\begin{tikzpicture}[>=latex, scale=3]
+\draw[->](-1.8,0)--(1.8,0)node[right]{$x$};
+\draw[->](0,-.5)--(0,1.5)node[right]{$y$};
+\draw[domain=.02:1.8, very thick, samples=300]plot(\x, {\x*sin(1/\x r)});
+\draw[domain=.02:1.8, very thick, samples=300]plot(-\x, {\x*sin(1/\x r)});
+\draw[thick](-.4,-.4)--(1.3,1.3);
+\draw[thick](.4,-.4)--(-1.3,1.3);
+\draw[thick](15:1.5)--(-165:1);
+\draw[dashed](-1.8,1)--(1.8,1);
+
+\foreach \x in {1,2,3,4}
+{
+   \draw(\x/pi,0)node[below]{$\frac{\x}{\pi}$}--(\x/pi,.04);
+}
+
+\node at (0,0)[above]{$O$};
+\end{tikzpicture}
+    \caption{}
+\end{figure}
 
 通过以上的例子，我们知道函数的连续点未必是它的可以微分点。几种常见的不可微分点如例2.4的角点，平行于$y$轴的切线的切点，特别是曲线上的尖点和在例2.5的曲线上的不存在割线的极限位置的点。
 
@@ -1284,7 +1437,7 @@ $\frac{\dd \theta}{\dd t}=100\text{弧度/时}$，将弧度化为角度即为$\f
     \end{minipage}
     \begin{minipage}[t]{0.48\textwidth}
     \centering
-    \begin{tikzpicture}[>=stealth, scale=1.5]
+    \begin{tikzpicture}[>=latex, scale=1.5]
         \draw[very thick](-1,2.5)--(-.25,2.5)--(-.25,2)--(-1.5,0)--(1.5,0)--(.25,2)--(.25,2.5)--(1,2.5);
 \draw[|<->|](1.75,0)--node[fill=white]{12cm}(1.75,2.5);
 \draw[dashed](1,2.5)--(1.75,2.5);
@@ -2684,7 +2837,7 @@ $c\in (a,b)$有$f'(c)=0$. 因此，可设$f$在$[a,b]$中不为常数，此时$f
     \end{minipage}
     \begin{minipage}[t]{0.48\textwidth}
     \centering
-    \begin{tikzpicture}[>=stealth, scale=1.5]
+    \begin{tikzpicture}[>=latex, scale=1.5]
         \draw[->](-1.5,0)--(1.5,0)node[right]{$x$};
         \draw[->](0,-.25)--(0,2)node[right]{$y$};
         \draw[thick](-1,0)node[below]{$(-1,0)$}--(0,1)node[above right]{$(0,1)$}--node[right]{$g(x)=1-|x|$}(1,0)node[below]{$(1,0)$};
@@ -2899,7 +3052,7 @@ $\therefore\quad c=2$. 于是
     \end{minipage}
     \begin{minipage}[t]{0.48\textwidth}
     \centering
-    \begin{tikzpicture}[>=stealth, scale=1.5]
+    \begin{tikzpicture}[>=latex, scale=1.5]
        
     \end{tikzpicture}
     \caption{}
@@ -3050,7 +3203,7 @@ $(\sin x)^{-2}\le x^{-2}+1-\frac{4}{\pi^2}$
     \end{minipage}
     \begin{minipage}[t]{0.48\textwidth}
     \centering
-    \begin{tikzpicture}[>=stealth, scale=.35]
+    \begin{tikzpicture}[>=latex, scale=.35]
         \draw[->](-5,0)--(5,0)node[right]{$x$};
 \draw[->](0,-8)--(0,9)node[right]{$y$};
 \draw[domain=-2:2, samples=100, very thick]plot(\x, {\x^3});
@@ -3591,7 +3744,7 @@ $\therefore\quad f(1)=0$不仅是极小值也是最小值。于是：
     \end{minipage}
     \begin{minipage}[t]{0.48\textwidth}
     \centering
-    \begin{tikzpicture}[>=stealth, scale=.9]
+    \begin{tikzpicture}[>=latex, scale=.9]
 \draw[->](-.5,0)--(5,0)node[right]{$x$};
 \draw[->](0,-.5)--(0,4)node[right]{$y$};
 \draw[domain=1.5:4, samples=100, very thick]plot(\x,{-0.5*(\x-3)^2+2})node[right]{$y=f(x)$};
@@ -3629,7 +3782,7 @@ $y=f(x)$由向上凸变为向下凸，或者由向下凸变为向上凸，则点
     \end{minipage}
     \begin{minipage}[t]{0.48\textwidth}
     \centering
-    \begin{tikzpicture}[>=stealth, yscale=.8]
+    \begin{tikzpicture}[>=latex, yscale=.8]
    \draw[->](-3,.5)--(2,.5)node[right]{$x$};
     \draw[->](-2,0)--(-2,4)node[right]{$y$};
     \draw[domain=-.5*pi:.5*pi, samples=100, very thick]plot(\x,{sin(\x r)+2});
@@ -3697,7 +3850,7 @@ $y=f(x)$由向上凸变为向下凸，或者由向下凸变为向上凸，则点
     \end{minipage}
     \begin{minipage}[t]{0.48\textwidth}
     \centering
-    \begin{tikzpicture}[>=stealth, scale=1]
+    \begin{tikzpicture}[>=latex, scale=1]
        \draw[->](-.5,0)--(5,0)node[right]{$x$};
 \draw[->](0,-.5)--(0,4)node[right]{$y$};
 \draw[domain=.25:4, samples=100, very thick]plot(\x,{0.4*(\x-1.5)^2+1})node[right]{$y=f(x)$};
@@ -3831,7 +3984,7 @@ $(a,c)$上的函数值的符号和在$(c,b)$上的相反，依凸性判定定理
     \end{minipage}
     \begin{minipage}[t]{0.48\textwidth}
     \centering
-    \begin{tikzpicture}[>=stealth, xscale=.6]
+    \begin{tikzpicture}[>=latex, xscale=.6]
        \draw[->](-4.5,0)--(5.5,0)node[right]{$x$};
 \draw[->](0,-4)--(0,2)node[right]{$y$};
 \draw[->](-4.5,-3)--(5.5,-3)node[right]{$x$};
@@ -4249,7 +4402,7 @@ $x$的正值，总有$f(x)>0$成立？
         \end{minipage}
         \begin{minipage}[t]{0.48\textwidth}
         \centering
-        \begin{tikzpicture}[>=stealth, xscale=.6]
+        \begin{tikzpicture}[>=latex, xscale=.6]
            \draw[->](-4.5,0)--(5.5,0)node[right]{$x$};
     \draw[->](0,-4)--(0,2)node[right]{$y$};
     \draw[->](-4.5,-3)--(5.5,-3)node[right]{$x$};
