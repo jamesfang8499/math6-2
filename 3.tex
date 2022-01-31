@@ -646,385 +646,362 @@ $f(x)$的极大值，并且$y=2x-x^2$在$[0, 1]$上递增，在$[1,2]$上递减�
 
 任意一条曲线围成的图形（图3.11）常常可以用两组互相垂直的直线把它分成若干部分，每一部分都是一个曲边梯形（图3.12）, 在这里并不排除下述情形（图3.13）：两条平行的边中有一条缩成了一点，因而曲边梯形变成了曲边三角形，这样一来，我们的问题就化成了求曲边梯形面积的问题。
 
+\begin{figure}[htp]
+    \centering
+    
+    \caption{}
+\end{figure}
 
+\begin{figure}[htp]
+    \centering
+    
+    \caption{}
+\end{figure}
+
+\begin{figure}[htp]
+    \centering
+    
+    \caption{}
+\end{figure}
+
+\begin{blk}
+  {命题} 设$y=f(x)$是定义在$a\le x\le b$的分段单调连续函数，而且$f(x)\ge 0$, 则区域$R=\{a\le x\le b,\; 0\le y\le f(x)\}$的
+面积等于
+\[\int^b_a f (x) \dd x \]  
+\end{blk}
+
+\begin{figure}[htp]
+    \centering
+\begin{tikzpicture}[>=latex]
+    \draw[->, thick](-.5,0)--(7,0)node[right]{$x$};
+    \draw[->, thick](0,-.5)--(0,5)node[right]{$y$};
+\draw[domain=.5:6, samples=100, very thick]plot(\x, {1.5*sin(1.2*(\x-1) r)+3});
+\draw(.5,0)node[below]{$a$} rectangle  (1.1, .18+3);
+\draw(1.1,0) rectangle  (1.8, 1.23+3);
+\draw(1.8,0) rectangle  (2.5, 1.46+3);
+\draw[pattern=north east lines](2.5,0) rectangle  (3.5, .212+3);
+\draw[pattern=north east lines](3.5,0) rectangle  (4.2, -.965+3);
+\draw[pattern=north east lines](4.2,0) rectangle  (5, -1.49+3);
+\draw(5,0) rectangle  (5.5, -1.16+3);
+\draw(5.5,0) rectangle (6, -.419+3);
+
+\draw[pattern=north east lines](.5,0) rectangle  (1.1, -.847+3);
+\draw[pattern=north east lines](1.1,0) rectangle  (1.8, .18+3);
+\draw[pattern=north east lines](1.8,0) rectangle  (2.5, 1.23+3);
+\draw(2.5,0) rectangle  (3.5, 1.46+3);
+\draw(3.5,0) rectangle  (4.2, .212+3);
+\draw(4.2,0) rectangle  (5, -.965+3);
+\draw[pattern=north east lines](5,0) rectangle  (5.5,-1.49+3);
+\draw[pattern=north east lines](5.5,0) rectangle (6, -1.16+3);
+
+\node at (6,0)[below]{$b$};
+\node at (0,0)[below left]{$O$};
+\node at (4.5,3.2)[above]{$y=f(x)$};
+
+\end{tikzpicture}
+    \caption{}
+\end{figure}
+
+
+\begin{proof}
+    由$\Int^b_a f (x) \dd x$的定义得知，存在两系列阶梯函数
+$\{g_n(x)\}$和$\{G_n(x)\}$, 满足下面的性质：
+\[g_n(x)\le f (x) \le G_n(x)\]
+而且$G_n(x)$从$a$到$b$的和与$g_n(x)$从$a$到$b$的和趋于共同的极限$\Int^b_a f (x) \dd x$. 令
+\[\begin{split}
+    R_n&=\{a\le x\le b,\; 0\le y\le g_n(x)\}\\
+    R'_n&=\{a\le x\le b,\; 0\le y\le G_n(x)\}\\
+\end{split}\]
+它们都是由高高低低的狭长方形所组成的区域（图3.14），则：
+\[R_n\subset \text{曲边梯形区域 }R \subset R'_n\]
+而且
+\[R_n\text{的面积}=g_n(x)\text{从$a$到$b$的和}s_n,\qquad R'_n\text{的面积}=G_n(x)\text{从$a$到$b$的和}S_n\]
+即有
+\[s_n<\text{曲边梯形区域$R$的面积}A<S_n\]
+由定积分定义有：
+\[\lim_{n\to\infty}s_n=\lim_{n\to\infty}S_n=\Int^b_a f (x) \dd x\]
+又曲边梯形面积$A=(f,\; [a,b])$也是夹逼在$s_n$和$S_n$中间的实数，所以
+\[A=(f,\; [a,b])=\Int^b_a f (x) \dd x\]
+\end{proof}
+
+\begin{ex}
+\begin{enumerate}
+    \item 求$\Int^1_{-2}e^x\dd x$. 
+
+提示：$\frac{e^{\Delta x}-1}{\Delta x}=1$.    
+
+\item 求在$x=0$与$x=\pi$间正弦曲线$y=\sin x$与$Ox$轴所包的面积。
+\end{enumerate}
+\end{ex}    
+
+\subsection{定积分的基本性质}
+
+为简单起见，我们约定以下被积函数在积分区间上连续并且可以分段单调，即$f(x)$是在$[a,b]$上连续并且只有有限个极大值和极小值的函数。
+
+\begin{blk}{性质1}
+若$a<b<c$，那么，
+\[\int^b_a f(x)\dd x+\int^c_b f(x)\dd x=\int^c_a f(x)\dd x\]
+\end{blk}
+
+\begin{proof}
+因为$\Int^b_a f(x)\dd x$存在，故对于在$[a,b]$上的
+$f(x)$, 存在一组上、下夹逼函数列$\{g_n(x)\}$和$\{G_n(x)\}$, 使得
+\[g_n (x) \le f (x) \le G_n (x),\qquad x\in [a,b]\]
+且相应的阶梯函数在$[a,b]$上的和$s_n$与$S_n$适合
+\begin{equation}
+    s_n<\int^b_a f(x)\dd x<S_n,\qquad S_n-s_n\to 0
+\end{equation}
+对于在$[b,c]$上的$f(x)$, 同样得到
+\[\bar g_n (x) \le f (x) \le \bar G_n (x),\qquad x\in [b,c]\]
+且
+\begin{equation}
+    \bar  s_n<\int^c_b f(x)\dd x<\bar S_n,\qquad \bar S_n-\bar s_n\to 0
+\end{equation}
+$(3.4)+(3.5)$得到
+\begin{equation}
+    s_n+ \bar  s_n<\int^b_a f(x)\dd x+\int^c_b f(x)\dd x<S_n+\bar S_n
+\end{equation}
+
+另一方面，对于函数$f(x)\; (a\le x\le c)$存在下面一组阶梯函数列：
+\[\tilde g_n(x)=\begin{cases}
+    g_n(x),  &  a\le x\le b\\
+    \max\left(g_n(b), \bar g_n(b)\right),  &  x=b\\
+    \bar g_n(x), & b<x\le c
+\end{cases}\]
+\[\tilde G_n(x)=\begin{cases}
+    G_n(x),  &  a\le x\le b\\
+    \max\left(G_n(b), \bar G_n(b)\right),  &  x=b\\
+    \bar G_n(x), & b<x\le c
+\end{cases}\]
+
+由性质2，阶梯函数列$\tilde g_n(x)$与$\tilde G_n(x)$的从$a$到$c$的和分别是$s_n+\bar s_n$和$S_n+\bar S_n$。因为$\tilde g_n(x)$与$\tilde G(x)$满足条件：
+\begin{enumerate}
+    \item $\tilde g_n(x)\le f(x)\le \tilde G(x),\quad a\le x\le c$
+    \item \[\begin{split}
+    \lim_{n\to\infty}\left[(S_n+\bar S_n)-(s_n+\bar s_n)\right]&=\lim_{n\to\infty}\left[(S_n-s_n)+(\bar S_n-\bar s_n)\right]\\
+    &=\lim_{n\to\infty}(S_n-s_n)+\lim_{n\to\infty}(\bar S_n-\bar s_n)=0
+    \end{split}\]
+\end{enumerate}
+所以根据定积分定义得到
+\[\lim_{n\to\infty}(S_n+\bar S_n)=\lim_{n\to\infty}(s_n+\bar s_n)=\int^c_a f(x)\dd x \]
+
+因为$\Int^c_a f(x)\dd x $与$\Int^b_a f(x)\dd x +\Int^c_b f(x)\dd x $都是被$s_n+\bar s_n$与$S_n+\bar S_n$所夹逼的唯一实数，所以
+\[\Int^c_a f(x)\dd x=\Int^b_a f(x)\dd x +\Int^c_b f(x)\dd x\]
+\end{proof}
+
+\begin{blk}{性质2}
+若$f(x)=f_1(x)+f_2(x)$，则：
+\[\Int^b_a f(x)\dd x=\Int^b_a f_1(x)\dd x +\Int^b_a f_2(x)\dd x\]
+\end{blk}
+
+\begin{proof}
+设$\{g_n(x)\}$与$\{G_n(x)\}$是$f_1(x)$在$[a,b]$上的上、下夹逼阶梯函数列，又$\{\bar g_n(x)\}$与$\{\bar G_n(x)\}$是$f_2(x)$在$[a,b]$上的上、下夹逼阶梯函数列。$s_n, S_n, \bar s_n, \bar S_n$是相应的阶梯函数从$a$到$b$的和。于是由
+$\Int^b_a f_1(x)\dd x$和$\Int^b_a f_2(x)\dd x$的存在，得：
+\begin{align}
+g_n(x)\le f_1(x)\le G_n(x),\qquad a\le x\le b\\
+\bar g_n(x)\le f_2(x)\le \bar G_n(x),\qquad a\le x\le b
+\end{align}
+并且
+\begin{align}
+s_n<\Int^b_a f_1(x)\dd x<S_n,\quad \text{且 } S_n-s_n\to 0\\
+\bar s_n<\Int^b_a f_2(x)\dd x<\bar S_n,\quad \text{且 } \bar S_n-\bar s_n\to 0
+\end{align}
+由$(3.9)+(3.10)$，得到
+\begin{equation}
+   s_n+ \bar s_n <\Int^b_a f_1(x)\dd x+\Int^b_a f_2(x)\dd x<S_n+\bar S_n
+\end{equation}
+另一方面，由$(3.7)+(3.8)$，得到
+\[g_n(x)+\bar g_n(x)\le f_1(x)+ f_2(x)\le G_n(x)+\bar G_n(x),\qquad a\le x\le b\]
+而且，$g_n(x)+\bar g_n(x)$与$G_n(x)+\bar G_n(x)$也是在$[a,b]$上的阶梯函数，我们要说明它们是$f_1(x)+ f_2(x)$在$[a,b]$上的一组夹逼阶梯函数列。
+
+因为：
+\[\begin{split}
+    g_n(x)+\bar g_n(x)\text{从$a$到$b$的和}&=\left[ g_n(x)\text{从$a$到$b$的和}\right]+\left[\bar g_n(x)\text{从$a$到$b$的和}\right]\\
+    &=s_n+\bar s_n\\
+    G_n(x)+\bar G_n(x)\text{从$a$到$b$的和}&=\left[ G_n(x)\text{从$a$到$b$的和}\right]+\left[\bar G_n(x)\text{从$a$到$b$的和}\right]\\
+    &=S_n+\bar S_n
+\end{split}\]
+而且
+\begin{equation}
+    \left(S_n+\bar S_n\right)-\left(s_n+\bar s_n\right)=\left(S_n-s_n\right)+\left(\bar S_n-\bar s_n\right)\to 0
+\end{equation}
+所以，由$\Int^b_a \bigl(f_1(x)+ f_2(x)\bigr)\dd x$的定义，得到
+\begin{equation}
+    \lim_{n\to\infty}\left(S_n+\bar S_n\right)=\lim_{n\to\infty}\left(s_n+\bar s_n\right)=\Int^b_a \bigl(f_1(x)+ f_2(x)\bigr)\dd x
+\end{equation}
+由(3.10)和(3.13)，$\Int^b_a \bigl(f_1(x)+ f_2(x)\bigr)\dd x$与$\Int^b_a f_1(x)\dd x + \Int^b_a  f_2(x)\dd x$
+是被$s_n+\bar s_n$与$S_n+\bar S_n$所夹逼的唯一实数，所以
+\[\Int^b_a \bigl(f_1(x)+ f_2(x)\bigr)\dd x=\Int^b_a f_1(x)\dd x + \Int^b_a  f_2(x)\dd x\]
+\end{proof}
+
+\begin{blk}{性质3}
+\[\Int^b_a kf(x)\dd x =k\Int^b_a f(x)\dd x \]
+\end{blk}
+
+此法则的证明大致和性质2的证明相同，即当$\{g_n(x)\}$和$\{G_n(x)\}$上、下夹逼$f(x)$时，那么在$k>0$的情形，$\{kg_n(x)\}$和$\{kG_n(x)\}$上、下夹逼$kf(x)$; 在$k<0$的情形，$\{kg_n(x)\}$和$\{kG_n(x)\}$上、下夹逼$kf(x)$. 我们把证明的过程留给读者去写。
+
+\begin{blk}{性质4}
+    若$m\le f(x)\le M$, $a\le x\le b$，那么
+    \[m(b-a)\le \Int^b_a f(x)\dd x \le M(b-a) \]
+    \end{blk}
+
+\begin{proof}
+    设$\{g_n(x)\}$与$\{G_n(x)\}$是$f(x)$在$[a,b]$上的夹逼阶梯函数列，$s_n$与$S_n$是相应的阶梯函数在$[a,b]$上的和，根据积分的定义，有
+\[\lim_{n\to\infty}s_n=\lim_{n\to\infty}S_n=\int^b_a f(x)\dd x\]
+换言之，任给一个正数$\varepsilon$，存在自然数$N$，使得当$n<N$时，有
+\begin{equation}
+    S_n<\int^b_a f(x)\dd x+\varepsilon
+\end{equation}
+成立。
+
+又由于$G_n(x)\ge f(x)\ge m,\quad x\in[a,b]$，根据性质1，得到：
+\begin{equation}
+    S_n\ge m(b-a)
+\end{equation}
+所以，当$n>N$时，由(3.14)和(3.15)，有
+\[m(b-a)\le S_n<\int^b_a f(x)\dd x+\varepsilon\]
+即
+\begin{equation}
+    m(b-a)<\int^b_a f(x)\dd x+\varepsilon
+\end{equation}
+成立。
+
+因为这个不等式(3.16)对于每个正数$\varepsilon$都成立，所以
+\[m(b-a)\le \int^b_a f(x)\dd x\]
+同样证明，得到
+\[M(b-a)\ge \int^b_a f(x)\dd x\]
+因此
+\[m(b-a)\le \int^b_a f(x)\dd x\le M(b-a)\]
+\end{proof}
+
+\begin{figure}[htp]
+    \centering
+\begin{tikzpicture}[>=latex]
+\draw[->, thick](-1.5,0)--(3,0)node[right]{$x$};
+\draw[->, thick](-1,-.5)--(-1,4)node[right]{$y$};
+\node at (-1,0)[below left]{$O$};
+\draw[domain=-.1:2.3, samples=50, very thick]plot(\x, {\x*(\x-1)*(\x-2)+2});
+\draw(-.1,0)node[below]{$a$} rectangle (2.3,2.9);
+\node at (2.3,0)[below]{$b$};
+\draw(1.577,0)node[below]{$x_0$}--(1.577,1.615);
+\draw(-.1,1.615)--(2.3,1.615);
+\draw[dashed](-1,1.615)node[left]{$m$}--(-.1,1.615);
+\draw[dashed](-1,2.9)node[left]{$M$}--(-.1,2.9);
+
+\node at (1.1,2.5){$y=f(x)$};
+\end{tikzpicture}
+    \caption{}
+\end{figure}
+
+从几何图形来看，以曲线$y=f(x)$为一边而以线段$[a,b]$为底边的曲边梯形界于以$[a,b]$为底边，高分别等于$m$和$M$的两个矩形之内，
+故曲边梯形的面积$\Int^b_a f(x)\dd x$
+在两个矩形面积$m(b-a)$和$M(b-a)$之间（图3.14）。
+
+这个性质是说分段单调的连续函数$f(x)$在区间$[a,b]$上的定积分是有界的。
+
+\begin{blk}{性质5}
+如果$f(x)\le \varphi(x),\; a\le x\le b$，那么：
+\[\int^b_a f(x)\dd x\le \int^b_a \varphi(x)\dd x\]
+\end{blk}
+
+\begin{proof}
+    设$\{g_n(x)\}$与$\{G_n(x)\}$是$f(x)$在$[a,b]$上的夹逼阶梯函数列，又$\{\bar g_n(x)\}$与$\{\bar G_n(x)\}$是$\varphi(x)$在$[a,b]$上的夹逼阶梯函数列，
+又$s_n, S_n, \bar s_n, \bar S_n$是相应的阶梯函数从$a$到$b$的和。于是根据定积分的定义，有：
+\[s_n<\int^b_a f(x)\dd x<S_n,\qquad \bar s_n<\int^b_a \varphi(x)\dd x<\bar S_n\]
+当$n\to\infty$时，得到：
+\[\begin{split}
+\lim_{n\to\infty}S_n =\lim_{n\to\infty}s_n =\int^b_a f(x)\dd x\\
+\lim_{n\to\infty}\bar S_n =\lim_{n\to\infty}\bar s_n =\int^b_a \varphi(x)\dd x\\
+\end{split}\]
+换言之，任给正数$\varepsilon$，存在$N_1$，使得当$n>N_1$时，有
+\[s_n>\int^b_a f(x)\dd x-\frac{\varepsilon}{2}\]
+
+当$n>N_2$时，有
+\[\bar s_n<\int^b_a \varphi(x)\dd x+\frac{\varepsilon}{2}\]
+
+因为$\bar G_n(x)>\varphi(x)>f(x)>g_n(x),\quad x\in[a,b]$，根据性质1，得到：$\bar S_n=s_n$.
+
+所以，当$n>\max(N_1,N_2)$时，有
+\[\int^b_a f(x)\dd x<s_n+\frac{\varepsilon}{2}<\bar S_n+\frac{\varepsilon}{2}<\int^b_a \varphi(x)\dd x+\varepsilon\]
+因为这个不等式对于每个正数$\varepsilon$都成立，所以必然有
+\[\int^b_a f(x)\dd x\le \int^b_a \varphi(x)\dd x\]
+\end{proof}
+
+\begin{blk}{性质6：定积分中值定理}
+   设函数$f(x)$在闭区间$[a,b]$上分段单调连续，又
+$m=f(c)$, $M=f(d)$分别是$f(x)$在$[a,b]$上的最小值和最大值，则在$[a,b]$上至少存在一点$\xi$, 使得下面的等式成立：
+\[\int^b_a f (x) \dd x=f(\xi) (b-a)\] 
+\end{blk}
+
+\begin{proof}
+    因为$m\le f (x) \le M,\quad x\in [a,b]$, 
+由性质4, 即得
+\[m (b-a)\le \int^b_a f (x) \dd x\le M(b-a)\]
+上面不等式的两端各除以$(b-a)$, 得
+\[f(c)=m\le \frac{\int^b_a f (x) \dd x}{b-a}\le M=f(d)\]
+因为$f(x)$在$[a,b]$上连续，再由连续函数的中间值定理，必存在一个$\xi\in(c,d)$, 使得
+\[f(\xi)=\frac{1}{b-a}\int^b_a f (x) \dd x\]
+两边再乘以$(b-a)$，得
+\[\int^b_a f (x) \dd x=f(\xi)(b-a)\]
+这就是我们所要证明的。
+\end{proof}
+
+这个公式的几何意义是：以线段$[a,b]$为底边，以曲线$y=f(x)$为曲边的曲边梯形，它的面积等于同一底边
+而高为$f(\xi)$的一个矩形的面积（图3.15）。因此，$f(\xi)$称为曲边梯形的平均高度。
+
+我们也称
+\[f(\xi)=\frac{1}{b-a}\int^b_a f (x) \dd x\]
+为$f(x)$在$[a,b]$上的平均值。
+
+\begin{figure}[htp]
+    \centering
+    \begin{minipage}[t]{0.48\textwidth}
+    \centering
+    \begin{tikzpicture}[>=latex, xscale=.8]
+\draw[->, thick](-.5,0)--(5,0)node[right]{$x$};
+\draw[->, thick](0,-.5)--(0,4)node[right]{$y$};
+\node at (0,0)[below left]{$O$};
+\draw[domain=.7:4, very thick, samples=100]plot(\x, {ln(\x)+1.5})node[above]{$y=f(x)$};
+\draw[dashed](.7,0)node[below]{$a$} rectangle (4,2.3);
+\draw[dashed](2.23,0)node[below]{$\xi$}--(2.23,2.3)node[below right]{$f(\xi)$};
+\draw[dashed](4,2.89)--(4,2.3);
+\node at (4,0)[below]{$b$};
+
+    \end{tikzpicture}
+    \caption{}
+    \end{minipage}
+    \begin{minipage}[t]{0.48\textwidth}
+    \centering
+    \begin{tikzpicture}[>=latex, scale=.5]
+  \draw[->, thick](-2,0)--(6,0)node[right]{$x$};
+\draw[->, thick](0,-8.5)--(0,2)node[right]{$y$};
+\node at (0,0)[below left]{$O$};
+\draw[domain=-1:4, very thick, samples=100]plot(\x, {2*\x-\x*\x});
+\fill[pattern=north east lines, domain=2:4, very thick, samples=100]plot(\x, {2*\x-\x*\x})--(4,0)node[above]{4}
+--(2,0)node[above]{2};
+\draw(1,0)node[below]{1}--(1,.2);
+    \end{tikzpicture}
+    \caption{}
+    \end{minipage}
+  \end{figure}
 
 \begin{example}
-    
+求$\Int^4_2 (2x-x^2)\dd x$.
 \end{example}
 
 
 \begin{solution}
-    
+    根据本节的定积分计算法则得：
+\[\begin{split}
+    \Int^4_2 (2x-x^2)\dd x&=\Int^4_2 2x\dd x+\Int^4_2 (-x^2)\dd x\\
+    &=2\Int^4_2 x\dd x-\Int^4_2 x^2\dd x
+\end{split}\]
+利用例3.4的计算结果，得
+\[\Int^4_2 x\dd x=\frac{4^2-2^2}{2}=6,\qquad \Int^4_2 x^2\dd x=\frac{4^3-2^3}{3}=18\frac{2}{3}\]
+因此
+\[\Int^4_2 (2x-x^2)\dd x=2\x 6-18\frac{2}{3}=-6\frac{2}{3}\]
+它的几何意义是图3.16中阴影区域的有号面积。
 \end{solution}
-
-
-\begin{example}
-    
-
-\end{example}    
-\begin{example}
-    
-
-\end{example}
-\begin{example}
-    
-
-\end{example}    
-\begin{example}
-    
-
-\end{example}
-\begin{example}
-    
-
-\end{example}    
-\begin{example}
-    
-
-\end{example}
-\begin{example}
-    
-
-\end{example}    
-\begin{example}
-    
-
-\end{example}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-\begin{solution}
-    
-\end{solution}
-
-
-
-\begin{example}
-    
-\end{example}
-
-
-\begin{solution}
-    
-\end{solution}
-
-
-\begin{example}
-    
-\end{example}
-
-
-\begin{solution}
-    
-\end{solution}
-
-
-
-
-
-\begin{example}
-    
-\end{example}
-
-
-\begin{solution}
-    
-\end{solution}
-
-
-    
-
-\begin{example}
-    
-\end{example}
-
-
-\begin{solution}
-    
-\end{solution}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-\begin{solution}
-    
-\end{solution}
-
-
-
-\begin{example}
-    
-\end{example}
-
-
-\begin{solution}
-    
-\end{solution}
-
-
-\begin{example}
-    
-\end{example}
-
-
-\begin{solution}
-    
-\end{solution}
-
-
-
-
-
-\begin{example}
-    
-\end{example}
-
-
-\begin{solution}
-    
-\end{solution}
-
-
-    
-
-\begin{example}
-    
-\end{example}
-
-
-\begin{solution}
-    
-\end{solution}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-\begin{solution}
-    
-\end{solution}
-
-
-
-\begin{example}
-    
-\end{example}
-
-
-\begin{solution}
-    
-\end{solution}
-
-
-\begin{example}
-    
-\end{example}
-
-
-\begin{solution}
-    
-\end{solution}
-
-
-
-
-
-\begin{example}
-    
-\end{example}
-
-
-\begin{solution}
-    
-\end{solution}
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 \begin{example}
   设$f(x)=\begin{cases}
@@ -1032,7 +1009,6 @@ $f(x)$的极大值，并且$y=2x-x^2$在$[0, 1]$上递增，在$[1,2]$上递减�
       1,& 1<x\le 2
   \end{cases}$,  求$f(x)$在$[0,2]$上的平均值.
 \end{example}
-
 
 \begin{solution}
 由平均值定义，再利用性质1，有    
