@@ -84,7 +84,17 @@
 
 \begin{figure}[htp]
     \centering
-    
+    \begin{tikzpicture}[>=latex, xscale=3]
+        \draw[->](.4,0)--(3,0)node[right]{$t$};
+        \draw[->](.6,-.5)--(.6,4.5)node[right]{$y$};
+    \draw[domain=.9:2.5, very thick, samples=100]plot(\x, {2.5*(\x-1)*(\x-2)*(\x-3)+2})node[right]{$y=f(t)$};
+    \draw(.9,0)node[below]{$a$}--(.9,1.4225);
+    \draw[pattern=north east lines, domain=1.4:1.7, samples=50]plot(\x, {2.5*(\x-1)*(\x-2)*(\x-3)+2})--(1.7,2.6825)--(1.7,0)node[below]{$x$}--(1.4,0)node[below]{$x+\bar h$}--(1.4,2.96);
+    \draw[pattern=north west lines, domain=1.7:2, samples=50]plot(\x, {2.5*(\x-1)*(\x-2)*(\x-3)+2})--(2,2)--(2,0)node[below]{$x+h$}--(1.7,0)--(1.7,2.6825);
+    \draw[<-](1.55,2)--(1.55,3.5)node[right]{$S_f(x)-S_f(x+\bar h),\; (\bar h<0)$};
+    \draw[<-](1.85,.5)--(2.1,.5)node[right]{$S_f(x+h)-S_f(x),\; (h>0)$};
+    \node at (.6,0)[below left]{$O$};
+    \end{tikzpicture}
     \caption{}
 \end{figure}
 
@@ -1953,7 +1963,21 @@ $\begin{cases}
 对于空间的一个立体，我们取一条直线作为坐标轴，取直线上一点作为原点（图4.11），假定这立体紧夹于在$x=a$与$x=b$两点所作的$x$轴的垂直平面之间，又如果在离原点$x$处作这轴的一个垂直平面，并且该垂直平面截得立体的截面的面积是$x$的连续函数$A(x),\; a\le x\le b$, 那么立体的体积可由定积分来计算：
 \begin{figure}[htp]
     \centering
-    
+\begin{tikzpicture}[>=latex]
+    \draw[->](-.5,0)--(6,0)node[right]{$x$};
+\tkzDefPoints{.8/0/a, 2/0/A, 3.3/0/x_i, 5/0/b, 0/0/O}
+\tkzDrawPoints(a,A,x_i,b,O)
+\tkzLabelPoints[below](a,x_i,b,O)
+\tkzLabelPoint[below](A){$x_{i-1}$}
+\node at (0,0){
+\pscurve[linewidth=1pt](.8,0)(1.2,.8)(2,1.3)(3.3,1.15)(5,0)(3.3,-1.15)(2,-1.3)(1.2,-.8)(.8,0)
+};
+\draw[dashed](A) ellipse [x radius=.35, y radius=1.3]; 
+\draw[dashed](x_i) ellipse [x radius=.3, y radius=1.15]; 
+\draw[thick](2,1.3) arc [start angle =90, end angle =270, x radius=.35, y radius=1.3];
+\draw[thick](3.3,1.15) arc [start angle =90, end angle =270, x radius=.3, y radius=1.15];
+
+\end{tikzpicture}
     \caption{}
 \end{figure}
 

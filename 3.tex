@@ -658,21 +658,41 @@ $f(x)$的极大值，并且$y=2x-x^2$在$[0, 1]$上递增，在$[1,2]$上递减�
 
 \begin{figure}[htp]
     \centering
-    
-    \caption{}
-\end{figure}
+    \begin{minipage}[t]{0.45\textwidth}
+        \centering
+        \begin{tikzpicture}[>=latex, scale=1]
+    \draw(-2,3)--(2,3);
+    \draw(-2,2)--(2,2); 
+    \draw(-.5,0)--(-.5,4);
+    \draw(.5,0)--(.5,4); 
+    \node at (0,0){
+\pscurve(-0.32,3.56)(-0.82,3.36)(-1.12,2.9)(-1.42,1.72)(-1.26,0.9)(-1.08,0.78)(-0.64,0.64)(-0.56,0.64)(-0.5,0.62)(-0.42,0.62)(-0.36,0.6)(-0.3,0.58)(0.1,0.5)(0.18,0.5)(0.24,0.52)(0.48,0.7)(0.64,0.86)(0.7,0.9)(1.36,1.62)(1.42,1.7)(1.36,3.16)(0.96,3.56)(0.84,3.66)(0.78,3.7)(0.6,3.8)(0.54,3.82)(0.34,3.82)(-0.32,3.56)
+};
 
-\begin{figure}[htp]
+        \end{tikzpicture}
+        \caption{}
+        \end{minipage}
+    \begin{minipage}[t]{0.25\textwidth}
     \centering
-    
+    \begin{tikzpicture}[>=latex, scale=1]
+    \draw(0,1.3)--(0,0)--(2.5,0)--(2.5,1.8);
+    \node at (0,0){
+\pscurve(0,1.3)(1.4,2)(2.5,1.8)
+};
+    \end{tikzpicture}
     \caption{}
-\end{figure}
-
-\begin{figure}[htp]
+    \end{minipage}
+    \begin{minipage}[t]{0.25\textwidth}
     \centering
-    
+    \begin{tikzpicture}[>=latex, scale=1]
+    \draw(0,2)--(0,0)--(1.5,0);
+    \node at (0,0){
+\pscurve(0,2)(0.5,1.8)(1,1.3)(1.5,0)
+};
+    \end{tikzpicture}
     \caption{}
-\end{figure}
+    \end{minipage}
+  \end{figure}
 
 \begin{blk}
   {命题} 设$y=f(x)$是定义在$a\le x\le b$的分段单调连续函数，而且$f(x)\ge 0$, 则区域$R=\{a\le x\le b,\; 0\le y\le f(x)\}$的

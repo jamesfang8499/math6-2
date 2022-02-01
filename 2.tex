@@ -3079,19 +3079,37 @@ $\therefore\quad c=2$. 于是
     \centering
     \begin{minipage}[t]{0.48\textwidth}
     \centering
-\begin{tikzpicture}[>=latex, scale=1]
-    
-\end{tikzpicture}
+    \begin{tikzpicture}[>=latex, scale=.7]
+  \draw[->](-2,0)--(5,0)node[right]{$x$};
+\draw[->](0,-1)--(0,5)node[right]{$y$};
+\node at (0,0)[below left]{$O$};
+\draw[domain=-.2:4, samples=100, very thick]plot(\x, {.2*(\x-2)^3+2.5});
+\draw[->, domain=-1.5:3, thick, samples=10]plot(\x, {1.2*\x+1.22});
+\draw[->, domain=.5:5, thick, samples=10]plot(\x, {1.2*\x-1.03});
+\draw(.2,2.5)--(3.5,2.5);
+\draw[->, thick](.86+.5,0) arc (0:50.2:.5)node[right]{$\theta'$};
+\draw[->, thick](-1.02+.5,0) arc (0:50.2:.5)node[right]{$\theta$};
+    \end{tikzpicture}
     \caption{}
     \end{minipage}
     \begin{minipage}[t]{0.48\textwidth}
     \centering
-    \begin{tikzpicture}[>=latex, scale=1.5]
-       
+    \begin{tikzpicture}[>=latex, scale=.7]
+  \draw[->](-1,0)--(7.5,0)node[right]{$x$};
+\draw[->](0,-1)--(0,5)node[right]{$y$};
+\node at (0,0)[below left]{$O$};
+\draw[domain=.7:5, samples=100, very thick]plot(\x, {-.2*(\x-3)^3+2.5});
+\draw[->, domain=2.5:6.5, thick, samples=10]plot(\x, {-1.2*\x+7.23});
+\draw[->, domain=.5:5, thick, samples=10]plot(\x, {-1.2*\x+5});
+\draw(.2,2.5)--(5.5,2.5);
+\draw[->, thick](6.025+.5,0) arc (0:129.8:.5)node[above right]{$\theta'$};
+\draw[->, thick](4.15+.5,0) arc (0:129.8:.5)node[above right]{$\theta$};
+
+
     \end{tikzpicture}
     \caption{}
     \end{minipage}
-    \end{figure}
+  \end{figure}
 
 
 
