@@ -9,7 +9,17 @@ $v=f(t)$, 如图3.1, 我们可以从速率表读得当时的速率，很自然�
 
 \begin{figure}[htp]
     \centering
+\begin{tikzpicture}[>=latex]
+\draw[->](-.5,0)--(6,0)node[right]{$t$};
+\draw[->](0,-.5)--(0,3)node[right]{$v=f(t)$};
+\draw[very thick](0,0)--(1,1.5)--(1.6,1.5);
+\draw[dashed](1,1.5)--(1,0)node[below]{$a$};
+\node at (0,0){
+\pscurve[linewidth=1.5pt] (1.6,1.5)(2.5,2.5)(3.5,2.2)(4,1.2)(4.3,.8)(4.8,.6)(5,0)
+};
+\draw[dashed](3.5,2.2)--(3.5,0)node[below]{$b$};
 
+\end{tikzpicture}
     \caption{}
 \end{figure}
 

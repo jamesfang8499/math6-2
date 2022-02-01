@@ -20,7 +20,21 @@
 
 \begin{figure}[htp]
     \centering
+    \begin{tikzpicture}[>=latex]
+        \draw[->](-3,0)--(5,0)node[right]{$t$};
+        \draw[->](0,-1.5)--(0,2)node[right]{$y$};
+    \node at (0,0) [below left]{$O$};
+    \node at (0,0){
+        \pscurve[linewidth=1.5pt] (-2.75,-.5)(-2,-1)(-.8,0)(1,1.25)(2.5,0)(3.5,-1.1)(4,-1.3) 
+    };
+    \draw(-2,-1)node[below]{$M'$}--node[left]{$t=x_0'$}(-2,0)node[above]{$P'$};
+    \draw(1,1.25)node[above]{$B$}--node[right]{$t=a$}(1,0)node[below]{$A$};
+    \draw(3.5,-1.1)node[below]{$M$}--node[right]{$t=x_0$}(3.5,0)node[above]{$P$};
+    \node at (-.8,0)[above]{$D$};
+    \node at (2.5,0)[above]{$C$};
+    \node at (2,1)[right]{$y=f(t)$};
     
+    \end{tikzpicture}
     \caption{}
 \end{figure}
 
@@ -638,6 +652,7 @@ $y\big|_{x=1}=3$
 \begin{ex}
 求下列不定积分：
 \begin{enumerate}
+    \begin{multicols}{2}
 \item  $\Int(3 x+5)^{100} \dd x$
 \item  $\Int\pi e^{-\tfrac{\pi}{4} x} \dd x$
 \item  $\Int \frac{\ln x}{x} \dd x$
@@ -648,7 +663,9 @@ $y\big|_{x=1}=3$
 \item  $\Int \frac{\dd x}{x^{2}-a^{2}}$
 \item  $\Int \frac{1}{\sqrt{x}} e^{\sqrt{x}} \dd x$
 \item  $\Int \frac{2 a x+b}{2 \sqrt{a x^{2}+b x+c}} \dd x$
-\item  $\Int\frac{1}{1+e^{x}} \dd x$
+\item  $\Int\frac{1}{1+e^{x}} \dd x$        
+    \end{multicols}
+    \begin{multicols}{2}
 \item  $\Int \frac{e^{x}}{e^{2 x}+1} \dd x$    
 \item $\Int \frac{\cos x}{e^{\sin x}} \dd x$
 \item $\Int \frac{\dd x}{\cos ^{2} x \sqrt{\tan x}}$
@@ -656,14 +673,18 @@ $y\big|_{x=1}=3$
 \item $\Int x \sqrt{a x^{2}+c}\; \dd x$
 \item $\Int \frac{\sin ^{2} x \cos x \dd x}{1+\sin x}$
 \item $\Int \frac{\sqrt{\arctan x}}{1+x^{2}} \dd x$
-\item $\Int \frac{1}{1+\sin x} \dd x$
+\item $\Int \frac{1}{1+\sin x} \dd x$        
+    \end{multicols}
+    \begin{multicols}{2}
 \item $\Int \frac{\sqrt{1+\cos x}}{\sin x} \dd x$
 \item $\Int \frac{\dd x}{x^{2}+x-6}$
 \item $\Int \frac{x \dd x}{3 x^{2}+x+2}$
 \item $\Int  \frac{\dd x}{3 x^{2}+x+2}$
 \item $\Int  \cot x \dd x$
 \item $\Int  \frac{\dd x}{\sin x}$
-\item $\Int \frac{\arcsin x}{\sqrt{1-x^{2}}} \dd x$
+\item $\Int \frac{\arcsin x}{\sqrt{1-x^{2}}} \dd x$        
+    \end{multicols}
+
 \end{enumerate}
 \end{ex}
 

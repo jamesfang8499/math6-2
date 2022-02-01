@@ -2393,7 +2393,22 @@ $\Delta y$.
 
 \begin{figure}[htp]
     \centering
-    
+    \begin{tikzpicture}[>=latex, xscale=3]
+\draw[->](-.25,0)--(2,0)node[right]{$x$};
+\draw[->](0,-1)--(0,5)node[right]{$y$};
+\node at (0,0)[below left]{$O$};
+\draw[domain=.1:1.6, samples=100, very thick]plot(\x, {exp(\x)});
+\draw(.5,0)node[below]{$M(x_0)$}--(.5,1.65)node[above]{$P$};
+\draw(1.4,0)node[below]{$M'(x_0+\Delta x)$}--(1.4,4.055)node[above]{$P'$};
+\draw(.1,1.65)--(1.8,1.65);
+\draw[thick](1.4,4.055)--(.5,1.65);
+\draw[domain=.1:1.8, samples=10, thick]plot(\x, {1.65*\x+0.825});
+\draw[<->](.5,1.3)--node[fill=white]{$\Delta x$}(1.4,1.3);
+\draw[<->|](1.45,1.65)node[below]{$N$}--node[right]{$f'(x_0)\Delta x$}(1.45,3.135)node[above]{$T$};
+\tkzDefPoints{.5/1.65/P, 1.4/1.65/N, 1.4/3.135/P'}
+%\tkzMarkAngle[mark=none, size=.3](N,P,P')
+\tkzLabelAngle[pos=.2](N,P,P'){$\alpha$}
+    \end{tikzpicture}
     \caption{}
 \end{figure}
 
@@ -2774,9 +2789,17 @@ $s^2=a^2+V^2t^2$
 
 \begin{figure}[htp]
     \centering
-\begin{tikzpicture}[>=latex]
-
-\end{tikzpicture}
+    \begin{tikzpicture}[>=latex]
+        \draw[->](-.5,0)--(5.5,0)node[right]{$x$};
+        \draw[->](0,-.5)--(0,4.5)node[right]{$y$};
+        \node at (0,0)[below left]{$O$};
+        \draw[rounded corners=10pt, very thick](.5,1)--(1.2,2)--(2,1.6)--(2.3,2.2)--(2.9,3.6)--(3.6,3.4)--(4.3,2.5)--(4.8,4);
+        \node at (3,4){$y=f(x)$};
+        \draw(.5,1)--(.5,0)node[below]{$a$};
+        \draw(1.2,1.85)--(1.2,0)node[below]{$c$};
+        \draw(4.3,2.65)--(4.3,0)node[below]{$d$};
+        \draw(4.8,4)--(4.8,0)node[below]{$b$};
+        \end{tikzpicture}
     \caption{}
 \end{figure}
 
@@ -2888,7 +2911,18 @@ $c\in (a,b)$有$f'(c)=0$. 因此，可设$f$在$[a,b]$中不为常数，此时$f
 
 \begin{figure}[htp]
     \centering
-\begin{tikzpicture}
+\begin{tikzpicture}[>=latex, scale=1.5]
+\draw[->](-.5,1)--(4,1)node[right]{$x$};
+\node at (0,1)[below left]{$O$};
+\draw[->](0,.5)--(0,3)node[right]{$y$};
+\draw[domain=.8:3.2, samples=100, very thick]plot(\x, {(\x-1)*(\x-2)*(\x-3)+2});
+\draw(.8,1)node[below]{$a$}--(.8,1.472)node[left]{$A$};
+\draw(3.2,1)node[below]{$b$}--(3.2,2.528)node[right]{$B$};
+\draw[thick](.8,1.472)--(3.2,2.528);
+\draw[dashed](.8,1.472)--(3.2,1.472)node[right]{$C$};
+\draw[dashed](1.31,2.3603)node[above left]{$M(c,f(c))$}--(1.31,1)node[below]{$c$};
+
+\draw[domain=.5:2.5, samples=10, thick]plot(\x, {0.44*\x+1.784});
 
 \end{tikzpicture}
     \caption{}
@@ -3442,7 +3476,14 @@ $ \Delta=a^2-3b$是导函数的判别式．
 \begin{figure}[htp]
     \centering
 \begin{tikzpicture}[>=latex]
-    
+        \draw[->](-.5,0)--(5,0)node[right]{$x$};
+        \draw[->](0,-.5)--(0,4.5)node[right]{$y$};
+        
+        \node at (0,0){%
+        \pscurve[linewidth=2pt](.5,4)(1,2.5)(1.9, 3.5)(3.2, .8)(4,1.5)(4.4,1)
+        };
+        \draw[dashed](.5,4)--(.5,0)node[below]{$a$};
+        \draw[dashed](4.4,1)--(4.4,0)node[below]{$b$};
 \end{tikzpicture}
     \caption{}
 \end{figure}
