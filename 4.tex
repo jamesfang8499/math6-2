@@ -2158,18 +2158,21 @@ $y$轴垂直于旋转体的横断面，设原点到横断面的距离为$y$, 则
 
 \begin{figure}[htp]
     \centering
-    \begin{tikzpicture}
-
-    
-
-
-
-
-
-
-
-
-    
+    \begin{tikzpicture}[>=latex, scale=1.5]
+\draw[dashed](0,0) ellipse [x radius=1.5, y radius=.5];
+\draw[dashed](0,3) ellipse [x radius=1.5, y radius=.5];
+\draw[dashed](-1.5,0)--(-1.5,3);
+\draw[dashed](1.5,0)--(1.5,3);
+\draw(.5,-.45)node[below right]{$B$}--(-.5,.45)node[above left]{$A$};
+\draw[thick] (-.5,.45) .. controls (1.8,2.8) and (2.1,1.6) .. (.5,-.45);
+\draw(0,0)--(1.4,1.7);
+\draw[dashed](0,0)--(1.4,.2)--(1.4,1.7);
+\tkzDefPoints{0/0/O, 1.4/.2/B1, 1.4/1.7/C}
+\tkzMarkAngle[mark=none, size=.4, ->](B1,O,C)
+\tkzLabelAngle[pos=.6](B1,O,C){$60^{\circ}$}
+\tkzLabelPoints[left](O)
+\draw(1.5,0) arc [start angle = 0, end angle =-70, x radius=1.5, y radius=.5];
+\draw(1.5,0)--(1.5,1.5);
     \end{tikzpicture}    
     \caption{}
 \end{figure}
