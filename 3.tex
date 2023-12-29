@@ -14,8 +14,9 @@ $v=f(t)$, 如图3.1, 我们可以从速率表读得当时的速率，很自然�
 \draw[->](0,-.5)--(0,3)node[right]{$v=f(t)$};
 \draw[very thick](0,0)--(1,1.5)--(1.6,1.5);
 \draw[dashed](1,1.5)--(1,0)node[below]{$a$};
-\node at (0,0){
-\pscurve[linewidth=1.5pt] (1.6,1.5)(2.5,2.5)(3.5,2.2)(4,1.2)(4.3,.8)(4.8,.6)(5,0)
+\node at (0,0) {};
+\draw plot[smooth] coordinates{
+(1.6,1.5)(2.5,2.5)(3.5,2.2)(4,1.2)(4.3,.8)(4.8,.6)(5,0)
 };
 \draw[dashed](3.5,2.2)--(3.5,0)node[below]{$b$};
 
@@ -71,13 +72,15 @@ $W (P, [a,b])$
 
 在上一章，我们利用函数$f(x)$和它的图象之间的对应关系，就可以把函数的变率和它的图象的切线的斜率相对应地一并分析讨论，这样，一方面可以把函数的变率这种“数量”的概念用切线来形象化，便于想象；而另一方面又可以把“切线”这种几何概念数量化，便于计算，在这一章，我们也要利用函数$f(x)$和它的图象之间的对应关系，把函数$f(x)$由$x=a$到$x=b$的“和”与曲线$y=f(x)$的曲边梯形的“面积”相对应地一并分析讨论，并且说明函数的“求从$a$到$b$的和”恰好对应于求曲边梯形的面积．这也就是为什么把函数“求从$a$到$b$的和”这种基本运算叫做积分的道理．
 
-\section{“和”与“面积”}
+\section{{``}和{''}与{``}面积{''}}
+
 对于任意曲线围成的图形，我们还没有规定它的“面积”的意义，和它密切相关的“函数从$a$到$b$的和”的概念至今也没有明确的解析的定义．在这一节我们要把这两个概念由“直观的定性理解”推进到“数量化的定量定义”．唯有确立了它们的“解析的定义”，它们才真正地成为能算好用的量．
 
-\subsection{“和”与“面积”的基本性质}
+\subsection{{``}和{''}与{``}面积{''}的基本性质}
+
 现在让我们先从“函数的和”与“曲线形的面积”的直观内涵来分析一下它们分别所应有的基本性质．
 
-\subsubsection{“曲线形的面积”的基本性质}
+\subsubsection{{``}曲线形的面积{''}的基本性质}
 
 从面积的直观内涵容易看出下列两点：
 \begin{enumerate}
@@ -114,7 +117,7 @@ $R$的面积$=R_1$的面积$+R_2$的面积．（图3.5）
     \end{minipage}
 \end{figure}
 
-\subsubsection{“函数的和”的基本性质}
+\subsubsection{{``}函数的和{''}的基本性质}
 
 同样地，从“函数从$a$到$b$的和”的直观内涵容易看出下列两个基本性质，即
 
@@ -266,7 +269,7 @@ $R$的面积$=R_1$的面积$+R_2$的面积．（图3.5）
 \draw(7,0)--(7,1);
 \draw[<->](0,.2)--node[fill=white]{$T$}(7,.2);
 \end{tikzpicture}
-    \caption{}
+    \caption{}\label{fig:chapter3_sec1_line_segmentation}
 \end{figure}
 
 下面就是把上述想法付诸实践的具体做法之一．
@@ -293,7 +296,7 @@ $R$的面积$=R_1$的面积$+R_2$的面积．（图3.5）
 这样，我们就得到了$v=f(t)$的夹逼阶梯函数：
 \[ g_n(t) \le f (t) \le G_n (t),\quad 0\le t\le T\]
 
-（在图3.8中，绘出了$f(t)=u+at$的图象和当$n=7$时阶梯函数$g_7(t)$和$G_7(t)$的图象.）
+（在图\ref{fig:chapter3_sec1_line_segmentation}中，绘出了$f(t)=u+at$的图象和当$n=7$时阶梯函数$g_7(t)$和$G_7(t)$的图象.）
 
 \item 求阶梯函数的总和
 
@@ -303,7 +306,7 @@ $R$的面积$=R_1$的面积$+R_2$的面积．（图3.5）
 $\because\quad t_1-t_0=t_2-t_1=\cdots=t_n-t_{n-1}=\frac{T}{n}$
 
 因此：
-\[\begin{split}
+\begin{align*}
 \text{$g_n(t)$从0到$T$的和}&=\left[f(t_0)+f(t_1)+\cdots+f(t_{n-1})\right]\cdot \frac{T}{n}\\
 &=\left[u+(u+at_1)+(u+at_2)+\cdots +(u+at_{n-1})\right]\cdot \frac{T}{n}\\
 &=\left[nu+a(t_1+t_2+\cdots+t_{n-1})\right]\cdot \frac{T}{n}\\
@@ -311,16 +314,16 @@ $\because\quad t_1-t_0=t_2-t_1=\cdots=t_n-t_{n-1}=\frac{T}{n}$
 &=uT+a\cdot [1+2+\cdots+(n-1)]\left(\frac{T}{n}\right)^2\\
 &=uT+a\cdot \frac{n(n-1)}{2}\cdot \frac{T^2}{n^2}\\
 &=uT+\frac{1}{2}aT^2\left(1-\frac{1}{n}\right)
-\end{split}\]
+\end{align*}
 
-\[\begin{split}
+\begin{align*}
     \text{$G_n(t)$从0到$T$的和}&=f(t_1)(t_1-t_0)+f(t_2)(t_2-t_1)+\cdots+f(t_n)(t_n-t_{n-1})  \\
    &= \left[f(t_1)+f(t_2)+\cdots+f(t_{n})\right]\cdot \frac{T}{n}\\
     &=\left[(u+at_1)+(u+at_2)+\cdots +(u+at_{n})\right]\cdot \frac{T}{n}\\
     &=\left[nu+a\left(\frac{T}{n}+\frac{2T}{n}+\cdots+\frac{nT}{n}\right)\right]\cdot \frac{T}{n}\\
     &=uT+a\cdot (1+2+\cdots+n)\cdot \left(\frac{T}{n}\right)^2\\
     &=uT+\frac{1}{2}aT^2\left(1+\frac{1}{n}\right)
-    \end{split}\]
+    \end{align*}
 综合上述计算和基本性质1, 即得：$g_n(t)$从0到$T$的和$\le f(t)$从0到$T$的和$\le G_n(t)$从0到$T$的
 和，即
 \[uT+\frac{1}{2}aT^2\left(1-\frac{1}{n}\right)\le f(t)
@@ -329,18 +332,18 @@ $\because\quad t_1-t_0=t_2-t_1=\cdots=t_n-t_{n-1}=\frac{T}{n}$
 \item 求阶梯函数和式的极限．
 
 因为
-\[\begin{split}
+\begin{align*}
     \lim_{n\to\infty}\left\{uT+\frac{1}{2}aT^2\left(1-\frac{1}{n}\right)\right\}&=\lim_{n\to\infty}\left\{uT+\frac{1}{2}aT^2\left(1+\frac{1}{n}\right)\right\}\\
     &=uT+\frac{1}{2}aT^2
-\end{split}\]
+\end{align*}
 所以，这个共同的极限值$uT+\frac{1}{2}aT^2$就是物体在变速$v=f(t)=u+at$运动下，从$t=0$到$t=T$所走的距离，也就是函数$v=f(t)=u+at$从$t=0$到$t=T$的和．
 \end{enumerate}
 
-从几何上看，上述极限值$uT+\frac{1}{2}aT^2=\frac{u+(u+aT)T}{2}$就是在图3.8中的梯形$OABC$的面积．
+从几何上看，上述极限值$uT+\frac{1}{2}aT^2=\frac{u+(u+aT)T}{2}$就是在图\ref{fig:chapter3_sec1_line_segmentation}中的梯形$OABC$的面积．
 \end{solution}    
 
 \begin{example}
-    设函数$f(x)=x^2$, $a=0$, $b>0$, 求$f(x)$由0到$b$的和，相应地，求抛物线$y=x^2$在线段$[0,b]$上所盖的曲边三角形$OBC$的面积（图3.9）.
+    设函数$f(x)=x^2$, $a=0$, $b>0$, 求$f(x)$由0到$b$的和，相应地，求抛物线$y=x^2$在线段$[0,b]$上所盖的曲边三角形$OBC$的面积（图\ref{fig:chapter3_sec1_y=x^2}）.
 \end{example}
 
 \begin{figure}[htp]
@@ -362,7 +365,7 @@ $\because\quad t_1-t_0=t_2-t_1=\cdots=t_n-t_{n-1}=\frac{T}{n}$
 \node at (3,0)[below]{$B$};
 \node at (-2.5,6)[left]{$y=x^2$};
 \end{tikzpicture}
-    \caption{}
+    \caption{}\label{fig:chapter3_sec1_y=x^2}
 \end{figure}
 
 \begin{solution}
@@ -373,42 +376,42 @@ $\because\quad t_1-t_0=t_2-t_1=\cdots=t_n-t_{n-1}=\frac{T}{n}$
     $G_n (x)$.
 
     根据$f(x)=x^2$在$x>0$时递增，定义
-\[\begin{split}
+\begin{align*}
 g_n(x)&=f(x_i)=x^2_i=\left(\frac{b}{n}\right)^2i^2,\quad x_i\le x<x_{i+1}\\
 G_n(x)&=f(x_{i+1})=x^2_{i+1}=\left(\frac{b}{n}\right)^2(i+1)^2,\quad x_i<x\le x_{i+1}\\
-\end{split}\]
+\end{align*}
 其中，$i=0,1,2,\ldots,(n-1)$．于是，$g_n(x)\le f(x)\le G_n(x),\quad 0\le x\le b$
 
 \item 求阶梯函数的和
-\[\begin{split}
+\begin{align*}
 s_n&=g_n(x)\text{从0到$b$的和}\\
 &=f\left(x_{0}\right) \cdot \frac{b}{n}+f\left(x_{1}\right) \cdot \frac{b}{n}+\cdots+f\left(x_{n-1}\right) \cdot \frac{b}{n}\\
 &=\left\{f\left(x_{0}\right)+f\left(x_{1}\right)+\cdots+f\left(x_{n-1}\right)\right\} \cdot \frac{b}{n} \\
 &=\left\{0^{2}+1^{2}+2^{2}+\cdots+(n-1)^{2}\right\} \cdot\left(\frac{b}{n}\right)^3\\
 &=\frac{1}{6}n(n-1)(2 n-1) \cdot\left(\frac{b}{n}\right)^{3} =\frac{b^3}{6}\left(1-\frac{1}{n}\right)\left(2-\frac{1}{n}\right) 
-\end{split}\]
-\[\begin{split}
+\end{align*}
+\begin{align*}
    S_{n}= G_{n}(x) \text { 从0到$b$的和}
    &= \left\{f\left(x_{1}\right)+f\left(x_{2}\right)+\cdots+f\left(x_{n}\right)\right\} \cdot \frac{b}{n} \\
    &=\left\{1^2+2^{2}+\cdots+n^{2}\right\} \cdot\left(\frac{b}{n}\right)^{3} \\
    &=\frac{1}{6}n(n+1)(2 n+1) \cdot\left(\frac{b}{n}\right)^{3} \\
    &=\frac{b^3}{6}\left(1+\frac{1}{n}\right)\left(2+\frac{1}{n}\right) 
-\end{split}\]
+\end{align*}
 
 综合上述计算和性质1，有：
-\[\begin{split}
+\begin{align*}
 \frac{b^3}{6}\left(1-\frac{1}{n}\right)\left(2-\frac{1}{n}\right)&=s_n\le \begin{bmatrix}
 \text{函数$f(x)=x^2$从0到$b$的和，}\\
 \text{相应的曲边三角形$OBC$的面积}
 \end{bmatrix}\\
 &\le S_n=\frac{b^3}{6}\left(1+\frac{1}{n}\right)\left(2+\frac{1}{n}\right)
-\end{split}\]
+\end{align*}
 
 \item 令$n\to\infty$，求阶梯函数和式的极限．因为
-\[\begin{split}
+\begin{align*}
     \frac{b^3}{6} \left(1-\frac{1}{n}\right)\left(2-\frac{1}{n}\right)\to \frac{b^3}{3}\qquad (n\to\infty)\\
     \frac{b^3}{6} \left(1+\frac{1}{n}\right)\left(2+\frac{1}{n}\right)\to \frac{b^3}{3}\qquad (n\to\infty)\\
-\end{split}\]
+\end{align*}
 所以$\frac{1}{3}b^3$是能被$s_n$、$S_n$左、右夹逼的唯一实数，而所求的“$f(x)=x^2$从0到$b$的和”以及“曲边三角形$OBC$的面积，”这两个值都是夹逼在$s_n$和$S_n$中间的实数，故它们都等于$\frac{1}{3}b^3$.
 \end{enumerate}
 \end{solution}
@@ -434,7 +437,7 @@ s_n&=g_n(x)\text{从0到$b$的和}\\
 \draw[dashed](3,2.3)node[left]{$y=f(x)$}--(3,0);
 \node at (0,0)[below left]{$O$};
 \end{tikzpicture}
-    \caption{}
+    \caption{}\label{fig:chapter3_sec1_monotone f}
 \end{figure}
 
 \begin{solution}
@@ -444,10 +447,12 @@ s_n&=g_n(x)\text{从0到$b$的和}\\
 它的第$i$段是$[x_{i-1},x_i]$，且$x_i-x_{i-1}=\frac{b-a}{n}$，$x_i=a+\frac{i}{n}(b-a)$
 
 \item 定义$f(x)$的上、下夹逼阶梯函数如下：
-\[\begin{split}
+\[
+\begin{split}
     g_n(x)&=f(x_{i-1}),\qquad x_{i-1}\le x\le x_i \\
     G_n(x)&=f(x_i),\qquad x_{i-1}\le x\le x_i 
-\end{split}(i=1,2,3,\ldots,n)\]
+\end{split} \quad (i=1,2,3,\ldots,n)
+\]
 由$f(x)$的递增性，对于任何一个$x\in[a,b]$，有
 \[g_1(x)\le g_2(x)\le\cdots \le g_n(x)\le\cdots \le f(x)\le \cdots\le G_n(x)\le\cdots\le G_2(x)\le G_1(x)\]
 简写成
@@ -477,11 +482,11 @@ s_n&=g_n(x)\text{从0到$b$的和}\\
 在例3.3, 例3.4中，$f(x)$有明确的解析式，我们可以用求和公式直接求出$s_n$和$S_n$的表达式，从而可以得出它们的共同极限值，在这里，我们只知道$f(x)$的递增性，当然无法将和式$s_n$和$S_n$进一步化简，但是我们可以说明，当$n\to\infty$时，$S_n-s_n\to 0$.
 
 事实上，
-\[\begin{split}
+\begin{align*}
     S_n-s_n&=\frac{b-a}{n}\sum^n_{i=1}f(x_{i})   -\frac{b-a}{n}\sum^n_{i=1}f(x_{i-1}) \\
     &=\frac{b-a}{n}\sum^n_{i=1}\left[f(x_{i})-f(x_{i-1})\right]   \\
     &=\frac{b-a}{n}\left[f(x_{n})-f(x_{0})\right]  =\frac{b-a}{n}\left[f(b)-f(a)\right]   
-\end{split}\]
+\end{align*}
 因此，当$n\to\infty$时，$S_n-s_n\to 0$.
 
 又$f(x)$从$a$到$b$的和是介于$s_n$和$S_n$中间的唯一实数，
@@ -507,10 +512,10 @@ s_n&=g_n(x)\text{从0到$b$的和}\\
 \[s_n=\frac{b-a}{n}\sum^n_{i=1}f(x_{i-1}),\qquad S_n=\frac{b-a}{n}\sum^n_{i=1}f(x_{i})  \]
 \end{enumerate}
 当$n\to\infty$时，$S_n-s_n\to 0$，那么$f(x)$从$a$到$b$的和是$s_n$与$S_n$的共同极限，即：
-\[\begin{split}
+\begin{align*}
 f(x)\text{从$a$到$b$的和}&=\frac{b-a}{n}\lim_{n\to\infty}\sum^n_{i=1}f(x_{i-1})\\
 &=\frac{b-a}{n}\lim_{n\to\infty}\sum^n_{i=1}f(x_{i})
-\end{split}\]
+\end{align*}
 
 同样地，如果$f(x)$是$[a,b]$上的递减连续函数．那么将$[a,b]$ $n$等分，分点坐标$x_i=a+\frac{i}{n}(b-a)$, 这时有两个阶梯函数
 \[    g_n (x) =f (x_{i}) ,\quad x_{i-1}<  x\le x_i\]
@@ -520,10 +525,10 @@ f(x)\text{从$a$到$b$的和}&=\frac{b-a}{n}\lim_{n\to\infty}\sum^n_{i=1}f(x_{i-
 \begin{enumerate}
     \item 对于任何$x\in[a,b]$，$g_n(x)\le f(x)\le G_n(x)$
     \item 相应的阶梯函数$g_n(x)$与$G_n(x)$相应的和
-\[\begin{split}
+\begin{align*}
     s_n&=g_n\text{从$a$到$b$的和}=\frac{b-a}{n}\sum^n_{i=1}f(x_{i})\\
     S_n&=G_n\text{从$a$到$b$的和}=\frac{b-a}{n}\sum^n_{i=1}f(x_{i-1})  
-\end{split}\]
+\end{align*}
 \end{enumerate}
 当$n\to\infty$时，$S_n-s_n=\frac{b-a}{n}\left[f(b)-f(a)\right]\to 0$，即：
 \[\Lim_{n\to\infty}s_n=\Lim_{n\to\infty}S_n\]
@@ -531,10 +536,10 @@ f(x)\text{从$a$到$b$的和}&=\frac{b-a}{n}\lim_{n\to\infty}\sum^n_{i=1}f(x_{i-
 
 \begin{blk}
     {定义2} 递减连续函数从$a$到$b$的和为上述夹逼阶梯函数$g_n(x)$和$G_n(x)$从$a$到$b$的和的共同极限，即  
-\[\begin{split}
+\begin{align*}
     f(x)\text{从$a$到$b$的和}&=\lim_{n\to\infty} \frac{b-a}{n}\sum^n_{i=1}f(x_i)\\
     &=\lim_{n\to\infty} \frac{b-a}{n}\sum^n_{i=1}f(x_{i-1})\\
-\end{split}\]
+\end{align*}
 \end{blk}
 
 通常我们把递增或递减的函数合称为单调函数，常见的
@@ -557,10 +562,10 @@ f(x)\text{从$a$到$b$的和}&=\frac{b-a}{n}\lim_{n\to\infty}\sum^n_{i=1}f(x_{i-
 \[a=a_0<a_1<\cdots<a_k<\cdots<a_1=b\]
 使得$f(x)$在每个分段$[a_{k-1},a_k]$都是单调的，再将每个分段
     $[a_{k-1},a_k]$都$n$等分，则当$n\to\infty$时，有
-\[\begin{split}
+\begin{align*}
 f(x)\text{从$a$到$b$的和}&=\lim_{n\to\infty}\frac{a_1-a_0}{n}\sum^n_{i=1}f(x_i)+\lim_{n\to\infty}\frac{a_2-a_1}{n}\sum^{2n}_{i=n+1}f(x_i)+\\
 &\cdots +\lim_{n\to\infty}\frac{a_\ell-a_{\ell-1}}{n}\sum^{\ell n}_{i=\ell(n-1)+1}f(x_i)
-\end{split}\]
+\end{align*}
 \end{blk}
 
 为了说明上述定义是合理的，我们就得证明上述$f(x)$从$a$到$b$的和与夹逼的阶梯函数列$\{G_n(x)\}$和$\{g_n(x)\}$的选取无关，其证明如下：
@@ -571,10 +576,10 @@ f(x)\text{从$a$到$b$的和}&=\lim_{n\to\infty}\frac{a_1-a_0}{n}\sum^n_{i=1}f(x
 即有
 \[g_n(x)\le \bar G_m(x),\qquad \bar g_m(x)\le G_n(x)\]
 所以由基本性质1，有
-\[\begin{split}
+\begin{align*}
     s_n&=g_n(x)\text{从$a$到$b$的和}\le \bar G_m(x)\text{从$a$到$b$的和}=\bar S_m\\
     \bar s_m&=\bar g_m(x)\text{从$a$到$b$的和}\le G_n(x)\text{从$a$到$b$的和}=S_n\\
-\end{split}\]
+\end{align*}
 所以
 \[\lim_{n\to\infty}s_n=\lim_{m\to\infty}\bar S_m,\qquad \lim_{m\to\infty}\bar s_m\le \lim_{n\to\infty}S_n\]
 但是
@@ -592,7 +597,7 @@ f(x)\text{从$a$到$b$的和}&=\lim_{n\to\infty}\frac{a_1-a_0}{n}\sum^n_{i=1}f(x
 $f(x)$的极大值，并且$y=2x-x^2$在$[0, 1]$上递增，在$[1,2]$上递减，于是，我们把区间$[0, 1]$和$[1, 2]$都$n$等分，设分点坐标$x_i=\frac{i}{n},\; i=0, 1, 2,\ldots,2n$, 即有
 \[0=x_0<x_1<x_2<\cdots <x_n=1<x_{n+1}<x_{n+2}<\cdots <x_{2n}=2\]
 且$\Delta x_i=x_i-x_{i-1}=\frac{1}{n}$，由定义3得到：
-\[\begin{split}
+\begin{align*}
     f(x)&=2x-x^2\text{从0到2的和}\\
     &=\lim_{n\to\infty}\frac{1}{n}\sum^n_{i=1}\left[2\left(\frac{i}{n}\right)-\left(\frac{i}{n}\right)^2\right]+\lim_{n\to\infty}\frac{1}{n}\sum^{2n}_{i=n+1}\left[2\left(\frac{i}{n}\right)-\left(\frac{i}{n}\right)^2\right] \\
 &=\lim_{n\to\infty}\frac{1}{n}\sum^{2n}_{i=1}2\left(\frac{i}{n}\right)-\lim_{n\to\infty}\sum^{2n}_{i=1}\left(\frac{i}{n}\right)^2\\
@@ -600,7 +605,7 @@ $f(x)$的极大值，并且$y=2x-x^2$在$[0, 1]$上递增，在$[1,2]$上递减�
 &=2\lim_{n\to\infty}\frac{1}{n^2}\cdot \frac{(2n+1)2n}{2}-\lim_{n\to\infty}\frac{1}{n^3}\cdot \frac{2n(2n+1)(4n+1)}{6}\\
 &=2\lim_{n\to\infty}\left(2+\frac{1}{n}\right)-\lim_{n\to\infty}\frac{1}{3}\left(2+\frac{1}{n}\right)\left(4+\frac{1}{n}\right)\\
 &=4-\frac{8}{3}=\frac{4}{3}
-\end{split}\]
+\end{align*}
 \end{solution}
 
 \begin{ex}
@@ -626,10 +631,10 @@ $f(x)$的极大值，并且$y=2x-x^2$在$[0, 1]$上递增，在$[1,2]$上递减�
 上述定积分定义用定积分符号表示就是：
 \[\int^b_a f(x) \dd x=\sum^t_{k=1}\int^{a_k}_{a_{k-1}}f(x)\dd x\]
 其中$\Int^{a_k}_{a_{k-1}}f(x)\dd x$是$f(x)$为单调的第$k$个分段$[a_{k-1},a_k]$上的夹逼阶梯函数$g_n(x)$和$G_n(x)$从$a_{k-1}$到$a_k$的和的共同极限，即：
-\[\begin{split}
+\begin{align*}
     \int^{a_k}_{a_{k-1}}f(x)\dd x&=\lim_{n\to \infty}\frac{a_k-a_{k-1}}{n}\sum^n_{i=1}f(x_{i-1})\\
     &=\lim_{n\to \infty}\frac{a_k-a_{k-1}}{n}\sum^n_{i=1}f(x_{i})
-\end{split}\]
+\end{align*}
 
 定积分定义的另一种表述形式是：设函数$f(x)$在$a\le x\le b$上分段单调连续，如果存在两系列上、下夹逼阶梯函数$\{g_n(x)\}$, $\{G_n(x)\}$, 使得
 \[g_n (x)\le f(x)\le G_n(x),\qquad a\le x\le b\]
@@ -654,7 +659,7 @@ $f(x)$的极大值，并且$y=2x-x^2$在$[0, 1]$上递增，在$[1,2]$上递减�
 
 \subsection{逼近法求曲线形的面积}
 
-任意一条曲线围成的图形（图3.11）常常可以用两组互相垂直的直线把它分成若干部分，每一部分都是一个曲边梯形（图3.12）, 在这里并不排除下述情形（图3.13）：两条平行的边中有一条缩成了一点，因而曲边梯形变成了曲边三角形，这样一来，我们的问题就化成了求曲边梯形面积的问题．
+任意一条曲线围成的图形（图\ref{fig:chapter3_sec2_arbitrary_shape}）常常可以用两组互相垂直的直线把它分成若干部分，每一部分都是一个曲边梯形（图\ref{fig:chapter3_sec2_good_piece}）, 在这里并不排除下述情形（图\ref{fig:chapter3_sec2_degenerated_piece}）：两条平行的边中有一条缩成了一点，因而曲边梯形变成了曲边三角形，这样一来，我们的问题就化成了求曲边梯形面积的问题．
 
 \begin{figure}[htp]
     \centering
@@ -665,32 +670,30 @@ $f(x)$的极大值，并且$y=2x-x^2$在$[0, 1]$上递增，在$[1,2]$上递减�
     \draw(-2,2)--(2,2); 
     \draw(-.5,0)--(-.5,4);
     \draw(.5,0)--(.5,4); 
-    \node at (0,0){
-\pscurve(-0.32,3.56)(-0.82,3.36)(-1.12,2.9)(-1.42,1.72)(-1.26,0.9)(-1.08,0.78)(-0.64,0.64)(-0.56,0.64)(-0.5,0.62)(-0.42,0.62)(-0.36,0.6)(-0.3,0.58)(0.1,0.5)(0.18,0.5)(0.24,0.52)(0.48,0.7)(0.64,0.86)(0.7,0.9)(1.36,1.62)(1.42,1.7)(1.36,3.16)(0.96,3.56)(0.84,3.66)(0.78,3.7)(0.6,3.8)(0.54,3.82)(0.34,3.82)(-0.32,3.56)
+    \node at (0,0){};
+    \draw plot[smooth] coordinates{
+ (-0.32,3.56)(-0.82,3.36)(-1.12,2.9)(-1.42,1.72)(-1.26,0.9)(-1.08,0.78)(-0.64,0.64)(-0.56,0.64)(-0.5,0.62)(-0.42,0.62)(-0.36,0.6)(-0.3,0.58)(0.1,0.5)(0.18,0.5)(0.24,0.52)(0.48,0.7)(0.64,0.86)(0.7,0.9)(1.36,1.62)(1.42,1.7)(1.36,3.16)(0.96,3.56)(0.84,3.66)(0.78,3.7)(0.6,3.8)(0.54,3.82)(0.34,3.82)(-0.32,3.56)
 };
-
         \end{tikzpicture}
-        \caption{}
+        \caption{}\label{fig:chapter3_sec2_arbitrary_shape}
         \end{minipage}
     \begin{minipage}[t]{0.25\textwidth}
     \centering
     \begin{tikzpicture}[>=latex, scale=1]
     \draw(0,1.3)--(0,0)--(2.5,0)--(2.5,1.8);
-    \node at (0,0){
-\pscurve(0,1.3)(1.4,2)(2.5,1.8)
-};
+    \node at (0,0) {};
+    \draw plot[smooth] coordinates{(0,1.3)(1.4,2)(2.5,1.8)};
     \end{tikzpicture}
-    \caption{}
+    \caption{}\label{fig:chapter3_sec2_good_piece}
     \end{minipage}
     \begin{minipage}[t]{0.25\textwidth}
     \centering
     \begin{tikzpicture}[>=latex, scale=1]
     \draw(0,2)--(0,0)--(1.5,0);
-    \node at (0,0){
-\pscurve(0,2)(0.5,1.8)(1,1.3)(1.5,0)
-};
+    \node at (0,0){};
+    \draw plot[smooth] coordinates{(0,2)(0.5,1.8)(1,1.3)(1.5,0)};
     \end{tikzpicture}
-    \caption{}
+    \caption{}\label{fig:chapter3_sec2_degenerated_piece}
     \end{minipage}
   \end{figure}
 
@@ -729,7 +732,7 @@ $f(x)$的极大值，并且$y=2x-x^2$在$[0, 1]$上递增，在$[1,2]$上递减�
 \node at (4.5,3.2)[above]{$y=f(x)$};
 
 \end{tikzpicture}
-    \caption{}
+    \caption{}\label{fig:chapter3_sec2_riemann_sum}
 \end{figure}
 
 
@@ -738,11 +741,11 @@ $f(x)$的极大值，并且$y=2x-x^2$在$[0, 1]$上递增，在$[1,2]$上递减�
 $\{g_n(x)\}$和$\{G_n(x)\}$, 满足下面的性质：
 \[g_n(x)\le f (x) \le G_n(x)\]
 而且$G_n(x)$从$a$到$b$的和与$g_n(x)$从$a$到$b$的和趋于共同的极限$\Int^b_a f (x) \dd x$. 令
-\[\begin{split}
+\begin{align*}
     R_n&=\{a\le x\le b,\; 0\le y\le g_n(x)\}\\
-    R'_n&=\{a\le x\le b,\; 0\le y\le G_n(x)\}\\
-\end{split}\]
-它们都是由高高低低的狭长方形所组成的区域（图3.14），则：
+    R'_n&=\{a\le x\le b,\; 0\le y\le G_n(x)\}
+\end{align*}
+它们都是由高高低低的狭长方形所组成的区域（图\ref{fig:chapter3_sec2_riemann_sum}），则：
 \[R_n\subset \text{曲边梯形区域 }R \subset R'_n\]
 而且
 \[R_n\text{的面积}=g_n(x)\text{从$a$到$b$的和}s_n,\qquad R'_n\text{的面积}=G_n(x)\text{从$a$到$b$的和}S_n\]
@@ -807,10 +810,11 @@ $(3.4)+(3.5)$得到
 由性质2，阶梯函数列$\tilde g_n(x)$与$\tilde G_n(x)$的从$a$到$c$的和分别是$s_n+\bar s_n$和$S_n+\bar S_n$．因为$\tilde g_n(x)$与$\tilde G(x)$满足条件：
 \begin{enumerate}
     \item $\tilde g_n(x)\le f(x)\le \tilde G(x),\quad a\le x\le c$
-    \item \[\begin{split}
+    \item 
+    \begin{align*}
     \lim_{n\to\infty}\left[(S_n+\bar S_n)-(s_n+\bar s_n)\right]&=\lim_{n\to\infty}\left[(S_n-s_n)+(\bar S_n-\bar s_n)\right]\\
     &=\lim_{n\to\infty}(S_n-s_n)+\lim_{n\to\infty}(\bar S_n-\bar s_n)=0
-    \end{split}\]
+    \end{align*}
 \end{enumerate}
 所以根据定积分定义得到
 \[\lim_{n\to\infty}(S_n+\bar S_n)=\lim_{n\to\infty}(s_n+\bar s_n)=\int^c_a f(x)\dd x \]
@@ -845,12 +849,12 @@ s_n<\Int^b_a f_1(x)\dd x<S_n,\quad \text{且 } S_n-s_n\to 0\\
 而且，$g_n(x)+\bar g_n(x)$与$G_n(x)+\bar G_n(x)$也是在$[a,b]$上的阶梯函数，我们要说明它们是$f_1(x)+ f_2(x)$在$[a,b]$上的一组夹逼阶梯函数列．
 
 因为：
-\[\begin{split}
+\begin{align*}
     g_n(x)+\bar g_n(x)\text{从$a$到$b$的和}&=\left[ g_n(x)\text{从$a$到$b$的和}\right]+\left[\bar g_n(x)\text{从$a$到$b$的和}\right]\\
     &=s_n+\bar s_n\\
     G_n(x)+\bar G_n(x)\text{从$a$到$b$的和}&=\left[ G_n(x)\text{从$a$到$b$的和}\right]+\left[\bar G_n(x)\text{从$a$到$b$的和}\right]\\
     &=S_n+\bar S_n
-\end{split}\]
+\end{align*}
 而且
 \begin{equation}
     \left(S_n+\bar S_n\right)-\left(s_n+\bar s_n\right)=\left(S_n-s_n\right)+\left(\bar S_n-\bar s_n\right)\to 0
@@ -920,12 +924,12 @@ s_n<\Int^b_a f_1(x)\dd x<S_n,\quad \text{且 } S_n-s_n\to 0\\
 
 \node at (1.1,2.5){$y=f(x)$};
 \end{tikzpicture}
-    \caption{}
+    \caption{}\label{fig:chapter3_sec2_y=f(x)_bounded}
 \end{figure}
 
 从几何图形来看，以曲线$y=f(x)$为一边而以线段$[a,b]$为底边的曲边梯形界于以$[a,b]$为底边，高分别等于$m$和$M$的两个矩形之内，
 故曲边梯形的面积$\Int^b_a f(x)\dd x$
-在两个矩形面积$m(b-a)$和$M(b-a)$之间（图3.14）．
+在两个矩形面积$m(b-a)$和$M(b-a)$之间（图\ref{fig:chapter3_sec2_y=f(x)_bounded}）．
 
 这个性质是说分段单调的连续函数$f(x)$在区间$[a,b]$上的定积分是有界的．
 
@@ -939,10 +943,10 @@ s_n<\Int^b_a f_1(x)\dd x<S_n,\quad \text{且 } S_n-s_n\to 0\\
 又$s_n, S_n, \bar s_n, \bar S_n$是相应的阶梯函数从$a$到$b$的和．于是根据定积分的定义，有：
 \[s_n<\int^b_a f(x)\dd x<S_n,\qquad \bar s_n<\int^b_a \varphi(x)\dd x<\bar S_n\]
 当$n\to\infty$时，得到：
-\[\begin{split}
+\begin{align*}
 \lim_{n\to\infty}S_n =\lim_{n\to\infty}s_n =\int^b_a f(x)\dd x\\
 \lim_{n\to\infty}\bar S_n =\lim_{n\to\infty}\bar s_n =\int^b_a \varphi(x)\dd x\\
-\end{split}\]
+\end{align*}
 换言之，任给正数$\varepsilon$，存在$N_1$，使得当$n>N_1$时，有
 \[s_n>\int^b_a f(x)\dd x-\frac{\varepsilon}{2}\]
 
@@ -977,7 +981,7 @@ $m=f(c)$, $M=f(d)$分别是$f(x)$在$[a,b]$上的最小值和最大值，则在$
 \end{proof}
 
 这个公式的几何意义是：以线段$[a,b]$为底边，以曲线$y=f(x)$为曲边的曲边梯形，它的面积等于同一底边
-而高为$f(\xi)$的一个矩形的面积（图3.15）．因此，$f(\xi)$称为曲边梯形的平均高度．
+而高为$f(\xi)$的一个矩形的面积（图\ref{fig:chapter3_sec2_integral_mean_value}）．因此，$f(\xi)$称为曲边梯形的平均高度．
 
 我们也称
 \[f(\xi)=\frac{1}{b-a}\int^b_a f (x) \dd x\]
@@ -998,7 +1002,7 @@ $m=f(c)$, $M=f(d)$分别是$f(x)$在$[a,b]$上的最小值和最大值，则在$
 \node at (4,0)[below]{$b$};
 
     \end{tikzpicture}
-    \caption{}
+    \caption{}\label{fig:chapter3_sec2_integral_mean_value}
     \end{minipage}
     \begin{minipage}[t]{0.48\textwidth}
     \centering
@@ -1011,7 +1015,7 @@ $m=f(c)$, $M=f(d)$分别是$f(x)$在$[a,b]$上的最小值和最大值，则在$
 --(2,0)node[above]{2};
 \draw(1,0)node[below]{1}--(1,.2);
     \end{tikzpicture}
-    \caption{}
+    \caption{}\label{fig:chapter3_sec2_example3.7}
     \end{minipage}
   \end{figure}
 
@@ -1022,15 +1026,15 @@ $m=f(c)$, $M=f(d)$分别是$f(x)$在$[a,b]$上的最小值和最大值，则在$
 
 \begin{solution}
     根据本节的定积分计算法则得：
-\[\begin{split}
+\begin{align*}
     \Int^4_2 (2x-x^2)\dd x&=\Int^4_2 2x\dd x+\Int^4_2 (-x^2)\dd x\\
     &=2\Int^4_2 x\dd x-\Int^4_2 x^2\dd x
-\end{split}\]
+\end{align*}
 利用例3.4的计算结果，得
 \[\Int^4_2 x\dd x=\frac{4^2-2^2}{2}=6,\qquad \Int^4_2 x^2\dd x=\frac{4^3-2^3}{3}=18\frac{2}{3}\]
 因此
 \[\Int^4_2 (2x-x^2)\dd x=2\x 6-18\frac{2}{3}=-6\frac{2}{3}\]
-它的几何意义是图3.16中阴影区域的有号面积．
+它的几何意义是图\ref{fig:chapter3_sec2_example3.7}中阴影区域的有号面积．
 \end{solution}
 
 \begin{example}
@@ -1042,12 +1046,12 @@ $m=f(c)$, $M=f(d)$分别是$f(x)$在$[a,b]$上的最小值和最大值，则在$
 
 \begin{solution}
 由平均值定义，再利用性质1，有    
-\[\begin{split}
+\begin{align*}
     f(\xi)&=\frac{1}{b-a}\int^b_a f(x)\dd x=\frac{1}{2}\int^2_0 f(x)\dd x\\
     &=\frac{1}{2}\left[\int^1_0 f(x)\dd x+\int^2_1 f(x)\dd x\right]\\
     &=\frac{1}{2}\left[\int^1_0 x^2\dd x+\int^2_1 1\dd x\right]\\
     &=\frac{1}{2}\left[\frac{1}{3}+1\right]=\frac{2}{3}
-\end{split}\]
+\end{align*}
 \end{solution}
 
 \begin{ex}

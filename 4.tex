@@ -5,7 +5,7 @@
 \subsection{导函数与求和函数}
 函数$f(x)$在点$x_0$处的变化率（导数）的定义是
 \[f' (x_0) =\lim_{h\to 0}\frac{f (x_0+h) -f (x_0)}{h}\]
-显然．$f(x_0)$的值与$f(x)$在点$x_0$的值以及在点$x_0$的邻近的函数值有关，当点$x_0$在$(a,b)$内变化时，$f(x_0)$也跟着变化，那么$f(x_0)$便是一个新函数称为$f(x)$的导函数．计算一个函数的导函数是一件比较简便的事情．
+显然， $f'(x_0)$的值与$f(x)$在点$x_0$的值以及在点$x_0$的邻近的函数值有关，当点$x_0$在$(a,b)$内变化时，$f'(x_0)$也跟着变化，那么$f'(x_0)$便是一个新函数称为$f(x)$的导函数．计算一个函数的导函数是一件比较简便的事情．
 
 定积分$\int^b_a f(x)\dif x$的定义是把区间$[a,b]$无限细分
 而得到上下夹逼阶梯函数的和的共同极限，其几何意义是曲线$y=f(x)$和直线$x=a$, $x=b$, 及$y=0$所围成的区域的有号面积．
@@ -24,8 +24,8 @@
         \draw[->](-3,0)--(5,0)node[right]{$t$};
         \draw[->](0,-1.5)--(0,2)node[right]{$y$};
     \node at (0,0) [below left]{$O$};
-    \node at (0,0){
-        \pscurve[linewidth=1.5pt] (-2.75,-.5)(-2,-1)(-.8,0)(1,1.25)(2.5,0)(3.5,-1.1)(4,-1.3) 
+    \node at (0,0){};
+        \draw[line width=1.5pt] plot[smooth] coordinates{ (-2.75,-.5)(-2,-1)(-.8,0)(1,1.25)(2.5,0)(3.5,-1.1)(4,-1.3) 
     };
     \draw(-2,-1)node[below]{$M'$}--node[left]{$t=x_0'$}(-2,0)node[above]{$P'$};
     \draw(1,1.25)node[above]{$B$}--node[right]{$t=a$}(1,0)node[below]{$A$};
@@ -1646,15 +1646,18 @@ $$
 
 （提示：用变量代换$x=\frac{\pi}{2}-y$.）
 \item \begin{enumerate}
-    \item 求常数$A,B,C,D$使等式$$\frac{1+2x^2}{(1-x)(1+x)^2}=A+\frac{B}{1-x}+\frac{C}{(1+x)^2}+\frac{D}{1+x}$$成立，并计算$$\Int^{\tfrac{1}{2}}_0 \frac{1+2x^3}{(1-x)(1+x)^2}\dd x$$
-    \item 求常数$a$，使$\Int^1_0 \frac{x-a}{(x+1)(3x+1)}\dd x=0$
+    \item 求常数$A,B,C,D$使等式$$\frac{1+2x^2}{(1-x)(1+x)^2}=A+\frac{B}{1-x}+\frac{C}{(1+x)^2}+\frac{D}{1+x}$$成立，并计算
+    \[
+    \Int^{\tfrac{1}{2}}_0 \frac{1+2x^3}{(1-x)(1+x)^2}\dd x.
+    \]
+    \item 求常数$a$，使$\Int^1_0 \frac{x-a}{(x+1)(3x+1)}\dd x=0$.
 \end{enumerate}
 \item 求极限：$\Lim_{n\to\infty}\left(\frac{1}{n+1}+\frac{1}{n+2}+\cdots +\frac{1}{n+n}\right)$
 \item 求一三次多项式$f(x)=ax^3+bx^2+cx+d$, 使它满足下
 列条件：
 \begin{enumerate}
-    \item $f (-1) =f (1) =0$
-    \item $\Int^1_{-1} f(x)\dd x=6$
+    \item $f (-1) =f (1) =0$;
+    \item $\Int^1_{-1} f(x)\dd x=6$.
 \end{enumerate}
 \item 
 \begin{enumerate}
@@ -1670,9 +1673,9 @@ $$
 \item 试计算$\int^{\pi}_0 \sin^6 x\cos^3x\dd x$和$\Int^{\pi}_0 \sin^3x \cos^2 x\dd x$.
 \end{enumerate}
 
-\item 求$\Int^{\tfrac{\pi}{2}}_0 \cos^n \theta\dd \theta$
-\item 求$\Int^{\tfrac{\pi}{4}}_0 x^3\cos2x\dd x$
-\item 求$\Int^{\tfrac{3\pi}{2}}_0 \sin^3\theta \cos^2 \theta\dd \theta$
+\item 求$\Int^{\tfrac{\pi}{2}}_0 \cos^n \theta\dd \theta$.
+\item 求$\Int^{\tfrac{\pi}{4}}_0 x^3\cos2x\dd x$.
+\item 求$\Int^{\tfrac{3\pi}{2}}_0 \sin^3\theta \cos^2 \theta\dd \theta$.
 \end{enumerate} 
 \end{ex}
 
@@ -1811,12 +1814,12 @@ $$
 \[\begin{split}
     A=\int^2_{-2} \left[\left(2-\frac{1}{2}y^2\right)-\left(1-\frac{1}{4}y^2\right)\right]\dd y
     &=\frac{1}{4}\int^2_{-2} (4-y^2)\dd y\\
-    &=\frac{1}{4}\left[4y-\frac{1}{3}y^3\right]\Bigg|^2_{-2}=\frac{8}{3}
+    &=\frac{1}{4}\left[4y-\frac{1}{3}y^3\right]\Bigg|^2_{-2}=\frac{8}{3}.
 \end{split}\]
 \end{solution}
 
 \begin{example}
-求半径等于$r$, 中心角等于$\alpha,\; \left(0<\alpha\le \frac{\pi}{2}\right)$的扇形的面积．
+求半径等于$r$, 中心角等于$\alpha \; \left(0<\alpha\le \frac{\pi}{2}\right)$的扇形的面积．
 \end{example}
 
 \begin{figure}[htp]
@@ -1969,8 +1972,8 @@ $\begin{cases}
 \tkzDrawPoints(a,A,x_i,b,O)
 \tkzLabelPoints[below](a,x_i,b,O)
 \tkzLabelPoint[below](A){$x_{i-1}$}
-\node at (0,0){
-\pscurve[linewidth=1pt](.8,0)(1.2,.8)(2,1.3)(3.3,1.15)(5,0)(3.3,-1.15)(2,-1.3)(1.2,-.8)(.8,0)
+\node at (0,0){};
+\draw[line width = 1pt] plot[smooth] coordinates{(.8,0)(1.2,.8)(2,1.3)(3.3,1.15)(5,0)(3.3,-1.15)(2,-1.3)(1.2,-.8)(.8,0)
 };
 \draw[dashed](A) ellipse [x radius=.35, y radius=1.3]; 
 \draw[dashed](x_i) ellipse [x radius=.3, y radius=1.15]; 
@@ -2196,7 +2199,7 @@ $y$轴垂直于旋转体的横断面，设原点到横断面的距离为$y$, 则
 \end{enumerate}
 \end{ex}
 
-\section{简单初值问题——不定积分的简单应用}
+\section{简单初值问题{}---{}不定积分的简单应用}
 
 在本章第2节，我们曾说过，一个函数的原函数有无穷多个，它们彼此之间相差一个常数．但是，在许多问题中，我们感兴趣的往往并不是这无穷多个原函数的全体（不定积分），而是某一个特定的原函数，在几何上，就是一条特定的积分曲线．为了求得这条积分曲线，必须知道它所经过的一个点，也就是说，要知道初始条件，在实际问题中，求满足一定初始条件的原函数问题是很多的，下面举一些简单的实例．
 
@@ -2233,35 +2236,38 @@ $y$轴垂直于旋转体的横断面，设原点到横断面的距离为$y$, 则
 \end{example}
 
 \begin{solution}
-    设质点$m$的坐标是$(x,y)$, 它的质量为$M$克，于是沿着$x$轴和$y$轴的速度分量分别是
-    \[v_x=\frac{\dd x}{\dd t},\qquad v_y=\frac{\dd y}{\dd t}\]
+    设质点$m$的坐标是$(x,y)$，它的质量为$M$克，于是沿着$x$轴和$y$轴的速度分量分别是
+    \[v_x=\frac{\dd x}{\dd t},\qquad v_y=\frac{\dd y}{\dd t}.\]
     而沿着$x$轴和$y$轴的加速度分量分别是
-    \[\frac{\dd v_x}{\dd t}=\frac{\dd^2 x}{\dd t^2},\qquad \frac{\dd v_y}{\dd t}=\frac{\dd^2 y}{\dd t^2}\]
+    \[\frac{\dd v_x}{\dd t}=\frac{\dd^2 x}{\dd t^2},\qquad \frac{\dd v_y}{\dd t}=\frac{\dd^2 y}{\dd t^2}.\]
     根据牛顿第二定律，得到
-\begin{align}
+\[
 \begin{cases}
-        M\frac{\dd v_x}{\dd t}=0\\
+    M\frac{\dd v_x}{\dd t}=0\\
     M\frac{\dd v_y}{\dd t}=-Mg
 \end{cases}
-\end{align}
+\]
 即：
 \[\begin{cases}
-    \dd v_x=0\\ \dd v_y=-g\dd t
+    \dd v_x=0\\ 
+    \dd v_y=-g\dd t
 \end{cases}\]
 所以
-\begin{align}
+%\begin{align}
+\[
 \begin{cases}
-    v_x=C_1\\ v_y=-gt+C_2
+    v_x=C_1\\ 
+    v_y=-gt+C_2
 \end{cases}
-\end{align}
+\] %\end{align}
 常数$C_1$和$C_2$由初始条件决定，所以
-\begin{align}
+\[ %\begin{align}
 \begin{cases}
 v_x=\frac{\dd x}{\dd t}=v_0\cos\alpha\\
 v_y=\frac{\dd y}{\dd t}=-gt+v_0\sin\alpha
 \end{cases}
-\end{align}
-即：    
+\] 
+即：
 \[\begin{cases}
     \dd x=v_0\cos\alpha \dd t\\ \dd y=(-g t+v_0\sin\alpha)\dd t
 \end{cases}\]
@@ -2484,20 +2490,20 @@ t_1&= \frac{100\lg2}{3\lg e}\approx \frac{100}{3}\cdot\frac{0.3010}{0. 4343}\\
 \end{enumerate}
 
 \item 利用求$y=\frac{1}{x}$的定积分，证明
-\[\ln(n+1)<1+\frac{1}{2}+\frac{1}{3}+\cdots+\frac{1}{n}<1+\ln n\]
+\[\ln(n+1)<1+\frac{1}{2}+\frac{1}{3}+\cdots+\frac{1}{n}<1+\ln n.\]
 \item 设$0<a\le 1$，求证：
-\[\int^a_0\frac{\dd x}{x^3+1}<\int^a_0\frac{\dd x}{x^4+1} \]
+\[\int^a_0\frac{\dd x}{x^3+1}<\int^a_0\frac{\dd x}{x^4+1}. \]
 \item 设$0\le x\le \frac{\pi}{4}$，利用不等式$0\le \sin x\le x$证明：
-\[\frac{\pi}{4}<\int^{\pi/4}_0\frac{\dd x}{\sqrt{1-\sin x}}<2-\sqrt{4-\pi}\]
+\[\frac{\pi}{4}<\int^{\pi/4}_0\frac{\dd x}{\sqrt{1-\sin x}}<2-\sqrt{4-\pi}.\]
 
 \item 若$m,n$是正整数，求证：
-\[\int^1_0 x^m (1-x)^n\dd x=\frac{n}{m+1}\int^1_0x^{m+1}(1-x)^{n-1}\dd x \]
-\item 求证：$\displaystyle\int^\pi_0 xf(\sin x)\dd x=\frac{\pi}{2}\int^\pi_0f(\sin x)\dd x$
+\[\int^1_0 x^m (1-x)^n\dd x=\frac{n}{m+1}\int^1_0x^{m+1}(1-x)^{n-1}\dd x. \]
+\item 求证：$\displaystyle\int^\pi_0 xf(\sin x)\dd x=\frac{\pi}{2}\int^\pi_0f(\sin x)\dd x$.
 \item 若$I_n=\displaystyle\int^{\pi/4}_0 \tan^n \theta \dd \theta\quad (n\ge 2)$. 试求$I_n$和$I_{n-2}$的关系式．
 \item 若$I_n=\displaystyle\int \frac{\dd x}{(x^2+a^2)^n}$，求证：
 \[2na^2I_{n+1}=\frac{x}{(x^2+a^2)^n}+(2n-1)I_n\]
 \item 设$S_n=\frac{1}{\sqrt{1}}+\frac{1}{\sqrt{2}}+\cdots+\frac{1}{\sqrt{n}}$，$n$为正整数．
-\[T_n=\frac{1}{\sqrt{1+\frac{1}{2}}}+\frac{1}{\sqrt{2+\frac{1}{2}}}+\cdots+\frac{1}{\sqrt{n+\frac{1}{2}}}\]
+\[T_n=\frac{1}{\sqrt{1+\frac{1}{2}}}+\frac{1}{\sqrt{2+\frac{1}{2}}}+\cdots+\frac{1}{\sqrt{n+\frac{1}{2}}}.\]
 求证：
 \begin{multicols}{2}
 \begin{enumerate}
@@ -2518,7 +2524,7 @@ t_1&= \frac{100\lg2}{3\lg e}\approx \frac{100}{3}\cdot\frac{0.3010}{0. 4343}\\
 \item 设$0<t<\pi$，考察$x$的函数$f(x)=2\sin x\sin(t-x)$
 \begin{enumerate}
     \item 画出$f(x)$在区间$0\le x\le \pi$上的图象，再设
-    \[F (t) =\int^\pi_0 |f (x)|\dd x\]
+    \[F (t) =\int^\pi_0 |f (x)|\dd x.\]
 根据所作的图象说明$F(t)$所表示的是什么？
 \item 用关于$t$的式子写出$F(t)$, 并求出使$F(t)$取最小值时$t$的值．
 \end{enumerate}

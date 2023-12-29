@@ -1,5 +1,6 @@
 
 \chapter{变率和微商}
+
 从本章起，我们开始学习单变量的微积分学的基本概念和基础理论．
 
 微积分学是研究变量的数学，变量之间的关系就是函数，因此，函数是微积分学研究的主要对象．
@@ -10,7 +11,7 @@
 
 \section{微商（导数）的定义}
 函数关系$y=f(x)$就是确定变量$y$如何随着变量$x$的变动而变动的关系，对于给定的函数$y=f(x)$, 变量$y$在变量$x$的不同点附近的变动情况是不尽相同的，这就是说，在变量$x$的
-某个值$x_1$外，当$x_1$略加变动时，相应的$y$的变动可能相当剧烈（急增，或急减）；而在变量$x$的另一个值$x_2$处，$y$的变动就可能较为迟缓，但是，用这样的语言来表达函数在某一点处的变率是不精确的，我们需要用“数量”来确切地表达这个意思，这就是函数在某点（或菜时刻）的变率的问题，简称变率．
+某个值$x_1$外，当$x_1$略加变动时，相应的$y$的变动可能相当剧烈（急增，或急减）；而在变量$x$的另一个值$x_2$处，$y$的变动就可能较为迟缓，但是，用这样的语言来表达函数在某一点处的变率是不精确的，我们需要用“数量”来确切地表达这个意思，这就是函数在某点（或某时刻）的变率的问题，简称变率．
 
 \subsection{直线函数的变率}
 一次函数$f (x) =kx+b$
@@ -84,7 +85,7 @@
 
 
 
-如图2.4所示，取曲线$y=f(x)$上点$P$附近的另一点$Q$, 通过这两点画一条直线，这直线叫做过曲线上$P$点的割线，让$Q$点沿曲线向点$P$移动，这条割线将达到极限位置，此极限位置与$Q$点从哪一侧趋向于$P$是无关的，我们称这个割线的极限位置为过曲线上$P$点的切线．
+如图\ref{fig:PQ_tangent}所示，取曲线$y=f(x)$上点$P$附近的另一点$Q$, 通过这两点画一条直线，这直线叫做过曲线上$P$点的割线，让$Q$点沿曲线向点$P$移动，这条割线将达到极限位置，此极限位置与$Q$点从哪一侧趋向于$P$是无关的，我们称这个割线的极限位置为过曲线上$P$点的切线．
 
 \begin{figure}[htp]
     \centering
@@ -104,7 +105,7 @@
     \tkzLabelAngle[pos=.5](P',P,Q'){$\alpha_1$}
     \tkzLabelAngle[pos=.9](P',P,Q){$\alpha$}
 \end{tikzpicture}
-    \caption{}
+    \caption{}\label{fig:PQ_tangent}
 \end{figure}
 
 割线的这种极限位置的存在性这一假设，与曲线在点$P$具有唯一的一条切线或确定的方向的假设是等价的．
@@ -124,12 +125,12 @@
 
 \begin{solution}
     解依题意$(x_0,f(x_0)=ax_0^2+bx_0+c)$在抛物线上，并设$(x_0+h,f(x_0+h))$是抛物线上点$(x_0,f(x_0))$的附近的一点，我们有
-\[\begin{split}
+\begin{align*}
 &\qquad \lim_{h\to 0}\frac{f(x_0+h)-f(x_0)}{(x_0+h)-x_0}\\
 &=\lim_{h\to 0}\frac{[a(x_0+h)^2+b(x_0+h)+c]-[ax^2_0+bx_0+c]}{h}    \\
-&=\lim_{h\to 0}\frac{(2ax_0+b)h+h^2}{h}\\
-&=\lim_{h\to 0}[(2ax_0+b)+h]=2ax_0+b
-\end{split}\]
+&=\lim_{h\to 0}\frac{(2ax_0+b)h+ah^2}{h}\\
+&=\lim_{h\to 0}[(2ax_0+b)+ah]=2ax_0+b
+\end{align*}
 所以抛物线$y=ax^2+bx+c$在$x_0$处的切线的斜率是$2ax_0+b$.
 \end{solution}
 
@@ -169,22 +170,23 @@
 
 
 显然，从时刻$t_0$到时刻$t_0+\Delta t$, 质点走过的路程为
-\[\begin{split}
+\begin{align*}
     \Delta s&=s(t_0+\Delta t)-s(t_0)\\
     &=(t_0+\Delta t)^2+4(t_0+\Delta t)+(t^2_0+4t_0)\\
     &=(2t_0+4)\Delta t+(\Delta t)^2
-\end{split}\]
+\end{align*}
 所以这段时间内的平均速度为
-\[\begin{split}
+\begin{align*}
     \frac{\Delta s}{\Delta t}&=\frac{s(t_0+\Delta t)-s(t_0)}{\Delta t}\\
     &=\frac{(2t_0+4)\Delta t+(\Delta t)^2}{\Delta t}\\
     &=(2t_0+4)+\Delta t
-\end{split}\]
+\end{align*}
 $\Delta t$越小，这个平均速度就越接近时刻$t_0$的瞬时速度$v_0$, 我们自然令$\Delta t\to 0$, 求差商的极限值，得到
-\[\begin{split}
+\begin{align*}
     \lim_{\Delta t\to 0}\frac{s(t_0+\Delta t)-s(t_0)}{\Delta t}&= \lim_{\Delta t\to 0}[(2t_0+4)+\Delta t]\\
     &=2t_0+4
-\end{split}\]
+\end{align*}
+
 这样平均速度$\frac{s(t_0+\Delta t)-s(t_0)}{\Delta t}$，当$\Delta t\to 0$时的极限值
 就表达了质点在时刻$t_0$的瞬时速度，把它记作
 \[s'(t_0)=   \lim_{\Delta t\to 0}\frac{s(t_0+\Delta t)-s(t_0)}{\Delta t}\]
@@ -257,12 +259,12 @@ $\frac{\dd y}{\dd x}\Big|_{x=x_0}$.
     肥皂泡的体积$V$与半径$r$的函数关系是．
 \[ V(r) =\frac{4}{3}\pi r^3\]
 体积$V(r)$对于半径$r$的增大率，依导函数定义，就是$V(r)$对于$r$的导函数，故
-\[\begin{split}
+\begin{align*}
     V'(r)&=\lim_{\Delta r\to 0}\frac{V(r+\Delta r)-V(r)}{\Delta r}\\
     &=\lim_{\Delta r\to 0}\frac{\frac{4\pi }{3}[(r+\Delta r)^3-r^3]}{\Delta r}\\
     &=\frac{4\pi }{3}\lim_{\Delta r\to 0}[3r^2+3r(\Delta r)+(\Delta r)^2]\\
     &=4\pi r^2
-\end{split}\]
+\end{align*}
 
 因此，肥皂泡的体积$V$对于半径$r$的增大率是$4\pi r^2$. 当$r=2$时，\[V'(2)=4\pi \cdot 2^2=16\pi \]
 上式表示在$r=2$时，肥皂泡体积对于半径的增大率是$16\pi$, 它
@@ -312,11 +314,11 @@ $\frac{\dd y}{\dd x}\Big|_{x=x_0}$.
 设$f(x)$在点$x_0$处是可微的，也就是$f(x)$在$x_0$处有导数，则
 \[f'(x_0)=\lim_{x\to x_0}\frac{f(x)-f(x_0)}{x-x_0}\]
 所以
-\[\begin{split}
+\begin{align*}
     \lim_{x\to x_0}[f(x)-f(x_0)]&=\lim_{x\to x_0}\frac{f(x)-f(x_0)}{x-x_0}(x-x_0)\\
     &=\lim_{x\to x_0}\frac{f(x)-f(x_0)}{x-x_0}\cdot \lim_{x\to x_0}(x-x_0)\\
 &=f'(x_0)\cdot 0=0
-\end{split}\]
+\end{align*}
 \end{proof}
 
 上面的定理说明函数在其有导数的点一定连续，在其不
@@ -345,11 +347,11 @@ $\frac{\dd y}{\dd x}\Big|_{x=x_0}$.
     \draw[domain=.5:2, samples=10, thick]plot(\x, {2*\x-2});
 
 \end{tikzpicture}
-    \caption{}
+    \caption{}\label{fig:f(x)=|x^2-1|}
 \end{figure}
     
 \begin{solution}
-函数$f(x)=|x^2-1|$是一个到处连续的函数，它的图象如图2.6所示．
+函数$f(x)=|x^2-1|$是一个到处连续的函数，它的图象如图\ref{fig:f(x)=|x^2-1|}所示．
 
 去掉函数式中的绝对值的符号，$f(x)$便可以写成分段函数式：
 \[f(x)=\begin{cases}
@@ -366,17 +368,17 @@ $\frac{\dd y}{\dd x}\Big|_{x=x_0}$.
 而在$-1$点右邻域的表达式是
 \[f (x) =- (x^2-1)\]
 所以$f(x)$在$x=-1$点的左导数是
-\[\begin{split}
+\begin{align*}
     f'_-(-1)&=\lim_{\Delta x\to 0^-}\frac{f(-1+\Delta x)-f(-1)}{\Delta x}\\
     &=\lim_{\Delta x\to 0^-}\frac{[(-1+\Delta x)^2-1]-0}{\Delta x}\\
     &=\lim_{\Delta x\to 0^-}(-2+\Delta x)=-2
-\end{split}\]
+\end{align*}
 $f(x)$在$x=-1$点的右导数是
-\[\begin{split}
+\begin{align*}
     f'_+(-1)&=\lim_{\Delta x\to 0^+}\frac{f(-1+\Delta x)-f(-1)}{\Delta x}\\
     &=\lim_{\Delta x\to 0^+}\frac{-[(-1+\Delta x)^2-1]-0}{\Delta x}\\
     &=\lim_{\Delta x\to 0^+}(2-\Delta x)=2 
-\end{split}\]
+\end{align*}
 由于$f'_-(-1)\ne f'_+(-1)$, 所以我们说$f(x)$在$x=-1$处的导数不存在，同样可得
 \[-2=f'_- (1)\ne f'_+(1)=2\]
 故$f(x)$在$x=1$处也不可微．
@@ -388,10 +390,10 @@ $f(x)$在$x=-1$点的右导数是
 \end{cases}\]
 \end{solution}
 
-对照图2.6来看，尽管函数$f(x)=|x^2-1|$处处连续，但是在$x=-1$和1这两点，曲线的特征是当动点由左侧趋于定
+对照图\ref{fig:f(x)=|x^2-1|}来看，尽管函数$f(x)=|x^2-1|$处处连续，但是在$x=-1$和1这两点，曲线的特征是当动点由左侧趋于定
 点1(或$-1$)时，割线的极限位置存在；当动点由右侧趋于定点1(或$-1$)时，割线的极限位置也存在，这两个极限位置分别叫1(或$-1$)点的\textbf{左、右切线}，并且它们之间的夹角不为\textbf{平角}，点$-1$和1分别是曲线的一种\textbf{角点}．
     
-图2.7的情形是曲线$y=f(x)$在$P(x_0,y_0)$点连续并且在此点有平行于$y$轴的切线．现在我们来讨论图2.7中所示各函数在点$x_0$处的导数：
+图\ref{fig:vertical_tangent}的情形是曲线$y=f(x)$在$P(x_0,y_0)$点连续并且在此点有平行于$y$轴的切线．现在我们来讨论图\ref{fig:vertical_tangent}中所示各函数在点$x_0$处的导数：
 
 \begin{figure}[htp]
     \centering
@@ -445,7 +447,7 @@ $f(x)$在$x=-1$点的右导数是
 
 \end{scope}
 \end{tikzpicture}
-    \caption{}
+    \caption{}\label{fig:vertical_tangent}
 \end{figure}
 
 图(a)表示的函数在点$x_0$的邻近递增，因此过曲线上$P(x_0,y_0)$和$Q(x_0+\Delta x,y_0+\Delta y)$两点的割线，无论$Q$点在$P$点的哪一侧，$\Delta x$与$\Delta y$都有相同正、负号，于是
@@ -461,7 +463,7 @@ $f(x)$在$x=-1$点的右导数是
 \[\lim_{\Delta x\to 0}\frac{f(x_0+\Delta x)-f(x_0)}{\Delta x}=\lim_{\varphi\to \tfrac{\pi^+}{2}}\tan\varphi=-\infty\]
 因此$f(x)$在点$x_0$处不可微，但是我们常常把这种情况叙述为函数$f(x)$在$x_0$处的导数为负无穷大，记作$f'(x_0)=-\infty$．
 
-图2.7(c)表示的函数在点$x_0$处连续，让$x$由$x_0$变动到
+图\ref{fig:vertical_tangent}(c)表示的函数在点$x_0$处连续，让$x$由$x_0$变动到
 $x_0+\Delta x$，于是由$\Delta x$所引起的相应的函数的改变量$\Delta y$的情形是：
 \begin{itemize}
     \item 当$\Delta x<0$时，有$\Delta y<0$，从而$\frac{\Delta y}{\Delta x}>0$；
@@ -500,7 +502,7 @@ $x_0+\Delta x$，于是由$\Delta x$所引起的相应的函数的改变量$\Del
 而当$\Delta x\to 0$时，$\sin\frac{1}{\Delta x}$
 没有极限，故$f'(0)$不存在，就
 其几何意义来说，当动点沿着曲线$y=x\sin\frac{1}{x}$趋于原点$O$
-时，割线$OQ$不断地在$-\frac{\pi}{4}\le \theta\le \frac{\pi}{4}$这个幅度之内摆动，而不趋于任何极限位置，即切线不存在（图2.8）．
+时，割线$OQ$不断地在$-\frac{\pi}{4}\le \theta\le \frac{\pi}{4}$这个幅度之内摆动，而不趋于任何极限位置，即切线不存在（图\ref{fig:x*sin(1/x)}）．
 \end{solution}
 
 \begin{figure}[htp]
@@ -522,7 +524,7 @@ $x_0+\Delta x$，于是由$\Delta x$所引起的相应的函数的改变量$\Del
 
 \node at (0,0)[above]{$O$};
 \end{tikzpicture}
-    \caption{}
+    \caption{}\label{fig:x*sin(1/x)}
 \end{figure}
 
 通过以上的例子，我们知道函数的连续点未必是它的可以微分点．几种常见的不可微分点如例2.4的角点，平行于$y$轴的切线的切点，特别是曲线上的尖点和在例2.5的曲线上的不存在割线的极限位置的点．
@@ -579,10 +581,10 @@ $x_0+\Delta x$，于是由$\Delta x$所引起的相应的函数的改变量$\Del
   由自变量的改变量$\Delta x$引起的函数改变量为
 \[\Delta y=f (x+\Delta x) -f (x) = (x+\Delta x)^n-x^n\] 
 按牛顿二项式定理展开，得  
-\[\begin{split}
+\begin{align*}
 \Delta y&= x^n+nx^{n-1}\Delta x+\frac{n(n-1)}{1\cdot 2}x^{n-2}(\Delta x)^2+\cdots+nx(\Delta x)^{n-1}+(\Delta x)^n-x^n\\
 &=nx^{n-1}\Delta x+\frac{n(n-1)}{1\cdot 2}x^{n-2}(\Delta x)^2+\cdots+nx(\Delta x)^{n-1}+(\Delta x)^n
-\end{split}\]
+\end{align*}
 其中差商
 \[\frac{\Delta y}{\Delta x}=nx^{n-1}+\frac{n(n-1)}{1\cdot 2}x^{n-2}\Delta x+\cdots+nx(\Delta x)^{n-2}+(\Delta x)^{n-1}\]
 式中除第一项外，其余各项随$\Delta x\to 0$而趋于0，因此：
@@ -608,18 +610,18 @@ $x_0+\Delta x$，于是由$\Delta x$所引起的相应的函数的改变量$\Del
 \subsubsection{若$f(x)=\log_a x\; (0<a\ne 1,\; 0<x<+\infty)$，则$f'(x)=\frac{\log_a e}{x}$}
 
 \begin{proof}
-\[\begin{split}
+\begin{align*}
     \frac{\Delta y}{\Delta x}&=\frac{\log_a(x+\Delta x)-\log_a x}{\Delta x}\\
     &=\frac{1}{x}\cdot \frac{\log_a\left(1+\frac{\Delta x}{x}\right)}{\frac{\Delta x}{x}}\\
     &=\frac{1}{x}\cdot \log_a\left(1+\frac{\Delta x}{x}\right)^{\tfrac{1}{\Delta x/x}}
-\end{split}\]  
+\end{align*}  
 
 利用极限$\Lim_{t\to 0}(1+t)^{1/t}=e$，以及对数函数是连续函数，得到
-\[\begin{split}
+\begin{align*}
     f'(x)&=\lim_{\Delta x\to 0}\frac{\Delta y}{\Delta x}=\frac{1}{x}\lim_{\tfrac{\Delta x}{x}\to 0}\log_a\left(1+\frac{\Delta x}{x}\right)^{\tfrac{1}{\Delta x/x}}\\
     &=\frac{1}{x}\log_a\left[\lim_{\tfrac{\Delta x}{x}\to 0}\left(1+\frac{\Delta x}{x}\right)^{\tfrac{1}{\Delta x/x}}\right]\\
     &=\frac{1}{x}\log_a e=\frac{\log_a e}{x}
-\end{split}\]
+\end{align*}
 
 特别：当$f(x)=\ln x$时，$f'(x)=\frac{1}{x}$．
 \end{proof}
@@ -636,11 +638,11 @@ $x_0+\Delta x$，于是由$\Delta x$所引起的相应的函数的改变量$\Del
 于是
 \[\frac{\Delta y}{\Delta x}=a^x\cdot \frac{\alpha}{\log_a(1+\alpha)}=a^x\cdot \frac{1}{\log_a(1+\alpha)^{1/\alpha}}\]
 因此
-\[\begin{split}
+\begin{align*}
     f'(x)&=\lim_{\Delta x\to 0}\frac{\Delta y}{\Delta x}=a^x\cdot \frac{1}{\Lim_{\alpha\to 0}\log_a(1+\alpha)^{1/\alpha}}\\
     &=a^x\cdot \frac{1}{\log_a\left[\Lim_{\alpha\to 0}(1+\alpha)^{1/\alpha}\right]}\\
     &=a^x\cdot \frac{1}{\log_a e}
-\end{split}\]
+\end{align*}
 又因为$\ln a=\frac{1}{\log_a e}$，所以
 \[f'(x)=a^x\cdot \ln a\]
 
@@ -652,33 +654,33 @@ $x_0+\Delta x$，于是由$\Delta x$所引起的相应的函数的改变量$\Del
 
 \subsubsection{若$f(x)=\sin x$, 则$f'(x)=\cos x$}
 \begin{proof}
-    \[\begin{split}
+    \begin{align*}
 \frac{\Delta y}{\Delta x}&=\frac{\sin(x+\Delta x)-\sin x}{\Delta x}\\
 &=\frac{2\cos\left(x+\frac{\Delta x}{2}\right)\sin\frac{\Delta x}{2}}{\Delta x}\\
 &=\cos\left(x+\frac{\Delta x}{2}\right)\cdot \frac{\sin\frac{\Delta x}{2}}{\frac{\Delta x}{2}}
-    \end{split}\]
+    \end{align*}
 因此
-\[\begin{split}
+\begin{align*}
     \lim_{\Delta x\to 0}\frac{\Delta y}{\Delta x}&=\lim_{\Delta x\to 0}\left[\cos\left(x+\frac{\Delta x}{2}\right)\cdot \frac{\sin\frac{\Delta x}{2}}{\frac{\Delta x}{2}}\right]\\
     &=\lim_{\Delta x\to 0}\cos\left(x+\frac{\Delta x}{2}\right)\cdot \lim_{\Delta x/2\to 0}\frac{\sin\frac{\Delta x}{2}}{\frac{\Delta x}{2}}
-\end{split}\]
+\end{align*}
 根据$\cos x$的连续性与极限$\Lim_{t\to 0}\frac{\sin t}{t}=1$, 得到
 $f' (x) =\cos x$.
 \end{proof}
 
 \subsubsection{若$f(x)=\cos x$, 则$f'(x)=-\sin x$}
 \begin{proof}
-\[\begin{split}
+\begin{align*}
 \frac{\Delta y}{\Delta x}&=\frac{\cos(x+\Delta x)-\cos x}{\Delta x}\\
 &=\frac{-2\sin\left(x+\frac{\Delta x}{2}\right)\cdot \sin\frac{\Delta x}{2}}{\Delta x}\\
 &=-\sin\left(x+\frac{\Delta x}{2}\right)\cdot \frac{\sin\frac{\Delta x}{2}}{\frac{\Delta x}{2}}
-    \end{split}\]
+    \end{align*}
 因此
-\[\begin{split}
+\begin{align*}
     \lim_{\Delta x\to 0}\frac{\Delta y}{\Delta x}&=-\lim_{\Delta x\to 0}\left[\sin\left(x+\frac{\Delta x}{2}\right)\cdot \frac{\sin\frac{\Delta x}{2}}{\frac{\Delta x}{2}}\right]\\
     &=-\lim_{\Delta x\to 0}\sin\left(x+\frac{\Delta x}{2}\right)\cdot \lim_{\Delta x/2\to 0}\frac{\sin\frac{\Delta x}{2}}{\frac{\Delta x}{2}}\\
     &=-\sin  x
-\end{split}\]
+\end{align*}
 \end{proof}
 
 现在将上面的导数公式列成下表：
@@ -689,7 +691,7 @@ $f' (x) =\cos x$.
     \item $\frac{\dd x^\mu}{\dd x}=\mu x^{\mu-1}$\quad （$\mu$为任意实数）
     \item $\frac{\dd\log_a x}{\dd x}=\frac{\log_a e}{x},\qquad \frac{\dd \ln x}{\dd x}=\frac{1}{x}$
     \item $\frac{\dd a^x}{\dd x}=a^x\cdot \ln a,\qquad \frac{\dd e^x}{\dd x}=e^x$
-    \item $\frac{\d\sin x}{\dd x}=\cos x,\qquad \frac{\dd \cos x}{\dd x}=-\sin x$
+    \item $\frac{\dd\sin x}{\dd x}=\cos x,\qquad \frac{\dd \cos x}{\dd x}=-\sin x$
 \end{enumerate}
 
 \subsection{求导的基本法则}
@@ -703,17 +705,17 @@ $f' (x) =\cos x$.
 
 \begin{proof}
     设$u(x)=f(x)+g(x)$, 任意固定$x$, 作取非零数$\Delta x$，有 
-\[\begin{split}
+\begin{align*}
     \frac{\Delta u(x)}{\Delta x}&=\frac{[f(x+\Delta x)+g(x+\Delta x)]-[f(x)+g(x)]}{\Delta x}\\
     &=\frac{f(x+\Delta x)-f(x)}{\Delta x}+\frac{g(x+\Delta x)-g(x)}{\Delta x}\\
     &=\frac{\Delta f(x)}{\Delta x}+\frac{\Delta g(x)}{\Delta x}
-\end{split}\]
+\end{align*}
 令$\Delta x\to 0$，即得：
-\[\begin{split}
+\begin{align*}
     [f(x)+g(x)]'&=\lim_{\Delta x\to 0}\frac{\Delta u(x)}{\Delta x}\\
     &=\lim_{\Delta x\to 0}\frac{\Delta f(x)}{\Delta x}+\lim_{\Delta x\to 0}\frac{\Delta g(x)}{\Delta x}\\
     &=f'(x)+g'(x)
-\end{split}\]
+\end{align*}
 \end{proof}
 
 这个法则可以推广到任意有限个函数．
@@ -724,14 +726,12 @@ $f' (x) =\cos x$.
 
 \begin{proof}
 设$f(x)=A\varphi(x)$， 
-\[\begin{split}
+\begin{align*}
     [A\varphi(x)]'&=f'(x)=\lim_{\Delta x\to 0}\left[A\frac{\varphi(x+\Delta x)-\varphi(x)}{\Delta x}\right]\\
     &=A\lim_{\Delta x\to 0}\frac{\varphi(x+\Delta x)-\varphi(x)}{\Delta x}\\
     &=A\varphi'(x)
-\end{split}\]
+\end{align*}
 \end{proof}
-
-
 
 \begin{example}
     求$3x^2-7x-1$的导数．
@@ -819,7 +819,7 @@ $\therefore\quad x_1=-1$或$5$，从而$y_1=9$或81.
 
 \begin{proof}
     设 $h(x)=f(x)\cdot g(x)$, 任取非零数$\Delta x$, 则
-\[\begin{split}
+\begin{align*}
     [f(x)\cdot g(x)]'&=\lim_{\Delta x\to 0}\frac{\Delta h(x)}{\Delta x}\\
     &=\lim_{\Delta x\to 0}\frac{f(x+\Delta x)g(x+\Delta x)-f(x)g(x)}{\Delta x}\\
     &=\lim_{\Delta x\to 0}\frac{1}{\Delta x}\Bigl[f(x+\Delta x)g(x+\Delta x)-f(x)g(x+\Delta x)\\
@@ -827,7 +827,7 @@ $\therefore\quad x_1=-1$或$5$，从而$y_1=9$或81.
     &=\lim_{\Delta x\to 0}\frac{f(x+\Delta x)-f(x)}{\Delta x}\cdot g(x+\Delta x)\\
     &\qquad +\lim_{\Delta x\to 0}f(x)\cdot \frac{g(x+\Delta x)-g(x)}{\Delta x}\\
     &=f' (x) \cdot g (x) +f (x) \cdot g' (x) 
-\end{split}\]
+\end{align*}
 \end{proof}
 
 重复应用这个定理，我们便可以求两个以上的函数之积的导数，例如
@@ -844,11 +844,11 @@ $\therefore\quad x_1=-1$或$5$，从而$y_1=9$或81.
 
 
 \begin{solution}
-    \[\begin{split}
+    \begin{align*}
 f'(x)&=\left[\sqrt{x}(x^2-3)\right]'\\
 &=\left(\sqrt{x}\right)'(x^2-3)+\sqrt{x}(x^2-3)'\\
 &=\frac{7}{2\sqrt{x}}(x^2-3)+\sqrt{x}\cdot 2x = \frac{5x^2-3}{2\sqrt{x}}
-    \end{split}\]
+    \end{align*}
 \end{solution}
 
 \begin{example}
@@ -856,11 +856,11 @@ f'(x)&=\left[\sqrt{x}(x^2-3)\right]'\\
 \end{example}
 
 \begin{solution}
-\[\begin{split}
+\begin{align*}
     f'(x)&=\left(\frac{1}{2}\sin^2 x\right)'+(x\sin x)'+\left(\frac{7}{x^2}\right)'\\
     &=\frac{1}{2}\left[(\sin x)'\sin x+\sin x(\sin x)'\right]+(\sin x+x\cos x)-\frac{14}{x^3}\\
     &=\sin x\cos x+\sin x+x\cos x-\frac{14}{x^3}
-\end{split}\]
+\end{align*}
 \end{solution}
 
 \begin{blk}
@@ -870,13 +870,13 @@ f'(x)&=\left[\sqrt{x}(x^2-3)\right]'\\
 
 \begin{proof}
     设$f(x)=\frac{u(x)}{v(x)}$，任取非零数$\Delta x$，则
-\[\begin{split}
+\begin{align*}
     \left(\frac{u(x)}{v(x)}\right)'&=\lim_{\Delta x\to 0}\frac{\Delta f(x)}{\Delta x}=\lim_{\Delta x\to 0}\frac{\frac{u(x+\Delta x)}{v(x+\Delta x)}-\frac{u(x)}{v(x)}}{\Delta x}\\
     &=\lim_{\Delta x\to 0}\frac{1}{\Delta x}\left\{\frac{u(x+\Delta x)\cdot v(x)-u(x)\cdot v(x+\Delta x)}{v(x+\Delta x)\cdot v(x)}\right\}\\
     &=\lim_{\Delta x\to 0}\frac{1}{\Delta x}\left\{\frac{v(x)[u(x+\Delta x)-u(x)]}{v(x)v(x+\Delta x)}-\frac{u(x)[v(x+\Delta x)-v(x)]}{v(x)v(x+\Delta x)}\right\}\\
     &=\frac{v(x)\Lim_{\Delta x\to 0}\frac{u(x+\Delta x)-u(x)}{\Delta x}}{v(x)\Lim_{\Delta x\to 0}v(x+\Delta x)}-\frac{u(x)\Lim_{\Delta x\to 0}\frac{v(x+\Delta x)-v(x)}{\Delta x}}{v(x)\Lim_{\Delta x\to 0}v(x+\Delta x)}\\
     &=\frac{v(x) u'(x)-u(x) v'(x)}{v^2(x)}
-\end{split}\]
+\end{align*}
 \end{proof}
 
 
@@ -885,12 +885,12 @@ f'(x)&=\left[\sqrt{x}(x^2-3)\right]'\\
 \end{example}
 
 \begin{proof}    
-\[\begin{split}
+\begin{align*}
     (\tan x)'&=\left(\frac{\sin x}{\cos x}\right)'\\
     &=\frac{\cos x(\sin x)'-\sin x(\cos x)'}{\cos^2 x}\\
     &=\frac{\cos^2 x+\sin^2 x}{\cos^2x}\\
     &=\frac{1}{\cos^2 x}=\sec^2 x
-\end{split}\]
+\end{align*}
 \[(\cot x)'=\left(\frac{\cos x}{\sin x}\right)'=\frac{-\sin^2 x-\cos^2 x}{\sin^2 x}=-\csc^2 x\]    
 \end{proof}
 
@@ -899,12 +899,12 @@ f'(x)&=\left[\sqrt{x}(x^2-3)\right]'\\
 \end{example}
 
 \begin{solution}
-\[\begin{split}
+\begin{align*}
     \left(\frac{2x-1}{x^2+1}\right)'&=\frac{(x^2+1)(2x-1)'-(2x-1)(x^2+1)'}{(x^2+1)^2}\\
 &=\frac{(x^2+1)\cdot 2-(2x-1)(2x)}{(x^2+1)^2}\\
 &=\frac{2(x^2+1)-(4x^2-2x)}{(x^2+1)^2}\\
 &=\frac{-2(x^2-x-1)}{(x^2+1)^2}
-\end{split}\]
+\end{align*}
 \end{solution}
 
 \begin{ex}
@@ -1002,10 +1002,10 @@ $y=-2x+1$
 
 \begin{enumerate}
     \item 若$g'(x)\ne 0$，只要$\Delta x$够小，由(2.6)知$\Delta y\ne 0$，那么
-\[\begin{split}
+\begin{align*}
     \frac{\varphi(x+\Delta x)-\varphi(x)}{\Delta x}&=\frac{f(g(x+\Delta x))-f(g(x))}{g(x+\Delta x)-g(x)}\cdot \frac{g(x+\Delta x)-g(x)}{\Delta x}\\
     &=\frac{f(g(x)+\Delta y)-f(g(x))}{\Delta y}\cdot \frac{\Delta y}{\Delta x}
-\end{split}\]
+\end{align*}
 令$\Delta x\to 0$，由上式得
 \[\varphi'(x)=f'(g(x))\cdot g'(x)\]
 即
@@ -1014,10 +1014,10 @@ $y=-2x+1$
 \item 如果$g'(x)=0$，则当$\Delta x\to 0$时，有两种情形：
 \begin{enumerate}
     \item 若$\Delta y=g(x+\Delta x)-g(x)=0$，则
-\[\begin{split}
+\begin{align*}
     \frac{\varphi(x+\Delta x)-\varphi(x)}{\Delta x}&=\frac{f(g(x+\Delta x))-f(g(x))}{\Delta x}\\
     &=\frac{f(g(x))-f(g(x))}{\Delta x}=0
-\end{split}\]
+\end{align*}
 \item 若$\Delta y\ne 0$，则
 \[\frac{\varphi(x+\Delta x)-\varphi(x)}{\Delta x}=\frac{f(g(x+\Delta y))-f(g(x))}{\Delta y}\cdot \frac{\Delta y}{\Delta x}\]
 令$\Delta x\to 0$，得到
@@ -1041,11 +1041,11 @@ $y=-2x+1$
     把$\varphi (x)$看成$u=\sin x$和$f(u)=2^u$的复合函数，于是$\varphi  (x) =2^{\sin x}=f (\sin x)$.
 
 依上述定理，得
-\[\begin{split}
+\begin{align*}
   \varphi' (x) &= [f (u) ]'\cdot u'_x= (2^u)'\cdot (\sin x)'\\
 &=2^u\ln2 \cdot \cos x\\
 &=2^{\sin x}\cdot \cos x \cdot \ln2  
-\end{split}\]
+\end{align*}
 \end{solution}
 
 \begin{example}
@@ -1054,12 +1054,12 @@ $y=-2x+1$
 
 \begin{solution}
     设$u=x^2+x+1$, $v=x^3+2x^2$, 则
-\[\begin{split}
+\begin{align*}
   y'&= (\sin u)'\cdot u'_x\cdot \cos v+\sin u\cdot (\cos v)'\cdot v'_x\\
 &=\cos u\cdot u_x'\cdot \cos v-\sin u\cdot \sin v\cdot  v'_x\\
 &= (2x+1) \cos (x^2+x+1) \cos (x^3+2x^2)\\
 &\qquad - (3x^2+4x) \sin (x^2+x+1) \sin (x^3+2x^2)  
-\end{split}\]
+\end{align*}
 \end{solution}
     
 \begin{example}
@@ -1068,11 +1068,11 @@ $y=-2x+1$
 
 
 \begin{solution}
-\[\begin{split}
+\begin{align*}
     f'(x)&=\frac{\sqrt{9+x^2}(x)'-x\left(\sqrt{9+x^2}\right)'}{9+x^2}\\
     &=\frac{\sqrt{9+x^2}-x\cdot \frac{1}{2}(9+x^2)^{-\tfrac{1}{2}}(9+x^2)'}{9+x^2}\\
     &=\frac{\sqrt{9+x^2}-\frac{x^2}{\sqrt{9+x^2}}}{9+x^2}=\frac{9}{\left(9+x^2\right)^{3/2}}
-\end{split}\]
+\end{align*}
 \end{solution}
     
 \begin{blk}
@@ -1098,12 +1098,12 @@ $y=-2x+1$
     
 \begin{solution}
     设$y=\ln u$，$u=\sqrt{v}$，$v=5-2x+3x^4$，于是：
-\[\begin{split}
+\begin{align*}
     \frac{\dd y}{\dd x}&=\frac{\dd y}{\dd u}\cdot \frac{\dd u}{\dd v}\cdot \frac{\dd v}{\dd x}\\
     &=\frac{1}{u}\cdot \left(\frac{1}{2}v^{-\tfrac{1}{2}}\right)\cdot (-2+12x^3)\\
     &=\frac{1}{\sqrt{5-2x+3x^4}}\cdot \frac{1}{2}\frac{1}{\sqrt{5-2x+3x^4}}\cdot (-2+12x^3)\\
     &=\frac{6x^3-1}{5-2x+3x^4}
-\end{split}\]
+\end{align*}
 \end{solution}
 
 求复合函数的导数，关键在于分析清楚函数的复合关系，适当选定中间变量，根据复合函数求导法则由外向里逐层求导，直到最后一个中间变量对自变量求导为止，每次求导时，必须明确是哪个变量对哪个变量求导，所有这些导数的乘积就是复合函数的导数．
@@ -1143,15 +1143,15 @@ $y=-2x+1$
     
 \begin{solution}
 设$y=\frac{(x^2+1)^{\tfrac{1}{2}}(x-1)^2}{(x+1)^{\tfrac{3}{2}}}$，则
-\[\begin{split}
+\begin{align*}
     \ln|y|&=\frac{1}{2}\ln(x^2+1)+2\ln|x-1|-\frac{3}{2}\ln|x+1|\\
     \frac{1}{y}\cdot y'&=\frac{1}{2}\frac{2x}{x^2+1}+\frac{2}{x-1}-\frac{2}{2(x+1)}\\
     &=\frac{3x^3+7x^2-x+7}{2(x^2+1)(x-1)(x+1)}
-\end{split}\]    
-\[\begin{split}
+\end{align*}    
+\begin{align*}
     y'&=\frac{3x^3+7x^2-x+7}{2(x^2+1)(x-1)(x+1)}\cdot \frac{(x^2+1)^{\tfrac{1}{2}}(x-1)^2}{(x+1)^{\tfrac{3}{2}}}\\
     &=\frac{(3x^3+7x^2-x+7)(x-1)}{2(x^2+1)^{\tfrac{1}{2}}(x+1)^{\tfrac{5}{2}}}
-\end{split}\]
+\end{align*}
     
 \end{solution}
 
@@ -1283,10 +1283,10 @@ $AB$边中点时，$CP$长度的变率是多少？
 
 \begin{proof}
 给数值$y=y_0$以任意增量$\Delta y$, 则反函数$x=f^{-1}(y)$也得到对应增量$\Delta x$, 当$\Delta y\ne 0$时，由于$y=f(x)$的严格单调性，从而$x=f^{-1}(y)$也是严格单调的，也有$\Delta x\ne 0$, 于是有
-\[\begin{split}
+\begin{align*}
     \frac{f^{-1}(y_0+\Delta y)-f^{-1}(y_0)}{\Delta y}&=\frac{\Delta x}{f(x_0+\Delta x)-f(x_0)}\\
     &=\frac{1}{\frac{f(x_0+\Delta x)-f(x_0)}{\Delta x}}
-\end{split}\]
+\end{align*}
 现在令$\Delta y\to 0$，则由于反函数$x=f^{-1}(y)$也是连续的，故增量$\Delta x\to 0$，于是
 \[\lim_{\Delta y\to 0}\frac{f^{-1}(y_0+\Delta y)-f^{-1}(y_0)}{\Delta y}=\frac{1}{\Lim_{\Delta y\to 0}\frac{f(x_0+\Delta x)-f(x_0)}{\Delta x}}\]
 上面等式右边的分母就趋于极限$f'(x_0)\ne 0$，而左边按定义就是$[f^{-1}(y_0)]'$，因此
@@ -1296,12 +1296,12 @@ $AB$边中点时，$CP$长度的变率是多少？
 \end{proof}
 
 \begin{blk}{推论}
-\[\begin{split}
+\begin{align*}
     (\arcsin x)'&=\frac{1}{\sqrt{1-x^2}},\qquad -1<x<1\\
     (\arccos x)'&=\frac{-1}{\sqrt{1-x^2}},\qquad -1<x<1\\
     (\arctan x)'&=\frac{1}{{1+x^2}},\qquad -\infty<x<\infty\\
     (\arccot x)'&=\frac{-1}{{1+x^2}},\qquad -\infty<x<\infty\\
-\end{split}\]
+\end{align*}
 \end{blk}
 
 \begin{proof}
@@ -1333,7 +1333,7 @@ $AB$边中点时，$CP$长度的变率是多少？
 \[y=\arcsec x,\qquad x\in (-\infty,-1)\cup(1,+\infty)\]
 
 依反函数求导法则，有
-\[\begin{split}
+\begin{align*}
     (\arcsec x)'&=\frac{1}{(\sec y)'}=\frac{1}{\sec y\cdot \tan y}\\
     &=\frac{1}{\sec(\arcsec x)\cdot \tan(\arcsec x)}\\
     &=\begin{cases}
@@ -1344,7 +1344,7 @@ $AB$边中点时，$CP$长度的变率是多少？
         \frac{1}{x\sqrt{x^2-1}}, & x>1\\
        - \frac{1}{x\sqrt{x^2-1}}, & x<-1
     \end{cases}
-\end{split}\]
+\end{align*}
 \end{solution}
 
 \begin{example}
@@ -1353,10 +1353,10 @@ $AB$边中点时，$CP$长度的变率是多少？
 
 \begin{solution}
     因为$y=a^x,\quad (a>0,\; a\ne 1,\; -\infty<x<+\infty)$是$x=\log_a y\; (y>0)$的反函数，所以
-\[\begin{split}
+\begin{align*}
     (a^x)'&=\frac{1}{(\log_a y)'}=\frac{1}{\frac{\log_a e}{y}}=\frac{y}{\log_a e}\\
     &=\ln a\cdot (a^x)=a^x\ln a
-\end{split}\]
+\end{align*}
 \end{solution}
 
 \begin{example}
@@ -1364,12 +1364,12 @@ $AB$边中点时，$CP$长度的变率是多少？
 \end{example}
 
 \begin{solution}
-\[\begin{split}
+\begin{align*}
     f'(x)&=\left[(2x)'\arctan 2x+2x\cdot \frac{1}{1+(2x)^2}\cdot (2x)'\right]\\
     &\qquad -\frac{1}{\sqrt{1+4x^2}}\cdot \frac{1}{2\sqrt{1+4x^2}}\cdot (1+4x^2)'\\
     &=2\arctan 2x+\frac{4x}{1+4x^2}-\frac{4x}{1+4x^2}\\
     &=2\arctan 2x
-\end{split}\]
+\end{align*}
 \end{solution}
 
 
@@ -1457,20 +1457,20 @@ $\frac{\dd \theta}{\dd t}=100\text{弧度/时}$，将弧度化为角度即为$\f
 
 \begin{solution}
     设在某时刻$t$, 容器水高为$y$, 则此时水的体积$V$为
- \[\begin{split}
+ \begin{align*}
      V&=\frac{\pi R^2h}{3}-\frac{\pi r^2}{3}(h-y)\\
      &=\frac{\pi}{3}\cdot 5^2\cdot 12-\frac{\pi r^2}{3}(12y)\\
      &=100\pi-\frac{\pi r^2}{3}(12-y)
- \end{split}\]
+ \end{align*}
 而
 \[\frac{r}{R}=\frac{h-y}{h}\]
 即
 \[r=\frac{R}{h}(h-y)=\frac{5}{12}(12-y)\]
 代入上式，得
-\[\begin{split}
+\begin{align*}
     V&=100\pi-\frac{\pi}{3}\cdot \frac{5^2}{12^2}(12-y)^3\\
     &=100\pi-\frac{25\pi}{432}(12-y)^3
-\end{split}\]
+\end{align*}
 又由题设知：$V=2t$，所以
 \[2t=100\pi-\frac{25\pi}{432}(12-y)^3\]
 即
@@ -1589,10 +1589,10 @@ f(x)$, 或$x=g(y)$使得对于函数的定义域中的一切值，等式$F(x,f(x
 先把$y$看成$x$的函数，即$y=f(x)$, 然后，在等式
 $xf (x) +x^2-1=0$
 的两边对$x$求导数，得到
-\[\begin{split}
+\begin{align*}
     (x\cdot f(x))'+(x^2)'&=0\\
 xf'(x)+f(x)+2x&=0
-\end{split}\]
+\end{align*}
 
 $\therefore\quad f (x) =-\frac{2x+f (x)}{x}=-\frac{2x+\frac{1-x^2}{x}}{x}=-\frac{1+x^2}{x^2}$    
 \end{solution}
@@ -1607,15 +1607,15 @@ $y=\sqrt{16-x^2}$和$y=-\sqrt{16-x^2},\; x\in [-4, 4]$. 求每一个函数的导
     我们用$f(x)$代表上面两个函数中的任何一个，则
 \[x^2+f^2 (x) =16,\qquad  x\in  [-4, 4] \]
 对上面等式的两边微分，得到
-\[\begin{split}
+\begin{align*}
     2x+2f (x) \cdot f' (x) &=0\\
     f'(x)&=-\frac{x}{f(x)}
-\end{split} \]
+\end{align*}
 即
-\[\begin{split}
+\begin{align*}
     \left(\sqrt{16-x^2}\right)'&=-\frac{x}{\sqrt{16-x^2}}\\
     \left(-\sqrt{16-x^2}\right)'&=\frac{x}{\sqrt{16-x^2}},\qquad x\in[-4,4]
-\end{split}\]
+\end{align*}
 \end{solution}
 
 \begin{rmk}
@@ -1632,10 +1632,10 @@ $y=\sqrt{16-x^2}$和$y=-\sqrt{16-x^2},\; x\in [-4, 4]$. 求每一个函数的导
 \end{example}
 
 \begin{proof}
-\[\begin{split}
+\begin{align*}
     \left(\frac{x^2}{a^2}+\frac{y^2}{b^2}\right)'_x&=(1)'_x\\
     \frac{2x}{a^2}+\frac{2y}{b^2}\cdot y_x&=0
-\end{split}\]
+\end{align*}
 若$y\ne 0$，则：
 \[y'_x=-\frac{b^2x}{a^2y}\]
 于是，在点$(x_0,y_0)$处（这里$y_0\ne 0$）的切线方程为
@@ -1691,10 +1691,10 @@ $\therefore\quad b^2x_0^2+a^2y^2_0=a^2b^2$，因此，所求切线方程是
 所以，由导数的几何意义得出，在$P_1(x_1,y_1)$点的切线的斜率是
 \[\tan\theta=y'_{x_1}=\frac{p}{y_1}\]
 于是反射光线的斜率是
-\[\begin{split}
+\begin{align*}
     \tan2\theta=\frac{2\tan\theta}{1-\tan^2\theta}&=\frac{2\cdot \frac{p}{y_1}}{1-\frac{p^2}{y^2_1}}\\
     &=\frac{2py_1}{y^2_1-p^2}=\frac{2py_1}{2px_1-p^2}=\frac{2y_1}{2x_1-p}
-\end{split}\]
+\end{align*}
 从而，得出反射线方程
 \[y-y_1=\frac{2y_1}{2x_1-p}(x-x_1) \]
 令$y=0$, 得到反射光线与$x$轴交点的横坐标，
@@ -1793,17 +1793,17 @@ $\therefore\quad b^2x_0^2+a^2y^2_0=a^2b^2$，因此，所求切线方程是
 \subsection{高阶导数}
 对于给定的可微函数$f(x)$, 它的导数$f'(x)$仍是$x$的函数．如果$f'(x)$是可微的，它的导函数$(f'(x))'=f''(x)$或$f^{(2)}(x)$称为$f(x)$的\textbf{二阶导函数}，……如此类推，$f(x)$
 的$n$阶导函数$f^{(n)}(x)$, 可以归纳地定义为：
-\[\begin{split}
+\begin{align*}
   f ^{(1)} (x)&=f'(x)\\
   f ^{(n)} (x)&=\left(f^{(n-1)}(x)\right)',\qquad n=2,3,\ldots  
-\end{split}\]
+\end{align*}
 因此，求高阶导函数，实际上就是连续地求一阶导函数．
 
 高阶导函数有时也记作$\frac{\dd^n y}{\dd x^n}$或$\frac{\dd^n }{\dd x^n}f(x)$. 例如
-\[\begin{split}
+\begin{align*}
     f''(x)&=\frac{\dd}{\dd x}f'(x)=\frac{\dd}{\dd x}\left(\frac{\dd y}{\dd x}\right)=\frac{\dd^2 y}{\dd x^2}\\
     f^{(3)}(x)&=\frac{\dd}{\dd x}\left(\frac{\dd^2 y}{\dd x^2}\right)=\frac{\dd^3 y}{\dd x^3}
-\end{split}\]
+\end{align*}
 
 二阶导数有它的实际意义，例如动点的速度$v$等于它所
 经过的路程$S$对于时间$t$的变率：$v=\frac{\dd S}{\dd t}$；而加速度$a$是速度$v$
@@ -1816,14 +1816,14 @@ $\therefore\quad b^2x_0^2+a^2y^2_0=a^2b^2$，因此，所求切线方程是
 \end{example}
 
 \begin{solution}
-\[\begin{split}
+\begin{align*}
     y&=\frac{x}{1-x}=-1+\frac{1}{1-x}\\
 \frac{\dd y}{\dd x}&=-\frac{(1-x)'}{(1-x)^2}=\frac{1}{(1-x)^2}
-\end{split}\]
-\[\begin{split}
+\end{align*}
+\begin{align*}
     \frac{\dd^2 y}{\dd x^2}&=\frac{-[(1-x)^2]'}{(1-x)^4}=\frac{-2(1-x)(-1)}{(1-x)^4}=\frac{2}{(1-x)^3}\\
     \frac{\dd^3 y}{\dd x^3}&=\frac{-2[(1-x)^3]'}{(1-x)^6}=\frac{2\cdot 3(1-x)^2(-1)}{(1-x)^6}=\frac{6}{(1-x)^4}  
-\end{split}\]
+\end{align*}
 \end{solution}
 
 
@@ -1834,15 +1834,15 @@ $\therefore\quad b^2x_0^2+a^2y^2_0=a^2b^2$，因此，所求切线方程是
 
 \begin{solution}
 \textbf{解法1: }
-\[\begin{split}
+\begin{align*}
     f'(x)&=\frac{1}{2}(a^2+x^2)^{-\tfrac{1}{2}}(a^2+x^2)'\\
     &=\frac{1}{2}(a^2+x^2)^{-\tfrac{1}{2}}(2x)=\frac{x}{\sqrt{a^2+x^2}}\\
-\end{split}\]
-\[\begin{split}
+\end{align*}
+\begin{align*}
 f''(x)&=\frac{\sqrt{a^2+x^2}\cdot x'-x\left(\sqrt{a^2+x^2}\right)'}{a^2+x^2}\\
 &=\frac{\sqrt{a^2+x^2}-\frac{x^2}{\sqrt{a^2+x^2}}}{{a^2+x^2}}\\
 &=\frac{a^2+x^2-x^2}{(a^2+x^2)^{\tfrac{3}{2}}}=\frac{a^2}{(a^2+x^2)^{\tfrac{3}{2}}}
-\end{split}\]
+\end{align*}
 
 \textbf{解法2: } 将原来的函数变形为隐函数，用隐函数微分法求二阶导数．
 
@@ -1883,12 +1883,12 @@ f''(x)&=\frac{\sqrt{a^2+x^2}\cdot x'-x\left(\sqrt{a^2+x^2}\right)'}{a^2+x^2}\\
 \end{example}
 
 \begin{solution}
-\[\begin{split}
+\begin{align*}
 y'&=ma(ax+b)^{m-1}\\
 y''&=m(m-1)a^2(ax+b)^{m-2}\\
 y^{(3)}&=m(m-1)(m-2)a^3(ax+b)^{m-3}\\
 \cdots\quad &\cdots\quad \cdots
-\end{split}\]
+\end{align*}
 由此推知：
 \[y^{(n)}=m(m-1)\cdots(m-n+1)a^n(ax+b)^{m-n}=\frac{m!}{(m-n)!}a^n(ax+b)^{m-n}\]
 这个结果的正确性可用数学归纳法证明．
@@ -1902,18 +1902,18 @@ y^{(3)}&=m(m-1)(m-2)a^3(ax+b)^{m-3}\\
 
 \begin{solution}
 \[y=\frac{1}{x^2-4x+3}=\frac{1}{2}\left(\frac{1}{x-3}-\frac{1}{x-1}\right)\]
-\[\begin{split}
+\begin{align*}
     y'&=\frac{1}{2}\left[\frac{-1}{(x-3)^2}-\frac{-1}{(x-1)^2}\right]=\frac{(-1)}{2}\left[\frac{1}{(x-3)^2}-\frac{1}{(x-1)^2}\right]\\
     y''&=\frac{(-1)}{2}\left[\frac{-2(x-3)}{(x-3)^4}-\frac{-2(x-1)}{(x-1)^4}\right]=\frac{(-1)^2 2!}{2}\left[\frac{1}{(x-3)^3}-\frac{1}{(x-1)^3}\right]\\
     \cdots\quad &\cdots\quad \cdots
-\end{split}\]
+\end{align*}
 假设一般地有：
 \[y^{(n)}=\frac{(-1)^n n!}{2}\left[\frac{1}{(x-3)^{n+1}}-\frac{1}{(x-1)^{n+1}}\right]\]
 那么：
-\[\begin{split}
+\begin{align*}
     y^{(n+1)}&=\frac{(-1)^n n!}{2}\left[\frac{-(n+1)(x-3)^n}{(x-3)^{2(n+1)}}-\frac{-(n+1)(x-1)^n}{(n-1)^{2(n+1)}}\right]\\
     &=\frac{(-1)^{n+1} (n+1)!}{2}\left[\frac{1}{(x-3)^{n+2}}-\frac{1}{(x-1)^{n+2}}\right]
-\end{split}\]
+\end{align*}
 即仍有此规律．因此，对于任何自然数$n$，都有
 \[y^{(n)}=\frac{(-1)^n n!}{2}\left[\frac{1}{(x-3)^{n+1}}-\frac{1}{(x-1)^{n+1}}\right]\]
 成立．
@@ -1953,7 +1953,7 @@ y^{(3)}&=m(m-1)(m-2)a^3(ax+b)^{m-3}\\
 \[f (a) =C_0\]
 
 然后，应用复合函数求导法则，对方程(2.10), 关于$h$逐次求导，依次得到：
-\[\begin{split}
+\begin{align*}
 f'(a+h)&=C_1+2C_2 h+3C_3h^2+\cdots +nC_nh^{n-1}\\
 f''(a+h)&=2C_2+3\x 2C_3h+\cdots+n(n-1)C_nh^{n-2}\\
 f^{(3)}(a+h)&=3!C_3+\frac{4!}{1!}C_4h+\frac{5!}{2!}C_5x^2+\cdots+\frac{n!}{(n-3)!}C_nh^{n-3}\\
@@ -1962,7 +1962,7 @@ f^{(i)}(a+h)&=i! C_i+\frac{(i+1)!}{1!}C_{i+1}h+\cdots+\frac{n!}{(n-i)!}C_nh^{n-i
 \cdots\quad &\cdots\quad \cdots\\
 f^{(n-1)}(a+h)&=(n-1)!C_{n-1}+n!C_nh\\
 f^{(n)}(a+h)&=n!C_n
-\end{split}\]
+\end{align*}
 把$h=0$代入上面一个方程中，便得到
 \[C_1=f^{(1)}(a),C_2=\frac{f^{(2)}(a)}{2!},C_3=\frac{f^{(3)}(a)}{3!},\ldots,C_i=\frac{f^{(i)}(a)}{i!},\ldots,C_n=\frac{f^{(n)}(a)}{n!}\]
 
@@ -1991,11 +1991,11 @@ f^{(n)}(a+h)&=n!C_n
 \[\frac{\dd^2 y}{\dd x^2}+2\frac{n}{x}\frac{\dd y}{\dd x}+\left[\frac{n(n-1)}{x^2}+m^2\right]y=0\]
 
 \item 若$h(x)=f(x)g(x)$，其中$f(x)$, $g(x)$和$h(x)$都是$n$阶可微，求证：
-\[\begin{split}
+\begin{align*}
     h^{(n)}(x)&=f(x)\cdot g^{(n)}(x)+C^1_n f^{(1)}(x)g^{(n-1)}(x)+\cdots \\
     &\qquad +C^h_n f^{(h)}(x)g^{(n-h)}(x)+\cdots\\
     &\qquad  +C^{n-1}_n f^{(n-1)}(x)g^{(1)}(x)+C^n_n f^{(n)}(x)g(x)
-\end{split}\]
+\end{align*}
 \item 求下列函数的$n$阶导数：
 \begin{multicols}{2}
 \begin{enumerate}
@@ -2148,6 +2148,7 @@ x}=\frac{1}{\varphi'(t)}$.
 \end{example}
 
 
+
 \begin{solution}
 椭圆在点t的切线方程，按照(2.16)得到
 \[(y-b\sin t) (-a\sin t )-(x-a\cos t)(b\cos t)=0\]
@@ -2184,11 +2185,11 @@ x}=\frac{1}{\varphi'(t)}$.
 故切线与曲线的另一交点的坐标是$\left(\frac{1}{4}t^2,-\frac{1}{6}t^3\right)$
 
 如果再假定$\varphi''(t)$，$\psi''(t)$存在，则$y$对$x$的二阶导数可按照复合函数求导法及商的导数法来求：
-\[\begin{split}
+\begin{align*}
     y''=\frac{\dd y'}{\dd x}&=\frac{\dd y'}{\dd t}\cdot \frac{\dd t}{\dd x}\\
     &=\frac{\dd }{\dd t}\left(\frac{\psi'(t)}{\varphi'(t)}\right)\cdot \frac{1}{\varphi'(t)}\\
     &=\frac{\varphi'(t)\psi''(t)-\psi'(t)\varphi''(t)}{\big\{\varphi'(t)\big\}^3}
-\end{split}\]
+\end{align*}
 \end{solution}
 
 \begin{ex}
@@ -2260,10 +2261,10 @@ $\left(a\frac{\cos\frac{\varphi_1+\varphi_2}{2}}{\cos\frac{\varphi_1-\varphi_2}{
 
 \begin{example}
     设$f(x)=x^2-\frac{1}{x}$，那么
-\[\begin{split}
+\begin{align*}
     \Delta y&=\left[(x+\Delta x)^2-\frac{1}{x+\Delta x}\right]-\left[x^2-\frac{1}{x}\right]\\
     &=2x\Delta x+(\Delta x)^2+\frac{\Delta x}{x(x+\Delta x)}
-\end{split}\] 
+\end{align*} 
 \end{example}
 
 从上面的例子看出，通常$\Delta y=f(x_0+\Delta x)-f(x_0)$是一个很复杂的关系，但是如果函数$f(x)$在点$x_0$存在变率$f'(x_0)$, 我们可以把$\Delta y$分解成一个的线性部分和一个比$\Delta x$变小得更快的微量部分．事实上
@@ -2347,10 +2348,10 @@ $\Delta y$.
 
 \begin{solution}
     已知圆面积$S=\pi r^2$, 设$\Delta S$是半径从$r$变到$r+\Delta r$时圆面积改变量，即圆环的面积（图2.15），则
-\[\begin{split}
+\begin{align*}
     \Delta S=\pi(r+\Delta r)^2-\pi r^2&=\pi\left[2r\Delta r+(\Delta r)^2\right]\\
     &=\frac{1}{2}\left[2\pi r+2\pi(r+\Delta r)\right]\Delta r
-\end{split}\]
+\end{align*}
 此时，$\dd S=2\pi r\Delta r$.
 
 \begin{figure}[htp]\centering
@@ -2515,7 +2516,7 @@ $\Delta y$.
 
 如果函数$f(x)$可微，即导数$f'(x)$存在，求函数的微分只要求出导数再乘以自变量的改变量$\Delta x$就行了，求已知函数的微分或求导数的方法都叫做微分法．
 
-我们已经知道当$x$是自变量时，$\dd x=\Delta x$, 原来的微分表达式$\dd y=f'(x)\Delta x$就可以改写为$\dd y=f'(x)\dd x$, 例如$\d(\sin x)=\cos x \dd x$. 所以我们可以根据函数的和、积、商的求导数法则得到函数的和、积、商的求微分法则，即
+我们已经知道当$x$是自变量时，$\dd x=\Delta x$, 原来的微分表达式$\dd y=f'(x)\Delta x$就可以改写为$\dd y=f'(x)\dd x$, 例如$\dd(\sin x)=\cos x \dd x$. 所以我们可以根据函数的和、积、商的求导数法则得到函数的和、积、商的求微分法则，即
 \begin{enumerate}
     \item $\dd(cu)=c\dd u$
     \item $\dd(u\pm v)=\dd u\pm \dd v$
@@ -2525,12 +2526,13 @@ $\Delta y$.
 这里只证明最后一个法则，其余请读者自证．
 
 \begin{proof}
-    \[\begin{split}
+\begin{align*}
 \dd\left(\frac{u}{v}\right)=\left(\frac{u}{v}\right)'\dd x&=\frac{u'v-uv'}{v^2}\dd x\\
 &=\frac{v(u'\dd x)-u(v'\dd x)}{v^2}\\
-&=\frac{v\dd u-u\dd v}{v^2}        
-    \end{split}\]
+&=\frac{v\dd u-u\dd v}{v^2}
+\end{align*}
 \end{proof}
+
 
 现在我们来研究求复合函数的微分法则．
 
@@ -2577,14 +2579,15 @@ $\dd y=f (x) \dd x$
 
 
 \begin{solution}
-\[\begin{split}
+\begin{align*}
     \dd\sin \left[\tan(x^2-x+1)\right]&=\cos\left[\tan(x^2-x+1)\right]\dd \tan(x^2-x+1)\\
     &=\cos\left[\tan(x^2-x+1)\right]\cdot \sec^2 (x^2-x+1)\cdot \dd (x^2-x+1)\\
     &=\cos\left[\tan(x^2-x+1)\right]\sec^2(x^2-x+1)\cdot (2x-1)\dd x 
-\end{split}\]
+\end{align*}
 \end{solution}
 （例2.52的计算中，将微分符号“$\dd$”逐步顺着复合函数
 的层次从$\sin$到$\tan$到$x^2-x+1$, 由外到里，尤如剥笋．）
+
 
 \begin{ex}
 \begin{enumerate}
@@ -2635,63 +2638,66 @@ $\dd y=f (x) \dd x$
 
 \item 一直圆锥内接于半径等于$R$的球中，球心在直圆锥的内部
 且到圆锥底面的距离等于$p$, 若$p$增加一个微量$x$而球半径$R$不变，求证圆锥体积的增量约等于$\frac{\pi}{3}(R+p)(R-3p) x$.
-\item 直圆锥的底面半径为$r$cm, 高为$h$cm, 若半径$r$和高$h$分别
-有一个增量$\rho$cm和$\lambda$cm, 求证圆锥体积的增量近似地等于$\left(\frac{2\rho}{r}+\frac{\lambda}{h}\right)$.
+\item 直圆锥的底面半径为$r$ cm, 高为$h$ cm, 若半径$r$和高$h$分别
+有一个增量$\rho$ cm和$\lambda$ cm, 求证圆锥体积的增量近似地等于$\left(\frac{2\rho}{r}+\frac{\lambda}{h}\right)$.
 \end{enumerate}
 \end{ex}
-
-
 
 \subsection*{习题2.2}
 \begin{enumerate}
     \item 求下列函数的导函数：
-\begin{enumerate}
-    \begin{multicols}{2}
- \item $f(x)=2 x^{3}-3 x^{3}+4 x-5 $
-\item $f(x)=x^{5}-6 x^{2}+13$
-\item $f(x)=\frac{x^{3}-4 x}{x^{2}+1} $
-\item $f(x)=\cos m x \sin n x$       
-    \end{multicols}
+	\begin{enumerate}
+    	\begin{multicols}{2}
+			\item $f(x)=2 x^{3}-3 x^{3}+4 x-5 $
+			\item $f(x)=x^{5}-6 x^{2}+13$
+			\item $f(x)=\frac{x^{3}-4 x}{x^{2}+1} $
+			\item $f(x)=\cos m x \sin n x$       
+    	\end{multicols}
 
-\item $f(x)=\left[\sin x+\cos x+\left(x^{2}+x+1\right)\right]^{2}$
-\item $f(x)=\tan\left[\sin x+\cos x+\left(x^{2}+x+1\right)\right]$
-\begin{multicols}{2}
- \item $f'(x)=\cot \left(x^{2}+1\right)$
-\item $f(x)=\sqrt{a^{2}+b^{2} x^{2}}$
-\item $f(x)=\sqrt[3]{x^{4}+x^{2}+1}$
-\item $f(x)=\cos \left(\sqrt[3]{3 x^{4}+5 x^{2}+6}\right)$
-\item $f(x)=(\sqrt{x}+1)\left(\frac{1}{\sqrt{x}}-1\right)$
-\item $f(x)=x \sin x+\cos x$
-\item $f(x)=2^{\sin ^{2}\tfrac{1}{x}} $
-\item $f(x)=x^{\sin x}$       
-\end{multicols}
-\begin{multicols}{2}
-\item $f(x)=e^{-x^{2}} \cos \left(e^{-x^{2}}\right) $
-\item  $f(x)=\arctan\sqrt{x^{2}-2 x}$
-\item  $f(x)=x e^{1-\cos x}$
-\item  $f(x)=x \arccos x-\sqrt{1-x^{2}}$
-\item  $f(x)=(\sin x)^{\cos x}$
-\item  $f(x)=\sqrt[5]{\frac{x-5}{\sqrt[5]{x^{2}+2}}}$
-\end{multicols}
-\item  $f(x)=x-\ln \left(2 e^{x}+1+\sqrt{e^{2 x}+4 e^{x}+1}\right)$
-\begin{multicols}{2}
-\item $f(x)=\sqrt{x \sqrt{x \sqrt{x}}}$
-\item  $f(x)=\log _{a} e ^{\sin ^{2} x+1}$
-\end{multicols}
-\item  $f(x)=\ln \tan  \frac{x}{2}-\cot x \cdot \ln (1+\sin x)-x$
-\end{enumerate}
+		\item $f(x)=\left[\sin x+\cos x+\left(x^{2}+x+1\right)\right]^{2}$
+		\item $f(x)=\tan\left[\sin x+\cos x+\left(x^{2}+x+1\right)\right]$
+		\begin{multicols}{2}
+			\item $f'(x)=\cot \left(x^{2}+1\right)$
+			\item $f(x)=\sqrt{a^{2}+b^{2} x^{2}}$
+			\item $f(x)=\sqrt[3]{x^{4}+x^{2}+1}$
+			\item $f(x)=\cos \left(\sqrt[3]{3 x^{4}+5 x^{2}+6}\right)$
+			\item $f(x)=(\sqrt{x}+1)\left(\frac{1}{\sqrt{x}}-1\right)$
+			\item $f(x)=x \sin x+\cos x$
+			\item $f(x)=2^{\sin ^{2}\tfrac{1}{x}} $
+			\item $f(x)=x^{\sin x}$       
+		\end{multicols}
+		\begin{multicols}{2}
+		\item $f(x)=e^{-x^{2}} \cos \left(e^{-x^{2}}\right) $
+		\item  $f(x)=\arctan\sqrt{x^{2}-2 x}$
+		\item  $f(x)=x e^{1-\cos x}$
+		\item  $f(x)=x \arccos x-\sqrt{1-x^{2}}$
+		\item  $f(x)=(\sin x)^{\cos x}$
+		\item  $f(x)=\sqrt[5]{\frac{x-5}{\sqrt[5]{x^{2}+2}}}$
+		\end{multicols}
+		\item  $f(x)=x-\ln \left(2 e^{x}+1+\sqrt{e^{2 x}+4 e^{x}+1}\right)$
+		\begin{multicols}{2}
+		\item $f(x)=\sqrt{x \sqrt{x \sqrt{x}}}$
+		\item  $f(x)=\log _{a} e ^{\sin ^{2} x+1}$
+		\end{multicols}
+		\item  $f(x)=\ln \tan  \frac{x}{2}-\cot x \cdot \ln (1+\sin x)-x$
+	\end{enumerate}
 
 \item 验证函数$f(x)=e^x \sin x$满足方程
-\[f'' (x) -2f' (x) +2f (x) =0\]
+\[f'' (x) -2f' (x) +2f (x) =0.\]
+
 \item 验证函数$f(x)=\frac{x-3}{x+4}$满足方程
-\[2 [f' (x) ]^2= [f (x) -1] f'' (x) \]
+\[2 [f' (x) ]^2= [f (x) -1] f'' (x).\]
+
 \item $P$点在直线上运动，在时刻$t$, 点$P$与直线上的定点$O$的距离由方程
 $s^2=a^2+V^2t^2$
 给出，其中$a$和$V$是常量，试用$s$表示$P$点在时刻$t$的速度和加速度．
+
 \item 在$xy$平面上，求通过点$P(-3, 6)$且与曲线$y=x^3-5x^2+x+5$
 相切，并且切点的横坐标满足$x\ge 0$的切线方程．
+
 \item 求证方程$16x^4-24x^2+16x-3=0$在$(0, 1)$内有
 一个三重根，又在$(-2,-1)$内有一个单根．
+
 \item 设三次函数$y=x^3-3ax^2+bx+c$ （其中$a,b,c$是
 常数）．
 \begin{enumerate}
@@ -2701,6 +2707,7 @@ $s^2=a^2+V^2t^2$
 \item 在中午十二点整，甲船以6公里/小时的速率向东行，乙船在甲船之北16公里，以8公里/小时的速率向南行，在下午一点整两船相近之速率为多少？在下午两点整两船相离之速率是多少？
 \item 已知圆心为$O$, 半径为1的圆与直线$\ell$相切于点$A$, 一动点$P$自切点$A$沿直线$\ell$向右移动时，取弧$\wideparen{AC}$的长为$\frac{2}{3}AP$，
 直线$PC$与直线$AO$交于点$M$(图2.19), 又知当$AP=\frac{3\pi}{4}$时，点$P$的速率为$v$, 求这时$M$点的速率．
+
 \begin{figure}[htp]
     \centering
 \begin{tikzpicture}
@@ -2776,15 +2783,19 @@ $s^2=a^2+V^2t^2$
 \end{enumerate}
 
 
+\section{微商运算的初步应用{}---{}函数的增减与极值}
 
-\section{微商运算的初步应用——函数的增减与极值}
 \subsection{局部极值和中值定理}
-我们在第一章中曾说明在闭区间$[a,b]$上连续的函数必有最大值和最小值．函数$f$在闭区间$M=[a,b]$上的最大值的大小涉及到两个因素，既依赖于$f$, 也依赖于$M$.
+我们在第一章中曾说明在闭区间$[a,b]$上连续的函数必有最大值和最小值．函数$f$在闭区间$M=[a,b]$上的最大值的大小涉及到两个因素，既依赖于$f$，也依赖于$M$.
 
-如图2.21, 若$N=[c,d]\subset M=[a,b]$, 则
-\[\max_N f\le \max_M f\]
+如图2.21，若$N=[c,d]\subset M=[a,b]$，则
+\[
+\max_N f \le \max_M f.
+\]
 相应地，
-\[\min_N f\ge \min_M f\]
+\[
+\min_N f \ge \min_M f.
+\]
 在这两种情形里都可能出现严格不等式（即不带等号的不等式）．
 
 \begin{figure}[htp]
@@ -2818,10 +2829,13 @@ $s^2=a^2+V^2t^2$
 
 \begin{proof}
     为确定起见，设$f(x)$在点$c\in (a,b)$取最大值、于是对于一切点$x\in (a,b)$, 就有
-\[f (x) \le f (c) \]
+\[
+f (x) \le f (c). 
+\]
 由导数定义：
 \[\lim_{x\to c}\frac{f (x) -f (c)}{x-c} =f' (c) \]
 并且极限$f'(c)$的存在与$x$是从右边还是从左边趋向$c$无关．
+
 \begin{enumerate}
     \item 如果$x>c$，我们有$\frac{f (x) -f (c)}{x-c}\le 0$，从而
 \[\lim_{x\to c^+}\frac{f (x) -f (c)}{x-c}\le 0\]
@@ -2959,9 +2973,6 @@ $\therefore\quad c=2$. 于是
 因为多项式函数处处连续和可微，所以若在$f'(x)=0$的两相邻实根$x_1,x_2$之间有$f(x)=0$的二实根$\alpha,\beta\; (\alpha<\beta)$, 那么根据罗尔定理，至少存在$f'(x)=0$的一个根$c$, 使得$\alpha<c<\beta$．但是$(\alpha,\beta)\subset (x_1,x_2)$，于是$x_1<c<x_2$，由此得出矛盾，所以在$f'(x)=0$的相邻两根之间，至多有$f(x)=0$的一个根．
 \end{proof}
 
-
-    
-
 \begin{example}
     求证不等式$\frac{h}{1+h}<\ln(1+h)<h$，
     对于$h\in (-1, 0)\cup (0,+\infty)$成立．
@@ -2992,7 +3003,8 @@ $\therefore\quad c=2$. 于是
 成立．
 \end{proof}
 
-    
+
+
 \begin{ex}
 \begin{enumerate}
     \item 曲线$y=x^2$上的某点的切线平行于连接横坐标为$a,b$两点的弦，求出此点．
@@ -3041,13 +3053,13 @@ $\therefore\quad c=2$. 于是
 
 \begin{proof}
 设$f(x)=2\arctan x+\arcsin\frac{2x}{1+x^2}$，因为当$x>1$时，$\left|\frac{2x}{1+x^2}\right|<1$，故对于所指定的$x$值的范围，$f(x)$有定义，又因为：
-\[\begin{split}
+\begin{align*}
     f'(x)&=2(\arctan x)'+\left(\arcsin\frac{2x}{1+x^2}\right)'\\
     &=\frac{2}{1+x^2}+\frac{1}{\sqrt{1-\left(\frac{2x}{1+x^2}\right)^2}}\cdot \left(\frac{2x}{1+x^2}\right)'\\
     &=\frac{2}{1+x^2}+\frac{1}{\sqrt{1-\left(\frac{2x}{1+x^2}\right)^2}}\cdot \frac{(1+x^2)\cdot 2-2x(2x)}{(1+x^2)^2}\\
     &=\frac{2}{1+x^2}+\frac{2(1-x^2)}{(x^2-1)(1+x^2)}\\
     &=2\left(\frac{1}{1+x^2}-\frac{1}{1+x^2}\right)=0
-\end{split}\]
+\end{align*}
 所以：
 \[2\arctan x+\arcsin\frac{2x}{1+x^2}=c\; \text{（常数）}\]
 另一方面，因为
@@ -3335,12 +3347,12 @@ $(\sin x)^{-2}\le x^{-2}+1-\frac{4}{\pi^2}$
 
 \begin{solution}
 将$y=\sqrt[3]{(x-1)(x+2)^2}$的两边立方，得
-\[\begin{split}
+\begin{align*}
     y^3&= (x-1) (x+2)^2\\
     3y^2\cdot y'&= (x+2)^2+ (x-1)\cdot 2\cdot  (x+2)\\
     &= (x+2) [x+2+2(x-1)]\\
     &=3x (x+2) 
-\end{split}\]
+\end{align*}
 
 $\therefore\quad 
 y'=\frac{x (x+2)}{y^2}=\frac{x (x+2)}{\sqrt[3]{(x-1)^2(x+2)^4}}$
@@ -3404,10 +3416,10 @@ $f'(x)$在点$c$处由正变为负，由前面的定理2, $c$是$f(x)$的极大�
 当$f''(c)>0$时，同理可证$c$是$f(x)$的一个极小点．
 
 为说明定理3的应用，我们求例2.60的二阶导函数：
-\[\begin{split}
+\begin{align*}
    y''&=\frac{y^2 (2x+2) -x (x+2) \cdot 2y\cdot y'}{y^4}\\
 &=\frac{2 [ (x+1) y-x (x+2) y']}{y^3} 
-\end{split}\]
+\end{align*}
 
 从例2.60知，当$x=0$时，$y'=0$. 又$f(a)=-\sqrt[3]{4}$. 故在$x=0$处
 \[y''_{x=0}=\frac{2\left[(0+1)\left(-\sqrt[3]{4}\right)-0\right]}{-4}=\frac{\sqrt[3]{4}}{2}>0\]
@@ -3497,9 +3509,10 @@ $ \Delta=a^2-3b$是导函数的判别式．
         \draw[->](-.5,0)--(5,0)node[right]{$x$};
         \draw[->](0,-.5)--(0,4.5)node[right]{$y$};
         
-        \node at (0,0){%
-        \pscurve[linewidth=2pt](.5,4)(1,2.5)(1.9, 3.5)(3.2, .8)(4,1.5)(4.4,1)
-        };
+        \node at (0,0);
+        \draw plot[smooth] coordinates{(.5,4)(1,2.5)(1.9, 3.5)(3.2, .8)(4,1.5)(4.4,1)};
+%        \pscurve[linewidth=2pt](.5,4)(1,2.5)(1.9, 3.5)(3.2, .8)(4,1.5)(4.4,1)
+%        };
         \draw[dashed](.5,4)--(.5,0)node[below]{$a$};
         \draw[dashed](4.4,1)--(4.4,0)node[below]{$b$};
 \end{tikzpicture}
@@ -3536,10 +3549,10 @@ $\therefore\quad f'(x)>0$
 
 
 \begin{solution}
-\[\begin{split}
+\begin{align*}
 f'(x)&=\frac{2}{3}x^{-\tfrac{1}{3}}-\frac{1}{3}(x^2-1)^{-\tfrac{2}{3}}\cdot 2x\\
 &=\frac{2}{3} \frac{(x^2-1)^{\tfrac{2}{3}}-x^{\tfrac{4}{3}}}{x^{\tfrac{1}{3}}(x^2-1)^{\tfrac{2}{3}}}    
-\end{split}\]
+\end{align*}
     故$f(x)$的驻点是$\pm\frac{1}{\sqrt{2}}$, 不可微点是$x=0$, $x=\pm 1$, 且这些点都在$[-2, 2]$内，因此$f(x)$的极值点可能是
 \[-1,\quad \frac{-1}{\sqrt{2}},\quad  0,\quad \frac{1}{\sqrt{2}},\quad  1\]
     由于$f(x)$是偶函数，故仅需计算
@@ -3659,16 +3672,16 @@ $    f (x) =\frac{1}{1+|x|}+\frac{1}{1+|x-a|}$
 圆锥高为
 \[h=\sqrt{\ell^2-r^2}=\sqrt{\ell^2-\left(\frac{\ell x}{2\pi}\right)^2}=\frac{\ell }{2\pi}\sqrt{4\pi^2-x^2}\]
 因此圆锥的体积为
-\[\begin{split}
+\begin{align*}
     V&=\frac{1}{3}\pi r^2 h\\
     &=\frac{1}{3}\pi\left(\frac{\ell x}{2\pi}\right)^2\cdot \frac{\ell}{2\pi}\sqrt{4\pi^2-x^2}\\
     &=\frac{\ell^3 x^2}{24\pi^2}\sqrt{4\pi^2-x^2}\quad (0\le x\le 2\pi)
-\end{split}\]
+\end{align*}
 由于$V(0)=0$, $V(2\pi)=0$, 故在$(0, 2\pi)$内必有一个值$x_0$使$V$的值最大，因而使$V'(x_0)=0$. 由于
-\[\begin{split}
+\begin{align*}
     V'(x)&=\frac{\ell^3}{24\pi^2}\left[2x\sqrt{4\pi^2-x^2}+\frac{1}{2}x^2(4\pi^2-x^2)^{-\tfrac{1}{2}}\cdot (-2x)\right]\\
     &=\frac{\ell^3}{24\pi^2}\left(\frac{8\pi^2 x-3x^3}{\sqrt{4\pi^2-x^2}}\right)
-\end{split}\]
+\end{align*}
 令$V'(x)=0$, 即$8\pi^2 x-3x^3=0$, 解得
 \[x_1=0,\quad x_2=-2\pi\sqrt{\frac{2}{3}}, \quad x_3=2\pi\sqrt{\frac{2}{3}}\]
 这里只有$x_3=2\pi\sqrt{\frac{2}{3}}\in (0, 2\pi)$, 故知$x=2\pi\sqrt{\frac{2}{3}}$是$V(x)$在$[0, 2\pi]$内的唯一的极大点，因而也是最大点．于是最后得到结论，剪去扇形的圆心角为
@@ -3733,11 +3746,11 @@ $\therefore\quad f(1)=0$不仅是极小值也是最小值．于是：
 \[t (x) =\frac{\sqrt{a^2+x^2}}{v_1}+\frac{\sqrt{b^2+(c-x)^2}}{v_2}\]
 
 为了使$t(x)$极小，应使$t'(x)=0,\; x\in (0,c)$. 由$t(x)$得
-\[\begin{split}
+\begin{align*}
     t' (x) &=\frac{x}{v_1\sqrt{a^2+x^2}}-\frac{c-x}{v_2\sqrt{b^2+(c-x)^2}}\\
     t'' (x) &=\frac{-x^2}{v_1(a^2+x^2)^{\tfrac{3}{2}}}+\frac{1}{v_1\sqrt{a^2+x^2}}+\frac{1}{v_2\sqrt{b^2+(c-x)^2}}-\frac{(c-x)^2}{v_2\left[b^2+(c-x)^2\right]^{\tfrac{3}{2}}}\\
     &=\frac{a^2}{v_1(a^2+x^2)^{\tfrac{3}{2}}}+\frac{b^2}{v_2\left[b^2+(c-x)^2\right]^{\tfrac{3}{2}}}>0.
-\end{split}\]
+\end{align*}
 既然$t'(0)<0$, $t'(c)>0$, 及$t'$是严格递增的，故在$(0,c)$内有唯一的$x_0$, 使得
 \[t'(x_0)=0\]
 从而当$x=x_0$时，$t(x_0)$是极小值也是最小值，于是由$t'(x_0)=0$得到
@@ -3945,10 +3958,10 @@ $y=f(x)$由向上凸变为向下凸，或者由向下凸变为向上凸，则点
 这里$x\in [a,b]$. 我们需要证明在$[a,b]$上，$F(x)\le 0$. 因为$F(x)$在$[a,b]$上连续，所以$F(x)$在$[a,b]$的某点达到它的最大值，用$c$表示最大值点，我们证明$c$是两端点之一．
 
 假设$a<c<b$，那么$c$也是$F(x)$的极大值点．因此$F'(c)=0$. 又
-\[\begin{split}
+\begin{align*}
     F'(x)&=f'(x)-\frac{f(b)}{b-a}+\frac{f(a)}{b-a}\\
     F''(x)&=f''(x)>0,\qquad x\in(a,b)
-\end{split}\]
+\end{align*}
 因此我们得出结论，$F(c)$是$[a,b]$上的最小值，即对于
 任意$x\in [a,b]$且$x\ne c$, 有
 \[F (x) > F (c) =f (c) -\ell (c)\]
@@ -4154,10 +4167,10 @@ $a^{\alpha}b^{\beta}\le \alpha a+\beta b$成立．
 因为$\ell_3$是渐近线，所以当$x\to\pm\infty$时，$d\to 0$, 即
 \[kx+b-f (x) \to 0\]
 我们必须用上式求出$k,b$, 才能确定$\ell_3$. 由于当$x\to\pm\infty$时，$\frac{1}{x}\to 0$, 所以
-\[\begin{split}
+\begin{align*}
 \lim_{x\to\pm\infty}\left[k+\frac{b}{x}-\frac{f(x)}{x}\right]&=\lim_{x\to\pm\infty}\frac{1}{x}[kx+b-f(x)]\\
 &=\lim_{x\to\pm\infty}\frac{1}{x}\cdot \lim_{x\to\pm\infty}[kx+b-f(x)]=0
-\end{split}\]
+\end{align*}
 由于$b$是常数，故有
 \begin{align}
     k&=\lim_{x\to\pm\infty}\frac{f(x)}{x}\qquad \text{(渐近线方向)}\\
@@ -4363,10 +4376,10 @@ $x$的正值，总有$f(x)>0$成立？
     这里$x\in [a,b]$. 我们需要证明在$[a,b]$上，$F(x)\le 0$. 因为$F(x)$在$[a,b]$上连续，所以$F(x)$在$[a,b]$的某点达到它的最大值，用$c$表示最大值点，我们证明$c$是两端点之一．
     
     假设$a<c<b$，那么$c$也是$F(x)$的极大值点．因此$F'(c)=0$. 又
-    \[\begin{split}
+    \begin{align*}
         F'(x)&=f'(x)-\frac{f(b)}{b-a}+\frac{f(a)}{b-a}\\
         F''(x)&=f''(x)>0,\qquad x\in(a,b)
-    \end{split}\]
+    \end{align*}
     因此我们得出结论，$F(c)$是$[a,b]$上的最小值，即对于
     任意$x\in [a,b]$且$x\ne c$, 有
     \[F (x) > F (c) =f (c) -\ell (c)\]
@@ -4572,10 +4585,10 @@ $x$的正值，总有$f(x)>0$成立？
     因为$\ell_3$是渐近线，所以当$x\to\pm\infty$时，$d\to 0$, 即
     \[kx+b-f (x) \to 0\]
     我们必须用上式求出$k,b$, 才能确定$\ell_3$. 由于当$x\to\pm\infty$时，$\frac{1}{x}\to 0$, 所以
-    \[\begin{split}
+    \begin{align*}
     \lim_{x\to\pm\infty}\left[k+\frac{b}{x}-\frac{f(x)}{x}\right]&=\lim_{x\to\pm\infty}\frac{1}{x}[kx+b-f(x)]\\
     &=\lim_{x\to\pm\infty}\frac{1}{x}\cdot \lim_{x\to\pm\infty}[kx+b-f(x)]=0
-    \end{split}\]
+    \end{align*}
     由于$b$是常数，故有
     \begin{align}
         k&=\lim_{x\to\pm\infty}\frac{f(x)}{x}\qquad \text{(渐近线方向)}\\
@@ -4774,6 +4787,4 @@ $x$的正值，总有$f(x)>0$成立？
     \item 一浮标由三部分组成，一个圆筒与两个相等的圆
     锥，其中每一个圆锥的高等于圆筒的高，问当表面积一定时，什么样的形状会有最大的体积．
     \end{enumerate}     
-    
-    
     
